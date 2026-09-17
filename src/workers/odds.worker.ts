@@ -1,11 +1,11 @@
-import { headsUpOdds } from "../../shared/handOdds";
+import { showdownOdds } from "../../shared/handOdds";
 self.onmessage = (
-  event: MessageEvent<{ hands: [string[], string[]]; board: string[] }>,
+  event: MessageEvent<{ hands: string[][]; board: string[] }>,
 ) => {
   try {
     self.postMessage({
       ok: true,
-      result: headsUpOdds(event.data.hands, event.data.board),
+      result: showdownOdds(event.data.hands, event.data.board),
     });
   } catch {
     self.postMessage({ ok: false });

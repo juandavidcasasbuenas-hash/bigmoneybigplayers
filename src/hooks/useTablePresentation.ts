@@ -1,8 +1,10 @@
 import { useLayoutEffect, useMemo, useRef, useState } from "react";
 import type { RoomState } from "../../shared/types";
 import { STREET, dealReleaseAt } from "../../shared/dealTiming";
+import { visiblePot } from "../../shared/potDisplay";
 import {
   planTableMotions,
+  initialBoardCount,
   publicBoardAt,
   type TableMotion,
 } from "../../shared/tableTimeline";
@@ -55,7 +57,7 @@ export function useTablePresentation(
       wasConnected.current = true;
       currentCode.current = "";
     }
-    if (room.paused && !pauseStart.current) pauseStart.current = Date.now();
+    if (room.paused && !pauseStart.current) pauseStart.current = room.pausedAt ?? Date.now();
     if (!room.paused && pauseStart.current) {
       const delay = Date.now() - pauseStart.current;
       pauseStart.current = null;
@@ -63,7 +65,7 @@ export function useTablePresentation(
         ...previous,
         motions: previous.motions.map((m) => ({
           ...m,
-          startAt: m.startAt + delay,
+          startAt: events.find(e => e.id === m.id)?.presentAt ?? m.startAt + delay,
         })),
       }));
     }
@@ -71,11 +73,12 @@ export function useTablePresentation(
       currentCode.current = room.code;
       seen.current = events.at(-1)?.sequence || 0;
       scheduled.current.clear();
+      const current = events.filter(e => e.handNumber === room.handNumber && e.presentAt !== undefined);
       setView({
         code: room.code,
         hand: room.handNumber,
-        baseBoard: room.board.length,
-        motions: [],
+        baseBoard: initialBoardCount(room.board.length, current),
+        motions: planTableMotions(current, Date.now()),
       });
       return;
     }
@@ -192,7 +195,7 @@ export function useTablePresentation(
       (e) =>
         now >= e.startAt &&
         now < e.startAt + e.duration &&
-        ["hand-start", "street", "all-in", "award"].includes(e.type),
+        ["hand-start", "street", "all-in", "showdown", "award"].includes(e.type),
     );
   const pendingAward = !!award && now < award.startAt;
   const latestAction = [...motions]
@@ -227,8 +230,9 @@ export function useTablePresentation(
       latestAction && "playerId" in latestAction
         ? latestAction.playerId
         : undefined,
-    focusTable: !!active && active.type !== "award",
+    focusTable: !!active || (!!room?.handReview && now >= room.handReview.startsAt),
     potVisible: room ? !room.winners.length || pendingAward : false,
+    pot: room ? visiblePot(room.pot, motions, now) : 0,
     settled: !!room?.winners.length && !pendingAward,
   };
 }

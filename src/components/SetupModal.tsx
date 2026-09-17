@@ -411,7 +411,7 @@ export function SetupModal({
                     "Deal the next hand automatically after showdown.",
                   )}
                   <div className="form-grid">
-                    {num("nextHandSeconds", "Result display (seconds)", 3, 60)}
+                    {num("nextHandSeconds", "Show / muck & celebration (seconds)", 8, 60)}
                     <label className="field">
                       <span>Spectator chat</span>
                       <select

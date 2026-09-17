@@ -24,11 +24,12 @@ Open [localhost:5173](http://localhost:5173). Vite runs the website on 5173 and 
 - Spectators and eliminated players receive only public cards, have no betting controls, and use a separate rail chat by default. Folded and unshown hands stay private. Rebuys and late entries wait until the next hand.
 - The Turf (an affectionate Oxford pub interpretation, not an exact architectural recreation), The High Roller penthouse, and The Garden Shed.
 - Follow turn (the default), table, seat, overhead, cinema and free-orbit cameras. Follow turn holds on each action for 1.7–1.9 seconds before moving to the next actor, whose clock then starts; fullscreen includes the full character dock, betting, audio, log and table controls.
-- Spoken public cards and winning hands through ElevenLabs Eleven v3 via fal. Eight distinct character voices for actions and voluntary banter, 116 varied dealer lines, quiet joins, cached audio and separate dealer/player volume controls. See [the voice booth](docs/VOICE.md).
+- 543 bundled voice clips, prepared with ElevenLabs Eleven v3. No runtime speech generation or provider credentials. Public cards and winning hand types are spoken; arbitrary names and amounts stay in the log. Eight distinct character voices for actions and voluntary banter, 116 varied dealer lines, quiet joins, recorded audio and separate dealer/player volume controls. See [the voice booth](docs/VOICE.md).
 - A visible house dealer, Monty, with dealing gestures and speech animation. A countdown ring, gold seat/action highlight and two-note chime announce your turn; the final five seconds turn red and tick. Card, chip and win sounds have a separate mute control. Paused clocks survive reconnects.
 - A viewport-filling game with one active-player indicator, a persistent bottom control dock and a collapsible chat/event log. Large card readouts show your current best hand; a compact result and next-hand countdown mark the end of each hand. No floating speech captions or crowded seat labels.
-- Heads-up all-ins expose only the two live contenders after betting closes. A Web Worker estimates preflop win probability from 6,000 samples, then enumerates every possible flop/turn runout exactly. Ties appear separately. Only the visible board is supplied to the calculation.
-- Cards travel from Monty and flip onto the felt; chips slide in and return to the winner with generated foley. All-in streets have longer holds for the odds and complete dealer calls.
+- All-in showdowns expose every live contender only after betting closes. The showdown panel names each player, shows their public cards and updates win percentages as the board arrives. A Web Worker estimates preflop odds from 6,000 samples, then enumerates flop/turn runouts exactly. Splits appear separately; side-pot tables label probabilities as main-pot odds. Hidden hands never enter the calculation.
+- Dealer, small-blind and big-blind positions have distinct physical buttons and a persistent name strip. Cards travel from Monty and flip onto the felt; bets join a growing centre pot, which is collected in small chip cuts with recorded foley.
+- After a hand, Show exposes your cards and Muck keeps them private; doing nothing defaults to muck. Contested winners and exposed all-in hands must remain public. The host configures the celebration window (at least eight seconds after collection), with reactions available throughout, including for newly eliminated players. Manual and automatic next hands respect this window.
 - Three original, quiet Lyria 2 instrumentals crossfade in the background and duck during speech. Music, voices and table effects have independent controls.
 - One original vector deck supplies both the private hand HUD and the 3D board: mirrored indices, standard pip arrangements and two-ended court art.
 - Nine voluntary reactions: riffle, knuckle roll, toss-and-catch, bluff, cheers, stand up, laugh, despair and shush. Emotes are theatre, do not act on your hand, and are never triggered automatically by private hand strength.
@@ -51,7 +52,7 @@ The production website is at port 3001 (or `PORT`). Use HTTPS for internet hosti
 To test with friends:
 
 1. Use **Deploy to Render** above, or create a Render Blueprint from this repository.
-2. Set `FAL_KEY` in the hosting dashboard for dealer/player voices. Keep it secret; never commit `.env` or use a `VITE_` variable for it. The game can also run without generated voices.
+2. Voices, music and effects ship with the game. No Fal or ElevenLabs key is needed on Render.
 3. When deployment is healthy, open the service's HTTPS URL, choose **Host table**, and share the invitation link with friends. They enter their names, choose characters and join; the host starts with **Deal**.
 
 The Blueprint installs build and runtime tools explicitly, including under `NODE_ENV=production`. It uses one server for the website and Socket.IO, so no separate frontend URL or Supabase configuration is needed.
@@ -61,13 +62,8 @@ docker build -t big-money-poker .
 docker run --rm -p 3001:3001 big-money-poker
 ```
 
-For Docker voice playback, supply the private environment file and retain generated clips in a named volume:
+The Docker image and Render build include all recorded voices in `dist/audio/voices`. Playback needs no provider key, persistent cache or generation step.
 
-```sh
-docker run --rm --env-file .env -v big-money-voices:/app/voice-cache -p 3001:3001 big-money-poker
-```
-
-The Render setup asks for `FAL_KEY` as a secret. Its free service has ephemeral storage, so cached voices can be regenerated after a restart.
 
 **Operational limits:** game rooms are in memory. A server restart or free-host recycle ends existing games; a reconnect token cannot recover a room after restart. Run one server instance, keep it awake for the game night, and use a persistent/always-on host if uninterrupted sessions matter. A future persistence layer needs to store private state server-side, never in public realtime broadcasts. Do not run multiple replicas without a shared authoritative room owner.
 

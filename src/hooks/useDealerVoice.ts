@@ -93,9 +93,8 @@ export function useDealerVoice(
     ): Promise<VoiceResponse> => {
       const controller = new AbortController();
       requests.current.add(controller);
-      // A stalled provider must not block every later announcement indefinitely.
-      // Allow the bounded server queue plus provider generation and asset download.
-      const timeout = window.setTimeout(() => controller.abort(), 100_000);
+      // These requests only authorize a bundled clip; there is no generation queue.
+      const timeout = window.setTimeout(() => controller.abort(), 10_000);
       try {
         const response = await fetch(`${server}${path}`, {
           signal: controller.signal,
@@ -134,7 +133,7 @@ export function useDealerVoice(
           ok: false,
           error: controller.signal.aborted
             ? "The voice request was interrupted."
-            : "Could not reach the voice service.",
+            : "Could not load the recorded table voice.",
         };
       } finally {
         window.clearTimeout(timeout);
@@ -291,7 +290,7 @@ export function useDealerVoice(
     const timeout = window.setTimeout(() => {
       providerReady.current = false;
       setStatus("unavailable");
-      setError("Could not reach the voice service.");
+      setError("Could not load the recorded table voices.");
       controller.abort();
     }, 8000);
     void fetch(`${server}/api/voice/status`, { signal: controller.signal })
@@ -303,7 +302,7 @@ export function useDealerVoice(
         setError(
           providerReady.current
             ? ""
-            : "The premium voice service has not been configured on this server.",
+            : "Recorded table voices are unavailable.",
         );
       })
       .catch(() => {

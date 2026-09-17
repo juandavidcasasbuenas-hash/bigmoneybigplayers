@@ -430,62 +430,6 @@
   border-radius: 5px;
   background: #132c2066;
 }
-.allin-odds {
-  position: absolute;
-  z-index: 6;
-  top: 70px;
-  left: 50%;
-  transform: translateX(-50%);
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 6px 18px;
-  padding: 13px 18px 9px;
-  background: #13241eeb;
-  border: 1px solid #d5b98680;
-  border-radius: 12px;
-}
-.odds-player {
-  display: grid;
-  grid-template-columns: auto auto;
-  gap: 7px 12px;
-  align-items: center;
-  min-width: 160px;
-}
-.odds-player > span {
-  grid-column: 1/-1;
-  font-weight: 600;
-  max-width: 160px;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-}
-.odds-player > div {
-  display: flex;
-  gap: 3px;
-}
-.poker-game .odds-player .playing-card {
-  width: 32px;
-  height: 45px;
-  border-radius: 3px;
-}
-.odds-player strong {
-  font-size: 22px;
-  color: #f2d398;
-  white-space: nowrap;
-  font-variant-numeric: tabular-nums;
-}
-.odds-player strong small {
-  display: block;
-  font-size: 10px;
-  font-weight: 400;
-  color: #b2c1af;
-}
-.tie-odds {
-  grid-column: 1/-1;
-  text-align: center;
-  color: #bdc8b6;
-  font-size: 10px;
-}
 .game-dock {
   display: flex;
   justify-content: space-between;
@@ -984,25 +928,6 @@
     right: 10px;
     width: min(300px, calc(100% - 20px));
   }
-  .allin-odds {
-    top: 102px;
-    gap: 5px 12px;
-    padding: 10px 12px 7px;
-  }
-  .odds-player {
-    min-width: 133px;
-    gap: 5px 8px;
-  }
-  .poker-game .odds-player .playing-card {
-    width: 28px;
-    height: 40px;
-  }
-  .odds-player strong {
-    font-size: 19px;
-  }
-  .odds-player > span {
-    font-size: 11px;
-  }
   .table-entry {
     width: 270px;
     padding: 17px;
@@ -1051,36 +976,126 @@
     height: 44px;
   }
 }
-.hand-result {
-  position: absolute;
-  z-index: 6;
-  left: 50%;
-  top: 33%;
-  transform: translateX(-50%);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 7px;
-  padding: 16px 24px;
-  background: #14251eef;
-  border: 1px solid #debd7877;
-  border-radius: 12px;
-  max-width: calc(100% - 30px);
-  text-align: center;
-  box-shadow: 0 8px 28px #03140c66;
-}
-.hand-result strong {
-  font:
-    500 24px Fraunces,
-    serif;
-  color: #f2d398;
-}
-.hand-result span {
-  font-size: 12px;
-  color: #d8ddc5;
-}
 .audio-options {
   overflow: auto;
+}
+.hand-positions {
+  position: absolute;
+  z-index: 4;
+  top: 120px;
+  left: 18px;
+  display: flex;
+  gap: 5px;
+  max-width: calc(100% - 36px);
+}
+.hand-position {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 9px 4px 4px;
+  background: #14251fe8;
+  border: 1px solid #ffffff24;
+  border-radius: 20px;
+  min-width: 0;
+}
+.position-token {
+  display: inline-grid;
+  place-items: center;
+  width: 24px;
+  height: 24px;
+  flex-shrink: 0;
+  border-radius: 50%;
+  color: #172d22;
+  font-size: 10px;
+  box-shadow: inset 0 0 0 2px #ffffff50;
+}
+.position-d { background: #f0dfb6; }
+.position-sb { background: #91c5d5; }
+.position-bb { background: #e7a17b; }
+.hand-position span { max-width: 100px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-size: 11px; }
+.hand-position small { color: #c2cdbb; font-size: 10px; font-variant-numeric: tabular-nums; }
+.showdown-panel {
+  position: absolute;
+  z-index: 6;
+  top: 78px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: min(540px, calc(100% - 36px));
+  background: #11271fea;
+  border: 1px solid #d9ba7666;
+  border-radius: 14px;
+  box-shadow: 0 12px 40px #0005;
+  overflow: hidden;
+}
+.showdown-panel.multiway { width: min(760px, calc(100% - 36px)); }
+.showdown-active .hand-positions { flex-direction: column; align-items: flex-start; }
+.showdown-scroll { display: flex; align-items: center; gap: 5px; margin-left: auto; }
+.poker-game .showdown-scroll button { min-height: 23px; width: 23px; padding: 2px; border-radius: 5px; background: transparent; }
+.showdown-scroll small { font-size: 10px; color: #b6c5af; }
+.showdown-panel > header {
+  padding: 10px 14px;
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  border-bottom: 1px solid #d9ba7626;
+  font-size: 12px;
+}
+.showdown-panel > header > strong { font-family: Fraunces, serif; font-size: 17px; font-weight: 500; color: #efce91; }
+.showdown-panel > header span { align-self: center; font-size: 11px; color: #c1c9b8; }
+.showdown-panel > header b { color: #f1ddb0; margin-left: 5px; }
+.showdown-players { display: flex; gap: 8px; padding: 10px; overflow-x: auto; overscroll-behavior-x: contain; scroll-snap-type: x proximity; scrollbar-color: #c9ad7466 transparent; }
+.showdown-player { flex: 1 0 210px; min-width: 0; border: 1px solid #ffffff1b; border-radius: 9px; padding: 10px; background: #203a2f; scroll-snap-align: start; }
+.showdown-player.winner { border-color: #e9c786; background: #3e462b; }
+.showdown-name { display: flex; align-items: center; gap: 7px; margin-bottom: 9px; }
+.showdown-name img { width: 26px; height: 26px; border-radius: 50%; object-fit: cover; }
+.showdown-name strong { max-width: 145px; text-overflow: ellipsis; overflow: hidden; white-space: nowrap; font-size: 13px; }
+.showdown-name small { color: #adbaa9; font-size: 10px; }
+.showdown-hand { display: flex; align-items: center; justify-content: space-between; gap: 9px; }
+.showdown-cards { display: flex; gap: 4px; }
+.poker-game .showdown-cards .playing-card { width: 42px; height: 59px; border-radius: 4px; }
+.showdown-chance, .showdown-award { display: flex; flex-direction: column; align-items: flex-end; gap: 2px; min-width: 70px; }
+.showdown-chance strong, .showdown-award strong { font-size: 25px; font-weight: 650; color: #efd296; font-variant-numeric: tabular-nums; letter-spacing: -1px; }
+.showdown-chance small, .showdown-award small { font-size: 10px; color: #c8d2bd; }
+.odds-meter { height: 3px; width: 100%; background: #ffffff20; border-radius: 2px; overflow: hidden; margin-top: 6px; }
+.odds-meter i { display: block; height: 100%; background: #e9c786; transition: width .5s ease; }
+.showdown-player p { margin: 8px 0 0; font-size: 11px; color: #cbd5c0; min-height: 14px; }
+.showdown-panel footer { padding: 0 14px 9px; text-align: right; color: #adbfa9; font-size: 10px; }
+.show-muck-controls { display: flex; align-items: center; justify-content: flex-end; gap: 9px; }
+.show-muck-controls > span { font-size: 13px; color: #e8d8b5; margin-right: 8px; }
+.show-muck-controls small { display: block; font-size: 10px; color: #acbba6; margin-top: 4px; font-variant-numeric: tabular-nums; }
+@media (min-width: 761px) and (max-width: 1150px) {
+  .game-stage .showdown-panel { top: 162px; }
+  .showdown-active .hand-positions { flex-direction: row; align-items: center; }
+}
+@media (max-width: 760px) {
+  .hand-positions { top: 102px; left: 10px; right: 10px; max-width: none; gap: 4px; }
+  .hand-position { padding-right: 6px; gap: 4px; flex: 1; }
+  .hand-position span { font-size: 10px; max-width: 65px; }
+  .hand-position small { font-size: 9px; }
+  .position-token { width: 21px; height: 21px; font-size: 9px; }
+  .showdown-panel, .showdown-panel.multiway { top: 143px; width: calc(100% - 20px); border-radius: 10px; }
+  .showdown-active .hand-positions { flex-direction: row; align-items: center; }
+  .showdown-panel > header { padding: 7px 10px; }
+  .showdown-panel > header > strong { font-size: 15px; }
+  .showdown-players { gap: 6px; padding: 7px; }
+  .showdown-player { flex-basis: 156px; padding: 7px; }
+  .showdown-name { gap: 5px; margin-bottom: 7px; }
+  .showdown-name strong { max-width: 100px; font-size: 12px; }
+  .showdown-name img { width: 21px; height: 21px; }
+  .showdown-name small { display: none; }
+  .poker-game .showdown-cards .playing-card { width: 31px; height: 44px; }
+  .showdown-chance, .showdown-award { min-width: 56px; }
+  .showdown-chance strong, .showdown-award strong { font-size: 20px; }
+  .showdown-player p { font-size: 10px; }
+  .show-muck-controls { width: 100%; justify-content: space-between; }
+  .show-muck-controls > span { font-size: 12px; margin-right: 0; }
+}
+@media (max-height: 680px) and (min-width: 761px) {
+  .hand-positions { top: 116px; }
+  .showdown-panel { top: 78px; }
+  .showdown-player { padding: 7px; }
+  .showdown-name { margin-bottom: 5px; }
+  .poker-game .showdown-cards .playing-card { width: 31px; height: 44px; }
 }
 @media (max-width: 760px) {
   .table-mode .site-header nav {

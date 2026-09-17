@@ -1,5 +1,5 @@
 import { describe, it, expect } from "vitest";
-import { headsUpOdds, describeHand } from "./handOdds";
+import { headsUpOdds, showdownOdds, describeHand } from "./handOdds";
 
 describe("visible hand evaluation and heads-up win probabilities", () => {
   it("names the actual best five cards, including pairs before a flop and the wheel", () => {
@@ -96,4 +96,17 @@ describe("visible hand evaluation and heads-up win probabilities", () => {
         headsUpOdds(hands as [string[], string[]], board as string[]),
       ).toThrow();
   });
+});
+
+it('calculates multiway odds from exposed cards and handles ties involving only some players', () => {
+  const hands = [['As', 'Ad'], ['Ks', 'Kd'], ['Qs', 'Qd']];
+  const turn = showdownOdds(hands, ['2c', '3c', '7h', '9h']);
+  expect(turn.samples).toBe(42);
+  expect(turn.exact).toBe(true);
+  expect(turn.wins).toEqual([38 / 42 * 100, 2 / 42 * 100, 2 / 42 * 100]);
+  expect(turn.equity.reduce((n, v) => n + v, 0)).toBeCloseTo(100);
+  const split = showdownOdds([['As', '2d'], ['Ah', '3d'], ['Ks', 'Kd']], ['Ac', 'Qh', 'Jd', '9h', '8s']);
+  expect(split.wins).toEqual([0, 0, 0]);
+  expect(split.equity).toEqual([50, 50, 0]);
+  expect(split.tie).toBe(100);
 });

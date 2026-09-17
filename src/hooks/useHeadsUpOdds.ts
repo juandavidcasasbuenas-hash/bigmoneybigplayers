@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import type { HeadsUpResult } from "../../shared/handOdds";
+import type { ShowdownOdds } from "../../shared/handOdds";
 import type { TableMotion } from "../../shared/tableTimeline";
 export function useHeadsUpOdds(
   motions: TableMotion[],
@@ -14,7 +14,7 @@ export function useHeadsUpOdds(
     : "";
   const [value, setValue] = useState<{
     key: string;
-    result: HeadsUpResult;
+    result: ShowdownOdds;
   } | null>(null);
   useEffect(() => {
     if (!key) {

@@ -11,7 +11,3 @@ services:
         value: "24"
       - key: NODE_ENV
         value: production
-      - key: FAL_KEY
-        sync: false
-      - key: VOICE_DAILY_CHAR_LIMIT
-        value: "50000"

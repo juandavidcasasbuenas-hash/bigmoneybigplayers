@@ -204,7 +204,7 @@ export default function App() {
         ? room.players
             .filter(
               (p) =>
-                p.seat >= 0 && p.status !== "spectator" && p.status !== "out",
+                p.seat >= 0 && p.status !== "spectator" && (p.status !== "out" || p.cardCount === 2),
             )
             .map((p) => ({
               id: p.id,
@@ -214,12 +214,14 @@ export default function App() {
               status: p.status,
               bet: p.bet,
               seat: p.seat,
+              smallBlind: p.id === room.smallBlindId,
+              bigBlind: p.id === room.bigBlindId,
               emoteAt: p.emote?.at,
               emote:
                 p.emote && now - p.emote.at < 4500 ? p.emote.type : undefined,
             }))
         : previewPlayers,
-    [room?.players, previewPlayers, emoteTick],
+    [room?.players, room?.smallBlindId, room?.bigBlindId, previewPlayers, emoteTick],
   );
   const doSubmit = async (data: {
     name: string;

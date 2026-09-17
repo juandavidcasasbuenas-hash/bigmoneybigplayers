@@ -1,9 +1,10 @@
+import { createQueuedSynth } from '../scripts/lib/voice-provider.js';
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 import express from 'express';
 import { createServer } from 'node:http';
 import type { AddressInfo } from 'node:net';
 import { PokerRoom } from './engine.js';
-import { createQueuedSynth, registerVoiceRoutes, VOICE_CAST, type Synth } from './voice.js';
+import { registerVoiceRoutes, VOICE_CAST, type Synth } from './voice.js';
 
 /** All synthesis is injected; these tests never contact fal or spend voice credits. */
 describe('voice authentication, table visibility, and bounded synthesis',() => {
@@ -23,7 +24,7 @@ describe('voice authentication, table visibility, and bounded synthesis',() => {
     room.start(host.id);
     synth = vi.fn<Synth>(async (_text,speaker) => ({audioUrl:`/fake/${speaker}.mp3`,voice:VOICE_CAST[speaker].voice,model:'eleven-v3'}));
     const app = express();
-    // The same scheduler surrounds production's provider, after cache deduplication.
+    // Exercise the offline authoring scheduler with an injected lookup; no provider is called.
     registerVoiceRoutes(app,new Map([[room.code,room]]),{synth:createQueuedSynth(synth),enabled:true});
     server = createServer(app);
     await new Promise<void>(resolve => server.listen(0,'127.0.0.1',resolve));
@@ -46,7 +47,7 @@ describe('voice authentication, table visibility, and bounded synthesis',() => {
   it('exposes only public provider status and no server credentials',async () => {
     const response = await fetch(`${url}/api/voice/status`);
     expect(response.status).toBe(200);
-    expect(await response.json()).toEqual({enabled:true,provider:'elevenlabs',model:'eleven-v3',dealer:VOICE_CAST.dealer,cast:VOICE_CAST});
+    expect(await response.json()).toEqual({enabled:true,provider:'bundled',model:'recorded-eleven-v3',dealer:VOICE_CAST.dealer,cast:VOICE_CAST});
     expect(synth).not.toHaveBeenCalled();
   });
 
@@ -202,7 +203,8 @@ describe('voice authentication, table visibility, and bounded synthesis',() => {
     expect(results.every(result=>result.status===200)).toBe(true);
     expect(synth.mock.calls.map(([text])=>text).sort()).toEqual(scripts.sort());
     expect(peak).toBe(5);
-    expect(results.some(result=>result.body.text.includes('Congratulations'))).toBe(true);
+    const champion = announcements.find(message => message.kind === 'champion')!;
+    expect(results.some(result=>result.body.text === champion.speech)).toBe(true);
   });
 
   it('sanitizes provider errors and evicts a failed cached generation for retry',async () => {

@@ -31,10 +31,9 @@ import {
 } from "three";
 import { mergeGeometries } from "three/examples/jsm/utils/BufferGeometryUtils.js";
 import type { TableMotion } from "../../shared/tableTimeline";
+import { potStacks, POT_CHIP_SCALE } from "../../shared/potDisplay";
 import { holePickupAt } from "../../shared/dealTiming";
 import {
-  betChipCount,
-  betChips,
   FELT_Y,
   smooth,
   workZ,
@@ -74,6 +73,8 @@ export interface ScenePlayer {
   emote?: string;
   emoteAt?: number;
   spokenLine?: string;
+  smallBlind?: boolean;
+  bigBlind?: boolean;
 }
 export interface PokerSceneProps {
   players: ScenePlayer[];
@@ -652,19 +653,20 @@ function Pint({ scale = 1 }: { scale?: number }) {
   );
 }
 
-function DealerButton({ position }: { position: XYZ }) {
+function PositionButton({ position, label = 'D' }: { position: XYZ; label?: 'D' | 'SB' | 'BB' }) {
+  const background = label === 'D' ? '#f0dfb6' : label === 'SB' ? '#91c5d5' : '#e7a17b';
   const texture = useCanvasTexture(
-    () => labelTexture(["D"], "#264835", "#eadab7", 256, 256),
-    [],
+    () => labelTexture([label], "#192d24", background, 256, 256),
+    [label],
   );
   return (
     <group position={position}>
       <mesh castShadow>
-        <cylinderGeometry args={[0.14, 0.14, 0.037, 32]} />
-        <meshStandardMaterial color="#e6d2a7" roughness={0.45} />
+        <cylinderGeometry args={[0.205, 0.205, 0.046, 32]} />
+        <meshStandardMaterial color={background} roughness={0.45} />
       </mesh>
-      <mesh rotation={[-Math.PI / 2, 0, 0]} position={[0, 0.02, 0]}>
-        <circleGeometry args={[0.12, 32]} />
+      <mesh rotation={[-Math.PI / 2, 0, 0]} position={[0, 0.024, 0]}>
+        <circleGeometry args={[0.192, 32]} />
         <meshStandardMaterial map={texture} />
       </mesh>
     </group>
@@ -833,10 +835,8 @@ export function PokerTable({
         />
       )}
       {pot > 0 && !settled && (
-        <group position={[0, 1.39, 1.28]}>
-          <ChipStack position={[-0.34, 0, 0]} count={4} color="#b4514b" />
-          <ChipStack position={[0, 0, 0.04]} count={5} color="#afbaa0" />
-          <ChipStack position={[0.32, 0, 0]} count={3} color="#d4b56e" />
+        <group name="central-pot" userData={{ amount: pot }}>
+          {potStacks(pot).map((pile, i) => <ChipStack key={i} {...pile} scale={POT_CHIP_SCALE} />)}
         </group>
       )}
       {[-1, 1].map((x) =>
@@ -961,6 +961,7 @@ function PlayerSeat({
         />
       </group>
       <group position={[0, FELT_Y + 0.002, depth]}>
+        {player.stack > 0 && <>
         <ChipStack
           position={[0.48, 0, 0.26]}
           count={Math.max(2, Math.round(player.stack / 2000))}
@@ -972,19 +973,11 @@ function PlayerSeat({
           color="#abb79b"
         />
         <ChipStack position={[0.15, 0, 0.52]} count={4} color="#d0ad69" />
-        {dealer && <DealerButton position={[-0.59, 0.025, 0.08]} />}
+        </>}
+        {dealer && <PositionButton position={[-0.48, 0.025, 0.68]} />}
+        {player.smallBlind && <PositionButton position={[dealer ? -0.02 : -0.48, 0.025, 0.68]} label="SB" />}
+        {player.bigBlind && <PositionButton position={[-0.48, 0.025, 0.68]} label="BB" />}
       </group>
-      {player.bet &&
-      !motions.some(
-        (m) =>
-          m.type === "bet" &&
-          m.playerId === player.id &&
-          (effectNow ?? Date.now()) < m.startAt + m.duration,
-      ) ? (
-        <group position={betChips(1, depth).toArray() as XYZ}>
-          <ChipStack count={betChipCount(player.bet)} scale={0.44} />
-        </group>
-      ) : null}
       {index % 2 === 0 && (
         <group position={[-0.69, FELT_Y, depth + 0.28]}>
           <Pint scale={0.85} />

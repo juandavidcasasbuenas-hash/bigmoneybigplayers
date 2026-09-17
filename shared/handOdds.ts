@@ -32,14 +32,15 @@ export function describeHand(cards: string[]) {
     (_: string, rank: string) => `${words[rank]} high`,
   );
 }
-/** Inputs are the two exposed hands and the currently visible board, never the shuffled deck. */
-export function headsUpOdds(
-  hands: [string[], string[]],
+/** Only publicly exposed contenders and the currently visible board; never the deck or hidden hands. */
+export function showdownOdds(
+  hands: string[][],
   board: string[],
   samples = 6000,
-): HeadsUpResult {
+): ShowdownOdds {
   const known = [...hands.flat(), ...board];
   if (
+    hands.length < 2 || hands.length > 12 ||
     hands.some((h) => h.length !== 2) ||
     ![0, 3, 4, 5].includes(board.length) ||
     known.some((c) => !deck.includes(c)) ||
@@ -48,16 +49,18 @@ export function headsUpOdds(
     throw new Error("Invalid exposed hands or board");
   const remaining = deck.filter((c) => !known.includes(c)),
     missing = 5 - board.length;
-  const wins: [number, number] = [0, 0];
+  const wins = hands.map(() => 0), equity = hands.map(() => 0);
   let ties = 0,
     total = 0;
   const evaluate = (runout: string[]) => {
     const community = [...board, ...runout];
-    const a = Hand.solve([...hands[0], ...community]),
-      b = Hand.solve([...hands[1], ...community]);
-    const winners = Hand.winners([a, b]);
-    if (winners.length === 2) ties++;
-    else wins[winners[0] === a ? 0 : 1]++;
+    const solved = hands.map(hand => Hand.solve([...hand, ...community]));
+    const winners = Hand.winners(solved);
+    if (winners.length > 1) ties++;
+    for (let i=0;i<solved.length;i++) if (winners.includes(solved[i])) {
+      if (winners.length === 1) wins[i]++;
+      equity[i] += 1 / winners.length;
+    }
     total++;
   };
   if (missing === 0) evaluate([]);
@@ -88,9 +91,17 @@ export function headsUpOdds(
     }
   }
   return {
-    wins: [(wins[0] / total) * 100, (wins[1] / total) * 100],
+    wins: wins.map(n => n / total * 100),
+    equity: equity.map(n => n / total * 100),
     tie: (ties / total) * 100,
     samples: total,
     exact: missing <= 2,
   };
+}
+
+export interface ShowdownOdds { wins:number[]; equity:number[]; tie:number; samples:number; exact:boolean }
+
+export function headsUpOdds(hands:[string[],string[]], board:string[], samples=6000):HeadsUpResult {
+  const result=showdownOdds(hands,board,samples);
+  return {wins:[result.wins[0],result.wins[1]],tie:result.tie,samples:result.samples,exact:result.exact};
 }

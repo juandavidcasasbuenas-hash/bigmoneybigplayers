@@ -4,6 +4,7 @@ import solver from 'pokersolver';
 import { burstDuration, motionDuration } from '../shared/tableTimeline.js';
 import { actionSpeech, PLAYER_EMOTES as emotes, type SpokenAction } from '../shared/playerDialogue.js';
 import { DealerDialogue } from './dealerDialogue.js';
+import { PLAIN_HAND_START, PLAIN_HAND_END, SIDE_POT_END, RESULT_LINES } from './voiceCatalog.js';
 import type { Hand as SolvedHand } from 'pokersolver';
 import { DEFAULT_SETTINGS } from '../shared/types.js';
 import type { AvailableActions, BlindLevel, Card, ChatMessage, DealerMessage, Emote, GameSettings, PokerAction, Pot, PublicPlayer, RoomState, Stage, Winner, TableEvent, TableEventData } from '../shared/types.js';
@@ -111,6 +112,10 @@ export class PokerRoom {
   chat: ChatMessage[] = [];
   lastActivity = Date.now();
   private reveal = new Set<string>();
+  private mucked = new Set<string>();
+  handReview: RoomState['handReview'] = null;
+  private reviewOpened = false;
+  private reviewClosed = false;
   private handBigBlind = 50;
   private dealerSeat = -1;
   private botActAt: number | null = null;
@@ -213,7 +218,7 @@ export class PokerRoom {
       seated.forEach(p => { p.chips = next.startingStack; });
     }
     if (this.stage === 'showdown' && !this.breakEndsAt && 'autoNextHand' in input) {
-      this.nextHandAt = next.autoNextHand ? this.clock()+next.nextHandSeconds*1000 : null;
+      this.nextHandAt = next.autoNextHand ? Math.max(this.handReview?.endsAt ?? 0, this.clock()+next.nextHandSeconds*1000) : null;
     }
   }
   start(id: string) {
@@ -264,6 +269,7 @@ export class PokerRoom {
     if (this.isPlaying || this.stage === 'finished') throw new Error('Cannot deal a new hand right now.');
     if (this.paused) throw new Error('The tournament is paused.');
     if (this.paced && this.clock()<this.presentationReadyAt) throw new Error('Let the chips settle before the next hand.');
+    if (this.paced && this.handReview && this.clock()<this.handReview.endsAt) throw new Error('Give the table a moment to show or muck.');
     if (!this.advanceLevels(this.clock())) return;
     const playing = this.players.filter(p => p.seat >= 0 && p.chips > 0 && p.status !== 'spectator');
     if (playing.length < 2) {
@@ -281,6 +287,10 @@ export class PokerRoom {
     this.winners = [];
     this.settledPots = [];
     this.reveal.clear();
+    this.mucked.clear();
+    this.handReview = null;
+    this.reviewOpened = false;
+    this.reviewClosed = false;
     this.nextHandAt = null;
     this.currentBet = this.currentLevel.big;
     this.handBigBlind = this.currentLevel.big;
@@ -310,7 +320,7 @@ export class PokerRoom {
     this.post(big, this.currentLevel.big, true, true);
     small.lastAction = 'Small blind'; big.lastAction = 'Big blind';
     this.pending = new Set(this.actors.map(p => p.id));
-    this.say(`Hand ${this.handNumber} · ${dealer.name} has the button. ${small.name}: small blind. ${big.name}: big blind.`, {kind:'hand-start',speech:this.settings.banter?this.dialogue.pick('newHand'):'New hand. Shuffle up and deal.'});
+    this.say(`Hand ${this.handNumber} · ${dealer.name} has the button. ${small.name}: small blind. ${big.name}: big blind.`, {kind:'hand-start',speech:this.settings.banter?this.dialogue.pick('newHand'):PLAIN_HAND_START});
     this.advanceAction(big.seat);
   }
   availableActions(id: string): AvailableActions | null {
@@ -388,7 +398,7 @@ export class PokerRoom {
     if (next) { this.setTurn(next); return; }
     this.setTurn(undefined);
     this.refundUncalled();
-    if(this.contenders.length===2 && this.actors.length<=1 && !this.tableEvents.some(e=>e.handNumber===this.handNumber&&e.type==='all-in')) {
+    if(this.contenders.length>=2 && this.actors.length<=1 && !this.tableEvents.some(e=>e.handNumber===this.handNumber&&e.type==='all-in')) {
       this.event({type:'all-in',players:this.contenders.map(p=>({playerId:p.id,cards:[...p.holeCards]})),board:[...this.board]});
       for(const p of this.contenders)this.reveal.add(p.id);
     }
@@ -447,7 +457,6 @@ export class PokerRoom {
     const solutions = new Map<string,SolvedHand>();
     if (showdown) for (const p of contenders) {
       solutions.set(p.id, Hand.solve([...p.holeCards,...this.board]));
-      this.reveal.add(p.id);
     }
     const awards = new Map<string,Winner>();
     for (const pot of pots) {
@@ -465,13 +474,22 @@ export class PokerRoom {
       });
     }
     this.winners = [...awards.values()];
+    // A winning contested hand must be tabled. Other hidden hands remain a choice.
+    if (showdown) {
+      for (const winner of this.winners) this.reveal.add(winner.playerId);
+      this.event({type:'showdown',playerIds:contenders.map(p=>p.id)});
+    }
     this.event({type:'award',winners:this.winners.map(w=>({...w})),pot:pots.reduce((sum,p)=>sum+p.amount,0)});
     const ending=this.winners.length>1&&pots.length===1?'split':showdown?'handEnd':'uncontested';
-    this.say(`Hand ${this.handNumber} complete.`,{kind:'hand-end',speech:this.winners.length>1&&pots.length>1?'Hand complete. Settling the main pot and side pots.':this.settings.banter?this.dialogue.pick(ending):'Hand over. Collecting the pot.'});
+    this.say(`Hand ${this.handNumber} complete.`,{kind:'hand-end',speech:this.winners.length>1&&pots.length>1?SIDE_POT_END:this.settings.banter?this.dialogue.pick(ending):PLAIN_HAND_END});
     const result=this.winners.map(award=>`${this.player(award.playerId).name} wins ${award.amount.toLocaleString('en-GB')} chips${showdown ? ` with ${award.hand}` : ', without showing a card'}.`).join(' ');
     // One combined result, with occasional dry wit; no separate speech for every elimination.
-    const quip=this.settings.banter&&this.handNumber%3===0?` ${this.dialogue.pick('resultQuips')}`:'';
-    this.say(result,{kind:'result',speech:result+quip});
+    const quip=this.settings.banter&&this.handNumber%3===0?this.dialogue.pick('resultQuips'):'';
+    const winningRank=showdown ? Math.max(...this.winners.map(w=>{
+      const hand=solutions.get(w.playerId)!;
+      return hand.descr === 'Royal Flush' ? 10 : hand.rank;
+    })) : 0;
+    this.say(result,{kind:'result',segments:[RESULT_LINES[winningRank] || RESULT_LINES[0],...(quip?[quip]:[])]});
     for (const p of this.players) {
       if (p.seat >= 0 && p.chips === 0) {
         p.status = 'out';
@@ -479,14 +497,32 @@ export class PokerRoom {
       }
     }
     this.stage = 'showdown';
-    this.nextHandAt = this.settings.autoNextHand ? (this.paced ? this.presentationReadyAt : this.clock() + burstDuration(this.tableEvents,this.handNumber,this.clock()) + 2200) + this.settings.nextHandSeconds * 1000 : null;
+    const settledAt = this.paced ? this.presentationReadyAt : this.clock() + burstDuration(this.tableEvents,this.handNumber,this.clock()) + 2200;
+    const revealEvent = this.tableEvents.find(e=>e.handNumber===this.handNumber && e.type==='showdown');
+    const awardEvent = this.tableEvents.at(-1)!;
+    this.handReview = {
+      startsAt: this.paced ? (revealEvent?.presentAt ?? awardEvent.presentAt ?? settledAt) : this.clock(),
+      endsAt: settledAt + Math.max(8, this.settings.nextHandSeconds) * 1000,
+      playerIds: contenders.map(p=>p.id), contested: showdown,
+    };
+    this.nextHandAt = this.settings.autoNextHand ? this.handReview.endsAt : null;
     const remaining = this.players.filter(p => p.seat >= 0 && p.chips > 0);
     if (remaining.length === 1 && !this.players.some(p => this.canRebuy(p.id))) this.finishTournament();
   }
   private finishTournament() {
     this.stage = 'finished'; this.nextHandAt = null; this.setTurn(undefined); this.levelEndsAt = null;
     const champion = this.players.filter(p => p.seat >= 0).sort((a,b) => b.chips-a.chips)[0];
-    if (champion) this.say(`${champion.name} takes the tournament!`,{kind:'champion',speech:`${this.dialogue.pick('champion')} Congratulations, ${champion.name}.`});
+    if (champion) this.say(`${champion.name} takes the tournament!`,{kind:'champion',speech:this.dialogue.pick('champion')});
+  }
+  chooseCards(id: string, choice: unknown, handNumber: unknown) {
+    if (handNumber !== this.handNumber) throw new Error('Those cards belong to an earlier hand.');
+    if (choice !== 'show' && choice !== 'muck') throw new Error('Choose show or muck.');
+    const p = this.player(id), review = this.handReview, now = this.clock();
+    if (this.paused || !review || now<review.startsAt || now>=review.endsAt || !['showdown','finished'].includes(this.stage)) throw new Error('The show or muck window is closed.');
+    if (p.seat<0 || p.holeCards.length!==2 || this.reveal.has(id) || this.mucked.has(id)) throw new Error('These cards have already been shown or mucked.');
+    if (choice==='show') this.reveal.add(id); else this.mucked.add(id);
+    this.say(`${p.name} ${choice==='show'?'shows their cards.':'mucks their cards.'}`);
+    this.lastActivity = now;
   }
   canRebuy(id: string): boolean {
     const p = this.player(id);
@@ -497,7 +533,7 @@ export class PokerRoom {
     const p = this.player(id);
     p.chips = this.settings.startingStack; p.rebuyCount++; p.status = 'waiting';
     this.say(`${p.name} is back with ${p.chips.toLocaleString('en-GB')} more imaginary chips. A bold sequel.`);
-    if (this.stage === 'showdown' && !this.nextHandAt && this.settings.autoNextHand) this.nextHandAt = this.clock()+this.settings.nextHandSeconds*1000;
+    if (this.stage === 'showdown' && !this.nextHandAt && this.settings.autoNextHand) this.nextHandAt = Math.max(this.handReview?.endsAt ?? 0, this.clock()+this.settings.nextHandSeconds*1000);
   }
   pause(id: string, value: boolean) {
     this.assertHost(id);
@@ -513,6 +549,7 @@ export class PokerRoom {
       for(const event of this.tableEvents)if(event.presentAt && event.presentAt+motionDuration(event)>this.pauseStartedAt!)event.presentAt+=delay;
       if (this.levelEndsAt) this.levelEndsAt += delay;
       if (this.nextHandAt) this.nextHandAt += delay;
+      if (this.handReview) { this.handReview.startsAt += delay; this.handReview.endsAt += delay; }
       if (this.breakEndsAt) this.breakEndsAt += delay;
       if (this.botActAt) this.botActAt += delay;
       this.paused = false; this.pauseStartedAt = null;
@@ -537,6 +574,15 @@ export class PokerRoom {
   tick(): boolean {
     const now = this.clock();
     if (this.paused) return false;
+    if (this.handReview && !this.reviewClosed) {
+      if (now>=this.handReview.endsAt) {
+        this.reviewClosed=true;
+        for (const p of this.players) if (p.holeCards.length && !this.reveal.has(p.id)) this.mucked.add(p.id);
+        if (this.stage === 'showdown' && this.nextHandAt && now>=this.nextHandAt) this.startHand();
+        return true;
+      }
+      if (!this.reviewOpened && now>=this.handReview.startsAt) { this.reviewOpened=true; return true; }
+    }
     if (this.isPlaying && this.turnPlayerId) {
       const id = this.turnPlayerId;
       if (this.turnPending && now>=this.turnStartsAt!) { this.turnPending=false; return true; }
@@ -570,13 +616,16 @@ export class PokerRoom {
   viewFor(id: string): RoomState {
     const viewer = this.player(id);
     const isRail = viewer.status === 'out' || viewer.status === 'spectator' || viewer.status === 'waiting' && this.isPlaying;
+    const reviewOpen = !!this.handReview && this.clock()>=this.handReview.startsAt && this.clock()<this.handReview.endsAt;
+    const canChoose = reviewOpen && !this.paused && viewer.seat>=0 && viewer.holeCards.length===2 && !this.reveal.has(id) && !this.mucked.has(id);
     const players: PublicPlayer[] = this.players.map(p => ({
       id:p.id,name:p.name,avatarId:p.avatarId,seat:p.seat,chips:p.chips,status:p.status,connected:p.connected,
       isBot:p.isBot,isHost:p.id === this.hostId,bet:p.bet,totalBet:p.totalBet,
       holeCards:p.id === id || this.reveal.has(p.id) ? [...p.holeCards] : [],cardCount:p.cardCount,
+      disclosure:this.reveal.has(p.id)?'shown':this.mucked.has(p.id)?'mucked':'hidden',
       lastAction:p.lastAction,rebuyCount:p.rebuyCount,
       // Rail gestures cannot communicate live-hand information to seated opponents.
-      emote:!isRail && this.settings.spectatorChat === 'separate' && (p.status === 'out' || p.status === 'spectator' || p.status === 'waiting') ? null : p.emote ? {...p.emote} : null,
+      emote:!isRail && this.settings.spectatorChat === 'separate' && (p.status === 'out' && !(reviewOpen && p.holeCards.length===2) || p.status === 'spectator' || p.status === 'waiting') ? null : p.emote ? {...p.emote} : null,
     }));
     return {
       code:this.code,settings:structuredClone(this.settings),hostId:this.hostId,you:id,stage:this.stage,players,
@@ -585,6 +634,7 @@ export class PokerRoom {
       turnPlayerId:this.turnPlayerId,turnId:this.turnId,turnStartsAt:this.paced?this.turnStartsAt:null,turnEndsAt:this.turnEndsAt,handNumber:this.handNumber,
       levelIndex:this.levelIndex,currentLevel:{...this.currentLevel},levelEndsAt:this.levelEndsAt,
       paused:this.paused,pausedAt:this.pauseStartedAt,breakEndsAt:this.breakEndsAt,nextHandAt:this.nextHandAt,
+      handReview:this.handReview ? structuredClone(this.handReview) : null, canShowCards:canChoose, canMuckCards:canChoose,
       tableEvents:structuredClone(this.tableEvents),
       winners:this.winners.map(w => ({...w})),dealerMessages:this.dealerMessages.map(m => ({...m})),
       chat:this.chat.filter(m => m.channel === 'table' || isRail).map(m => ({...m})),

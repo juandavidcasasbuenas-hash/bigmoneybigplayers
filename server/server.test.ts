@@ -146,4 +146,20 @@ describe('real Socket.IO sessions and private room snapshots',() => {
     expect(await emit(socket,'create-room',null)).toMatchObject({ok:false});
     expect(await emit(socket,'create-room',{name:'Host',avatarId:'juan'})).toMatchObject({ok:true});
   });
+  it('authorizes show/muck over the real socket and shares only the requesting player’s cards', async () => {
+    const { host, guest, rail, created, joined } = await joinTable();
+    await emit(host, 'start-game');
+    const turn = await state(host, s => !!s.actions);
+    expect(await emit(host, 'show-cards', { choice: 'show', handNumber: 1 })).toMatchObject({ ok: false });
+    await emit(host, 'action', { type: 'fold', turnId: turn.turnId });
+    await state(guest, s => !!s.canShowCards);
+    expect(await emit(rail, 'show-cards', { choice: 'show', handNumber: 1 })).toMatchObject({ ok: false });
+    expect(await emit(guest, 'show-cards', { choice: 'show', handNumber: 0 })).toMatchObject({ ok: false });
+    expect(await emit(host, 'show-cards', { choice: 'muck', handNumber: 1 })).toMatchObject({ ok: true });
+    expect(await emit(guest, 'show-cards', { choice: 'show', handNumber: 1, playerId: created.playerId })).toMatchObject({ ok: true });
+    const view = await state(rail, s => s.players.some(p => p.id === joined.playerId && p.disclosure === 'shown'));
+    expect(view.players.find(p => p.id === joined.playerId)?.holeCards).toHaveLength(2);
+    expect(view.players.find(p => p.id === created.playerId)).toMatchObject({ holeCards: [], disclosure: 'mucked' });
+    expect(await emit(host, 'next-hand')).toMatchObject({ ok: false, error: expect.stringMatching(/chips settle|show or muck/) });
+  }, 15000);
 });

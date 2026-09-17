@@ -31,6 +31,8 @@ import type { TurnFeedback } from "../hooks/useTableFeedback";
 import { useTableLog } from "../hooks/useTableLog";
 import type { TablePresentation } from "../hooks/useTablePresentation";
 import { PlayingCard } from "./PlayingCard";
+import { HandPositions } from "./HandPositions";
+import { ShowdownPanel } from "./ShowdownPanel";
 import PokerScene, { type ScenePlayer } from "./PokerScene";
 const n = (v: number) => v.toLocaleString("en-GB");
 const reactions: { id: Emote; label: string; icon: typeof Coins }[] = [
@@ -113,8 +115,10 @@ export function GameTable(p: Props) {
           ? "All in"
           : room?.stage || "Lobby";
   const readyToDeal = flow.award
-    ? now >= flow.award.startAt + flow.award.duration
+    ? now >= Math.max(flow.award.startAt + flow.award.duration, room?.handReview?.endsAt || 0)
     : true;
+  const choosingCards = !!room?.handReview && now >= room.handReview.startsAt && now < room.handReview.endsAt && (room.canShowCards || room.canMuckCards);
+  const reviewSeconds = room?.handReview ? Math.max(0, Math.ceil((room.handReview.endsAt - now) / 1000)) : 0;
   useEffect(() => {
     if (actions) setRaise(actions.minRaiseTo);
   }, [room?.turnId, actions?.minRaiseTo]);
@@ -138,11 +142,11 @@ export function GameTable(p: Props) {
   };
   return (
     <section className="poker-game" aria-label="Poker table">
-      <div className="game-stage">
+      <div className={`game-stage ${odds || flow.settled || (room?.handReview && now >= room.handReview.startsAt) ? 'showdown-active' : ''}`}>
         <PokerScene
           players={players}
           board={room?.board || []}
-          pot={room?.pot || 0}
+          pot={flow.pot}
           currentPlayerId={
             feedback.live ? room?.turnPlayerId || undefined : undefined
           }
@@ -249,6 +253,9 @@ export function GameTable(p: Props) {
           </div>
         </div>
         {room && room.stage !== "lobby" && (
+          <HandPositions room={room} />
+        )}
+        {room && room.stage !== "lobby" && (
           <div className="round-status">
             <span>
               #{room.handNumber} <b>{stage}</b>
@@ -334,50 +341,7 @@ export function GameTable(p: Props) {
             )}
           </div>
         )}
-        {odds && !flow.settled && (
-          <div
-            className="allin-odds"
-            aria-label="Heads-up all-in win probabilities"
-          >
-            {odds.players.map((player, i) => (
-              <div className="odds-player" key={player.playerId}>
-                <span>
-                  {room?.players.find((v) => v.id === player.playerId)?.name}
-                </span>
-                <div>
-                  {player.cards.map((c) => (
-                    <PlayingCard key={c} card={c} small />
-                  ))}
-                </div>
-                <strong>
-                  {odds.result
-                    ? `${odds.result.exact ? "" : "≈"}${odds.result.wins[i].toFixed(1)}%`
-                    : "…"}
-                  <small>win</small>
-                </strong>
-              </div>
-            ))}
-            <small className="tie-odds">
-              {odds.result
-                ? `Tie ${odds.result.tie.toFixed(1)}%${odds.result.exact ? "" : " · estimate"}`
-                : "Calculating…"}
-            </small>
-          </div>
-        )}
-        {flow.settled && room && (
-          <div className="hand-result" role="status">
-            <strong>
-              {room.winners
-                .map((w) => room.players.find((v) => v.id === w.playerId)?.name)
-                .join(" & ")}{" "}
-              {room.winners.length > 1 ? "win" : "wins"}
-            </strong>
-            <span>
-              {room.winners.map((w) => `+${n(w.amount)}`).join(" / ")} ·{" "}
-              {room.winners[0]?.hand}
-            </span>
-          </div>
-        )}
+        {room && <ShowdownPanel room={room} odds={odds} board={flow.board} settled={flow.settled} now={now} />}
         {room && room.stage !== "lobby" && (
           <div className="cards-hud">
             <div
@@ -742,6 +706,12 @@ export function GameTable(p: Props) {
                 )}
               </div>
             </>
+          ) : choosingCards && room ? (
+            <div className="show-muck-controls" aria-label="Show or muck your cards">
+              <span>Show the table?<small>{reviewSeconds}s · otherwise muck</small></span>
+              <button className="game-primary" disabled={p.busy || !p.connected || room.paused || !room.canShowCards} onClick={() => void p.send('show-cards', { choice: 'show', handNumber: room.handNumber })}><Eye size={16} /> Show cards</button>
+              <button disabled={p.busy || !p.connected || room.paused || !room.canMuckCards} onClick={() => void p.send('show-cards', { choice: 'muck', handNumber: room.handNumber })}>Muck</button>
+            </div>
           ) : (
             <div className="decision-wait">
               {room
@@ -750,7 +720,7 @@ export function GameTable(p: Props) {
                   : flow.settled
                     ? seconds !== null
                       ? `Next hand in ${seconds}s`
-                      : "Hand complete"
+                      : room.stage === 'finished' ? 'Tournament complete' : reviewSeconds > 0 ? `Next deal available in ${reviewSeconds}s` : "Hand complete"
                     : room.stage === "lobby"
                       ? "Lobby"
                       : feedback.live

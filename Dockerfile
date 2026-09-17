@@ -14,7 +14,6 @@ COPY --from=build /app/node_modules ./node_modules
 COPY --from=build /app/dist ./dist
 COPY --from=build /app/server ./server
 COPY --from=build /app/shared ./shared
-RUN mkdir -p /app/voice-cache && chown node:node /app/voice-cache
 USER node
 EXPOSE 3001
 CMD ["npm", "start"]

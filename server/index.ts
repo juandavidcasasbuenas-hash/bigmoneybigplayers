@@ -159,6 +159,7 @@ export function createPokerServer(options: { tickMs?: number; serveStatic?: bool
       const {room,playerId} = identify(socket); room.sendChat(playerId,payload?.text); lastChatAt = Date.now();
     });
     handle('rebuy',() => { const {room,playerId} = identify(socket); room.rebuy(playerId); });
+    handle('show-cards',(payload: {choice?:unknown;handNumber?:unknown}) => { const {room,playerId} = identify(socket); room.chooseCards(playerId,payload?.choice,payload?.handNumber); });
     handle('leave-room',() => { disconnectIdentity(socket,true); });
     handle('request-state',() => {
       const {room,playerId} = identify(socket);

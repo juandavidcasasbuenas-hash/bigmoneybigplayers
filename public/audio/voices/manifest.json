@@ -1,0 +1,3263 @@
+{
+  "version": 1,
+  "clips": [
+    {
+      "key": "0fafaa9411daab6aeaff797a3c849053e82b5a44a36093bffa58818b39b29333",
+      "speaker": "dealer",
+      "text": "New hand. Fresh cards, fresh delusions.",
+      "audioUrl": "/audio/voices/0fafaa9411daab6aeaff797a3c849053e82b5a44a36093bffa58818b39b29333.mp3"
+    },
+    {
+      "key": "d6c6e5e48fc55a6c82b95c88f65314022def65762ee8395db23f22a117a6afb4",
+      "speaker": "dealer",
+      "text": "New hand. Keep your hopes above the felt.",
+      "audioUrl": "/audio/voices/d6c6e5e48fc55a6c82b95c88f65314022def65762ee8395db23f22a117a6afb4.mp3"
+    },
+    {
+      "key": "eb8bf448d486f2e0c44dec803d57d71c063a55c20b15bb81e2ad7e5228056b8b",
+      "speaker": "dealer",
+      "text": "New hand. Somebody is about to become unbearable.",
+      "audioUrl": "/audio/voices/eb8bf448d486f2e0c44dec803d57d71c063a55c20b15bb81e2ad7e5228056b8b.mp3"
+    },
+    {
+      "key": "6f1018e077b282f09c17cc320777112ff971c9b804ca44a3625778506ef05475",
+      "speaker": "dealer",
+      "text": "New hand. Same friends, entirely new excuses.",
+      "audioUrl": "/audio/voices/6f1018e077b282f09c17cc320777112ff971c9b804ca44a3625778506ef05475.mp3"
+    },
+    {
+      "key": "b84cb73b94a4b99fcf7e0457a07a751f94a0a78656cab50be4a8242ded725ff0",
+      "speaker": "dealer",
+      "text": "New hand. The deck has no memory. Your mates do.",
+      "audioUrl": "/audio/voices/b84cb73b94a4b99fcf7e0457a07a751f94a0a78656cab50be4a8242ded725ff0.mp3"
+    },
+    {
+      "key": "1293fb4dadc9a2f7fa980911e4a0e74ae955320c8dbfbd0ae8a1b7aeb812944a",
+      "speaker": "dealer",
+      "text": "New hand. Eyes down, eyebrows under control.",
+      "audioUrl": "/audio/voices/1293fb4dadc9a2f7fa980911e4a0e74ae955320c8dbfbd0ae8a1b7aeb812944a.mp3"
+    },
+    {
+      "key": "558105507917d6a0c9216157f2382160b03247a31a2a5c18de62fc3adc7a03d2",
+      "speaker": "dealer",
+      "text": "New hand. An excellent time to pretend you have a plan.",
+      "audioUrl": "/audio/voices/558105507917d6a0c9216157f2382160b03247a31a2a5c18de62fc3adc7a03d2.mp3"
+    },
+    {
+      "key": "a619925beaa942510f48ddd5510bdaa8a733360bb929520ee86c582735cd9802",
+      "speaker": "dealer",
+      "text": "New hand. The chips are imaginary. The grudges are not.",
+      "audioUrl": "/audio/voices/a619925beaa942510f48ddd5510bdaa8a733360bb929520ee86c582735cd9802.mp3"
+    },
+    {
+      "key": "fdc12506929e6e2a113a7643b0e308a83d689916a120f70fb412cc8ae91c6186",
+      "speaker": "dealer",
+      "text": "New hand. A fresh start for some very tired bluffs.",
+      "audioUrl": "/audio/voices/fdc12506929e6e2a113a7643b0e308a83d689916a120f70fb412cc8ae91c6186.mp3"
+    },
+    {
+      "key": "4f19c303b8e8aab8b2f5918f857077799507e148e7e644847353743c8e0d2aa9",
+      "speaker": "dealer",
+      "text": "New hand. Please leave your dignity beside your pint.",
+      "audioUrl": "/audio/voices/4f19c303b8e8aab8b2f5918f857077799507e148e7e644847353743c8e0d2aa9.mp3"
+    },
+    {
+      "key": "dab97d11819a63fb83b93302b0d427637c8f23f97c9527245886f3095e15d2ca",
+      "speaker": "dealer",
+      "text": "New hand. Good luck. You will insist it was skill.",
+      "audioUrl": "/audio/voices/dab97d11819a63fb83b93302b0d427637c8f23f97c9527245886f3095e15d2ca.mp3"
+    },
+    {
+      "key": "ab6447d632eaf345c3cd3246373b3cb71df509b8c7db8eae30515316ede05d92",
+      "speaker": "dealer",
+      "text": "New hand. Nobody mention the previous one.",
+      "audioUrl": "/audio/voices/ab6447d632eaf345c3cd3246373b3cb71df509b8c7db8eae30515316ede05d92.mp3"
+    },
+    {
+      "key": "4b10f9611ba0bc00d548748772aabf64f8427370480f629defea6f78e7d3f4ae",
+      "speaker": "dealer",
+      "text": "New hand. All reputations temporarily restored.",
+      "audioUrl": "/audio/voices/4b10f9611ba0bc00d548748772aabf64f8427370480f629defea6f78e7d3f4ae.mp3"
+    },
+    {
+      "key": "7c6c3d92087a09839f8d807cda1d5ed12aed6d334b07eea604624ce652cda1c4",
+      "speaker": "dealer",
+      "text": "New hand. The next bad decision is on the house.",
+      "audioUrl": "/audio/voices/7c6c3d92087a09839f8d807cda1d5ed12aed6d334b07eea604624ce652cda1c4.mp3"
+    },
+    {
+      "key": "f71e1d4e5d20c2af5625afbf71944cd91c2dc74e85ec47d9c095ffeabd83603c",
+      "speaker": "dealer",
+      "text": "New hand. Two cards each. No refunds on optimism.",
+      "audioUrl": "/audio/voices/f71e1d4e5d20c2af5625afbf71944cd91c2dc74e85ec47d9c095ffeabd83603c.mp3"
+    },
+    {
+      "key": "60f0e185daa9d696d3f7209729fcd211b11e4ffe2c90dcb6a7100eb54a49f242",
+      "speaker": "dealer",
+      "text": "New hand. Back to looking suspiciously confident.",
+      "audioUrl": "/audio/voices/60f0e185daa9d696d3f7209729fcd211b11e4ffe2c90dcb6a7100eb54a49f242.mp3"
+    },
+    {
+      "key": "398118786fdaa755e47a84efdd1cfa2e79f8272bcca966a5327b70242cb05cc4",
+      "speaker": "dealer",
+      "text": "New hand. Keep the cards close and the stories short.",
+      "audioUrl": "/audio/voices/398118786fdaa755e47a84efdd1cfa2e79f8272bcca966a5327b70242cb05cc4.mp3"
+    },
+    {
+      "key": "ecad59c8b61532113e60e615b69efd57b19d247832a6e8d820cc20b266d915bc",
+      "speaker": "dealer",
+      "text": "New hand. There is still time to look clever.",
+      "audioUrl": "/audio/voices/ecad59c8b61532113e60e615b69efd57b19d247832a6e8d820cc20b266d915bc.mp3"
+    },
+    {
+      "key": "432a39ad3428f083dd30c0a1d11317c3089cd20df6043bfd0c6b8ec1b8047bd1",
+      "speaker": "dealer",
+      "text": "New hand. Let us find out who paid attention.",
+      "audioUrl": "/audio/voices/432a39ad3428f083dd30c0a1d11317c3089cd20df6043bfd0c6b8ec1b8047bd1.mp3"
+    },
+    {
+      "key": "4379a471f539cf82735a0777818667dbd61f5fc7193831f328babadcda3ddb29",
+      "speaker": "dealer",
+      "text": "New hand. A small investment in future group-chat material.",
+      "audioUrl": "/audio/voices/4379a471f539cf82735a0777818667dbd61f5fc7193831f328babadcda3ddb29.mp3"
+    },
+    {
+      "key": "cfbf31d7161a6ae47e1606df6a5954d88c0d89f9039a9621f8ebcae4f286eed2",
+      "speaker": "dealer",
+      "text": "New hand. Everybody gets another chance to overthink it.",
+      "audioUrl": "/audio/voices/cfbf31d7161a6ae47e1606df6a5954d88c0d89f9039a9621f8ebcae4f286eed2.mp3"
+    },
+    {
+      "key": "ab005699d04ed5de2f843cb4fb5429dac1c7ac9bad2ff258bf854cf6a217cf35",
+      "speaker": "dealer",
+      "text": "New hand. The felt is green. The advice is questionable.",
+      "audioUrl": "/audio/voices/ab005699d04ed5de2f843cb4fb5429dac1c7ac9bad2ff258bf854cf6a217cf35.mp3"
+    },
+    {
+      "key": "88f00f901e64796ecd8d70426996a0897f88e80a8903123861fd2205d48b8248",
+      "speaker": "dealer",
+      "text": "New hand. The button moves. The excuses stay.",
+      "audioUrl": "/audio/voices/88f00f901e64796ecd8d70426996a0897f88e80a8903123861fd2205d48b8248.mp3"
+    },
+    {
+      "key": "0f2ef08019ef2f37a25b877f71b43a02e4e3a3631cf09e98ceff05514e041051",
+      "speaker": "dealer",
+      "text": "New hand. Cards ready. Poker faces, presumably, optional.",
+      "audioUrl": "/audio/voices/0f2ef08019ef2f37a25b877f71b43a02e4e3a3631cf09e98ceff05514e041051.mp3"
+    },
+    {
+      "key": "6b675313d4df7711dddc35e1b1e793c3dd4c14fd50fb80290ef60887c58e10aa",
+      "speaker": "dealer",
+      "text": "Hand over. Chips coming home.",
+      "audioUrl": "/audio/voices/6b675313d4df7711dddc35e1b1e793c3dd4c14fd50fb80290ef60887c58e10aa.mp3"
+    },
+    {
+      "key": "816479438b8877564e6817a56d8effc2998d00f68a54a905066cc47f541021b3",
+      "speaker": "dealer",
+      "text": "Hand complete. Let us settle the argument.",
+      "audioUrl": "/audio/voices/816479438b8877564e6817a56d8effc2998d00f68a54a905066cc47f541021b3.mp3"
+    },
+    {
+      "key": "2172d76e3c3ed6458a2497646c18f13da166ea160a7177fcec32e38ea0c3649e",
+      "speaker": "dealer",
+      "text": "That is the hand. Time to collect.",
+      "audioUrl": "/audio/voices/2172d76e3c3ed6458a2497646c18f13da166ea160a7177fcec32e38ea0c3649e.mp3"
+    },
+    {
+      "key": "c3eecf65cc64fed77e5cbf336446a5ccafc67547aac757be101883058faf90fe",
+      "speaker": "dealer",
+      "text": "Hand over. We have a winner.",
+      "audioUrl": "/audio/voices/c3eecf65cc64fed77e5cbf336446a5ccafc67547aac757be101883058faf90fe.mp3"
+    },
+    {
+      "key": "ed3077c036ed5adea38c664ba4db81ff2c525ea68bc825b480e8d960499c4b0a",
+      "speaker": "dealer",
+      "text": "Hand complete. The pot has found its person.",
+      "audioUrl": "/audio/voices/ed3077c036ed5adea38c664ba4db81ff2c525ea68bc825b480e8d960499c4b0a.mp3"
+    },
+    {
+      "key": "ba10cf5926bdbbb7b4a7e6ea362adb78487ff902e18fe78cd64a5247c01f55d2",
+      "speaker": "dealer",
+      "text": "That settles it. Chips on the move.",
+      "audioUrl": "/audio/voices/ba10cf5926bdbbb7b4a7e6ea362adb78487ff902e18fe78cd64a5247c01f55d2.mp3"
+    },
+    {
+      "key": "c418d56727f23b06311bd4884d9f79240a3dd31c3cd284264594a70e8ea23341",
+      "speaker": "dealer",
+      "text": "Hand over. A little redistribution of confidence.",
+      "audioUrl": "/audio/voices/c418d56727f23b06311bd4884d9f79240a3dd31c3cd284264594a70e8ea23341.mp3"
+    },
+    {
+      "key": "4cc1f390da36475aff105612d3656bb45c1536fcc2afba4c2338183eee14d422",
+      "speaker": "dealer",
+      "text": "Hand complete. Someone is looking very pleased.",
+      "audioUrl": "/audio/voices/4cc1f390da36475aff105612d3656bb45c1536fcc2afba4c2338183eee14d422.mp3"
+    },
+    {
+      "key": "953c36101b6fd459f83efbe91f1d5d232c87be21c1849629db12b70b911dff4f",
+      "speaker": "dealer",
+      "text": "That is settled. Mind the victory speech.",
+      "audioUrl": "/audio/voices/953c36101b6fd459f83efbe91f1d5d232c87be21c1849629db12b70b911dff4f.mp3"
+    },
+    {
+      "key": "075b0ae507610cc71ee4f90c9b47aa44262edea0bab2e93866e9f3ee38ea0daf",
+      "speaker": "dealer",
+      "text": "Hand over. An excellent result for somebody.",
+      "audioUrl": "/audio/voices/075b0ae507610cc71ee4f90c9b47aa44262edea0bab2e93866e9f3ee38ea0daf.mp3"
+    },
+    {
+      "key": "4f802d65770ece71e7d26f2fa798b06d837a121467b73a1a22e7985236d90eed",
+      "speaker": "dealer",
+      "text": "Hand complete. The chips have chosen a side.",
+      "audioUrl": "/audio/voices/4f802d65770ece71e7d26f2fa798b06d837a121467b73a1a22e7985236d90eed.mp3"
+    },
+    {
+      "key": "8920907d2da2bcfa80da02729e4c4b1a7f1462c86ff7fde114afe529dc62df4e",
+      "speaker": "dealer",
+      "text": "Hand over. Please collect your imaginary fortune.",
+      "audioUrl": "/audio/voices/8920907d2da2bcfa80da02729e4c4b1a7f1462c86ff7fde114afe529dc62df4e.mp3"
+    },
+    {
+      "key": "e3e3cf8eaecb8334e6df468d511a479b2e5af3e7391494a7ac5da097544462a1",
+      "speaker": "dealer",
+      "text": "Hand over. Everybody else has folded.",
+      "audioUrl": "/audio/voices/e3e3cf8eaecb8334e6df468d511a479b2e5af3e7391494a7ac5da097544462a1.mp3"
+    },
+    {
+      "key": "3f43b5b8f815991d670f1d488612ebb4d2518b5818d23c1dad14bca3fc5cb758",
+      "speaker": "dealer",
+      "text": "Hand over. No showdown required.",
+      "audioUrl": "/audio/voices/3f43b5b8f815991d670f1d488612ebb4d2518b5818d23c1dad14bca3fc5cb758.mp3"
+    },
+    {
+      "key": "08d57e765cf2529d81e26c8e2e9704d0f11efa591635e70d07bac2949282e052",
+      "speaker": "dealer",
+      "text": "Hand over. An undisputed pot.",
+      "audioUrl": "/audio/voices/08d57e765cf2529d81e26c8e2e9704d0f11efa591635e70d07bac2949282e052.mp3"
+    },
+    {
+      "key": "9e7806f87742b4896c3b9c3449a6939a8269d55e5e83e98e049c83a499c4b31c",
+      "speaker": "dealer",
+      "text": "Hand over. The table has politely declined.",
+      "audioUrl": "/audio/voices/9e7806f87742b4896c3b9c3449a6939a8269d55e5e83e98e049c83a499c4b31c.mp3"
+    },
+    {
+      "key": "7ef52f96f20bdd0b327898a86cf4723146040bae95d05428bba497d97700433b",
+      "speaker": "dealer",
+      "text": "Hand over. Keep those cards a mystery.",
+      "audioUrl": "/audio/voices/7ef52f96f20bdd0b327898a86cf4723146040bae95d05428bba497d97700433b.mp3"
+    },
+    {
+      "key": "e2128816378ba34bb37fff2173376aaa6ce4adc4010c78036c901d40ef805d19",
+      "speaker": "dealer",
+      "text": "Hand over. Nobody fancied finding out.",
+      "audioUrl": "/audio/voices/e2128816378ba34bb37fff2173376aaa6ce4adc4010c78036c901d40ef805d19.mp3"
+    },
+    {
+      "key": "4e0050d5c91218bfd25a659ad8dc0b27ab58e4c90c09d5ea9e05fde7e0557949",
+      "speaker": "dealer",
+      "text": "Hand over. That pot went unchallenged.",
+      "audioUrl": "/audio/voices/4e0050d5c91218bfd25a659ad8dc0b27ab58e4c90c09d5ea9e05fde7e0557949.mp3"
+    },
+    {
+      "key": "b859436be32bd7f8c2a775c836d87725cd3ab69370ca77200f4e9c6459e2d289",
+      "speaker": "dealer",
+      "text": "Hand over. No evidence will be necessary.",
+      "audioUrl": "/audio/voices/b859436be32bd7f8c2a775c836d87725cd3ab69370ca77200f4e9c6459e2d289.mp3"
+    },
+    {
+      "key": "58209d41d94b3955ffd7952aa55d3cac26f1268b93a47489ed295927647c6bcd",
+      "speaker": "dealer",
+      "text": "Hand over. We are splitting the pot.",
+      "audioUrl": "/audio/voices/58209d41d94b3955ffd7952aa55d3cac26f1268b93a47489ed295927647c6bcd.mp3"
+    },
+    {
+      "key": "89b069fb34d57118d31db9df9ec957c63678853b35f770dedb356729dcd83db3",
+      "speaker": "dealer",
+      "text": "A split pot. Shared glory, separate egos.",
+      "audioUrl": "/audio/voices/89b069fb34d57118d31db9df9ec957c63678853b35f770dedb356729dcd83db3.mp3"
+    },
+    {
+      "key": "a0db623a41b3e14354c305ff750699bd78f06e1b5a32758c5e4f783e18192ee0",
+      "speaker": "dealer",
+      "text": "Hand complete. There is more than one winner.",
+      "audioUrl": "/audio/voices/a0db623a41b3e14354c305ff750699bd78f06e1b5a32758c5e4f783e18192ee0.mp3"
+    },
+    {
+      "key": "df7961ff6960eb608ba1d090db755dff977dd7b5fb2003703d37229a2e292c78",
+      "speaker": "dealer",
+      "text": "Split pot. A diplomatic conclusion.",
+      "audioUrl": "/audio/voices/df7961ff6960eb608ba1d090db755dff977dd7b5fb2003703d37229a2e292c78.mp3"
+    },
+    {
+      "key": "7f15200a65cb0184eb4f31a3525bd4079e98d6e4a6e62ff6102a455ef6cb7c96",
+      "speaker": "dealer",
+      "text": "Hand over. Sharing is compulsory this time.",
+      "audioUrl": "/audio/voices/7f15200a65cb0184eb4f31a3525bd4079e98d6e4a6e62ff6102a455ef6cb7c96.mp3"
+    },
+    {
+      "key": "5c31ebfa6fa20c8a4736e02f91214235165dbcfa4c8d6a7fd523be1ad9a71acf",
+      "speaker": "dealer",
+      "text": "A tied hand. Let us divide the spoils.",
+      "audioUrl": "/audio/voices/5c31ebfa6fa20c8a4736e02f91214235165dbcfa4c8d6a7fd523be1ad9a71acf.mp3"
+    },
+    {
+      "key": "8af755c85086c52dcee7bb398811f8d3feff030a3bff8893309d2458a82d8388",
+      "speaker": "dealer",
+      "text": "Hand complete. A rare outbreak of equality.",
+      "audioUrl": "/audio/voices/8af755c85086c52dcee7bb398811f8d3feff030a3bff8893309d2458a82d8388.mp3"
+    },
+    {
+      "key": "b1fca65825be92be2e6f517bc71de4f3bb5088d95695795ee308b61880ad6728",
+      "speaker": "dealer",
+      "text": "Split pot. You may both look smug.",
+      "audioUrl": "/audio/voices/b1fca65825be92be2e6f517bc71de4f3bb5088d95695795ee308b61880ad6728.mp3"
+    },
+    {
+      "key": "2044339c7b6c8d57afbeefa6b8acdcabdedbd47568aac0bc975ea06c61f8aa10",
+      "speaker": "dealer",
+      "text": "All in. Cards doing the talking now.",
+      "audioUrl": "/audio/voices/2044339c7b6c8d57afbeefa6b8acdcabdedbd47568aac0bc975ea06c61f8aa10.mp3"
+    },
+    {
+      "key": "d88c900811fa3b0323baa0fa697fe723d6336795ac6dfa6ef15bb2ff8aa79a16",
+      "speaker": "dealer",
+      "text": "All in. A statement has been made.",
+      "audioUrl": "/audio/voices/d88c900811fa3b0323baa0fa697fe723d6336795ac6dfa6ef15bb2ff8aa79a16.mp3"
+    },
+    {
+      "key": "cc58f04d2c89198cdff0a51cede4e9bd2bd2895d85bdae92d99dcbbfb1fc5c75",
+      "speaker": "dealer",
+      "text": "All in. Every last chip.",
+      "audioUrl": "/audio/voices/cc58f04d2c89198cdff0a51cede4e9bd2bd2895d85bdae92d99dcbbfb1fc5c75.mp3"
+    },
+    {
+      "key": "99ac0c663a1c8a99ea6719bf705412e57bba68761103205f5c02bb448584ed2b",
+      "speaker": "dealer",
+      "text": "All in. Somebody means business.",
+      "audioUrl": "/audio/voices/99ac0c663a1c8a99ea6719bf705412e57bba68761103205f5c02bb448584ed2b.mp3"
+    },
+    {
+      "key": "bd40ba1db5b67471545d9bd453a5f9c5104bcda5a183af934246416c486b3f34",
+      "speaker": "dealer",
+      "text": "All in. That is a confident little pile.",
+      "audioUrl": "/audio/voices/bd40ba1db5b67471545d9bd453a5f9c5104bcda5a183af934246416c486b3f34.mp3"
+    },
+    {
+      "key": "968bfac8a0075f8f1ec45178860f62c1c29e5664f685fd0b1305b1c7d0e3f693",
+      "speaker": "dealer",
+      "text": "All in. The whole imaginary lot.",
+      "audioUrl": "/audio/voices/968bfac8a0075f8f1ec45178860f62c1c29e5664f685fd0b1305b1c7d0e3f693.mp3"
+    },
+    {
+      "key": "b4396c3549def1240a7bc28f52d6f387ea1df53e1e87567219daf6ae7dd430b0",
+      "speaker": "dealer",
+      "text": "All in. Quite the contribution.",
+      "audioUrl": "/audio/voices/b4396c3549def1240a7bc28f52d6f387ea1df53e1e87567219daf6ae7dd430b0.mp3"
+    },
+    {
+      "key": "d28b6ec8bc7f4a2bbdb66b746aacc4352e30eefb8d4dff34a508f6b03269a82b",
+      "speaker": "dealer",
+      "text": "All in. No chips left behind.",
+      "audioUrl": "/audio/voices/d28b6ec8bc7f4a2bbdb66b746aacc4352e30eefb8d4dff34a508f6b03269a82b.mp3"
+    },
+    {
+      "key": "b2220564a8c755d945f6a72a55566cf81b25e4e8b44bbfce58bf5bf6038e183f",
+      "speaker": "dealer",
+      "text": "The flop.",
+      "audioUrl": "/audio/voices/b2220564a8c755d945f6a72a55566cf81b25e4e8b44bbfce58bf5bf6038e183f.mp3"
+    },
+    {
+      "key": "335a5aea411f18eeae6a8b7210a7ab359990ef15c9c63a031e87c0d258a5780f",
+      "speaker": "dealer",
+      "text": "Here is your flop.",
+      "audioUrl": "/audio/voices/335a5aea411f18eeae6a8b7210a7ab359990ef15c9c63a031e87c0d258a5780f.mp3"
+    },
+    {
+      "key": "6a22055676f29d45ca5b727c153a900f73f83c4d53fdc7d0323b171fbdd3c9ae",
+      "speaker": "dealer",
+      "text": "Three cards for the table.",
+      "audioUrl": "/audio/voices/6a22055676f29d45ca5b727c153a900f73f83c4d53fdc7d0323b171fbdd3c9ae.mp3"
+    },
+    {
+      "key": "56cd204505d1b8e85eefd9ed2a2eb1e3e974ea01f15c3d6eaaf0065a47e2e434",
+      "speaker": "dealer",
+      "text": "Flop coming over.",
+      "audioUrl": "/audio/voices/56cd204505d1b8e85eefd9ed2a2eb1e3e974ea01f15c3d6eaaf0065a47e2e434.mp3"
+    },
+    {
+      "key": "3b46c0516183374a34ded05f01f9baaa6f398f407985bcad631c3122babbe9f3",
+      "speaker": "dealer",
+      "text": "Your first three cards.",
+      "audioUrl": "/audio/voices/3b46c0516183374a34ded05f01f9baaa6f398f407985bcad631c3122babbe9f3.mp3"
+    },
+    {
+      "key": "bb05f96dfae281679812e9ccbcbeebb905b842d2582da567ae4e4d1136c23ae8",
+      "speaker": "dealer",
+      "text": "The flop is down.",
+      "audioUrl": "/audio/voices/bb05f96dfae281679812e9ccbcbeebb905b842d2582da567ae4e4d1136c23ae8.mp3"
+    },
+    {
+      "key": "ff2ad42af8872fe5c8410827dd81479db05cc3ba8143d1e6a1c60e74d56e7a18",
+      "speaker": "dealer",
+      "text": "Let us see the flop.",
+      "audioUrl": "/audio/voices/ff2ad42af8872fe5c8410827dd81479db05cc3ba8143d1e6a1c60e74d56e7a18.mp3"
+    },
+    {
+      "key": "34ed0c9a5984e105d0b70f5ae68bee4ff7e4f7037dc9f10f7d34e4ac9aeaeed2",
+      "speaker": "dealer",
+      "text": "A little more information.",
+      "audioUrl": "/audio/voices/34ed0c9a5984e105d0b70f5ae68bee4ff7e4f7037dc9f10f7d34e4ac9aeaeed2.mp3"
+    },
+    {
+      "key": "8e89032382c8752f2f7b6dbb9fffd9786971bc81c9c192b5f37126f00a8766ff",
+      "speaker": "dealer",
+      "text": "The turn.",
+      "audioUrl": "/audio/voices/8e89032382c8752f2f7b6dbb9fffd9786971bc81c9c192b5f37126f00a8766ff.mp3"
+    },
+    {
+      "key": "bd2b333f17a58d09688b88fc3a9d95468ec61962f5d0f60b0b892e69993b4079",
+      "speaker": "dealer",
+      "text": "Fourth card.",
+      "audioUrl": "/audio/voices/bd2b333f17a58d09688b88fc3a9d95468ec61962f5d0f60b0b892e69993b4079.mp3"
+    },
+    {
+      "key": "7edea03a256c85d7ac80d370cda1f86798cc63647892177095efba38a4d13c9e",
+      "speaker": "dealer",
+      "text": "Here comes the turn.",
+      "audioUrl": "/audio/voices/7edea03a256c85d7ac80d370cda1f86798cc63647892177095efba38a4d13c9e.mp3"
+    },
+    {
+      "key": "614fef20bb8f40af13fddc7fabf7b90bf4299fcef2fe939a759a8daca999fceb",
+      "speaker": "dealer",
+      "text": "Your turn card.",
+      "audioUrl": "/audio/voices/614fef20bb8f40af13fddc7fabf7b90bf4299fcef2fe939a759a8daca999fceb.mp3"
+    },
+    {
+      "key": "3e745c221bdd5467a46388bdd27846d7b9c03fbfe5f160eeca5a49c22c25a2b2",
+      "speaker": "dealer",
+      "text": "One more piece of the puzzle.",
+      "audioUrl": "/audio/voices/3e745c221bdd5467a46388bdd27846d7b9c03fbfe5f160eeca5a49c22c25a2b2.mp3"
+    },
+    {
+      "key": "58191f4e224ae25e53baf5f5215eb4d8065e4f79afaaccb673ae53a2bf247ab2",
+      "speaker": "dealer",
+      "text": "Turn card coming over.",
+      "audioUrl": "/audio/voices/58191f4e224ae25e53baf5f5215eb4d8065e4f79afaaccb673ae53a2bf247ab2.mp3"
+    },
+    {
+      "key": "9f0c395208a952895c435a649836d9ccd792cf9553603de024fba8cfe6aeb462",
+      "speaker": "dealer",
+      "text": "The fourth community card.",
+      "audioUrl": "/audio/voices/9f0c395208a952895c435a649836d9ccd792cf9553603de024fba8cfe6aeb462.mp3"
+    },
+    {
+      "key": "85fea221f30cf7436084ec2fd56c8755ef8ec734d8fca9020826b9a7ade3fd76",
+      "speaker": "dealer",
+      "text": "Here is card number four.",
+      "audioUrl": "/audio/voices/85fea221f30cf7436084ec2fd56c8755ef8ec734d8fca9020826b9a7ade3fd76.mp3"
+    },
+    {
+      "key": "f67e108f48cc3481d0881b5fdea1841641c649b475a2507ebbf3d5bd2450c465",
+      "speaker": "dealer",
+      "text": "The river.",
+      "audioUrl": "/audio/voices/f67e108f48cc3481d0881b5fdea1841641c649b475a2507ebbf3d5bd2450c465.mp3"
+    },
+    {
+      "key": "0ad89149c3ec877aad511d82e84a230efb9b952b56dc93523baf5dfc48fa7610",
+      "speaker": "dealer",
+      "text": "Last card.",
+      "audioUrl": "/audio/voices/0ad89149c3ec877aad511d82e84a230efb9b952b56dc93523baf5dfc48fa7610.mp3"
+    },
+    {
+      "key": "2c02b63e2c00231a0c2253e07a8a6adf021030442a8507419a526b04ad808793",
+      "speaker": "dealer",
+      "text": "Here comes the river.",
+      "audioUrl": "/audio/voices/2c02b63e2c00231a0c2253e07a8a6adf021030442a8507419a526b04ad808793.mp3"
+    },
+    {
+      "key": "a384b03352a6bca01f5ad514021652dc6298c982847979361d29a9886dd1f903",
+      "speaker": "dealer",
+      "text": "Your final card.",
+      "audioUrl": "/audio/voices/a384b03352a6bca01f5ad514021652dc6298c982847979361d29a9886dd1f903.mp3"
+    },
+    {
+      "key": "fe3197e0840200cd6cf6f546db0f0223d3d169d8bf41248f71008d5e4fef6ead",
+      "speaker": "dealer",
+      "text": "Fifth and final.",
+      "audioUrl": "/audio/voices/fe3197e0840200cd6cf6f546db0f0223d3d169d8bf41248f71008d5e4fef6ead.mp3"
+    },
+    {
+      "key": "7867922ea872107eb19d392ea7e5dcb12bda406390ebcd45c8fb508e4ffee3c2",
+      "speaker": "dealer",
+      "text": "No more cards after this.",
+      "audioUrl": "/audio/voices/7867922ea872107eb19d392ea7e5dcb12bda406390ebcd45c8fb508e4ffee3c2.mp3"
+    },
+    {
+      "key": "5af4969a25a33aac2855a3b513ec265f35bf0a9eedd01df26618abbbdb2942f1",
+      "speaker": "dealer",
+      "text": "The river is down.",
+      "audioUrl": "/audio/voices/5af4969a25a33aac2855a3b513ec265f35bf0a9eedd01df26618abbbdb2942f1.mp3"
+    },
+    {
+      "key": "13f1a12f2e8380f28b5edb5cbd7beb9e6857d43ec7297f921486e3853b41f2ab",
+      "speaker": "dealer",
+      "text": "The last piece of the puzzle.",
+      "audioUrl": "/audio/voices/13f1a12f2e8380f28b5edb5cbd7beb9e6857d43ec7297f921486e3853b41f2ab.mp3"
+    },
+    {
+      "key": "8d0bc9a820d358ad21ca85bc071017d7e84e02cee6496556f4c21405beb74054",
+      "speaker": "dealer",
+      "text": "Tournament over. We have our champion!",
+      "audioUrl": "/audio/voices/8d0bc9a820d358ad21ca85bc071017d7e84e02cee6496556f4c21405beb74054.mp3"
+    },
+    {
+      "key": "2eb291499c5a802d5124f527d16f6e1e4a268d7e52c0a57c7d5f2578e749ab7f",
+      "speaker": "dealer",
+      "text": "That is the tournament. One very smug champion!",
+      "audioUrl": "/audio/voices/2eb291499c5a802d5124f527d16f6e1e4a268d7e52c0a57c7d5f2578e749ab7f.mp3"
+    },
+    {
+      "key": "a18e248ebd1976c45b53f63184733fb5bb46d314a0a2d524f506d4f9416cbe1c",
+      "speaker": "dealer",
+      "text": "Tournament complete. Bragging rights have been awarded!",
+      "audioUrl": "/audio/voices/a18e248ebd1976c45b53f63184733fb5bb46d314a0a2d524f506d4f9416cbe1c.mp3"
+    },
+    {
+      "key": "34fbf60d38c378c02dcbda2477da59b68856928cc4db7aca105ada7e7827cf3e",
+      "speaker": "dealer",
+      "text": "We have a champion. The group chat will never recover.",
+      "audioUrl": "/audio/voices/34fbf60d38c378c02dcbda2477da59b68856928cc4db7aca105ada7e7827cf3e.mp3"
+    },
+    {
+      "key": "83a09b7f82739afcafbd43131f74d6b8f3d4db0e38a9e8df7c8a282e3ae71297",
+      "speaker": "dealer",
+      "text": "Tournament over. An entirely imaginary fortune, secured!",
+      "audioUrl": "/audio/voices/83a09b7f82739afcafbd43131f74d6b8f3d4db0e38a9e8df7c8a282e3ae71297.mp3"
+    },
+    {
+      "key": "0daab75f8039c0a63b211c06e6165cb4899808eae217f2dd97ef61994663911d",
+      "speaker": "dealer",
+      "text": "A champion at last. Somebody put the kettle on.",
+      "audioUrl": "/audio/voices/0daab75f8039c0a63b211c06e6165cb4899808eae217f2dd97ef61994663911d.mp3"
+    },
+    {
+      "key": "b2a9ea7634d16f16d6c60c7ac4a4b2baacd0ca55a51d1b9a6345d482e254323c",
+      "speaker": "dealer",
+      "text": "Tournament complete. The trophy is mostly an attitude.",
+      "audioUrl": "/audio/voices/b2a9ea7634d16f16d6c60c7ac4a4b2baacd0ca55a51d1b9a6345d482e254323c.mp3"
+    },
+    {
+      "key": "b08ee1c47bf5ca5a612969fe9cf5db5ce0b7346283cd3b68fcfae4feee4ba38f",
+      "speaker": "dealer",
+      "text": "That is our champion. Same time next week?",
+      "audioUrl": "/audio/voices/b08ee1c47bf5ca5a612969fe9cf5db5ce0b7346283cd3b68fcfae4feee4ba38f.mp3"
+    },
+    {
+      "key": "bfbe72599e0cbf1f417326652b380d3732d6e9ee474a89b9b9cf3978d17ba897",
+      "speaker": "dealer",
+      "text": "Try to collect them quietly. You will not.",
+      "audioUrl": "/audio/voices/bfbe72599e0cbf1f417326652b380d3732d6e9ee474a89b9b9cf3978d17ba897.mp3"
+    },
+    {
+      "key": "7fb10c1c0117fb50b628661ddaef95c7101289795d50b6c482e33bedcf746169",
+      "speaker": "dealer",
+      "text": "A brief moment of competence. Treasure it.",
+      "audioUrl": "/audio/voices/7fb10c1c0117fb50b628661ddaef95c7101289795d50b6c482e33bedcf746169.mp3"
+    },
+    {
+      "key": "823d089f56c09a50b7309ed1648a644300f0a4066e1481a3a73e5ab0a6bc4f0d",
+      "speaker": "dealer",
+      "text": "That will buy precisely none of the drinks.",
+      "audioUrl": "/audio/voices/823d089f56c09a50b7309ed1648a644300f0a4066e1481a3a73e5ab0a6bc4f0d.mp3"
+    },
+    {
+      "key": "f4a09eaae3f6a4dc0f307aba77519ae03b6efbfb22d725b9a25b85ec5dd7bb81",
+      "speaker": "dealer",
+      "text": "The group chat has been notified. Emotionally.",
+      "audioUrl": "/audio/voices/f4a09eaae3f6a4dc0f307aba77519ae03b6efbfb22d725b9a25b85ec5dd7bb81.mp3"
+    },
+    {
+      "key": "8b4ce02801ff49beb11dab38b01dea428d38c6be1a8c2b1f77b0bdf9921c8de0",
+      "speaker": "dealer",
+      "text": "Look pleased. You have earned at least three seconds.",
+      "audioUrl": "/audio/voices/8b4ce02801ff49beb11dab38b01dea428d38c6be1a8c2b1f77b0bdf9921c8de0.mp3"
+    },
+    {
+      "key": "aaca3fe27fdb886b10a1e0be90def1b9fc390f5c720631d8900c079171b9a334",
+      "speaker": "dealer",
+      "text": "The post-match analysis will be wildly inaccurate.",
+      "audioUrl": "/audio/voices/aaca3fe27fdb886b10a1e0be90def1b9fc390f5c720631d8900c079171b9a334.mp3"
+    },
+    {
+      "key": "f87216e696d2227848938e5a4135e81ccc038404ff6f93878ac207ba4e37bd5e",
+      "speaker": "dealer",
+      "text": "Enough chips to develop an unnecessary swagger.",
+      "audioUrl": "/audio/voices/f87216e696d2227848938e5a4135e81ccc038404ff6f93878ac207ba4e37bd5e.mp3"
+    },
+    {
+      "key": "e779fabb124e706ed64a416732643188c7eece88f3b2fdefb8b71905b1ab6017",
+      "speaker": "dealer",
+      "text": "A victory for confidence and selective memory.",
+      "audioUrl": "/audio/voices/e779fabb124e706ed64a416732643188c7eece88f3b2fdefb8b71905b1ab6017.mp3"
+    },
+    {
+      "key": "494be0b98c60396f984f9785f40d2c2e8f92ed1fcc568009b789da383e07be6a",
+      "speaker": "dealer",
+      "text": "Enjoy the view from up there.",
+      "audioUrl": "/audio/voices/494be0b98c60396f984f9785f40d2c2e8f92ed1fcc568009b789da383e07be6a.mp3"
+    },
+    {
+      "key": "ceb06f10a348b50b1c4d0bb91d6e20b42b5bd40493948f145493a235b9c7bc5e",
+      "speaker": "dealer",
+      "text": "I can hear the retelling getting longer already.",
+      "audioUrl": "/audio/voices/ceb06f10a348b50b1c4d0bb91d6e20b42b5bd40493948f145493a235b9c7bc5e.mp3"
+    },
+    {
+      "key": "75a30cc2689f37eefda638ecc2166f003d97af3b757741f57d49793675550fdd",
+      "speaker": "dealer",
+      "text": "That pint suddenly tastes rather better.",
+      "audioUrl": "/audio/voices/75a30cc2689f37eefda638ecc2166f003d97af3b757741f57d49793675550fdd.mp3"
+    },
+    {
+      "key": "a6cfefe83977750c1d83c0411d2fff8f08d0a4f9281f678f1da184fdcbcbd5ec",
+      "speaker": "dealer",
+      "text": "A respectable addition to the biscuit fund.",
+      "audioUrl": "/audio/voices/a6cfefe83977750c1d83c0411d2fff8f08d0a4f9281f678f1da184fdcbcbd5ec.mp3"
+    },
+    {
+      "key": "8a1256bdf032fbfbb610db1bfa3784e2211aa3eab192b4464b0077880f7d490a",
+      "speaker": "dealer",
+      "text": "A lovely result. An insufferable story.",
+      "audioUrl": "/audio/voices/8a1256bdf032fbfbb610db1bfa3784e2211aa3eab192b4464b0077880f7d490a.mp3"
+    },
+    {
+      "key": "7225c4943eeaa59721fbf38ba198a940cfeb2cc7654ece322bfc6f77d701626b",
+      "speaker": "dealer",
+      "text": "Please keep the victory lap inside the pub.",
+      "audioUrl": "/audio/voices/7225c4943eeaa59721fbf38ba198a940cfeb2cc7654ece322bfc6f77d701626b.mp3"
+    },
+    {
+      "key": "9b23edbe57551d8abbcda86c877a76be1aed4885e1f8f62440a35051e1a9e9dd",
+      "speaker": "dealer",
+      "text": "The pot is yours. The theory is still debatable.",
+      "audioUrl": "/audio/voices/9b23edbe57551d8abbcda86c877a76be1aed4885e1f8f62440a35051e1a9e9dd.mp3"
+    },
+    {
+      "key": "a4b5a4eea8583c69ec01285d5a583c11e6d28718202fb9dba0a1033f1c90ee17",
+      "speaker": "dealer",
+      "text": "That is going straight into the autobiography.",
+      "audioUrl": "/audio/voices/a4b5a4eea8583c69ec01285d5a583c11e6d28718202fb9dba0a1033f1c90ee17.mp3"
+    },
+    {
+      "key": "e4b3065a9854188e953a504ce0c7ce0a9f2b8020bdc3497ee2dbfc1e4dce93b7",
+      "speaker": "dealer",
+      "text": "A small fortune in absolutely nothing.",
+      "audioUrl": "/audio/voices/e4b3065a9854188e953a504ce0c7ce0a9f2b8020bdc3497ee2dbfc1e4dce93b7.mp3"
+    },
+    {
+      "key": "52ef6ca8fec9b15a66fcc5ebb92fb56dd5ddd91fe890496e6b1c54aaa42e503f",
+      "speaker": "dealer",
+      "text": "Try to remain approachable.",
+      "audioUrl": "/audio/voices/52ef6ca8fec9b15a66fcc5ebb92fb56dd5ddd91fe890496e6b1c54aaa42e503f.mp3"
+    },
+    {
+      "key": "0adefd68aad5ba66362012d9ef8a6bdf742e045f3a6bd03b74a4365ccd6a5276",
+      "speaker": "dealer",
+      "text": "The chair may no longer fit that ego.",
+      "audioUrl": "/audio/voices/0adefd68aad5ba66362012d9ef8a6bdf742e045f3a6bd03b74a4365ccd6a5276.mp3"
+    },
+    {
+      "key": "1ec6ad6e0ab09d0878c28a2e0c8ba2190eabebf6a9d13fa2ad5ff55e327eec13",
+      "speaker": "dealer",
+      "text": "No need to explain the strategy. We were all here.",
+      "audioUrl": "/audio/voices/1ec6ad6e0ab09d0878c28a2e0c8ba2190eabebf6a9d13fa2ad5ff55e327eec13.mp3"
+    },
+    {
+      "key": "798547e6873834e2c0f25283b276ee251c4c8d4823b48d590c942179ba616d8b",
+      "speaker": "dealer",
+      "text": "The landlord accepts congratulations, not these chips.",
+      "audioUrl": "/audio/voices/798547e6873834e2c0f25283b276ee251c4c8d4823b48d590c942179ba616d8b.mp3"
+    },
+    {
+      "key": "53bf8ddc8a6db49e934b364eed05b31f4bd6f1bbf8d073a6f4477a9fca6c7f8d",
+      "speaker": "dealer",
+      "text": "Save a little room for the next disappointment.",
+      "audioUrl": "/audio/voices/53bf8ddc8a6db49e934b364eed05b31f4bd6f1bbf8d073a6f4477a9fca6c7f8d.mp3"
+    },
+    {
+      "key": "72b27f1aa8343039dc30a2c0ce4f44fe851bfe6f45aa2af4b6b7969fc2431ae5",
+      "speaker": "dealer",
+      "text": "A difficult moment for the table experts.",
+      "audioUrl": "/audio/voices/72b27f1aa8343039dc30a2c0ce4f44fe851bfe6f45aa2af4b6b7969fc2431ae5.mp3"
+    },
+    {
+      "key": "6d731398f20118417f283c7a06c3aaaf3197990bce29318cea92e00ba2da87d7",
+      "speaker": "dealer",
+      "text": "That smile is becoming a health hazard.",
+      "audioUrl": "/audio/voices/6d731398f20118417f283c7a06c3aaaf3197990bce29318cea92e00ba2da87d7.mp3"
+    },
+    {
+      "key": "2701716108d2e0e5bd188cacb90dfe581e24d16265f87e167064a7740d5c6377",
+      "speaker": "dealer",
+      "text": "New hand. Shuffle up and deal.",
+      "audioUrl": "/audio/voices/2701716108d2e0e5bd188cacb90dfe581e24d16265f87e167064a7740d5c6377.mp3"
+    },
+    {
+      "key": "46c951e9563984a94543ac71498258c0e90786a0bdad463cf1f6d2176bc81af0",
+      "speaker": "dealer",
+      "text": "Hand over. Collecting the pot.",
+      "audioUrl": "/audio/voices/46c951e9563984a94543ac71498258c0e90786a0bdad463cf1f6d2176bc81af0.mp3"
+    },
+    {
+      "key": "061773f3dbbbfe9b471763e4a012070128e24cc13e82065e7cbd2434ccc9e3c9",
+      "speaker": "dealer",
+      "text": "Hand complete. Settling the main pot and side pots.",
+      "audioUrl": "/audio/voices/061773f3dbbbfe9b471763e4a012070128e24cc13e82065e7cbd2434ccc9e3c9.mp3"
+    },
+    {
+      "key": "769b1fba7e6cc98784775199fa0eefbabe978fcf25e869050bcf1c44b8e617ad",
+      "speaker": "dealer",
+      "text": "I’m Monty, your dealer. I’ll call the cards and settle the pots. You lot can supply the questionable decisions.",
+      "audioUrl": "/audio/voices/769b1fba7e6cc98784775199fa0eefbabe978fcf25e869050bcf1c44b8e617ad.mp3"
+    },
+    {
+      "key": "ce3c3acfd08815283ad0d7452c6afc2989456066914d98a47f3e790a141aec4b",
+      "speaker": "dealer",
+      "text": "The pot is yours.",
+      "audioUrl": "/audio/voices/ce3c3acfd08815283ad0d7452c6afc2989456066914d98a47f3e790a141aec4b.mp3"
+    },
+    {
+      "key": "d6c471f8d0ab52ab66a89b61d83df188331fd968d4015e58e3630fd621f6fda2",
+      "speaker": "dealer",
+      "text": "High card takes it.",
+      "audioUrl": "/audio/voices/d6c471f8d0ab52ab66a89b61d83df188331fd968d4015e58e3630fd621f6fda2.mp3"
+    },
+    {
+      "key": "b775200e31e4edda2c0beb17995ee6cc10e2b89fcfab1be7587281c2a19ecec0",
+      "speaker": "dealer",
+      "text": "One pair takes it.",
+      "audioUrl": "/audio/voices/b775200e31e4edda2c0beb17995ee6cc10e2b89fcfab1be7587281c2a19ecec0.mp3"
+    },
+    {
+      "key": "8a6eb9bdb385d97a68fbdd4f2a3f046b69b4246b7b663a9cdea5e5ec0589558b",
+      "speaker": "dealer",
+      "text": "Two pair takes it.",
+      "audioUrl": "/audio/voices/8a6eb9bdb385d97a68fbdd4f2a3f046b69b4246b7b663a9cdea5e5ec0589558b.mp3"
+    },
+    {
+      "key": "7cfc0ca8dcecb4237f44a155c846d43916459188f1bfc79f10567a707122fc8b",
+      "speaker": "dealer",
+      "text": "Three of a kind takes it.",
+      "audioUrl": "/audio/voices/7cfc0ca8dcecb4237f44a155c846d43916459188f1bfc79f10567a707122fc8b.mp3"
+    },
+    {
+      "key": "b33e3b4c358e5a4e316c8791376efab0a44622c107afd1afbeba1c533482b144",
+      "speaker": "dealer",
+      "text": "A straight takes it.",
+      "audioUrl": "/audio/voices/b33e3b4c358e5a4e316c8791376efab0a44622c107afd1afbeba1c533482b144.mp3"
+    },
+    {
+      "key": "9bcc5527420425b50d47df9409cad812019faebaaf83f4db6bd2ac916083a592",
+      "speaker": "dealer",
+      "text": "A flush takes it.",
+      "audioUrl": "/audio/voices/9bcc5527420425b50d47df9409cad812019faebaaf83f4db6bd2ac916083a592.mp3"
+    },
+    {
+      "key": "d6c85d80dc5fdf8adfc604eb79643f706a5a0e8bb13390438cc118ca5a4ccaba",
+      "speaker": "dealer",
+      "text": "A full house takes it.",
+      "audioUrl": "/audio/voices/d6c85d80dc5fdf8adfc604eb79643f706a5a0e8bb13390438cc118ca5a4ccaba.mp3"
+    },
+    {
+      "key": "02d6d6c81a59226ab463f11b44d13e98a21b67c573012003526066c35fd40717",
+      "speaker": "dealer",
+      "text": "Four of a kind takes it.",
+      "audioUrl": "/audio/voices/02d6d6c81a59226ab463f11b44d13e98a21b67c573012003526066c35fd40717.mp3"
+    },
+    {
+      "key": "26ae283d972085587b9756246b1f1830957202a19298362142b59c05b0b8b7de",
+      "speaker": "dealer",
+      "text": "A straight flush takes it.",
+      "audioUrl": "/audio/voices/26ae283d972085587b9756246b1f1830957202a19298362142b59c05b0b8b7de.mp3"
+    },
+    {
+      "key": "3b86ae6b0e736cbbe339cd52405e501c6e10be7ee8a3c0ecbe6edd4750576787",
+      "speaker": "dealer",
+      "text": "A royal flush takes it.",
+      "audioUrl": "/audio/voices/3b86ae6b0e736cbbe339cd52405e501c6e10be7ee8a3c0ecbe6edd4750576787.mp3"
+    },
+    {
+      "key": "582c224c71671168e22bcf36a198940c8a5142cc76367a576f30032e3a4b770f",
+      "speaker": "dealer",
+      "text": "2 of spades.",
+      "audioUrl": "/audio/voices/582c224c71671168e22bcf36a198940c8a5142cc76367a576f30032e3a4b770f.mp3"
+    },
+    {
+      "key": "2f10161f269824b79667541e2681bc61a887f3cd02afbd4555e19d341560dcdf",
+      "speaker": "dealer",
+      "text": "2 of hearts.",
+      "audioUrl": "/audio/voices/2f10161f269824b79667541e2681bc61a887f3cd02afbd4555e19d341560dcdf.mp3"
+    },
+    {
+      "key": "e69f3a20613397306f287e513a1a4b39db2a7adfe93d6740a330340fb90bcc0c",
+      "speaker": "dealer",
+      "text": "2 of diamonds.",
+      "audioUrl": "/audio/voices/e69f3a20613397306f287e513a1a4b39db2a7adfe93d6740a330340fb90bcc0c.mp3"
+    },
+    {
+      "key": "874de1baaa21f42c307570d63d6781d79399e01e46e01cbda065bbf9c887abfe",
+      "speaker": "dealer",
+      "text": "2 of clubs.",
+      "audioUrl": "/audio/voices/874de1baaa21f42c307570d63d6781d79399e01e46e01cbda065bbf9c887abfe.mp3"
+    },
+    {
+      "key": "a37bc996b1b2fbb17bb09987638073ae2803ac86a561260635364adccb7e0956",
+      "speaker": "dealer",
+      "text": "3 of spades.",
+      "audioUrl": "/audio/voices/a37bc996b1b2fbb17bb09987638073ae2803ac86a561260635364adccb7e0956.mp3"
+    },
+    {
+      "key": "5618c338dc3a4c1c124b35f2dceceac955b8b324bf8f5b3c7950551aa6a6c7ae",
+      "speaker": "dealer",
+      "text": "3 of hearts.",
+      "audioUrl": "/audio/voices/5618c338dc3a4c1c124b35f2dceceac955b8b324bf8f5b3c7950551aa6a6c7ae.mp3"
+    },
+    {
+      "key": "04153a04b12e15fe5e9fdd6e3d227dfbf2c914ebd5db4334fe1c3a9d57737d0f",
+      "speaker": "dealer",
+      "text": "3 of diamonds.",
+      "audioUrl": "/audio/voices/04153a04b12e15fe5e9fdd6e3d227dfbf2c914ebd5db4334fe1c3a9d57737d0f.mp3"
+    },
+    {
+      "key": "58270a4f3253f1a2ce6f68f5cd02b871168a6d0e4103dd2f259f06628e17a634",
+      "speaker": "dealer",
+      "text": "3 of clubs.",
+      "audioUrl": "/audio/voices/58270a4f3253f1a2ce6f68f5cd02b871168a6d0e4103dd2f259f06628e17a634.mp3"
+    },
+    {
+      "key": "6c2a4c2257003fce3d836247bb6a2e16cf2030288977eb251f1189d419fc4de9",
+      "speaker": "dealer",
+      "text": "4 of spades.",
+      "audioUrl": "/audio/voices/6c2a4c2257003fce3d836247bb6a2e16cf2030288977eb251f1189d419fc4de9.mp3"
+    },
+    {
+      "key": "1f49f429bea5c2f4f8df17809ccba00530462c1aee720c791873612052aed452",
+      "speaker": "dealer",
+      "text": "4 of hearts.",
+      "audioUrl": "/audio/voices/1f49f429bea5c2f4f8df17809ccba00530462c1aee720c791873612052aed452.mp3"
+    },
+    {
+      "key": "b0096c9533b65bf0011292b54de2d71489597ba5285c0d002fd6f567e23180cd",
+      "speaker": "dealer",
+      "text": "4 of diamonds.",
+      "audioUrl": "/audio/voices/b0096c9533b65bf0011292b54de2d71489597ba5285c0d002fd6f567e23180cd.mp3"
+    },
+    {
+      "key": "6b25a58b421519186dc6a3a9230462397e364e3e4998b94ea4c250745453da1a",
+      "speaker": "dealer",
+      "text": "4 of clubs.",
+      "audioUrl": "/audio/voices/6b25a58b421519186dc6a3a9230462397e364e3e4998b94ea4c250745453da1a.mp3"
+    },
+    {
+      "key": "22b80b7a717c92f45b590792c13c54788a84b457c7e6e3f74bc054e2a7d36698",
+      "speaker": "dealer",
+      "text": "5 of spades.",
+      "audioUrl": "/audio/voices/22b80b7a717c92f45b590792c13c54788a84b457c7e6e3f74bc054e2a7d36698.mp3"
+    },
+    {
+      "key": "bda4dd5e7d94d7d0b3912685a21a35316572706ff08b8af3098f4dc3c0506912",
+      "speaker": "dealer",
+      "text": "5 of hearts.",
+      "audioUrl": "/audio/voices/bda4dd5e7d94d7d0b3912685a21a35316572706ff08b8af3098f4dc3c0506912.mp3"
+    },
+    {
+      "key": "e8450a9287d7ec568e1fc9ed943ec454d1dbbf932d7a04e06e1a502dd6da8d5d",
+      "speaker": "dealer",
+      "text": "5 of diamonds.",
+      "audioUrl": "/audio/voices/e8450a9287d7ec568e1fc9ed943ec454d1dbbf932d7a04e06e1a502dd6da8d5d.mp3"
+    },
+    {
+      "key": "90aeb1ae7344337a68d093728d3ce22bd4278ca1f9935baf5daa1116c8c41b64",
+      "speaker": "dealer",
+      "text": "5 of clubs.",
+      "audioUrl": "/audio/voices/90aeb1ae7344337a68d093728d3ce22bd4278ca1f9935baf5daa1116c8c41b64.mp3"
+    },
+    {
+      "key": "5836f8d241a3926932b3f1cbb3e90e51cbc005469205a7e63ddadc23457d3baa",
+      "speaker": "dealer",
+      "text": "6 of spades.",
+      "audioUrl": "/audio/voices/5836f8d241a3926932b3f1cbb3e90e51cbc005469205a7e63ddadc23457d3baa.mp3"
+    },
+    {
+      "key": "88a47dd25aa7f11f47de768cbc5fb5d30c85ff63c3cd2d7b7691630ed9528215",
+      "speaker": "dealer",
+      "text": "6 of hearts.",
+      "audioUrl": "/audio/voices/88a47dd25aa7f11f47de768cbc5fb5d30c85ff63c3cd2d7b7691630ed9528215.mp3"
+    },
+    {
+      "key": "d5df51bd65cbcba9d54aaf9bc5b49ec74b879684b6342fd5acc8870ffea60d48",
+      "speaker": "dealer",
+      "text": "6 of diamonds.",
+      "audioUrl": "/audio/voices/d5df51bd65cbcba9d54aaf9bc5b49ec74b879684b6342fd5acc8870ffea60d48.mp3"
+    },
+    {
+      "key": "b9c7960a13c7d5eea3527d3fa18660f2cb118d2799ca49ce5dc43eb3bc7e8bc3",
+      "speaker": "dealer",
+      "text": "6 of clubs.",
+      "audioUrl": "/audio/voices/b9c7960a13c7d5eea3527d3fa18660f2cb118d2799ca49ce5dc43eb3bc7e8bc3.mp3"
+    },
+    {
+      "key": "e36e0f4e2d9971d8798a081c692acefafb776888e861f4ddcc2a1a123b5543a1",
+      "speaker": "dealer",
+      "text": "7 of spades.",
+      "audioUrl": "/audio/voices/e36e0f4e2d9971d8798a081c692acefafb776888e861f4ddcc2a1a123b5543a1.mp3"
+    },
+    {
+      "key": "92264c61e00047b3a8a38b6f281c2899c5b2927d45e22a1792241b4de519307e",
+      "speaker": "dealer",
+      "text": "7 of hearts.",
+      "audioUrl": "/audio/voices/92264c61e00047b3a8a38b6f281c2899c5b2927d45e22a1792241b4de519307e.mp3"
+    },
+    {
+      "key": "b3261451a007d9591dffaee2b37b1ce0918b7a94e24dae6cd1c5275181aa15bb",
+      "speaker": "dealer",
+      "text": "7 of diamonds.",
+      "audioUrl": "/audio/voices/b3261451a007d9591dffaee2b37b1ce0918b7a94e24dae6cd1c5275181aa15bb.mp3"
+    },
+    {
+      "key": "f5d0b9a06e21b273692a5d72f1783ed3e3e973b0ad8675aa6d6fdb836c67d806",
+      "speaker": "dealer",
+      "text": "7 of clubs.",
+      "audioUrl": "/audio/voices/f5d0b9a06e21b273692a5d72f1783ed3e3e973b0ad8675aa6d6fdb836c67d806.mp3"
+    },
+    {
+      "key": "68f64ea4b0165c39fd46a5cca905df281db6312c65e9ab258a7d6b8366b85a36",
+      "speaker": "dealer",
+      "text": "8 of spades.",
+      "audioUrl": "/audio/voices/68f64ea4b0165c39fd46a5cca905df281db6312c65e9ab258a7d6b8366b85a36.mp3"
+    },
+    {
+      "key": "0356a1c9d2897a09771d499730b811ae63013e903f823944c96e67def2b7510b",
+      "speaker": "dealer",
+      "text": "8 of hearts.",
+      "audioUrl": "/audio/voices/0356a1c9d2897a09771d499730b811ae63013e903f823944c96e67def2b7510b.mp3"
+    },
+    {
+      "key": "1807128380b435a8cd7d318a6d91d0ae67bb884305c92acef6c3b4c4e2b61cc8",
+      "speaker": "dealer",
+      "text": "8 of diamonds.",
+      "audioUrl": "/audio/voices/1807128380b435a8cd7d318a6d91d0ae67bb884305c92acef6c3b4c4e2b61cc8.mp3"
+    },
+    {
+      "key": "f1661c1f5286504f2804090488b8abbb60c415b288799e2c5dd87f5358620327",
+      "speaker": "dealer",
+      "text": "8 of clubs.",
+      "audioUrl": "/audio/voices/f1661c1f5286504f2804090488b8abbb60c415b288799e2c5dd87f5358620327.mp3"
+    },
+    {
+      "key": "bda2e007cf1f77fec938837b06b66183c0b69f3319dcca1f5d7556aa7f871397",
+      "speaker": "dealer",
+      "text": "9 of spades.",
+      "audioUrl": "/audio/voices/bda2e007cf1f77fec938837b06b66183c0b69f3319dcca1f5d7556aa7f871397.mp3"
+    },
+    {
+      "key": "4ae1cd8311cff1e2c9158592be2d32c0fa40dda36d4edf4a7aa7890c651716c3",
+      "speaker": "dealer",
+      "text": "9 of hearts.",
+      "audioUrl": "/audio/voices/4ae1cd8311cff1e2c9158592be2d32c0fa40dda36d4edf4a7aa7890c651716c3.mp3"
+    },
+    {
+      "key": "bb9d4d278f640679dd4c6f3fd344d9b759c7232f3f0bc7b3ef413e57590792e9",
+      "speaker": "dealer",
+      "text": "9 of diamonds.",
+      "audioUrl": "/audio/voices/bb9d4d278f640679dd4c6f3fd344d9b759c7232f3f0bc7b3ef413e57590792e9.mp3"
+    },
+    {
+      "key": "3942418ebe7b21caaa7848e739db22367115acbad27de198681711fb4756435c",
+      "speaker": "dealer",
+      "text": "9 of clubs.",
+      "audioUrl": "/audio/voices/3942418ebe7b21caaa7848e739db22367115acbad27de198681711fb4756435c.mp3"
+    },
+    {
+      "key": "852db01a94eb653df46d0f9c9b46979c7507b6b1c46cb4a9d9dd03fd4f66db52",
+      "speaker": "dealer",
+      "text": "ten of spades.",
+      "audioUrl": "/audio/voices/852db01a94eb653df46d0f9c9b46979c7507b6b1c46cb4a9d9dd03fd4f66db52.mp3"
+    },
+    {
+      "key": "37f3cdf7aa2c469a40d73d74973fdd9e4b9fa2c2f468b652d0ef52972789f095",
+      "speaker": "dealer",
+      "text": "ten of hearts.",
+      "audioUrl": "/audio/voices/37f3cdf7aa2c469a40d73d74973fdd9e4b9fa2c2f468b652d0ef52972789f095.mp3"
+    },
+    {
+      "key": "3cbd933f76308ec795edcae61c41e48207b7f48d7ccc043ca844888ca9a9c88d",
+      "speaker": "dealer",
+      "text": "ten of diamonds.",
+      "audioUrl": "/audio/voices/3cbd933f76308ec795edcae61c41e48207b7f48d7ccc043ca844888ca9a9c88d.mp3"
+    },
+    {
+      "key": "2ffc1566f9094fe85a407e653fbb8f4e3ed3564a3bf15a1e59cab7d5f582befc",
+      "speaker": "dealer",
+      "text": "ten of clubs.",
+      "audioUrl": "/audio/voices/2ffc1566f9094fe85a407e653fbb8f4e3ed3564a3bf15a1e59cab7d5f582befc.mp3"
+    },
+    {
+      "key": "83117b447050226e0905c910819d4be36f4f3d6a082f5601e8f3505c1e41393a",
+      "speaker": "dealer",
+      "text": "jack of spades.",
+      "audioUrl": "/audio/voices/83117b447050226e0905c910819d4be36f4f3d6a082f5601e8f3505c1e41393a.mp3"
+    },
+    {
+      "key": "e0b2d77c3040ec0e00a732f4a82a0976161b1d35d32d2fcfabec8424158c2704",
+      "speaker": "dealer",
+      "text": "jack of hearts.",
+      "audioUrl": "/audio/voices/e0b2d77c3040ec0e00a732f4a82a0976161b1d35d32d2fcfabec8424158c2704.mp3"
+    },
+    {
+      "key": "042cc4699327ba5c8a3fa129eba9b45420a34a0ed939bf28aaa5f7ea1bdb54b1",
+      "speaker": "dealer",
+      "text": "jack of diamonds.",
+      "audioUrl": "/audio/voices/042cc4699327ba5c8a3fa129eba9b45420a34a0ed939bf28aaa5f7ea1bdb54b1.mp3"
+    },
+    {
+      "key": "6162f706a47cf3caad123777a74825a211023be0a83b19357434a26928403ec1",
+      "speaker": "dealer",
+      "text": "jack of clubs.",
+      "audioUrl": "/audio/voices/6162f706a47cf3caad123777a74825a211023be0a83b19357434a26928403ec1.mp3"
+    },
+    {
+      "key": "abdcf0ddee3465e73f94dd3367540f4710ba8f99d0346177dcf3858c1c4de9e7",
+      "speaker": "dealer",
+      "text": "queen of spades.",
+      "audioUrl": "/audio/voices/abdcf0ddee3465e73f94dd3367540f4710ba8f99d0346177dcf3858c1c4de9e7.mp3"
+    },
+    {
+      "key": "404e18f5fb7d740bf0bbad3096fc921bc4039d5056ee319d8e1b7e75e290e7c5",
+      "speaker": "dealer",
+      "text": "queen of hearts.",
+      "audioUrl": "/audio/voices/404e18f5fb7d740bf0bbad3096fc921bc4039d5056ee319d8e1b7e75e290e7c5.mp3"
+    },
+    {
+      "key": "e01ff21bb81c6a7a687de35832ac15cb9391b160292f5d93b21d8fdfcffe3123",
+      "speaker": "dealer",
+      "text": "queen of diamonds.",
+      "audioUrl": "/audio/voices/e01ff21bb81c6a7a687de35832ac15cb9391b160292f5d93b21d8fdfcffe3123.mp3"
+    },
+    {
+      "key": "8a1eb3bcc762413da9f2bc0ce8945a16299a091b9c68f8219c2989099ccbac69",
+      "speaker": "dealer",
+      "text": "queen of clubs.",
+      "audioUrl": "/audio/voices/8a1eb3bcc762413da9f2bc0ce8945a16299a091b9c68f8219c2989099ccbac69.mp3"
+    },
+    {
+      "key": "72d67f776d78855458003eedb12560691741c8cb3f3c795a264d8a5724cd56e3",
+      "speaker": "dealer",
+      "text": "king of spades.",
+      "audioUrl": "/audio/voices/72d67f776d78855458003eedb12560691741c8cb3f3c795a264d8a5724cd56e3.mp3"
+    },
+    {
+      "key": "98b9b6905d2cdaac1cf28b770db618262fd35ea3822261a9bc61bd767d353626",
+      "speaker": "dealer",
+      "text": "king of hearts.",
+      "audioUrl": "/audio/voices/98b9b6905d2cdaac1cf28b770db618262fd35ea3822261a9bc61bd767d353626.mp3"
+    },
+    {
+      "key": "3ddd388131ae3787b30e6a61c12971d8006ce4e4eed28e6236b4c010e9fcb27c",
+      "speaker": "dealer",
+      "text": "king of diamonds.",
+      "audioUrl": "/audio/voices/3ddd388131ae3787b30e6a61c12971d8006ce4e4eed28e6236b4c010e9fcb27c.mp3"
+    },
+    {
+      "key": "96a6fae69522ff189b1498244cce2b49421078653af42cd18d4e6e8479ba646f",
+      "speaker": "dealer",
+      "text": "king of clubs.",
+      "audioUrl": "/audio/voices/96a6fae69522ff189b1498244cce2b49421078653af42cd18d4e6e8479ba646f.mp3"
+    },
+    {
+      "key": "4e62ba554e983cfe86e087e9fd1b71b108d870fc1ed1e6f82bc293af0cec5045",
+      "speaker": "dealer",
+      "text": "ace of spades.",
+      "audioUrl": "/audio/voices/4e62ba554e983cfe86e087e9fd1b71b108d870fc1ed1e6f82bc293af0cec5045.mp3"
+    },
+    {
+      "key": "adcd099665dd0603370c741f87132714092771c38397cc4062f76ad4bfcbb7e0",
+      "speaker": "dealer",
+      "text": "ace of hearts.",
+      "audioUrl": "/audio/voices/adcd099665dd0603370c741f87132714092771c38397cc4062f76ad4bfcbb7e0.mp3"
+    },
+    {
+      "key": "d99ad395b3d989fc815ca596d4bd96441424934dd81088e205d13f8c49c96821",
+      "speaker": "dealer",
+      "text": "ace of diamonds.",
+      "audioUrl": "/audio/voices/d99ad395b3d989fc815ca596d4bd96441424934dd81088e205d13f8c49c96821.mp3"
+    },
+    {
+      "key": "ad0d99913cecd90d2e351a664fae090ddf2bebdbfe2c4f3be700a46fa7d936f9",
+      "speaker": "dealer",
+      "text": "ace of clubs.",
+      "audioUrl": "/audio/voices/ad0d99913cecd90d2e351a664fae090ddf2bebdbfe2c4f3be700a46fa7d936f9.mp3"
+    },
+    {
+      "key": "059947110fc537949ac048c97052d929873f2ea3d3eef254e13847483e5a2a07",
+      "speaker": "juan",
+      "text": "Check.",
+      "audioUrl": "/audio/voices/059947110fc537949ac048c97052d929873f2ea3d3eef254e13847483e5a2a07.mp3"
+    },
+    {
+      "key": "b4e1b7d4562ef3b33f0a751520a1e8957c20f8b994adf31f12eb0ce256dab2da",
+      "speaker": "juan",
+      "text": "I check.",
+      "audioUrl": "/audio/voices/b4e1b7d4562ef3b33f0a751520a1e8957c20f8b994adf31f12eb0ce256dab2da.mp3"
+    },
+    {
+      "key": "c028c4bcb7b9f33cdeec52d99aa25a2ab1d0a2156060ad8cf8ac4ab012180fa0",
+      "speaker": "juan",
+      "text": "Call.",
+      "audioUrl": "/audio/voices/c028c4bcb7b9f33cdeec52d99aa25a2ab1d0a2156060ad8cf8ac4ab012180fa0.mp3"
+    },
+    {
+      "key": "b5a007f7151a9c8d9425a4b1ce0e656be2fe2a2d477db6144487b5ec0e51374c",
+      "speaker": "juan",
+      "text": "I’ll call.",
+      "audioUrl": "/audio/voices/b5a007f7151a9c8d9425a4b1ce0e656be2fe2a2d477db6144487b5ec0e51374c.mp3"
+    },
+    {
+      "key": "339fb55aaab20ecb2eee076253986925cb8bd7a0120fae6d4bf9f0f4caeaf6f6",
+      "speaker": "juan",
+      "text": "Bet.",
+      "audioUrl": "/audio/voices/339fb55aaab20ecb2eee076253986925cb8bd7a0120fae6d4bf9f0f4caeaf6f6.mp3"
+    },
+    {
+      "key": "831c358fe2fe1f434f74caafdf194b11bb5d02f681d2999edc8e2050ab32d23c",
+      "speaker": "juan",
+      "text": "I’ll bet.",
+      "audioUrl": "/audio/voices/831c358fe2fe1f434f74caafdf194b11bb5d02f681d2999edc8e2050ab32d23c.mp3"
+    },
+    {
+      "key": "aab0a69bc3379996ddb68a381f0c4a8190b54f347b6820ca4f48b17fa5559d21",
+      "speaker": "juan",
+      "text": "Raise.",
+      "audioUrl": "/audio/voices/aab0a69bc3379996ddb68a381f0c4a8190b54f347b6820ca4f48b17fa5559d21.mp3"
+    },
+    {
+      "key": "2ac01a9110855f87f2423c3aa589e4674c57ed818ec6fd7e19f05f55eac593a6",
+      "speaker": "juan",
+      "text": "I’ll raise.",
+      "audioUrl": "/audio/voices/2ac01a9110855f87f2423c3aa589e4674c57ed818ec6fd7e19f05f55eac593a6.mp3"
+    },
+    {
+      "key": "e31c2820ba9630b12d8c254c0d8376add4c4397f384d54d1069c0bf95a86b6de",
+      "speaker": "juan",
+      "text": "Fold.",
+      "audioUrl": "/audio/voices/e31c2820ba9630b12d8c254c0d8376add4c4397f384d54d1069c0bf95a86b6de.mp3"
+    },
+    {
+      "key": "07cfb1c9556a74f290477953d541d3786200e906c1ee5668b12ba33a994c0293",
+      "speaker": "juan",
+      "text": "I’m out.",
+      "audioUrl": "/audio/voices/07cfb1c9556a74f290477953d541d3786200e906c1ee5668b12ba33a994c0293.mp3"
+    },
+    {
+      "key": "f09e260db13eb5c9cc8889c219944e5c0b438ccaa6d5a5d45f190f231799a88c",
+      "speaker": "juan",
+      "text": "All in.",
+      "audioUrl": "/audio/voices/f09e260db13eb5c9cc8889c219944e5c0b438ccaa6d5a5d45f190f231799a88c.mp3"
+    },
+    {
+      "key": "b9d937daeeec8e3402dac37bed5f5b7c566bd8fda98338f209bdf496e33032fd",
+      "speaker": "juan",
+      "text": "I’m all in.",
+      "audioUrl": "/audio/voices/b9d937daeeec8e3402dac37bed5f5b7c566bd8fda98338f209bdf496e33032fd.mp3"
+    },
+    {
+      "key": "3ee78ae9624db28ea8f9f9a56ac462682d5f810339c32b2369ca27441c371f91",
+      "speaker": "juan",
+      "text": "[confident] I definitely know what I’m doing.",
+      "audioUrl": "/audio/voices/3ee78ae9624db28ea8f9f9a56ac462682d5f810339c32b2369ca27441c371f91.mp3"
+    },
+    {
+      "key": "239661b09a0e003beaddda283c8adf6265eec642fade0babb77d7253700162ac",
+      "speaker": "juan",
+      "text": "[confident] This is what confidence looks like.",
+      "audioUrl": "/audio/voices/239661b09a0e003beaddda283c8adf6265eec642fade0babb77d7253700162ac.mp3"
+    },
+    {
+      "key": "012a51e560ae7179a891680ee4c55f7a00b4a3766e9c2e276719eb59bea67cd2",
+      "speaker": "juan",
+      "text": "[confident] I can smell your fear. Or the crisps.",
+      "audioUrl": "/audio/voices/012a51e560ae7179a891680ee4c55f7a00b4a3766e9c2e276719eb59bea67cd2.mp3"
+    },
+    {
+      "key": "9b7865df51f3672c8d0c42b4e75192f6ebeffe88a710f2ee1a9efc5adc836570",
+      "speaker": "juan",
+      "text": "[confident] I definitely know what I’m doing. This is what confidence looks like.",
+      "audioUrl": "/audio/voices/9b7865df51f3672c8d0c42b4e75192f6ebeffe88a710f2ee1a9efc5adc836570.mp3"
+    },
+    {
+      "key": "3a6d0d6ca2b6043fcf61e66caf2177cf434933e54b7675ee41f0fd9587687b1d",
+      "speaker": "juan",
+      "text": "[chuckles] That’s one way to donate chips.",
+      "audioUrl": "/audio/voices/3a6d0d6ca2b6043fcf61e66caf2177cf434933e54b7675ee41f0fd9587687b1d.mp3"
+    },
+    {
+      "key": "3a430aafc895d3522947f744ce631cdc50a1539c593f38248c7a4d48bd52e385",
+      "speaker": "juan",
+      "text": "[chuckles] Absolutely calculated. Probably.",
+      "audioUrl": "/audio/voices/3a430aafc895d3522947f744ce631cdc50a1539c593f38248c7a4d48bd52e385.mp3"
+    },
+    {
+      "key": "f6423c37d4310997ff99dcb3c24d630e92b910e6dbc685ff5ef3188f9958645c",
+      "speaker": "juan",
+      "text": "[chuckles] Oh, this is going in the group chat.",
+      "audioUrl": "/audio/voices/f6423c37d4310997ff99dcb3c24d630e92b910e6dbc685ff5ef3188f9958645c.mp3"
+    },
+    {
+      "key": "16b316d3ac02754b8f0833bf0dbfa50ff3fd645cee3ba2bd874db427a70fa024",
+      "speaker": "juan",
+      "text": "[chuckles] Oh, this is going in the group chat. Absolutely calculated. Probably.",
+      "audioUrl": "/audio/voices/16b316d3ac02754b8f0833bf0dbfa50ff3fd645cee3ba2bd874db427a70fa024.mp3"
+    },
+    {
+      "key": "eab4997562ddbe96f3ab870be0dfce130a02c43837af63b22e6d5f09c0d510fb",
+      "speaker": "juan",
+      "text": "[sighs] I’m just stretching. Nothing to see here.",
+      "audioUrl": "/audio/voices/eab4997562ddbe96f3ab870be0dfce130a02c43837af63b22e6d5f09c0d510fb.mp3"
+    },
+    {
+      "key": "94b3fae4d156475dbdde54c9b3f3a1c9620518bdf30543fcd93cdb4749a997c6",
+      "speaker": "juan",
+      "text": "[sighs] Right. Who wants a drink?",
+      "audioUrl": "/audio/voices/94b3fae4d156475dbdde54c9b3f3a1c9620518bdf30543fcd93cdb4749a997c6.mp3"
+    },
+    {
+      "key": "344915fb2dbbac8eddde924dbb7f560cc35ed8d4877827e2a7d2cd0bcbf7a63c",
+      "speaker": "juan",
+      "text": "[sighs] Suddenly I have somewhere to be.",
+      "audioUrl": "/audio/voices/344915fb2dbbac8eddde924dbb7f560cc35ed8d4877827e2a7d2cd0bcbf7a63c.mp3"
+    },
+    {
+      "key": "90195d7394ebd833c95c8642109eca9bea6daf25a714afc9e5d724121a289a17",
+      "speaker": "juan",
+      "text": "[sighs] Right. I’m off. Unless the river helps. Who wants a drink?",
+      "audioUrl": "/audio/voices/90195d7394ebd833c95c8642109eca9bea6daf25a714afc9e5d724121a289a17.mp3"
+    },
+    {
+      "key": "f7acc73e37ac9d1b2ae04c8294145cafc13cdbc9b91a140f2c31d23665e4c456",
+      "speaker": "juan",
+      "text": "[dramatic] My beautiful, imaginary fortune.",
+      "audioUrl": "/audio/voices/f7acc73e37ac9d1b2ae04c8294145cafc13cdbc9b91a140f2c31d23665e4c456.mp3"
+    },
+    {
+      "key": "827923ac51c84560cd629fdd1e1b4de9461e9372e6aa2734f2fec8f9a4315c0d",
+      "speaker": "juan",
+      "text": "[dramatic] Tell my chips I loved them.",
+      "audioUrl": "/audio/voices/827923ac51c84560cd629fdd1e1b4de9461e9372e6aa2734f2fec8f9a4315c0d.mp3"
+    },
+    {
+      "key": "fc0278e984257600e711f68be189969e202f574149e8f3e11a51dc25a5425b42",
+      "speaker": "juan",
+      "text": "[dramatic] That river was a personal attack.",
+      "audioUrl": "/audio/voices/fc0278e984257600e711f68be189969e202f574149e8f3e11a51dc25a5425b42.mp3"
+    },
+    {
+      "key": "477061a4734c8d0896acf75415109946e0bfc9842cc673787abd2bc3a2b32c2c",
+      "speaker": "juan",
+      "text": "[dramatic] My beautiful, imaginary fortune. Tell my chips I loved them.",
+      "audioUrl": "/audio/voices/477061a4734c8d0896acf75415109946e0bfc9842cc673787abd2bc3a2b32c2c.mp3"
+    },
+    {
+      "key": "6e2c4eebb42dde7809d799e03837db3f571bb7467e6a6786c73724386ccec8f5",
+      "speaker": "juan",
+      "text": "[excited] Big money. Big players.",
+      "audioUrl": "/audio/voices/6e2c4eebb42dde7809d799e03837db3f571bb7467e6a6786c73724386ccec8f5.mp3"
+    },
+    {
+      "key": "829c082dbd24fb3327d84c7a94fe5c9bb1361fe22624087861ff1aaa2a290645",
+      "speaker": "juan",
+      "text": "[excited] To questionable decisions!",
+      "audioUrl": "/audio/voices/829c082dbd24fb3327d84c7a94fe5c9bb1361fe22624087861ff1aaa2a290645.mp3"
+    },
+    {
+      "key": "1a2434003466b1af37e147d0706051735d369f0413707fb927e4f5b17e153046",
+      "speaker": "juan",
+      "text": "[excited] Cheers, you magnificent bluffers.",
+      "audioUrl": "/audio/voices/1a2434003466b1af37e147d0706051735d369f0413707fb927e4f5b17e153046.mp3"
+    },
+    {
+      "key": "4de2b1a5ef43ee1fe34a4537cefd4d9cb87f3df399891243339e832d8c95f444",
+      "speaker": "juan",
+      "text": "[excited] Big money. Big players. To questionable decisions!",
+      "audioUrl": "/audio/voices/4de2b1a5ef43ee1fe34a4537cefd4d9cb87f3df399891243339e832d8c95f444.mp3"
+    },
+    {
+      "key": "276528256f658a3f446ac8961aa3ef34d6d911dc5218e649fff1704d0f911497",
+      "speaker": "juan",
+      "text": "[playful] Purely decorative confidence.",
+      "audioUrl": "/audio/voices/276528256f658a3f446ac8961aa3ef34d6d911dc5218e649fff1704d0f911497.mp3"
+    },
+    {
+      "key": "e9bdc0f1ec2ea6cf0561d3fd56fa575378eca83242de85fc916fa44cc39812ed",
+      "speaker": "juan",
+      "text": "[playful] A little chip choreography.",
+      "audioUrl": "/audio/voices/e9bdc0f1ec2ea6cf0561d3fd56fa575378eca83242de85fc916fa44cc39812ed.mp3"
+    },
+    {
+      "key": "fb0fc1cd64e200cd0aa2786e999e85066128ebae43843312ec6b6d835025ddd1",
+      "speaker": "juan",
+      "text": "[playful] Practising the only skill I have.",
+      "audioUrl": "/audio/voices/fb0fc1cd64e200cd0aa2786e999e85066128ebae43843312ec6b6d835025ddd1.mp3"
+    },
+    {
+      "key": "ea8a93f1b62709dc3c4426f18743730bdbc295d97320e93e09cea877fb0c899f",
+      "speaker": "juan",
+      "text": "[playful] Watch the fingers.",
+      "audioUrl": "/audio/voices/ea8a93f1b62709dc3c4426f18743730bdbc295d97320e93e09cea877fb0c899f.mp3"
+    },
+    {
+      "key": "a0804ba1b6a27afbf29e42d595daa063c9ef638ec0d1f74b3c5733b6f1af6c8e",
+      "speaker": "juan",
+      "text": "[playful] Steady hands. Shaky strategy.",
+      "audioUrl": "/audio/voices/a0804ba1b6a27afbf29e42d595daa063c9ef638ec0d1f74b3c5733b6f1af6c8e.mp3"
+    },
+    {
+      "key": "fb89468a0404a54b9262434cbcc29640a37e608e05a014e18155f63910a79ecd",
+      "speaker": "juan",
+      "text": "[playful] The chips are on a roll.",
+      "audioUrl": "/audio/voices/fb89468a0404a54b9262434cbcc29640a37e608e05a014e18155f63910a79ecd.mp3"
+    },
+    {
+      "key": "e2da8b5fbcb7416e578bb89c8ec21b40b39bb9474d2313af94b0c0a3783174a3",
+      "speaker": "juan",
+      "text": "[playful] And the crowd goes mild.",
+      "audioUrl": "/audio/voices/e2da8b5fbcb7416e578bb89c8ec21b40b39bb9474d2313af94b0c0a3783174a3.mp3"
+    },
+    {
+      "key": "6ab72a784ef3912fd6b2c6a8ac46d07c1aafc8bd2ae7defd74d2f0167cfadffa",
+      "speaker": "juan",
+      "text": "[playful] Nothing up my sleeve.",
+      "audioUrl": "/audio/voices/6ab72a784ef3912fd6b2c6a8ac46d07c1aafc8bd2ae7defd74d2f0167cfadffa.mp3"
+    },
+    {
+      "key": "aa0b57e7fd42415a7d0d20e4e5b6de40e15564da820b4eabdcabb0ae8cb5ac6e",
+      "speaker": "juan",
+      "text": "[playful] A little air time.",
+      "audioUrl": "/audio/voices/aa0b57e7fd42415a7d0d20e4e5b6de40e15564da820b4eabdcabb0ae8cb5ac6e.mp3"
+    },
+    {
+      "key": "92f3e0414d1631589a6e0d8c16e1e06353205c3bfb9c1546820e09318d76df73",
+      "speaker": "juan",
+      "text": "[whispers] Quiet please. I’m doing important maths.",
+      "audioUrl": "/audio/voices/92f3e0414d1631589a6e0d8c16e1e06353205c3bfb9c1546820e09318d76df73.mp3"
+    },
+    {
+      "key": "ecd4f3ceb40e5c5d0a5b82143036815cd6755a8833411972baeb576257d10837",
+      "speaker": "juan",
+      "text": "[whispers] Let the chips do the talking.",
+      "audioUrl": "/audio/voices/ecd4f3ceb40e5c5d0a5b82143036815cd6755a8833411972baeb576257d10837.mp3"
+    },
+    {
+      "key": "a3bd46f999a155aeaadc8d687ab92768fb165fbde3b6c40f4e67fbaa6e3066a7",
+      "speaker": "juan",
+      "text": "[whispers] I’m trying to look mysterious.",
+      "audioUrl": "/audio/voices/a3bd46f999a155aeaadc8d687ab92768fb165fbde3b6c40f4e67fbaa6e3066a7.mp3"
+    },
+    {
+      "key": "83ef4b95527f3ab730cda5ca09663f200996ced4b35ac365b077caf210f79fd1",
+      "speaker": "juan",
+      "text": "[whispers] Quiet please. I’m doing important maths. Let the chips do the talking.",
+      "audioUrl": "/audio/voices/83ef4b95527f3ab730cda5ca09663f200996ced4b35ac365b077caf210f79fd1.mp3"
+    },
+    {
+      "key": "5f9363c457ef6c74c5a86c91bbbd21b80924e7426a7d3c3344980d6f2eca15f6",
+      "speaker": "jack",
+      "text": "Check.",
+      "audioUrl": "/audio/voices/5f9363c457ef6c74c5a86c91bbbd21b80924e7426a7d3c3344980d6f2eca15f6.mp3"
+    },
+    {
+      "key": "341cdd97b4e8c842edb933d412b6236008815cae021a775a086732b9320bb2c1",
+      "speaker": "jack",
+      "text": "I check.",
+      "audioUrl": "/audio/voices/341cdd97b4e8c842edb933d412b6236008815cae021a775a086732b9320bb2c1.mp3"
+    },
+    {
+      "key": "c2b425a4494aec797cafd1128d73669a54346b812f931a91d7f837a776eeec63",
+      "speaker": "jack",
+      "text": "Call.",
+      "audioUrl": "/audio/voices/c2b425a4494aec797cafd1128d73669a54346b812f931a91d7f837a776eeec63.mp3"
+    },
+    {
+      "key": "514c32025ce78223dfba63b7d241e411fcce430e46e6ebb6061808ada1e6417e",
+      "speaker": "jack",
+      "text": "I’ll call.",
+      "audioUrl": "/audio/voices/514c32025ce78223dfba63b7d241e411fcce430e46e6ebb6061808ada1e6417e.mp3"
+    },
+    {
+      "key": "15d2a091d3c594d00e7e436f49ff03ecf1d6180f5d5bdfb9939555e96d1ec170",
+      "speaker": "jack",
+      "text": "Bet.",
+      "audioUrl": "/audio/voices/15d2a091d3c594d00e7e436f49ff03ecf1d6180f5d5bdfb9939555e96d1ec170.mp3"
+    },
+    {
+      "key": "94374dd2ee11b00fa4895d1366dc4654da9b210fb4785f4c60287418d199a7f5",
+      "speaker": "jack",
+      "text": "I’ll bet.",
+      "audioUrl": "/audio/voices/94374dd2ee11b00fa4895d1366dc4654da9b210fb4785f4c60287418d199a7f5.mp3"
+    },
+    {
+      "key": "919f55958820af634feceb989d54879751e62b7c02ecec386419396511f67de4",
+      "speaker": "jack",
+      "text": "Raise.",
+      "audioUrl": "/audio/voices/919f55958820af634feceb989d54879751e62b7c02ecec386419396511f67de4.mp3"
+    },
+    {
+      "key": "5fb86b26b5d5cce44b9712a072727667117b7b9ea87d66534f2d4b525bc72cc9",
+      "speaker": "jack",
+      "text": "I’ll raise.",
+      "audioUrl": "/audio/voices/5fb86b26b5d5cce44b9712a072727667117b7b9ea87d66534f2d4b525bc72cc9.mp3"
+    },
+    {
+      "key": "8afcafc5e26f83573e5a043c004ea562870d5c55519083045417a4de6379fca2",
+      "speaker": "jack",
+      "text": "Fold.",
+      "audioUrl": "/audio/voices/8afcafc5e26f83573e5a043c004ea562870d5c55519083045417a4de6379fca2.mp3"
+    },
+    {
+      "key": "d2118b0b0929eb3761b37bc652744e64dffc05793ad5bf063ef677435a5496fd",
+      "speaker": "jack",
+      "text": "I’m out.",
+      "audioUrl": "/audio/voices/d2118b0b0929eb3761b37bc652744e64dffc05793ad5bf063ef677435a5496fd.mp3"
+    },
+    {
+      "key": "01c71b2e2fc9c68d439a8de567f1d0e9b7564748e5bbd4fabbce2da4c77755ce",
+      "speaker": "jack",
+      "text": "All in.",
+      "audioUrl": "/audio/voices/01c71b2e2fc9c68d439a8de567f1d0e9b7564748e5bbd4fabbce2da4c77755ce.mp3"
+    },
+    {
+      "key": "6192380963daa4dd882df4408e02053cced399e47451d044bfeeb6fc2c95a5ef",
+      "speaker": "jack",
+      "text": "I’m all in.",
+      "audioUrl": "/audio/voices/6192380963daa4dd882df4408e02053cced399e47451d044bfeeb6fc2c95a5ef.mp3"
+    },
+    {
+      "key": "7dc64cbacf9a8dcd2ba45634b39d6fb019bdc41412a240982c3ea19529196206",
+      "speaker": "jack",
+      "text": "[confident] I definitely know what I’m doing.",
+      "audioUrl": "/audio/voices/7dc64cbacf9a8dcd2ba45634b39d6fb019bdc41412a240982c3ea19529196206.mp3"
+    },
+    {
+      "key": "c35d60ea497f449fb42693e2b0047d5e62cc25be3284f4c225fcf95aeb8a9bc9",
+      "speaker": "jack",
+      "text": "[confident] This is what confidence looks like.",
+      "audioUrl": "/audio/voices/c35d60ea497f449fb42693e2b0047d5e62cc25be3284f4c225fcf95aeb8a9bc9.mp3"
+    },
+    {
+      "key": "a9a299e70f2407b5a3fd6e7200db19aee45e45e1f2341eb48758f1d22a1bef47",
+      "speaker": "jack",
+      "text": "[confident] I can smell your fear. Or the crisps.",
+      "audioUrl": "/audio/voices/a9a299e70f2407b5a3fd6e7200db19aee45e45e1f2341eb48758f1d22a1bef47.mp3"
+    },
+    {
+      "key": "fa2cc9fb31ab569f3f5d6befbe085a3b22e7980429240ee36dd65dae2fdecc2a",
+      "speaker": "jack",
+      "text": "[confident] I definitely know what I’m doing. This is what confidence looks like.",
+      "audioUrl": "/audio/voices/fa2cc9fb31ab569f3f5d6befbe085a3b22e7980429240ee36dd65dae2fdecc2a.mp3"
+    },
+    {
+      "key": "65aea61a8f6bfb22da8b2e309e4d4191aee2bca029f05012173b7d802d4abd2f",
+      "speaker": "jack",
+      "text": "[chuckles] That’s one way to donate chips.",
+      "audioUrl": "/audio/voices/65aea61a8f6bfb22da8b2e309e4d4191aee2bca029f05012173b7d802d4abd2f.mp3"
+    },
+    {
+      "key": "4e3ba12175a66253443caf1f25437883abfb6306fe42b438e83ddf01b4d422fd",
+      "speaker": "jack",
+      "text": "[chuckles] Absolutely calculated. Probably.",
+      "audioUrl": "/audio/voices/4e3ba12175a66253443caf1f25437883abfb6306fe42b438e83ddf01b4d422fd.mp3"
+    },
+    {
+      "key": "8089333eabe27042ab1619aa55c6a1affbaf65a19ca0d6f28853fa10cef3af25",
+      "speaker": "jack",
+      "text": "[chuckles] Oh, this is going in the group chat.",
+      "audioUrl": "/audio/voices/8089333eabe27042ab1619aa55c6a1affbaf65a19ca0d6f28853fa10cef3af25.mp3"
+    },
+    {
+      "key": "fd5503f0af41d0cac6e9d9199cf2181fe13f524f3849f7f2cadfba6d6b78161b",
+      "speaker": "jack",
+      "text": "[chuckles] Oh, this is going in the group chat. Absolutely calculated. Probably.",
+      "audioUrl": "/audio/voices/fd5503f0af41d0cac6e9d9199cf2181fe13f524f3849f7f2cadfba6d6b78161b.mp3"
+    },
+    {
+      "key": "9071f425436b7f6823ecdc73724d86f62eae5c709fd649109819e4115e1af3af",
+      "speaker": "jack",
+      "text": "[sighs] I’m just stretching. Nothing to see here.",
+      "audioUrl": "/audio/voices/9071f425436b7f6823ecdc73724d86f62eae5c709fd649109819e4115e1af3af.mp3"
+    },
+    {
+      "key": "3b74eb151ac4636c06496d0c6a950a725d3e404d9d7ae83fa07991f1f38ece36",
+      "speaker": "jack",
+      "text": "[sighs] Right. Who wants a drink?",
+      "audioUrl": "/audio/voices/3b74eb151ac4636c06496d0c6a950a725d3e404d9d7ae83fa07991f1f38ece36.mp3"
+    },
+    {
+      "key": "88aede03414f45bd61af516273c2eec6f4c0cbba4eb4100cf832e40c24b450cc",
+      "speaker": "jack",
+      "text": "[sighs] Suddenly I have somewhere to be.",
+      "audioUrl": "/audio/voices/88aede03414f45bd61af516273c2eec6f4c0cbba4eb4100cf832e40c24b450cc.mp3"
+    },
+    {
+      "key": "0bc75d37c957637ad6b719c25ab276082255a44b4f080a5d9e5b94e7b6ca059b",
+      "speaker": "jack",
+      "text": "[sighs] Right. I’m off. Unless the river helps. Who wants a drink?",
+      "audioUrl": "/audio/voices/0bc75d37c957637ad6b719c25ab276082255a44b4f080a5d9e5b94e7b6ca059b.mp3"
+    },
+    {
+      "key": "e575cf3992400763c7fe6df2b09403c790cdb9cd12827964d60e622764aa4ea3",
+      "speaker": "jack",
+      "text": "[dramatic] My beautiful, imaginary fortune.",
+      "audioUrl": "/audio/voices/e575cf3992400763c7fe6df2b09403c790cdb9cd12827964d60e622764aa4ea3.mp3"
+    },
+    {
+      "key": "88f76660ba7f30a8e582c49868600761dd3abc03277fcc85f61fa15eecb599a5",
+      "speaker": "jack",
+      "text": "[dramatic] Tell my chips I loved them.",
+      "audioUrl": "/audio/voices/88f76660ba7f30a8e582c49868600761dd3abc03277fcc85f61fa15eecb599a5.mp3"
+    },
+    {
+      "key": "6c49ebe92694f844df3e35544ccb7491d85048957c93588b671386750029f2fc",
+      "speaker": "jack",
+      "text": "[dramatic] That river was a personal attack.",
+      "audioUrl": "/audio/voices/6c49ebe92694f844df3e35544ccb7491d85048957c93588b671386750029f2fc.mp3"
+    },
+    {
+      "key": "e58811f21eefeafa7a900cd188d0bac7b8a67dad73f00147bb18ded6d4de749e",
+      "speaker": "jack",
+      "text": "[dramatic] My beautiful, imaginary fortune. Tell my chips I loved them.",
+      "audioUrl": "/audio/voices/e58811f21eefeafa7a900cd188d0bac7b8a67dad73f00147bb18ded6d4de749e.mp3"
+    },
+    {
+      "key": "f5f470d57a2bb0bcc00a5876eb3ecb7f10387dbc71fbc516d15e009e93eaef02",
+      "speaker": "jack",
+      "text": "[excited] Big money. Big players.",
+      "audioUrl": "/audio/voices/f5f470d57a2bb0bcc00a5876eb3ecb7f10387dbc71fbc516d15e009e93eaef02.mp3"
+    },
+    {
+      "key": "85fe3467bc2d2eb322bb2c64b510d32bc66beae4d3c4aaa0a3426c3e3c6a2052",
+      "speaker": "jack",
+      "text": "[excited] To questionable decisions!",
+      "audioUrl": "/audio/voices/85fe3467bc2d2eb322bb2c64b510d32bc66beae4d3c4aaa0a3426c3e3c6a2052.mp3"
+    },
+    {
+      "key": "a85d3e27860b5702a202cead419db77d38e6006962b0d31ecdf5e84049a16e23",
+      "speaker": "jack",
+      "text": "[excited] Cheers, you magnificent bluffers.",
+      "audioUrl": "/audio/voices/a85d3e27860b5702a202cead419db77d38e6006962b0d31ecdf5e84049a16e23.mp3"
+    },
+    {
+      "key": "3b6251f144b04c63fa5ebce5a9b22fd0faaf8051c95bc416165ee26e8a673ab3",
+      "speaker": "jack",
+      "text": "[excited] Big money. Big players. To questionable decisions!",
+      "audioUrl": "/audio/voices/3b6251f144b04c63fa5ebce5a9b22fd0faaf8051c95bc416165ee26e8a673ab3.mp3"
+    },
+    {
+      "key": "971bf64d50ff989a6fe94edc64c512d18ef5f847c0ea28b6a6b943803cee86f8",
+      "speaker": "jack",
+      "text": "[playful] Purely decorative confidence.",
+      "audioUrl": "/audio/voices/971bf64d50ff989a6fe94edc64c512d18ef5f847c0ea28b6a6b943803cee86f8.mp3"
+    },
+    {
+      "key": "b67f33444f6bfcfef4f7f7e3b98cdde8e5ee424fa8764abe80e8cb5ceef4399b",
+      "speaker": "jack",
+      "text": "[playful] A little chip choreography.",
+      "audioUrl": "/audio/voices/b67f33444f6bfcfef4f7f7e3b98cdde8e5ee424fa8764abe80e8cb5ceef4399b.mp3"
+    },
+    {
+      "key": "89696648cc86e7faa3242dd160379c0e6516418f61292c9341ebdceb98f9cb86",
+      "speaker": "jack",
+      "text": "[playful] Practising the only skill I have.",
+      "audioUrl": "/audio/voices/89696648cc86e7faa3242dd160379c0e6516418f61292c9341ebdceb98f9cb86.mp3"
+    },
+    {
+      "key": "6b55dd110a2247410b0665c0a7450eac9cc055c897566cdf0747daaac411270e",
+      "speaker": "jack",
+      "text": "[playful] Watch the fingers.",
+      "audioUrl": "/audio/voices/6b55dd110a2247410b0665c0a7450eac9cc055c897566cdf0747daaac411270e.mp3"
+    },
+    {
+      "key": "356b00387ea5234bc809b0cb6359ed07f615ec0a67030d4ce468e521d52d5fce",
+      "speaker": "jack",
+      "text": "[playful] Steady hands. Shaky strategy.",
+      "audioUrl": "/audio/voices/356b00387ea5234bc809b0cb6359ed07f615ec0a67030d4ce468e521d52d5fce.mp3"
+    },
+    {
+      "key": "ffe2042bd46af1ec4408748ca12f6d9cbb2f6bc5ba83315d9f21002b2a6039c5",
+      "speaker": "jack",
+      "text": "[playful] The chips are on a roll.",
+      "audioUrl": "/audio/voices/ffe2042bd46af1ec4408748ca12f6d9cbb2f6bc5ba83315d9f21002b2a6039c5.mp3"
+    },
+    {
+      "key": "e6f5b4026a0c4de67778b7f08df93d12545f7f6a1ba9ec1a694a997f3a840ea7",
+      "speaker": "jack",
+      "text": "[playful] And the crowd goes mild.",
+      "audioUrl": "/audio/voices/e6f5b4026a0c4de67778b7f08df93d12545f7f6a1ba9ec1a694a997f3a840ea7.mp3"
+    },
+    {
+      "key": "df30106582286e01b3a892bf7bad76940bae99b87df5673091a9b62789f8e737",
+      "speaker": "jack",
+      "text": "[playful] Nothing up my sleeve.",
+      "audioUrl": "/audio/voices/df30106582286e01b3a892bf7bad76940bae99b87df5673091a9b62789f8e737.mp3"
+    },
+    {
+      "key": "6e405f0a08aaf3a95f7f4d929b19b2b1d5afc986b8cf340155527a0f2541e78c",
+      "speaker": "jack",
+      "text": "[playful] A little air time.",
+      "audioUrl": "/audio/voices/6e405f0a08aaf3a95f7f4d929b19b2b1d5afc986b8cf340155527a0f2541e78c.mp3"
+    },
+    {
+      "key": "efda1d9b552c0c093276957b7939b16970708d30ffb551f2c371b14951ff00f1",
+      "speaker": "jack",
+      "text": "[whispers] Quiet please. I’m doing important maths.",
+      "audioUrl": "/audio/voices/efda1d9b552c0c093276957b7939b16970708d30ffb551f2c371b14951ff00f1.mp3"
+    },
+    {
+      "key": "f892f0a79b0fb749bfa47e22682907de766cb1bfae6110092b72aa0dc17f310b",
+      "speaker": "jack",
+      "text": "[whispers] Let the chips do the talking.",
+      "audioUrl": "/audio/voices/f892f0a79b0fb749bfa47e22682907de766cb1bfae6110092b72aa0dc17f310b.mp3"
+    },
+    {
+      "key": "e7d77891ebb8275f588ab53327bc38e89d478eec531ce9a1bfc6b9a08826a950",
+      "speaker": "jack",
+      "text": "[whispers] I’m trying to look mysterious.",
+      "audioUrl": "/audio/voices/e7d77891ebb8275f588ab53327bc38e89d478eec531ce9a1bfc6b9a08826a950.mp3"
+    },
+    {
+      "key": "71e3d11f0bfb23eeb7993c77e25064a82fea262dace391b550ffc2e0ba13078e",
+      "speaker": "jack",
+      "text": "[whispers] Quiet please. I’m doing important maths. Let the chips do the talking.",
+      "audioUrl": "/audio/voices/71e3d11f0bfb23eeb7993c77e25064a82fea262dace391b550ffc2e0ba13078e.mp3"
+    },
+    {
+      "key": "eac68a33b8ed743e0365bcd77476e77b1ae61b9457510f6042fd1578335811b6",
+      "speaker": "clive",
+      "text": "Check.",
+      "audioUrl": "/audio/voices/eac68a33b8ed743e0365bcd77476e77b1ae61b9457510f6042fd1578335811b6.mp3"
+    },
+    {
+      "key": "c02039cf386bef587eb07b9553b4b4a91530f982f3341f302b24020c6217a18d",
+      "speaker": "clive",
+      "text": "I check.",
+      "audioUrl": "/audio/voices/c02039cf386bef587eb07b9553b4b4a91530f982f3341f302b24020c6217a18d.mp3"
+    },
+    {
+      "key": "4aa10280d26c63295b7a1892b0a5ff04c7011a58cf9a2c8721fe98468a3c375b",
+      "speaker": "clive",
+      "text": "Call.",
+      "audioUrl": "/audio/voices/4aa10280d26c63295b7a1892b0a5ff04c7011a58cf9a2c8721fe98468a3c375b.mp3"
+    },
+    {
+      "key": "72310a28f531a6b35eef326123bf15d106eadf46586d7838292aa3072ab9137e",
+      "speaker": "clive",
+      "text": "I’ll call.",
+      "audioUrl": "/audio/voices/72310a28f531a6b35eef326123bf15d106eadf46586d7838292aa3072ab9137e.mp3"
+    },
+    {
+      "key": "213751b44678b2c27822be6df9cee27558aa5ccb61f3466d6bbade4688261c92",
+      "speaker": "clive",
+      "text": "Bet.",
+      "audioUrl": "/audio/voices/213751b44678b2c27822be6df9cee27558aa5ccb61f3466d6bbade4688261c92.mp3"
+    },
+    {
+      "key": "da707755cedbfb0cf074d8416e0bbbf1854d6659bd616be1235aba30661ee88a",
+      "speaker": "clive",
+      "text": "I’ll bet.",
+      "audioUrl": "/audio/voices/da707755cedbfb0cf074d8416e0bbbf1854d6659bd616be1235aba30661ee88a.mp3"
+    },
+    {
+      "key": "1fe3f51ec70939c1cf8face0eb0728d4ae488f156d5e8da7d356bfdc9da3baeb",
+      "speaker": "clive",
+      "text": "Raise.",
+      "audioUrl": "/audio/voices/1fe3f51ec70939c1cf8face0eb0728d4ae488f156d5e8da7d356bfdc9da3baeb.mp3"
+    },
+    {
+      "key": "249c730a6003afcab02f35d2b19ca7a63d86c1468d59640432349edcf28754d1",
+      "speaker": "clive",
+      "text": "I’ll raise.",
+      "audioUrl": "/audio/voices/249c730a6003afcab02f35d2b19ca7a63d86c1468d59640432349edcf28754d1.mp3"
+    },
+    {
+      "key": "e738d86b11c27ac8db17cfd687a22afa07d34de17c249690fce271d438152938",
+      "speaker": "clive",
+      "text": "Fold.",
+      "audioUrl": "/audio/voices/e738d86b11c27ac8db17cfd687a22afa07d34de17c249690fce271d438152938.mp3"
+    },
+    {
+      "key": "e5e03f587f552bf0650619c561486a3ed8f3f28a8ae801ed83af9166e544f4a1",
+      "speaker": "clive",
+      "text": "I’m out.",
+      "audioUrl": "/audio/voices/e5e03f587f552bf0650619c561486a3ed8f3f28a8ae801ed83af9166e544f4a1.mp3"
+    },
+    {
+      "key": "16ed14afeeb3d362fade60607212b1b87e42dc3f39c317d9e176644ee5bd68e1",
+      "speaker": "clive",
+      "text": "All in.",
+      "audioUrl": "/audio/voices/16ed14afeeb3d362fade60607212b1b87e42dc3f39c317d9e176644ee5bd68e1.mp3"
+    },
+    {
+      "key": "e77e72f5adbe02ee028c23acbfd8bad26d3a35585cbafe0cc194ebe640826152",
+      "speaker": "clive",
+      "text": "I’m all in.",
+      "audioUrl": "/audio/voices/e77e72f5adbe02ee028c23acbfd8bad26d3a35585cbafe0cc194ebe640826152.mp3"
+    },
+    {
+      "key": "73a401d5ab37c80d6ac67f82722c31920ff16bccc3dd3d419eda3f925dd9d1f5",
+      "speaker": "clive",
+      "text": "[confident] I definitely know what I’m doing.",
+      "audioUrl": "/audio/voices/73a401d5ab37c80d6ac67f82722c31920ff16bccc3dd3d419eda3f925dd9d1f5.mp3"
+    },
+    {
+      "key": "646aa190c46d150ee2a0080f905504973676a9e5c00865109bc492df546846c4",
+      "speaker": "clive",
+      "text": "[confident] This is what confidence looks like.",
+      "audioUrl": "/audio/voices/646aa190c46d150ee2a0080f905504973676a9e5c00865109bc492df546846c4.mp3"
+    },
+    {
+      "key": "7be275df5fc773c8e33ff04ac3fbbd9f99aab6144624e1d37ecbeaeae2a89f88",
+      "speaker": "clive",
+      "text": "[confident] I can smell your fear. Or the crisps.",
+      "audioUrl": "/audio/voices/7be275df5fc773c8e33ff04ac3fbbd9f99aab6144624e1d37ecbeaeae2a89f88.mp3"
+    },
+    {
+      "key": "2fc6c6c2a1b390b3b8fbf1c6d91c2e88dad9de1cfbcd72456a7bc10aa5981328",
+      "speaker": "clive",
+      "text": "[confident] I definitely know what I’m doing. This is what confidence looks like.",
+      "audioUrl": "/audio/voices/2fc6c6c2a1b390b3b8fbf1c6d91c2e88dad9de1cfbcd72456a7bc10aa5981328.mp3"
+    },
+    {
+      "key": "5db3495a10a0b28d9ae6b74ad0af0923ab94bc008693d4e8c0bcb104b0101660",
+      "speaker": "clive",
+      "text": "[chuckles] That’s one way to donate chips.",
+      "audioUrl": "/audio/voices/5db3495a10a0b28d9ae6b74ad0af0923ab94bc008693d4e8c0bcb104b0101660.mp3"
+    },
+    {
+      "key": "6fd3ec2a24a96c636ced486e4883b62ae2a4a20e7e362ce6d174088bb6aa6d9b",
+      "speaker": "clive",
+      "text": "[chuckles] Absolutely calculated. Probably.",
+      "audioUrl": "/audio/voices/6fd3ec2a24a96c636ced486e4883b62ae2a4a20e7e362ce6d174088bb6aa6d9b.mp3"
+    },
+    {
+      "key": "a53fd3b9a3bc812a52f723c93e558604a945531ef83068eaee56099af1a5fbe5",
+      "speaker": "clive",
+      "text": "[chuckles] Oh, this is going in the group chat.",
+      "audioUrl": "/audio/voices/a53fd3b9a3bc812a52f723c93e558604a945531ef83068eaee56099af1a5fbe5.mp3"
+    },
+    {
+      "key": "faede6612012f001a5015d1639b295ab68329e466db7cd3fff9eb90f002b7969",
+      "speaker": "clive",
+      "text": "[chuckles] Oh, this is going in the group chat. Absolutely calculated. Probably.",
+      "audioUrl": "/audio/voices/faede6612012f001a5015d1639b295ab68329e466db7cd3fff9eb90f002b7969.mp3"
+    },
+    {
+      "key": "046b0aeb739c16095bf549e05380bd518b0f90fd156ce9e91b590e3b4d4e4eb4",
+      "speaker": "clive",
+      "text": "[sighs] I’m just stretching. Nothing to see here.",
+      "audioUrl": "/audio/voices/046b0aeb739c16095bf549e05380bd518b0f90fd156ce9e91b590e3b4d4e4eb4.mp3"
+    },
+    {
+      "key": "d1e26188998c4256937b305a14da32dccb9eb161869a713257f54b140392dea5",
+      "speaker": "clive",
+      "text": "[sighs] Right. Who wants a drink?",
+      "audioUrl": "/audio/voices/d1e26188998c4256937b305a14da32dccb9eb161869a713257f54b140392dea5.mp3"
+    },
+    {
+      "key": "552c04dd901610dcc3f9daaed2caf64fe260520873478f59788b00981a8a30ba",
+      "speaker": "clive",
+      "text": "[sighs] Suddenly I have somewhere to be.",
+      "audioUrl": "/audio/voices/552c04dd901610dcc3f9daaed2caf64fe260520873478f59788b00981a8a30ba.mp3"
+    },
+    {
+      "key": "c59e195b3ba63ccb3a073bb97be6d7c449f9e87fb39d25eeef7a968d59d86ad3",
+      "speaker": "clive",
+      "text": "[sighs] Right. I’m off. Unless the river helps. Who wants a drink?",
+      "audioUrl": "/audio/voices/c59e195b3ba63ccb3a073bb97be6d7c449f9e87fb39d25eeef7a968d59d86ad3.mp3"
+    },
+    {
+      "key": "2edae797c40b8164e966644aaaa6d0bab6f94d725a6e611b941134fd0e5a83a1",
+      "speaker": "clive",
+      "text": "[dramatic] My beautiful, imaginary fortune.",
+      "audioUrl": "/audio/voices/2edae797c40b8164e966644aaaa6d0bab6f94d725a6e611b941134fd0e5a83a1.mp3"
+    },
+    {
+      "key": "043a555cb4e06e784d7f4dd6802b7c28f92c31bb32fdbbe9d2375d6290c1fece",
+      "speaker": "clive",
+      "text": "[dramatic] Tell my chips I loved them.",
+      "audioUrl": "/audio/voices/043a555cb4e06e784d7f4dd6802b7c28f92c31bb32fdbbe9d2375d6290c1fece.mp3"
+    },
+    {
+      "key": "6e82cc02466c5c6fc67c69fce83e0b4416f627ba721258b3c49a4b76963e1454",
+      "speaker": "clive",
+      "text": "[dramatic] That river was a personal attack.",
+      "audioUrl": "/audio/voices/6e82cc02466c5c6fc67c69fce83e0b4416f627ba721258b3c49a4b76963e1454.mp3"
+    },
+    {
+      "key": "97598956bd575b24a0a6a57ac7fadbcc17ff73e96873d037f7a44a6dd5266e86",
+      "speaker": "clive",
+      "text": "[dramatic] My beautiful, imaginary fortune. Tell my chips I loved them.",
+      "audioUrl": "/audio/voices/97598956bd575b24a0a6a57ac7fadbcc17ff73e96873d037f7a44a6dd5266e86.mp3"
+    },
+    {
+      "key": "c7601c6a55f2c6da9629d5d6a63e242c3cd529c5427fc227e9969a7a6a7c8b16",
+      "speaker": "clive",
+      "text": "[excited] Big money. Big players.",
+      "audioUrl": "/audio/voices/c7601c6a55f2c6da9629d5d6a63e242c3cd529c5427fc227e9969a7a6a7c8b16.mp3"
+    },
+    {
+      "key": "46298a646d8eb25f928c1b77fbefd9381ddbf31175334af5688dba1287a11cec",
+      "speaker": "clive",
+      "text": "[excited] To questionable decisions!",
+      "audioUrl": "/audio/voices/46298a646d8eb25f928c1b77fbefd9381ddbf31175334af5688dba1287a11cec.mp3"
+    },
+    {
+      "key": "510bd143afa637c47b7965aa99a2e7c4b01a7496ad789c2fa9c135d2a2a1ca3f",
+      "speaker": "clive",
+      "text": "[excited] Cheers, you magnificent bluffers.",
+      "audioUrl": "/audio/voices/510bd143afa637c47b7965aa99a2e7c4b01a7496ad789c2fa9c135d2a2a1ca3f.mp3"
+    },
+    {
+      "key": "493563dd0c018a4cfcef030d356d719116a85900843dfa0c59222109ecfedfe2",
+      "speaker": "clive",
+      "text": "[excited] Big money. Big players. To questionable decisions!",
+      "audioUrl": "/audio/voices/493563dd0c018a4cfcef030d356d719116a85900843dfa0c59222109ecfedfe2.mp3"
+    },
+    {
+      "key": "3e032c2bead1d909f48a6e06c66e3b7d951b62932bdea02bb9c04d9af559a702",
+      "speaker": "clive",
+      "text": "[playful] Purely decorative confidence.",
+      "audioUrl": "/audio/voices/3e032c2bead1d909f48a6e06c66e3b7d951b62932bdea02bb9c04d9af559a702.mp3"
+    },
+    {
+      "key": "d7575ee5a3f1edc225372751ef29cb044abebb48eb68ff36fb490d8a5929733d",
+      "speaker": "clive",
+      "text": "[playful] A little chip choreography.",
+      "audioUrl": "/audio/voices/d7575ee5a3f1edc225372751ef29cb044abebb48eb68ff36fb490d8a5929733d.mp3"
+    },
+    {
+      "key": "e69ed7fd0ac79bb500a0cbbf53ae962ef9eb9698dad86c3edd693f94b1e9f95e",
+      "speaker": "clive",
+      "text": "[playful] Practising the only skill I have.",
+      "audioUrl": "/audio/voices/e69ed7fd0ac79bb500a0cbbf53ae962ef9eb9698dad86c3edd693f94b1e9f95e.mp3"
+    },
+    {
+      "key": "8acd2e16484dd9eb0f3fb4505665eefa9a8bcdc2031d1c37bdbabbd075772461",
+      "speaker": "clive",
+      "text": "[playful] Watch the fingers.",
+      "audioUrl": "/audio/voices/8acd2e16484dd9eb0f3fb4505665eefa9a8bcdc2031d1c37bdbabbd075772461.mp3"
+    },
+    {
+      "key": "b9d2d3384ab7a931f29645ea1be343643eeafca932c5aaa7bbcd94b4480d57e9",
+      "speaker": "clive",
+      "text": "[playful] Steady hands. Shaky strategy.",
+      "audioUrl": "/audio/voices/b9d2d3384ab7a931f29645ea1be343643eeafca932c5aaa7bbcd94b4480d57e9.mp3"
+    },
+    {
+      "key": "c0d57a74970d99077f7e6d75d3a3a4a92df1903889e745d3b20d1ade3d82c763",
+      "speaker": "clive",
+      "text": "[playful] The chips are on a roll.",
+      "audioUrl": "/audio/voices/c0d57a74970d99077f7e6d75d3a3a4a92df1903889e745d3b20d1ade3d82c763.mp3"
+    },
+    {
+      "key": "9067d346580f71a7d59b8eb59bb572e7deab34508eb9644cc9d6814a66f0ce22",
+      "speaker": "clive",
+      "text": "[playful] And the crowd goes mild.",
+      "audioUrl": "/audio/voices/9067d346580f71a7d59b8eb59bb572e7deab34508eb9644cc9d6814a66f0ce22.mp3"
+    },
+    {
+      "key": "8cfb44cffb9fbd303738adb0d736a35b360ce7941b5a5ccf2d8c6924969c440e",
+      "speaker": "clive",
+      "text": "[playful] Nothing up my sleeve.",
+      "audioUrl": "/audio/voices/8cfb44cffb9fbd303738adb0d736a35b360ce7941b5a5ccf2d8c6924969c440e.mp3"
+    },
+    {
+      "key": "1c6a74658831f07e95dde2a65c804d103926fddad9504d7976d7d2d39ea2c812",
+      "speaker": "clive",
+      "text": "[playful] A little air time.",
+      "audioUrl": "/audio/voices/1c6a74658831f07e95dde2a65c804d103926fddad9504d7976d7d2d39ea2c812.mp3"
+    },
+    {
+      "key": "1d9288010786f78c8861f8213789cb602151ca484f21c995ed9cd3fee24a1ba9",
+      "speaker": "clive",
+      "text": "[whispers] Quiet please. I’m doing important maths.",
+      "audioUrl": "/audio/voices/1d9288010786f78c8861f8213789cb602151ca484f21c995ed9cd3fee24a1ba9.mp3"
+    },
+    {
+      "key": "fc67d192b63f122856b13a347aa4594b7d72b25e16bcb2742a509575119a5a29",
+      "speaker": "clive",
+      "text": "[whispers] Let the chips do the talking.",
+      "audioUrl": "/audio/voices/fc67d192b63f122856b13a347aa4594b7d72b25e16bcb2742a509575119a5a29.mp3"
+    },
+    {
+      "key": "77cc9f46dfecfd8cc14317c5a2729323318c4903f313f25dc76ac10433bfeb44",
+      "speaker": "clive",
+      "text": "[whispers] I’m trying to look mysterious.",
+      "audioUrl": "/audio/voices/77cc9f46dfecfd8cc14317c5a2729323318c4903f313f25dc76ac10433bfeb44.mp3"
+    },
+    {
+      "key": "2f1c4951c38691eefa873705e1e2edec93a8ac7c75cb908c38ce07a0c38ec178",
+      "speaker": "clive",
+      "text": "[whispers] Quiet please. I’m doing important maths. Let the chips do the talking.",
+      "audioUrl": "/audio/voices/2f1c4951c38691eefa873705e1e2edec93a8ac7c75cb908c38ce07a0c38ec178.mp3"
+    },
+    {
+      "key": "aca455898dbccb6e220992ed0ff166aa20b6c2922b2e50e58f3bc09ac32a9683",
+      "speaker": "doug",
+      "text": "Check.",
+      "audioUrl": "/audio/voices/aca455898dbccb6e220992ed0ff166aa20b6c2922b2e50e58f3bc09ac32a9683.mp3"
+    },
+    {
+      "key": "a2d4c17cfd3e6d94b85cb10411ee6f7268600389a1058024b37d728cee3a724a",
+      "speaker": "doug",
+      "text": "I check.",
+      "audioUrl": "/audio/voices/a2d4c17cfd3e6d94b85cb10411ee6f7268600389a1058024b37d728cee3a724a.mp3"
+    },
+    {
+      "key": "37d7cc5606eb7d97162e996b2d2fa7f49c0a68a99008027f5743f28aa68d5ec5",
+      "speaker": "doug",
+      "text": "Call.",
+      "audioUrl": "/audio/voices/37d7cc5606eb7d97162e996b2d2fa7f49c0a68a99008027f5743f28aa68d5ec5.mp3"
+    },
+    {
+      "key": "0b86adf9945cdc56233636a81e57cb2623ae4bf01e094bd2f4f4b4cb510a7d70",
+      "speaker": "doug",
+      "text": "I’ll call.",
+      "audioUrl": "/audio/voices/0b86adf9945cdc56233636a81e57cb2623ae4bf01e094bd2f4f4b4cb510a7d70.mp3"
+    },
+    {
+      "key": "b09fe38fde9434989c86c232739c8d60c3377ee4d3a6264bc3a7f3d4c2658b85",
+      "speaker": "doug",
+      "text": "Bet.",
+      "audioUrl": "/audio/voices/b09fe38fde9434989c86c232739c8d60c3377ee4d3a6264bc3a7f3d4c2658b85.mp3"
+    },
+    {
+      "key": "9743a3ea400cc08a383d5191b83c3f38c0ba14befd63251d98230ea4ec714ddc",
+      "speaker": "doug",
+      "text": "I’ll bet.",
+      "audioUrl": "/audio/voices/9743a3ea400cc08a383d5191b83c3f38c0ba14befd63251d98230ea4ec714ddc.mp3"
+    },
+    {
+      "key": "c8e095faafba60e350c66af7a9d488d903ee10485fd1a0df5a1b6af6049de26a",
+      "speaker": "doug",
+      "text": "Raise.",
+      "audioUrl": "/audio/voices/c8e095faafba60e350c66af7a9d488d903ee10485fd1a0df5a1b6af6049de26a.mp3"
+    },
+    {
+      "key": "6bcc5fd9ce2af7a9b26b864154e9f4c7d23dda8a7f0a4e209c52b9342bb93df2",
+      "speaker": "doug",
+      "text": "I’ll raise.",
+      "audioUrl": "/audio/voices/6bcc5fd9ce2af7a9b26b864154e9f4c7d23dda8a7f0a4e209c52b9342bb93df2.mp3"
+    },
+    {
+      "key": "4a766a586a605078b54630b778c52b4f087e5be06e2874a665dffa3797b60997",
+      "speaker": "doug",
+      "text": "Fold.",
+      "audioUrl": "/audio/voices/4a766a586a605078b54630b778c52b4f087e5be06e2874a665dffa3797b60997.mp3"
+    },
+    {
+      "key": "22a605cb8be9b19389d216aa9ee93ad06e8803ff1188c176be610d860c82d803",
+      "speaker": "doug",
+      "text": "I’m out.",
+      "audioUrl": "/audio/voices/22a605cb8be9b19389d216aa9ee93ad06e8803ff1188c176be610d860c82d803.mp3"
+    },
+    {
+      "key": "db6a91a0c7091edbcaa698f94658baa9311e90a61843f9896a284375cb00ca36",
+      "speaker": "doug",
+      "text": "All in.",
+      "audioUrl": "/audio/voices/db6a91a0c7091edbcaa698f94658baa9311e90a61843f9896a284375cb00ca36.mp3"
+    },
+    {
+      "key": "041ad1d1ec212fbfbabadf9bdcde5f07687d2a87f4f9c1dab901065ec7887ed4",
+      "speaker": "doug",
+      "text": "I’m all in.",
+      "audioUrl": "/audio/voices/041ad1d1ec212fbfbabadf9bdcde5f07687d2a87f4f9c1dab901065ec7887ed4.mp3"
+    },
+    {
+      "key": "ee7233d8a1b0727c9917777a8bc5001753b32d2ab28e6ad61c52e3ebf50f627b",
+      "speaker": "doug",
+      "text": "[confident] I definitely know what I’m doing.",
+      "audioUrl": "/audio/voices/ee7233d8a1b0727c9917777a8bc5001753b32d2ab28e6ad61c52e3ebf50f627b.mp3"
+    },
+    {
+      "key": "f8f79853537e18c2b8bd54f0a8a75e7bdb467fdafad7cff35f467e835174c82f",
+      "speaker": "doug",
+      "text": "[confident] This is what confidence looks like.",
+      "audioUrl": "/audio/voices/f8f79853537e18c2b8bd54f0a8a75e7bdb467fdafad7cff35f467e835174c82f.mp3"
+    },
+    {
+      "key": "fe39e7a9f86e798feb53993549d4eb7a304b8cfcb208d9e33add40bfc8bc78da",
+      "speaker": "doug",
+      "text": "[confident] I can smell your fear. Or the crisps.",
+      "audioUrl": "/audio/voices/fe39e7a9f86e798feb53993549d4eb7a304b8cfcb208d9e33add40bfc8bc78da.mp3"
+    },
+    {
+      "key": "19ddf793186d745969f79014ef32f3f29ac9e9793872c9cd53693b815db45732",
+      "speaker": "doug",
+      "text": "[confident] I definitely know what I’m doing. This is what confidence looks like.",
+      "audioUrl": "/audio/voices/19ddf793186d745969f79014ef32f3f29ac9e9793872c9cd53693b815db45732.mp3"
+    },
+    {
+      "key": "f3fac517359aefe326cc1aa0694d4886b28a87383f0e838c42d1f990e5c6232f",
+      "speaker": "doug",
+      "text": "[chuckles] That’s one way to donate chips.",
+      "audioUrl": "/audio/voices/f3fac517359aefe326cc1aa0694d4886b28a87383f0e838c42d1f990e5c6232f.mp3"
+    },
+    {
+      "key": "9eda52c140a9572dfcdba481f8f928f3d82465e1dcd20426f14dad1c8fba883f",
+      "speaker": "doug",
+      "text": "[chuckles] Absolutely calculated. Probably.",
+      "audioUrl": "/audio/voices/9eda52c140a9572dfcdba481f8f928f3d82465e1dcd20426f14dad1c8fba883f.mp3"
+    },
+    {
+      "key": "4712a4ce929b989a126a549fc349822c053e5854fbcd89a02fa3a5165e2d42f8",
+      "speaker": "doug",
+      "text": "[chuckles] Oh, this is going in the group chat.",
+      "audioUrl": "/audio/voices/4712a4ce929b989a126a549fc349822c053e5854fbcd89a02fa3a5165e2d42f8.mp3"
+    },
+    {
+      "key": "8d69cc391d9a07f5c28c54cda8ea0ba5d90a54aebb1b91971316de544328584a",
+      "speaker": "doug",
+      "text": "[chuckles] Oh, this is going in the group chat. Absolutely calculated. Probably.",
+      "audioUrl": "/audio/voices/8d69cc391d9a07f5c28c54cda8ea0ba5d90a54aebb1b91971316de544328584a.mp3"
+    },
+    {
+      "key": "829caafc980d3d0ceb4b9d62e8b45aae871f116d279d89c4a19005d2e1a504fb",
+      "speaker": "doug",
+      "text": "[sighs] I’m just stretching. Nothing to see here.",
+      "audioUrl": "/audio/voices/829caafc980d3d0ceb4b9d62e8b45aae871f116d279d89c4a19005d2e1a504fb.mp3"
+    },
+    {
+      "key": "fe06d6c256c2f0b8f703f9bc3dd8e4001bb3541c332fa1782ebf01cc152b5f12",
+      "speaker": "doug",
+      "text": "[sighs] Right. Who wants a drink?",
+      "audioUrl": "/audio/voices/fe06d6c256c2f0b8f703f9bc3dd8e4001bb3541c332fa1782ebf01cc152b5f12.mp3"
+    },
+    {
+      "key": "c860c4f0560b7902d06ffac00f4dad89530190d28c0a45ad5109422aeaf09249",
+      "speaker": "doug",
+      "text": "[sighs] Suddenly I have somewhere to be.",
+      "audioUrl": "/audio/voices/c860c4f0560b7902d06ffac00f4dad89530190d28c0a45ad5109422aeaf09249.mp3"
+    },
+    {
+      "key": "92ad7165b3f0adf8f9522e75bc700e3fc35c758a98bdf926f28fc02a435dd77a",
+      "speaker": "doug",
+      "text": "[sighs] Right. I’m off. Unless the river helps. Who wants a drink?",
+      "audioUrl": "/audio/voices/92ad7165b3f0adf8f9522e75bc700e3fc35c758a98bdf926f28fc02a435dd77a.mp3"
+    },
+    {
+      "key": "38e2da1f234c2b3525cbbc56786f9faa6b89631fd699e3bd844e968430edf488",
+      "speaker": "doug",
+      "text": "[dramatic] My beautiful, imaginary fortune.",
+      "audioUrl": "/audio/voices/38e2da1f234c2b3525cbbc56786f9faa6b89631fd699e3bd844e968430edf488.mp3"
+    },
+    {
+      "key": "1d92bf6daeea87192ab4a7b1ae4597e0e3f5bad8113453e9d4a2f0ad4b8e844f",
+      "speaker": "doug",
+      "text": "[dramatic] Tell my chips I loved them.",
+      "audioUrl": "/audio/voices/1d92bf6daeea87192ab4a7b1ae4597e0e3f5bad8113453e9d4a2f0ad4b8e844f.mp3"
+    },
+    {
+      "key": "0386a2fe3236362413e86b1916d8f5a147c3ae7ef2a8049a5a3b079ce56c6e3f",
+      "speaker": "doug",
+      "text": "[dramatic] That river was a personal attack.",
+      "audioUrl": "/audio/voices/0386a2fe3236362413e86b1916d8f5a147c3ae7ef2a8049a5a3b079ce56c6e3f.mp3"
+    },
+    {
+      "key": "3b20497f12244de6123e5146babf22b47942654ce289d9f53f3b0380bbe6b17b",
+      "speaker": "doug",
+      "text": "[dramatic] My beautiful, imaginary fortune. Tell my chips I loved them.",
+      "audioUrl": "/audio/voices/3b20497f12244de6123e5146babf22b47942654ce289d9f53f3b0380bbe6b17b.mp3"
+    },
+    {
+      "key": "cbdb82fb0c368cd2abcfa7e33352bb720cea02d5cf89589ce99709b44f106574",
+      "speaker": "doug",
+      "text": "[excited] Big money. Big players.",
+      "audioUrl": "/audio/voices/cbdb82fb0c368cd2abcfa7e33352bb720cea02d5cf89589ce99709b44f106574.mp3"
+    },
+    {
+      "key": "76079662e25bd77b2cc154597b82697e0339674c91bb2645ebab8c37592a100f",
+      "speaker": "doug",
+      "text": "[excited] To questionable decisions!",
+      "audioUrl": "/audio/voices/76079662e25bd77b2cc154597b82697e0339674c91bb2645ebab8c37592a100f.mp3"
+    },
+    {
+      "key": "15fb03c77e5a1de12d1d1e215a449ebfe6d376a7c0814b72d6aa4bbab5b4dbaf",
+      "speaker": "doug",
+      "text": "[excited] Cheers, you magnificent bluffers.",
+      "audioUrl": "/audio/voices/15fb03c77e5a1de12d1d1e215a449ebfe6d376a7c0814b72d6aa4bbab5b4dbaf.mp3"
+    },
+    {
+      "key": "a79aeb3e5e29c88a0bb352203450042215de9cfed3c3a2d2c93c630b0dd29a70",
+      "speaker": "doug",
+      "text": "[excited] Big money. Big players. To questionable decisions!",
+      "audioUrl": "/audio/voices/a79aeb3e5e29c88a0bb352203450042215de9cfed3c3a2d2c93c630b0dd29a70.mp3"
+    },
+    {
+      "key": "707fc98a1428ea4c7d2d4937ad9e67398a469a61d1c9d5d08a239240f6f19385",
+      "speaker": "doug",
+      "text": "[playful] Purely decorative confidence.",
+      "audioUrl": "/audio/voices/707fc98a1428ea4c7d2d4937ad9e67398a469a61d1c9d5d08a239240f6f19385.mp3"
+    },
+    {
+      "key": "7f42d861430f703331ce56bea4f4da4475e6977421c26e0b0dc39e5ace84d67c",
+      "speaker": "doug",
+      "text": "[playful] A little chip choreography.",
+      "audioUrl": "/audio/voices/7f42d861430f703331ce56bea4f4da4475e6977421c26e0b0dc39e5ace84d67c.mp3"
+    },
+    {
+      "key": "fa843c587242a71575c3595562087d885bd4a21be364f74e6a6cc18108a5fc18",
+      "speaker": "doug",
+      "text": "[playful] Practising the only skill I have.",
+      "audioUrl": "/audio/voices/fa843c587242a71575c3595562087d885bd4a21be364f74e6a6cc18108a5fc18.mp3"
+    },
+    {
+      "key": "fcd84fac1d40a1c81b7a27855b27fdefef450771b83118ecc7c4fd55ea460666",
+      "speaker": "doug",
+      "text": "[playful] Watch the fingers.",
+      "audioUrl": "/audio/voices/fcd84fac1d40a1c81b7a27855b27fdefef450771b83118ecc7c4fd55ea460666.mp3"
+    },
+    {
+      "key": "3450a397f3b1b7e7ad55225e5b3f9e59d15a55ad154109e5440c7acb8a4dcfbb",
+      "speaker": "doug",
+      "text": "[playful] Steady hands. Shaky strategy.",
+      "audioUrl": "/audio/voices/3450a397f3b1b7e7ad55225e5b3f9e59d15a55ad154109e5440c7acb8a4dcfbb.mp3"
+    },
+    {
+      "key": "6958ff700af3cb003b6b7ade385237f508e293638c276ee806839e1f670f32d2",
+      "speaker": "doug",
+      "text": "[playful] The chips are on a roll.",
+      "audioUrl": "/audio/voices/6958ff700af3cb003b6b7ade385237f508e293638c276ee806839e1f670f32d2.mp3"
+    },
+    {
+      "key": "ca6a8c5e94fafea1f3d4f838cb494dc35cf8ee24a5c5b06173c630b04bdb6aca",
+      "speaker": "doug",
+      "text": "[playful] And the crowd goes mild.",
+      "audioUrl": "/audio/voices/ca6a8c5e94fafea1f3d4f838cb494dc35cf8ee24a5c5b06173c630b04bdb6aca.mp3"
+    },
+    {
+      "key": "067cf52fbeec3046683e2ac47f3a7b087ecfb0e369a3b3f5396b0c3017f9d45f",
+      "speaker": "doug",
+      "text": "[playful] Nothing up my sleeve.",
+      "audioUrl": "/audio/voices/067cf52fbeec3046683e2ac47f3a7b087ecfb0e369a3b3f5396b0c3017f9d45f.mp3"
+    },
+    {
+      "key": "160a1c9f4be9ec420d515892bd85aa451ec3011dd53b7d6d016d542a73f92ac4",
+      "speaker": "doug",
+      "text": "[playful] A little air time.",
+      "audioUrl": "/audio/voices/160a1c9f4be9ec420d515892bd85aa451ec3011dd53b7d6d016d542a73f92ac4.mp3"
+    },
+    {
+      "key": "d4a3ea55cc3c1d24b898e3ec4216f60f02afcd120d1cfe3468bc8f973b08bc66",
+      "speaker": "doug",
+      "text": "[whispers] Quiet please. I’m doing important maths.",
+      "audioUrl": "/audio/voices/d4a3ea55cc3c1d24b898e3ec4216f60f02afcd120d1cfe3468bc8f973b08bc66.mp3"
+    },
+    {
+      "key": "3840a0f129b1d795447e4eda93d01541f7c42635cdd362f29af46e33b589dd05",
+      "speaker": "doug",
+      "text": "[whispers] Let the chips do the talking.",
+      "audioUrl": "/audio/voices/3840a0f129b1d795447e4eda93d01541f7c42635cdd362f29af46e33b589dd05.mp3"
+    },
+    {
+      "key": "6b112ee0928b491204a34583e79e8350c985295e26d83d61a0b7f5b7f3847998",
+      "speaker": "doug",
+      "text": "[whispers] I’m trying to look mysterious.",
+      "audioUrl": "/audio/voices/6b112ee0928b491204a34583e79e8350c985295e26d83d61a0b7f5b7f3847998.mp3"
+    },
+    {
+      "key": "423c510bfd2d0e62767daed49c3e81ea8455dff2f44d1875170583a666b03954",
+      "speaker": "doug",
+      "text": "[whispers] Quiet please. I’m doing important maths. Let the chips do the talking.",
+      "audioUrl": "/audio/voices/423c510bfd2d0e62767daed49c3e81ea8455dff2f44d1875170583a666b03954.mp3"
+    },
+    {
+      "key": "2efee19271791369583da1ae56e0cc6e778c74f5d79b7a8115a6f9f8f3376199",
+      "speaker": "nat",
+      "text": "Check.",
+      "audioUrl": "/audio/voices/2efee19271791369583da1ae56e0cc6e778c74f5d79b7a8115a6f9f8f3376199.mp3"
+    },
+    {
+      "key": "23f9c75c5418a8d9a741761b4553cc2c5a2a0841a59a406f61239ecb7e2cb013",
+      "speaker": "nat",
+      "text": "I check.",
+      "audioUrl": "/audio/voices/23f9c75c5418a8d9a741761b4553cc2c5a2a0841a59a406f61239ecb7e2cb013.mp3"
+    },
+    {
+      "key": "a0ea05db29e9baeb0bd77acfa98a3cff9c1e21649ddbebfe7d2688035a3aeede",
+      "speaker": "nat",
+      "text": "Call.",
+      "audioUrl": "/audio/voices/a0ea05db29e9baeb0bd77acfa98a3cff9c1e21649ddbebfe7d2688035a3aeede.mp3"
+    },
+    {
+      "key": "ed7a63d9f9f0090d1e129d0a3b4bd0662777410f84a2379396fed7129c6624cd",
+      "speaker": "nat",
+      "text": "I’ll call.",
+      "audioUrl": "/audio/voices/ed7a63d9f9f0090d1e129d0a3b4bd0662777410f84a2379396fed7129c6624cd.mp3"
+    },
+    {
+      "key": "f52af31dc8640a1fb236a2487d81fbcb92ae84fcf8f51a9ca1ad001c2789deb5",
+      "speaker": "nat",
+      "text": "Bet.",
+      "audioUrl": "/audio/voices/f52af31dc8640a1fb236a2487d81fbcb92ae84fcf8f51a9ca1ad001c2789deb5.mp3"
+    },
+    {
+      "key": "1ffdeb40095691ac8501111095ed4e517cc3017c4f74b168dfa454e41e0858f2",
+      "speaker": "nat",
+      "text": "I’ll bet.",
+      "audioUrl": "/audio/voices/1ffdeb40095691ac8501111095ed4e517cc3017c4f74b168dfa454e41e0858f2.mp3"
+    },
+    {
+      "key": "3dbfebf0fbfa002d36a4c0418cf13624333fc40109b7a22735d0e054461174cd",
+      "speaker": "nat",
+      "text": "Raise.",
+      "audioUrl": "/audio/voices/3dbfebf0fbfa002d36a4c0418cf13624333fc40109b7a22735d0e054461174cd.mp3"
+    },
+    {
+      "key": "15a5cbcdc122a032b3457a2fc08a375f5df0ad2e2569c36f0c35c8f78a51a30d",
+      "speaker": "nat",
+      "text": "I’ll raise.",
+      "audioUrl": "/audio/voices/15a5cbcdc122a032b3457a2fc08a375f5df0ad2e2569c36f0c35c8f78a51a30d.mp3"
+    },
+    {
+      "key": "bd3e1ff055bcf21983b3bac39a05b3e3dccc4ff07c84e0bf8eac507df3b6b421",
+      "speaker": "nat",
+      "text": "Fold.",
+      "audioUrl": "/audio/voices/bd3e1ff055bcf21983b3bac39a05b3e3dccc4ff07c84e0bf8eac507df3b6b421.mp3"
+    },
+    {
+      "key": "bb522275417f594016dc5ba0b3a63f6ad65b1083aa7ab59d946b410228ce8ba8",
+      "speaker": "nat",
+      "text": "I’m out.",
+      "audioUrl": "/audio/voices/bb522275417f594016dc5ba0b3a63f6ad65b1083aa7ab59d946b410228ce8ba8.mp3"
+    },
+    {
+      "key": "f5cdc98747d75aabc5ef06bb1a8f7bf37225030c3aa56cf1f140960a840fdd14",
+      "speaker": "nat",
+      "text": "All in.",
+      "audioUrl": "/audio/voices/f5cdc98747d75aabc5ef06bb1a8f7bf37225030c3aa56cf1f140960a840fdd14.mp3"
+    },
+    {
+      "key": "df824285264fa80709e2ee6d7cb9b4c847a281312e0cfcd90ea2ba25c315fc02",
+      "speaker": "nat",
+      "text": "I’m all in.",
+      "audioUrl": "/audio/voices/df824285264fa80709e2ee6d7cb9b4c847a281312e0cfcd90ea2ba25c315fc02.mp3"
+    },
+    {
+      "key": "bdfe5c7ad93784398a32750da8d72ec3adf773bb88956672ec4f84151ec5a5ba",
+      "speaker": "nat",
+      "text": "[confident] I definitely know what I’m doing.",
+      "audioUrl": "/audio/voices/bdfe5c7ad93784398a32750da8d72ec3adf773bb88956672ec4f84151ec5a5ba.mp3"
+    },
+    {
+      "key": "70b07deba53a6172727c6bb85e504aec74f2de8a889fc9cd3cadee9b6ed0fe4d",
+      "speaker": "nat",
+      "text": "[confident] This is what confidence looks like.",
+      "audioUrl": "/audio/voices/70b07deba53a6172727c6bb85e504aec74f2de8a889fc9cd3cadee9b6ed0fe4d.mp3"
+    },
+    {
+      "key": "9f14f85ecc31a0af16447f7b95847b028428820d9781dca310bc1997362778a9",
+      "speaker": "nat",
+      "text": "[confident] I can smell your fear. Or the crisps.",
+      "audioUrl": "/audio/voices/9f14f85ecc31a0af16447f7b95847b028428820d9781dca310bc1997362778a9.mp3"
+    },
+    {
+      "key": "b9427a3d8a81c19538e356a8b32a7184e5c664078fdacea330dc36c51be91ada",
+      "speaker": "nat",
+      "text": "[confident] I definitely know what I’m doing. This is what confidence looks like.",
+      "audioUrl": "/audio/voices/b9427a3d8a81c19538e356a8b32a7184e5c664078fdacea330dc36c51be91ada.mp3"
+    },
+    {
+      "key": "9d537da724a91d03b27f3f10f9a565e5c00e857675002d45dc681efcb282e6a7",
+      "speaker": "nat",
+      "text": "[chuckles] That’s one way to donate chips.",
+      "audioUrl": "/audio/voices/9d537da724a91d03b27f3f10f9a565e5c00e857675002d45dc681efcb282e6a7.mp3"
+    },
+    {
+      "key": "2e31f9393a259f65ae4df3959b83a594ac956abb44271e6855e96ed59bd665d5",
+      "speaker": "nat",
+      "text": "[chuckles] Absolutely calculated. Probably.",
+      "audioUrl": "/audio/voices/2e31f9393a259f65ae4df3959b83a594ac956abb44271e6855e96ed59bd665d5.mp3"
+    },
+    {
+      "key": "e19a18f37050ea8648c1af3065724e1df853db5a5299f7677b545635414a4ca7",
+      "speaker": "nat",
+      "text": "[chuckles] Oh, this is going in the group chat.",
+      "audioUrl": "/audio/voices/e19a18f37050ea8648c1af3065724e1df853db5a5299f7677b545635414a4ca7.mp3"
+    },
+    {
+      "key": "54042325dca57d8dffa46dc5dbebfdbb29c4da8f13eaed4048d6fb186d21a9f5",
+      "speaker": "nat",
+      "text": "[chuckles] Oh, this is going in the group chat. Absolutely calculated. Probably.",
+      "audioUrl": "/audio/voices/54042325dca57d8dffa46dc5dbebfdbb29c4da8f13eaed4048d6fb186d21a9f5.mp3"
+    },
+    {
+      "key": "ccbd13a34abf145337e4d49787b318e3f8d282c6bc6c0b0517466462118101fd",
+      "speaker": "nat",
+      "text": "[sighs] I’m just stretching. Nothing to see here.",
+      "audioUrl": "/audio/voices/ccbd13a34abf145337e4d49787b318e3f8d282c6bc6c0b0517466462118101fd.mp3"
+    },
+    {
+      "key": "6e043c9f615085e49156da1f2afc982a1a9de9a7cfd2f45182c087f82afe067c",
+      "speaker": "nat",
+      "text": "[sighs] Right. Who wants a drink?",
+      "audioUrl": "/audio/voices/6e043c9f615085e49156da1f2afc982a1a9de9a7cfd2f45182c087f82afe067c.mp3"
+    },
+    {
+      "key": "67b882f8717ed92e37096b9238d7463bba007c7b80542973cec1e85bf580fafa",
+      "speaker": "nat",
+      "text": "[sighs] Suddenly I have somewhere to be.",
+      "audioUrl": "/audio/voices/67b882f8717ed92e37096b9238d7463bba007c7b80542973cec1e85bf580fafa.mp3"
+    },
+    {
+      "key": "5c927957f612c77f942060d75fa7c72a91ad626e258cbc08dcb70eea18c4c6ba",
+      "speaker": "nat",
+      "text": "[sighs] Right. I’m off. Unless the river helps. Who wants a drink?",
+      "audioUrl": "/audio/voices/5c927957f612c77f942060d75fa7c72a91ad626e258cbc08dcb70eea18c4c6ba.mp3"
+    },
+    {
+      "key": "5639c110640f7b3011c8ef493c4840e2e99f1ad2d1ab32d56da86d0bcef11559",
+      "speaker": "nat",
+      "text": "[dramatic] My beautiful, imaginary fortune.",
+      "audioUrl": "/audio/voices/5639c110640f7b3011c8ef493c4840e2e99f1ad2d1ab32d56da86d0bcef11559.mp3"
+    },
+    {
+      "key": "cae2d3447d7c7de16c908be4d9443da1f7787619c165d3a73664d2534e78d44c",
+      "speaker": "nat",
+      "text": "[dramatic] Tell my chips I loved them.",
+      "audioUrl": "/audio/voices/cae2d3447d7c7de16c908be4d9443da1f7787619c165d3a73664d2534e78d44c.mp3"
+    },
+    {
+      "key": "e33eae23545f84bd432d09f13fb13f700d25553aab1097d54f810f91caffa264",
+      "speaker": "nat",
+      "text": "[dramatic] That river was a personal attack.",
+      "audioUrl": "/audio/voices/e33eae23545f84bd432d09f13fb13f700d25553aab1097d54f810f91caffa264.mp3"
+    },
+    {
+      "key": "aa474a3a08b2602ab64a30a56427174bb224d832a81023d62251dff00698d147",
+      "speaker": "nat",
+      "text": "[dramatic] My beautiful, imaginary fortune. Tell my chips I loved them.",
+      "audioUrl": "/audio/voices/aa474a3a08b2602ab64a30a56427174bb224d832a81023d62251dff00698d147.mp3"
+    },
+    {
+      "key": "1400b7deb36ff9fadf4233d04cfac695ba6a51a76c40d6362fcff60711119dae",
+      "speaker": "nat",
+      "text": "[excited] Big money. Big players.",
+      "audioUrl": "/audio/voices/1400b7deb36ff9fadf4233d04cfac695ba6a51a76c40d6362fcff60711119dae.mp3"
+    },
+    {
+      "key": "6534458c63f68be0039ce6cdb0e3e2f7be584f110a7f2072d03da197e50bac9f",
+      "speaker": "nat",
+      "text": "[excited] To questionable decisions!",
+      "audioUrl": "/audio/voices/6534458c63f68be0039ce6cdb0e3e2f7be584f110a7f2072d03da197e50bac9f.mp3"
+    },
+    {
+      "key": "be31188c0b3d1fd0af40dd3716a27b53e7b0738448ba10de5aaf767260ddb17c",
+      "speaker": "nat",
+      "text": "[excited] Cheers, you magnificent bluffers.",
+      "audioUrl": "/audio/voices/be31188c0b3d1fd0af40dd3716a27b53e7b0738448ba10de5aaf767260ddb17c.mp3"
+    },
+    {
+      "key": "a6f56bc9c58a3a096f4836aff546eb77971629e2dd72876149f8497deac7a113",
+      "speaker": "nat",
+      "text": "[excited] Big money. Big players. To questionable decisions!",
+      "audioUrl": "/audio/voices/a6f56bc9c58a3a096f4836aff546eb77971629e2dd72876149f8497deac7a113.mp3"
+    },
+    {
+      "key": "4dc60abe59ff441326a640dc1c5e2cc6f14ee247ab3407d038bab0cdf3f838f4",
+      "speaker": "nat",
+      "text": "[playful] Purely decorative confidence.",
+      "audioUrl": "/audio/voices/4dc60abe59ff441326a640dc1c5e2cc6f14ee247ab3407d038bab0cdf3f838f4.mp3"
+    },
+    {
+      "key": "9d168d3f9132c044b8e0638585652220d12edc708b7087bc336a01c513651f3a",
+      "speaker": "nat",
+      "text": "[playful] A little chip choreography.",
+      "audioUrl": "/audio/voices/9d168d3f9132c044b8e0638585652220d12edc708b7087bc336a01c513651f3a.mp3"
+    },
+    {
+      "key": "57820a611a1951b52c573071c25d194f90f2349969923cb3e5aeb5e774e2e5a0",
+      "speaker": "nat",
+      "text": "[playful] Practising the only skill I have.",
+      "audioUrl": "/audio/voices/57820a611a1951b52c573071c25d194f90f2349969923cb3e5aeb5e774e2e5a0.mp3"
+    },
+    {
+      "key": "091b1be0b4ff077247133165971195de69145894f3052f4976dfa3a57278e408",
+      "speaker": "nat",
+      "text": "[playful] Watch the fingers.",
+      "audioUrl": "/audio/voices/091b1be0b4ff077247133165971195de69145894f3052f4976dfa3a57278e408.mp3"
+    },
+    {
+      "key": "14086c712fcd2c0105abd003760454d701d77f7085bd9c2a08b7632592cc1cde",
+      "speaker": "nat",
+      "text": "[playful] Steady hands. Shaky strategy.",
+      "audioUrl": "/audio/voices/14086c712fcd2c0105abd003760454d701d77f7085bd9c2a08b7632592cc1cde.mp3"
+    },
+    {
+      "key": "44a93483848ed84c72d3e1122e305a285a9d9842cd7359f19f00c1ed14920669",
+      "speaker": "nat",
+      "text": "[playful] The chips are on a roll.",
+      "audioUrl": "/audio/voices/44a93483848ed84c72d3e1122e305a285a9d9842cd7359f19f00c1ed14920669.mp3"
+    },
+    {
+      "key": "1e2759bfe48962ca1b0a5463aaf6419785625586b82ee2da0010aff0e0c9f461",
+      "speaker": "nat",
+      "text": "[playful] And the crowd goes mild.",
+      "audioUrl": "/audio/voices/1e2759bfe48962ca1b0a5463aaf6419785625586b82ee2da0010aff0e0c9f461.mp3"
+    },
+    {
+      "key": "0d88e05d9229bb0f68a136756857cf68d755337d23fc18b5be313fbb0f5e1e6d",
+      "speaker": "nat",
+      "text": "[playful] Nothing up my sleeve.",
+      "audioUrl": "/audio/voices/0d88e05d9229bb0f68a136756857cf68d755337d23fc18b5be313fbb0f5e1e6d.mp3"
+    },
+    {
+      "key": "200983d7f22e6d025c96d52c7c9407dc2f62cedda4f8055098697b161cefe9c9",
+      "speaker": "nat",
+      "text": "[playful] A little air time.",
+      "audioUrl": "/audio/voices/200983d7f22e6d025c96d52c7c9407dc2f62cedda4f8055098697b161cefe9c9.mp3"
+    },
+    {
+      "key": "b5a463e8d26c96d71de98674c90d350f878475c9a7523908287324a17ec2e63a",
+      "speaker": "nat",
+      "text": "[whispers] Quiet please. I’m doing important maths.",
+      "audioUrl": "/audio/voices/b5a463e8d26c96d71de98674c90d350f878475c9a7523908287324a17ec2e63a.mp3"
+    },
+    {
+      "key": "6913bf6446a6ffe61958b9329fce0309a5acee4f42ea583f074c00d6628a7b74",
+      "speaker": "nat",
+      "text": "[whispers] Let the chips do the talking.",
+      "audioUrl": "/audio/voices/6913bf6446a6ffe61958b9329fce0309a5acee4f42ea583f074c00d6628a7b74.mp3"
+    },
+    {
+      "key": "40f52f5968ad1e81580405d2214170ee24d628e1a840c525bc96b38dce149271",
+      "speaker": "nat",
+      "text": "[whispers] I’m trying to look mysterious.",
+      "audioUrl": "/audio/voices/40f52f5968ad1e81580405d2214170ee24d628e1a840c525bc96b38dce149271.mp3"
+    },
+    {
+      "key": "21b377e59a84eb3acd346a7644addfca24fbe640ee7e283c8c07f49a03698ada",
+      "speaker": "nat",
+      "text": "[whispers] Quiet please. I’m doing important maths. Let the chips do the talking.",
+      "audioUrl": "/audio/voices/21b377e59a84eb3acd346a7644addfca24fbe640ee7e283c8c07f49a03698ada.mp3"
+    },
+    {
+      "key": "cb715ca468097c564e1c938c7cfda30bfb491b91029e75eeae7ca95740aacf33",
+      "speaker": "tian",
+      "text": "Check.",
+      "audioUrl": "/audio/voices/cb715ca468097c564e1c938c7cfda30bfb491b91029e75eeae7ca95740aacf33.mp3"
+    },
+    {
+      "key": "521ab15bef5fcbe6112d910ac1de3ac18e12d82e140f28e19e61625e6af37a60",
+      "speaker": "tian",
+      "text": "I check.",
+      "audioUrl": "/audio/voices/521ab15bef5fcbe6112d910ac1de3ac18e12d82e140f28e19e61625e6af37a60.mp3"
+    },
+    {
+      "key": "1fd14f89b22ae0b91628399794f3e4b99ff18cb8fa62ebcf2437717d1f269743",
+      "speaker": "tian",
+      "text": "Call.",
+      "audioUrl": "/audio/voices/1fd14f89b22ae0b91628399794f3e4b99ff18cb8fa62ebcf2437717d1f269743.mp3"
+    },
+    {
+      "key": "b90cbe63f12ccae518a5987be0851a8afba0f54199ba3466e835fdf275c220d8",
+      "speaker": "tian",
+      "text": "I’ll call.",
+      "audioUrl": "/audio/voices/b90cbe63f12ccae518a5987be0851a8afba0f54199ba3466e835fdf275c220d8.mp3"
+    },
+    {
+      "key": "a102d305962ffa35bc9206ac757e5d2c8d9bcd6cc96677235da86c38f293eeb4",
+      "speaker": "tian",
+      "text": "Bet.",
+      "audioUrl": "/audio/voices/a102d305962ffa35bc9206ac757e5d2c8d9bcd6cc96677235da86c38f293eeb4.mp3"
+    },
+    {
+      "key": "68496e9d2ed46257b2e372a297bd155ae2adfd783c4e6b4310703d8d9afbf0b1",
+      "speaker": "tian",
+      "text": "I’ll bet.",
+      "audioUrl": "/audio/voices/68496e9d2ed46257b2e372a297bd155ae2adfd783c4e6b4310703d8d9afbf0b1.mp3"
+    },
+    {
+      "key": "ece39fe45a91857568eb9e2c4ba4e29ab25ea86ba7cdcd9d9c94b42bae1d3220",
+      "speaker": "tian",
+      "text": "Raise.",
+      "audioUrl": "/audio/voices/ece39fe45a91857568eb9e2c4ba4e29ab25ea86ba7cdcd9d9c94b42bae1d3220.mp3"
+    },
+    {
+      "key": "f1f493400d6b6863cdf5f8b251505f9e57e884fed2914aa5b5383c428a0c1358",
+      "speaker": "tian",
+      "text": "I’ll raise.",
+      "audioUrl": "/audio/voices/f1f493400d6b6863cdf5f8b251505f9e57e884fed2914aa5b5383c428a0c1358.mp3"
+    },
+    {
+      "key": "d3687e1998c925859638ed5f0c34d26c8ca3a15362fae5f1695c4604de4c5e6e",
+      "speaker": "tian",
+      "text": "Fold.",
+      "audioUrl": "/audio/voices/d3687e1998c925859638ed5f0c34d26c8ca3a15362fae5f1695c4604de4c5e6e.mp3"
+    },
+    {
+      "key": "a154ab72853c9860f63a2313b83a39bf7b4f2dc173c94d2886cd43a76eff941b",
+      "speaker": "tian",
+      "text": "I’m out.",
+      "audioUrl": "/audio/voices/a154ab72853c9860f63a2313b83a39bf7b4f2dc173c94d2886cd43a76eff941b.mp3"
+    },
+    {
+      "key": "1990019a8b0b60fdb1c73af384029b30be68d37bba5dd0fbd731a727128a5404",
+      "speaker": "tian",
+      "text": "All in.",
+      "audioUrl": "/audio/voices/1990019a8b0b60fdb1c73af384029b30be68d37bba5dd0fbd731a727128a5404.mp3"
+    },
+    {
+      "key": "bb3b0d4d08965eeb5a24b1b96812297c0e217711dd913844f76430640c2dbd0b",
+      "speaker": "tian",
+      "text": "I’m all in.",
+      "audioUrl": "/audio/voices/bb3b0d4d08965eeb5a24b1b96812297c0e217711dd913844f76430640c2dbd0b.mp3"
+    },
+    {
+      "key": "a69014be9ba9d5a89ccb0ee5d251dca8a015f1859fdade9a66346676be8096af",
+      "speaker": "tian",
+      "text": "[confident] I definitely know what I’m doing.",
+      "audioUrl": "/audio/voices/a69014be9ba9d5a89ccb0ee5d251dca8a015f1859fdade9a66346676be8096af.mp3"
+    },
+    {
+      "key": "4190c9f98011b0a610b04297c38a45d888de6e78b7ae406a9eae1b8044ae2b09",
+      "speaker": "tian",
+      "text": "[confident] This is what confidence looks like.",
+      "audioUrl": "/audio/voices/4190c9f98011b0a610b04297c38a45d888de6e78b7ae406a9eae1b8044ae2b09.mp3"
+    },
+    {
+      "key": "7d98c2ac3c7d9ad4eb644aaab29727e6defdc8b0c09553b368199138f3bef582",
+      "speaker": "tian",
+      "text": "[confident] I can smell your fear. Or the crisps.",
+      "audioUrl": "/audio/voices/7d98c2ac3c7d9ad4eb644aaab29727e6defdc8b0c09553b368199138f3bef582.mp3"
+    },
+    {
+      "key": "df864a8d2ca33916389ad68cbcda752c100d887e9901f2a62fb121076133dfb7",
+      "speaker": "tian",
+      "text": "[confident] I definitely know what I’m doing. This is what confidence looks like.",
+      "audioUrl": "/audio/voices/df864a8d2ca33916389ad68cbcda752c100d887e9901f2a62fb121076133dfb7.mp3"
+    },
+    {
+      "key": "ee30d843cfdcacaad41ec950c5e311e9f8d628ac542e55c79851822de19f95de",
+      "speaker": "tian",
+      "text": "[chuckles] That’s one way to donate chips.",
+      "audioUrl": "/audio/voices/ee30d843cfdcacaad41ec950c5e311e9f8d628ac542e55c79851822de19f95de.mp3"
+    },
+    {
+      "key": "4e17ea97d0ef3c64cec46546e5aa95cf1b286e5e67a36863891e89fa5dcdd35c",
+      "speaker": "tian",
+      "text": "[chuckles] Absolutely calculated. Probably.",
+      "audioUrl": "/audio/voices/4e17ea97d0ef3c64cec46546e5aa95cf1b286e5e67a36863891e89fa5dcdd35c.mp3"
+    },
+    {
+      "key": "53c78d9b5b1dcad844f5d96f4e7731367c9df4b5b2e19e45724787a85e80f506",
+      "speaker": "tian",
+      "text": "[chuckles] Oh, this is going in the group chat.",
+      "audioUrl": "/audio/voices/53c78d9b5b1dcad844f5d96f4e7731367c9df4b5b2e19e45724787a85e80f506.mp3"
+    },
+    {
+      "key": "2f51a753d88ba613e5f4e867d1336192677aa493819336af1f50c0a0f5be6047",
+      "speaker": "tian",
+      "text": "[chuckles] Oh, this is going in the group chat. Absolutely calculated. Probably.",
+      "audioUrl": "/audio/voices/2f51a753d88ba613e5f4e867d1336192677aa493819336af1f50c0a0f5be6047.mp3"
+    },
+    {
+      "key": "f16d77eada5f204f5b95a3c284b46ee384888ecb80f26d1ff0535bc7ead1a10d",
+      "speaker": "tian",
+      "text": "[sighs] I’m just stretching. Nothing to see here.",
+      "audioUrl": "/audio/voices/f16d77eada5f204f5b95a3c284b46ee384888ecb80f26d1ff0535bc7ead1a10d.mp3"
+    },
+    {
+      "key": "64d9a6e5e25dcc1389556a5f61ec27348bbd7146c9c5314b692f947e3d63dc56",
+      "speaker": "tian",
+      "text": "[sighs] Right. Who wants a drink?",
+      "audioUrl": "/audio/voices/64d9a6e5e25dcc1389556a5f61ec27348bbd7146c9c5314b692f947e3d63dc56.mp3"
+    },
+    {
+      "key": "894f3d3d9957e6b43e4269de8ad11e298d0f2ac8b8d64a73aadb854a6e057daf",
+      "speaker": "tian",
+      "text": "[sighs] Suddenly I have somewhere to be.",
+      "audioUrl": "/audio/voices/894f3d3d9957e6b43e4269de8ad11e298d0f2ac8b8d64a73aadb854a6e057daf.mp3"
+    },
+    {
+      "key": "f0243e97b85ba2abf1f09aebfb4c0b22f10b230c1968b24cd26bb7a7090767d2",
+      "speaker": "tian",
+      "text": "[sighs] Right. I’m off. Unless the river helps. Who wants a drink?",
+      "audioUrl": "/audio/voices/f0243e97b85ba2abf1f09aebfb4c0b22f10b230c1968b24cd26bb7a7090767d2.mp3"
+    },
+    {
+      "key": "4643bad0c123982948b9deb6fbb58db2800ad4fbadef422256e3b853c5f699f3",
+      "speaker": "tian",
+      "text": "[dramatic] My beautiful, imaginary fortune.",
+      "audioUrl": "/audio/voices/4643bad0c123982948b9deb6fbb58db2800ad4fbadef422256e3b853c5f699f3.mp3"
+    },
+    {
+      "key": "e4ecb2c22256789fbb6e59960fcbb61f0e84ac5630688b7c65579fb77dc3a723",
+      "speaker": "tian",
+      "text": "[dramatic] Tell my chips I loved them.",
+      "audioUrl": "/audio/voices/e4ecb2c22256789fbb6e59960fcbb61f0e84ac5630688b7c65579fb77dc3a723.mp3"
+    },
+    {
+      "key": "228e071e0727c47846153609cee1b53ea0f20e51b4df6dab038a4b06effd7b69",
+      "speaker": "tian",
+      "text": "[dramatic] That river was a personal attack.",
+      "audioUrl": "/audio/voices/228e071e0727c47846153609cee1b53ea0f20e51b4df6dab038a4b06effd7b69.mp3"
+    },
+    {
+      "key": "967e9dc582bc7765aa634d2eecb0c260a15829315f5ad108384530ed6f6fa636",
+      "speaker": "tian",
+      "text": "[dramatic] My beautiful, imaginary fortune. Tell my chips I loved them.",
+      "audioUrl": "/audio/voices/967e9dc582bc7765aa634d2eecb0c260a15829315f5ad108384530ed6f6fa636.mp3"
+    },
+    {
+      "key": "3fa8c7a5c5b83f7055153fdd6924d987cc126c0064a9ccc4b3a4248c15971b61",
+      "speaker": "tian",
+      "text": "[excited] Big money. Big players.",
+      "audioUrl": "/audio/voices/3fa8c7a5c5b83f7055153fdd6924d987cc126c0064a9ccc4b3a4248c15971b61.mp3"
+    },
+    {
+      "key": "5ac0ea5087652fb9073e1411ed17727d14e3ebe7ddc1ca3978bd853f34b59631",
+      "speaker": "tian",
+      "text": "[excited] To questionable decisions!",
+      "audioUrl": "/audio/voices/5ac0ea5087652fb9073e1411ed17727d14e3ebe7ddc1ca3978bd853f34b59631.mp3"
+    },
+    {
+      "key": "2e9d2aff072ddd85411dcb019b6087029cc31070f06c93e114f74fe9fa7facae",
+      "speaker": "tian",
+      "text": "[excited] Cheers, you magnificent bluffers.",
+      "audioUrl": "/audio/voices/2e9d2aff072ddd85411dcb019b6087029cc31070f06c93e114f74fe9fa7facae.mp3"
+    },
+    {
+      "key": "b88b2cd5b4e4309fb4c8f65cbbb1bd910ceff0d1d1e4fd636efb64c9d0b46d86",
+      "speaker": "tian",
+      "text": "[excited] Big money. Big players. To questionable decisions!",
+      "audioUrl": "/audio/voices/b88b2cd5b4e4309fb4c8f65cbbb1bd910ceff0d1d1e4fd636efb64c9d0b46d86.mp3"
+    },
+    {
+      "key": "f84835222225a94c7423a75b7e9a37fb47ad3177e01751c435ffc759bb3fa17f",
+      "speaker": "tian",
+      "text": "[playful] Purely decorative confidence.",
+      "audioUrl": "/audio/voices/f84835222225a94c7423a75b7e9a37fb47ad3177e01751c435ffc759bb3fa17f.mp3"
+    },
+    {
+      "key": "4ee86b21ffdadfdb79908e998e611ab110013b939280ec3e5b7bd4a8f42eeeb1",
+      "speaker": "tian",
+      "text": "[playful] A little chip choreography.",
+      "audioUrl": "/audio/voices/4ee86b21ffdadfdb79908e998e611ab110013b939280ec3e5b7bd4a8f42eeeb1.mp3"
+    },
+    {
+      "key": "0856ff77910f2459b67be071c91d9c96e71cf0e63f35c56e2294bed7887dc138",
+      "speaker": "tian",
+      "text": "[playful] Practising the only skill I have.",
+      "audioUrl": "/audio/voices/0856ff77910f2459b67be071c91d9c96e71cf0e63f35c56e2294bed7887dc138.mp3"
+    },
+    {
+      "key": "2b9bd5b071db24ae564d1712dd7a26c06ab5572f7fdfceed933588918de90cbf",
+      "speaker": "tian",
+      "text": "[playful] Watch the fingers.",
+      "audioUrl": "/audio/voices/2b9bd5b071db24ae564d1712dd7a26c06ab5572f7fdfceed933588918de90cbf.mp3"
+    },
+    {
+      "key": "fd5ee8c4a398928d5a7eddb57e80f185268f68103066d3a62a0a135d1ec01e96",
+      "speaker": "tian",
+      "text": "[playful] Steady hands. Shaky strategy.",
+      "audioUrl": "/audio/voices/fd5ee8c4a398928d5a7eddb57e80f185268f68103066d3a62a0a135d1ec01e96.mp3"
+    },
+    {
+      "key": "29b08d27cbdf5cd599881bfac1c5260abcf04ec45ed9e504a3a85ee96429f607",
+      "speaker": "tian",
+      "text": "[playful] The chips are on a roll.",
+      "audioUrl": "/audio/voices/29b08d27cbdf5cd599881bfac1c5260abcf04ec45ed9e504a3a85ee96429f607.mp3"
+    },
+    {
+      "key": "fef3058bebb3a422eda89eb3e2687faa184368e37ece0a2266db180bb8523ded",
+      "speaker": "tian",
+      "text": "[playful] And the crowd goes mild.",
+      "audioUrl": "/audio/voices/fef3058bebb3a422eda89eb3e2687faa184368e37ece0a2266db180bb8523ded.mp3"
+    },
+    {
+      "key": "53ca301d56129e2ed2ae742fa79751a897101e4ada95a4062a7b61230b8387e4",
+      "speaker": "tian",
+      "text": "[playful] Nothing up my sleeve.",
+      "audioUrl": "/audio/voices/53ca301d56129e2ed2ae742fa79751a897101e4ada95a4062a7b61230b8387e4.mp3"
+    },
+    {
+      "key": "b15c1a0eacacd54fe090f1a5938352c4b34d3c51451b41c4c98b2e553b8e21e1",
+      "speaker": "tian",
+      "text": "[playful] A little air time.",
+      "audioUrl": "/audio/voices/b15c1a0eacacd54fe090f1a5938352c4b34d3c51451b41c4c98b2e553b8e21e1.mp3"
+    },
+    {
+      "key": "57043cfcbf56146165be0ad33ada3f9031b74a460b4df1a21fabbffd40e073fb",
+      "speaker": "tian",
+      "text": "[whispers] Quiet please. I’m doing important maths.",
+      "audioUrl": "/audio/voices/57043cfcbf56146165be0ad33ada3f9031b74a460b4df1a21fabbffd40e073fb.mp3"
+    },
+    {
+      "key": "69f5432217ead2c1c4d73ffe4deb2b95301f28124b7a69707e1d60c3c2a9601c",
+      "speaker": "tian",
+      "text": "[whispers] Let the chips do the talking.",
+      "audioUrl": "/audio/voices/69f5432217ead2c1c4d73ffe4deb2b95301f28124b7a69707e1d60c3c2a9601c.mp3"
+    },
+    {
+      "key": "91fc66bb8891274025b3fe178a2f0cdb9cdffd152d8230805f5a625836b312d0",
+      "speaker": "tian",
+      "text": "[whispers] I’m trying to look mysterious.",
+      "audioUrl": "/audio/voices/91fc66bb8891274025b3fe178a2f0cdb9cdffd152d8230805f5a625836b312d0.mp3"
+    },
+    {
+      "key": "8e13890045db8a2f79a3ed26a0a4164dee01aa38c1306485652ddeff06c307b7",
+      "speaker": "tian",
+      "text": "[whispers] Quiet please. I’m doing important maths. Let the chips do the talking.",
+      "audioUrl": "/audio/voices/8e13890045db8a2f79a3ed26a0a4164dee01aa38c1306485652ddeff06c307b7.mp3"
+    },
+    {
+      "key": "72fa90dc5fcd538db36c5c31dee66fac4081a8f8eb17500bb16da448a7cac514",
+      "speaker": "humfrey",
+      "text": "Check.",
+      "audioUrl": "/audio/voices/72fa90dc5fcd538db36c5c31dee66fac4081a8f8eb17500bb16da448a7cac514.mp3"
+    },
+    {
+      "key": "4542828c8d56de3981e506d1d35de673673dcdf2fc1ed29065ec6e15e5e6f66a",
+      "speaker": "humfrey",
+      "text": "I check.",
+      "audioUrl": "/audio/voices/4542828c8d56de3981e506d1d35de673673dcdf2fc1ed29065ec6e15e5e6f66a.mp3"
+    },
+    {
+      "key": "caee8ee0ffc29ee870436cba25bb984d3c5f87e96f70a60cab1a5b61b613b493",
+      "speaker": "humfrey",
+      "text": "Call.",
+      "audioUrl": "/audio/voices/caee8ee0ffc29ee870436cba25bb984d3c5f87e96f70a60cab1a5b61b613b493.mp3"
+    },
+    {
+      "key": "3b9d614b8e33167fcdfcab8153309b2f52468f7e72882f7817bd637d9545fe32",
+      "speaker": "humfrey",
+      "text": "I’ll call.",
+      "audioUrl": "/audio/voices/3b9d614b8e33167fcdfcab8153309b2f52468f7e72882f7817bd637d9545fe32.mp3"
+    },
+    {
+      "key": "6608f8958f953f4e9e2543ff7375498dfcccf3cf5a89a14ff1024cf735aa49e5",
+      "speaker": "humfrey",
+      "text": "Bet.",
+      "audioUrl": "/audio/voices/6608f8958f953f4e9e2543ff7375498dfcccf3cf5a89a14ff1024cf735aa49e5.mp3"
+    },
+    {
+      "key": "46a31af4ef7e07c0953d23d64bb5d023fb17723527d886cb1656a56edc82a6e5",
+      "speaker": "humfrey",
+      "text": "I’ll bet.",
+      "audioUrl": "/audio/voices/46a31af4ef7e07c0953d23d64bb5d023fb17723527d886cb1656a56edc82a6e5.mp3"
+    },
+    {
+      "key": "57c6842faabcc7c34e8aaebbd2001bc7cbf1bd52b84ad6752620c5e28b96adce",
+      "speaker": "humfrey",
+      "text": "Raise.",
+      "audioUrl": "/audio/voices/57c6842faabcc7c34e8aaebbd2001bc7cbf1bd52b84ad6752620c5e28b96adce.mp3"
+    },
+    {
+      "key": "cbdbe2136f2ad3a5341f6e05853fe4816dd53c38c5d1f9cb3834b31de1034298",
+      "speaker": "humfrey",
+      "text": "I’ll raise.",
+      "audioUrl": "/audio/voices/cbdbe2136f2ad3a5341f6e05853fe4816dd53c38c5d1f9cb3834b31de1034298.mp3"
+    },
+    {
+      "key": "8c3ed4926e5b841352191c2a2dc6ef77e9838f7fba3bc05669b59a17f4b0f426",
+      "speaker": "humfrey",
+      "text": "Fold.",
+      "audioUrl": "/audio/voices/8c3ed4926e5b841352191c2a2dc6ef77e9838f7fba3bc05669b59a17f4b0f426.mp3"
+    },
+    {
+      "key": "6ce1c9b6072793221c00d031d401edcbd1e2a7a80a3f9dc492d9fad8f7e82edf",
+      "speaker": "humfrey",
+      "text": "I’m out.",
+      "audioUrl": "/audio/voices/6ce1c9b6072793221c00d031d401edcbd1e2a7a80a3f9dc492d9fad8f7e82edf.mp3"
+    },
+    {
+      "key": "71ce858c9cbbdcbdd0cdc27fae807e5f8692634907b3895aa2d3d22c52b5c5f8",
+      "speaker": "humfrey",
+      "text": "All in.",
+      "audioUrl": "/audio/voices/71ce858c9cbbdcbdd0cdc27fae807e5f8692634907b3895aa2d3d22c52b5c5f8.mp3"
+    },
+    {
+      "key": "eb921c126fdaffcfc32e91f563aef4501544d6ecbbc950dc791ae92be9803f58",
+      "speaker": "humfrey",
+      "text": "I’m all in.",
+      "audioUrl": "/audio/voices/eb921c126fdaffcfc32e91f563aef4501544d6ecbbc950dc791ae92be9803f58.mp3"
+    },
+    {
+      "key": "e1464ab00da5e4468818fb8123e789efced317112736c88516f81536a60680d7",
+      "speaker": "humfrey",
+      "text": "[confident] I definitely know what I’m doing.",
+      "audioUrl": "/audio/voices/e1464ab00da5e4468818fb8123e789efced317112736c88516f81536a60680d7.mp3"
+    },
+    {
+      "key": "6dc2e25ed9e433aba418fbff7f58ba9f10e296ef9c722f189c47f118165e0357",
+      "speaker": "humfrey",
+      "text": "[confident] This is what confidence looks like.",
+      "audioUrl": "/audio/voices/6dc2e25ed9e433aba418fbff7f58ba9f10e296ef9c722f189c47f118165e0357.mp3"
+    },
+    {
+      "key": "f514c31d1c24b653f50c23701cd3bea6ff6a4b87792f24f909ccc1bb74d706d5",
+      "speaker": "humfrey",
+      "text": "[confident] I can smell your fear. Or the crisps.",
+      "audioUrl": "/audio/voices/f514c31d1c24b653f50c23701cd3bea6ff6a4b87792f24f909ccc1bb74d706d5.mp3"
+    },
+    {
+      "key": "bc41b0d8ac546bd99d581590cdaaf03edcbb612826b52813b53df490d7722309",
+      "speaker": "humfrey",
+      "text": "[confident] I definitely know what I’m doing. This is what confidence looks like.",
+      "audioUrl": "/audio/voices/bc41b0d8ac546bd99d581590cdaaf03edcbb612826b52813b53df490d7722309.mp3"
+    },
+    {
+      "key": "cc0fed1b5a90e74931a1d0c729545816be96e5cc81276f2e8b5e9f1ea0ef99f4",
+      "speaker": "humfrey",
+      "text": "[chuckles] That’s one way to donate chips.",
+      "audioUrl": "/audio/voices/cc0fed1b5a90e74931a1d0c729545816be96e5cc81276f2e8b5e9f1ea0ef99f4.mp3"
+    },
+    {
+      "key": "fff1e866b2b4e8d815a31853e598fe4e168fe5a51dc33febac7d0f6961cbe638",
+      "speaker": "humfrey",
+      "text": "[chuckles] Absolutely calculated. Probably.",
+      "audioUrl": "/audio/voices/fff1e866b2b4e8d815a31853e598fe4e168fe5a51dc33febac7d0f6961cbe638.mp3"
+    },
+    {
+      "key": "0e781405ce9fa3b97ac8c795cbc1e8ba9a900fd58eccdd6e19836b79cce530dc",
+      "speaker": "humfrey",
+      "text": "[chuckles] Oh, this is going in the group chat.",
+      "audioUrl": "/audio/voices/0e781405ce9fa3b97ac8c795cbc1e8ba9a900fd58eccdd6e19836b79cce530dc.mp3"
+    },
+    {
+      "key": "782dffc7143dfacc56f4af5a1f1e6f8c8b49a80469a7fa5eb5a80a84f57c070f",
+      "speaker": "humfrey",
+      "text": "[chuckles] Oh, this is going in the group chat. Absolutely calculated. Probably.",
+      "audioUrl": "/audio/voices/782dffc7143dfacc56f4af5a1f1e6f8c8b49a80469a7fa5eb5a80a84f57c070f.mp3"
+    },
+    {
+      "key": "f6ead2ae47e58d57da0cc386150ce3b7003858a40a55d28ee659711158aa604f",
+      "speaker": "humfrey",
+      "text": "[sighs] I’m just stretching. Nothing to see here.",
+      "audioUrl": "/audio/voices/f6ead2ae47e58d57da0cc386150ce3b7003858a40a55d28ee659711158aa604f.mp3"
+    },
+    {
+      "key": "36d311efe218e17bc83eec24d9a3d518c20b6ae1eaf235913445454e2b039737",
+      "speaker": "humfrey",
+      "text": "[sighs] Right. Who wants a drink?",
+      "audioUrl": "/audio/voices/36d311efe218e17bc83eec24d9a3d518c20b6ae1eaf235913445454e2b039737.mp3"
+    },
+    {
+      "key": "26cd41d5729acfa21d9b454048a496e0de86244d5447bfb57804516c3d1eb492",
+      "speaker": "humfrey",
+      "text": "[sighs] Suddenly I have somewhere to be.",
+      "audioUrl": "/audio/voices/26cd41d5729acfa21d9b454048a496e0de86244d5447bfb57804516c3d1eb492.mp3"
+    },
+    {
+      "key": "279106d42109c01595e4473bd45b11f8f48c5aa09b9ce8e07ef0643d744ef9d3",
+      "speaker": "humfrey",
+      "text": "[sighs] Right. I’m off. Unless the river helps. Who wants a drink?",
+      "audioUrl": "/audio/voices/279106d42109c01595e4473bd45b11f8f48c5aa09b9ce8e07ef0643d744ef9d3.mp3"
+    },
+    {
+      "key": "f2f1839f9d25d2657569cddc365900fbfc0667d8e4039baff812e65e8ba3de1c",
+      "speaker": "humfrey",
+      "text": "[dramatic] My beautiful, imaginary fortune.",
+      "audioUrl": "/audio/voices/f2f1839f9d25d2657569cddc365900fbfc0667d8e4039baff812e65e8ba3de1c.mp3"
+    },
+    {
+      "key": "bed4fa71e425263afee588073bb6341dbcabe98de3347c6efaad005ab1bd944e",
+      "speaker": "humfrey",
+      "text": "[dramatic] Tell my chips I loved them.",
+      "audioUrl": "/audio/voices/bed4fa71e425263afee588073bb6341dbcabe98de3347c6efaad005ab1bd944e.mp3"
+    },
+    {
+      "key": "e9e099b689927a3ff01ee35b0d34950187bea17cf254023107e4b0d562dc201b",
+      "speaker": "humfrey",
+      "text": "[dramatic] That river was a personal attack.",
+      "audioUrl": "/audio/voices/e9e099b689927a3ff01ee35b0d34950187bea17cf254023107e4b0d562dc201b.mp3"
+    },
+    {
+      "key": "4b8d3a3de9b1e9ba74d0d7433caf4536cec4698eba3f15e49beaac22309d53d8",
+      "speaker": "humfrey",
+      "text": "[dramatic] My beautiful, imaginary fortune. Tell my chips I loved them.",
+      "audioUrl": "/audio/voices/4b8d3a3de9b1e9ba74d0d7433caf4536cec4698eba3f15e49beaac22309d53d8.mp3"
+    },
+    {
+      "key": "fe8a7b46dfbda09fe2e558311f6f793d0b8c05420d8c54f7026fa7e395d98c2b",
+      "speaker": "humfrey",
+      "text": "[excited] Big money. Big players.",
+      "audioUrl": "/audio/voices/fe8a7b46dfbda09fe2e558311f6f793d0b8c05420d8c54f7026fa7e395d98c2b.mp3"
+    },
+    {
+      "key": "e5048214c89bab9a89ce3a081d5234093fc684c98b001ce5713ba9584db6e18a",
+      "speaker": "humfrey",
+      "text": "[excited] To questionable decisions!",
+      "audioUrl": "/audio/voices/e5048214c89bab9a89ce3a081d5234093fc684c98b001ce5713ba9584db6e18a.mp3"
+    },
+    {
+      "key": "df733915f32f64dfc4f1346848519d7f3499559f67b3dbbd1a6255bca0876e84",
+      "speaker": "humfrey",
+      "text": "[excited] Cheers, you magnificent bluffers.",
+      "audioUrl": "/audio/voices/df733915f32f64dfc4f1346848519d7f3499559f67b3dbbd1a6255bca0876e84.mp3"
+    },
+    {
+      "key": "a891c4fcee10024d2e27a716fcc5c0059dc58fa70b536a900d224094d58958b7",
+      "speaker": "humfrey",
+      "text": "[excited] Big money. Big players. To questionable decisions!",
+      "audioUrl": "/audio/voices/a891c4fcee10024d2e27a716fcc5c0059dc58fa70b536a900d224094d58958b7.mp3"
+    },
+    {
+      "key": "7b01bf6a3ac9b973f9883b4381986540665735524d52631b25075a20ea861172",
+      "speaker": "humfrey",
+      "text": "[playful] Purely decorative confidence.",
+      "audioUrl": "/audio/voices/7b01bf6a3ac9b973f9883b4381986540665735524d52631b25075a20ea861172.mp3"
+    },
+    {
+      "key": "c96ac2ec7aacf5e496bb4bb3c5a4d860e28e248cbfbbd49d12def47482c2497b",
+      "speaker": "humfrey",
+      "text": "[playful] A little chip choreography.",
+      "audioUrl": "/audio/voices/c96ac2ec7aacf5e496bb4bb3c5a4d860e28e248cbfbbd49d12def47482c2497b.mp3"
+    },
+    {
+      "key": "9a7dbab08170423d02d64e2975123851fa664efed969afefed582b55248cb876",
+      "speaker": "humfrey",
+      "text": "[playful] Practising the only skill I have.",
+      "audioUrl": "/audio/voices/9a7dbab08170423d02d64e2975123851fa664efed969afefed582b55248cb876.mp3"
+    },
+    {
+      "key": "c6b0e54594e08487f4b10cfc0365412695bf9f6b0a5c226247be0638fc3776d3",
+      "speaker": "humfrey",
+      "text": "[playful] Watch the fingers.",
+      "audioUrl": "/audio/voices/c6b0e54594e08487f4b10cfc0365412695bf9f6b0a5c226247be0638fc3776d3.mp3"
+    },
+    {
+      "key": "cd0051d668b3a60adb5fea6f753c91af57d2f6f2403f786eb625c00a8d420e60",
+      "speaker": "humfrey",
+      "text": "[playful] Steady hands. Shaky strategy.",
+      "audioUrl": "/audio/voices/cd0051d668b3a60adb5fea6f753c91af57d2f6f2403f786eb625c00a8d420e60.mp3"
+    },
+    {
+      "key": "d78e671b05fe0ccd2e4d1f8d02cab2d812e76e657abc7ca570ffb5c44862c17f",
+      "speaker": "humfrey",
+      "text": "[playful] The chips are on a roll.",
+      "audioUrl": "/audio/voices/d78e671b05fe0ccd2e4d1f8d02cab2d812e76e657abc7ca570ffb5c44862c17f.mp3"
+    },
+    {
+      "key": "a5ba5e46fd119fedeceb3016938b157da9fbd85f353a2b218c851d9e92d751dd",
+      "speaker": "humfrey",
+      "text": "[playful] And the crowd goes mild.",
+      "audioUrl": "/audio/voices/a5ba5e46fd119fedeceb3016938b157da9fbd85f353a2b218c851d9e92d751dd.mp3"
+    },
+    {
+      "key": "1594c744cea272f7206b0a6560d604d11181b0250921cbb1552e0e24a8732dbd",
+      "speaker": "humfrey",
+      "text": "[playful] Nothing up my sleeve.",
+      "audioUrl": "/audio/voices/1594c744cea272f7206b0a6560d604d11181b0250921cbb1552e0e24a8732dbd.mp3"
+    },
+    {
+      "key": "b8eec515a3dfd4546806523df18274c990133b1253cdb6fb84f1e33d45f0ee60",
+      "speaker": "humfrey",
+      "text": "[playful] A little air time.",
+      "audioUrl": "/audio/voices/b8eec515a3dfd4546806523df18274c990133b1253cdb6fb84f1e33d45f0ee60.mp3"
+    },
+    {
+      "key": "fd8cf5a34184ad7f76c0ee16dd1aa823241c6ed4fe0f2aa0961608afb7acd5f8",
+      "speaker": "humfrey",
+      "text": "[whispers] Quiet please. I’m doing important maths.",
+      "audioUrl": "/audio/voices/fd8cf5a34184ad7f76c0ee16dd1aa823241c6ed4fe0f2aa0961608afb7acd5f8.mp3"
+    },
+    {
+      "key": "c034be64244b53f6a41b90e75aaaeb8ed83a34e496b0f66368ca08a86e771904",
+      "speaker": "humfrey",
+      "text": "[whispers] Let the chips do the talking.",
+      "audioUrl": "/audio/voices/c034be64244b53f6a41b90e75aaaeb8ed83a34e496b0f66368ca08a86e771904.mp3"
+    },
+    {
+      "key": "fd2ae89d7a0cec05708f580cc85f0171789c3a5524a84c6207f030e16d362ddf",
+      "speaker": "humfrey",
+      "text": "[whispers] I’m trying to look mysterious.",
+      "audioUrl": "/audio/voices/fd2ae89d7a0cec05708f580cc85f0171789c3a5524a84c6207f030e16d362ddf.mp3"
+    },
+    {
+      "key": "a617321f62eae1d798a35e01d70abe1bb914e0016e3cf182dfabeb8aeb750f7c",
+      "speaker": "humfrey",
+      "text": "[whispers] Quiet please. I’m doing important maths. Let the chips do the talking.",
+      "audioUrl": "/audio/voices/a617321f62eae1d798a35e01d70abe1bb914e0016e3cf182dfabeb8aeb750f7c.mp3"
+    },
+    {
+      "key": "886edcda8f1ab4e93dd03182a97b0f95763c92ebb21341947f67ab668893920c",
+      "speaker": "diego",
+      "text": "Check.",
+      "audioUrl": "/audio/voices/886edcda8f1ab4e93dd03182a97b0f95763c92ebb21341947f67ab668893920c.mp3"
+    },
+    {
+      "key": "8185329d41d6c36600be6d87ca748baf07f036027a26718cfb4f5378732531e2",
+      "speaker": "diego",
+      "text": "I check.",
+      "audioUrl": "/audio/voices/8185329d41d6c36600be6d87ca748baf07f036027a26718cfb4f5378732531e2.mp3"
+    },
+    {
+      "key": "77e7b0be8510b40c8d863fd98a7d8f6e486c057bd47819f659f71640d162b4e8",
+      "speaker": "diego",
+      "text": "Call.",
+      "audioUrl": "/audio/voices/77e7b0be8510b40c8d863fd98a7d8f6e486c057bd47819f659f71640d162b4e8.mp3"
+    },
+    {
+      "key": "cb6f3305a87d88ccb89e46507ca068b73952dedd6a0c26989c98ef97bfb8fca1",
+      "speaker": "diego",
+      "text": "I’ll call.",
+      "audioUrl": "/audio/voices/cb6f3305a87d88ccb89e46507ca068b73952dedd6a0c26989c98ef97bfb8fca1.mp3"
+    },
+    {
+      "key": "f7704ba64144d5a31959f9ec838ad3d0be67b1fe9abe06fe7ec6ba9504ded0e6",
+      "speaker": "diego",
+      "text": "Bet.",
+      "audioUrl": "/audio/voices/f7704ba64144d5a31959f9ec838ad3d0be67b1fe9abe06fe7ec6ba9504ded0e6.mp3"
+    },
+    {
+      "key": "481ae77978e075c6630dd878311f7353283b82595788c72fd57d8db9f5b44635",
+      "speaker": "diego",
+      "text": "I’ll bet.",
+      "audioUrl": "/audio/voices/481ae77978e075c6630dd878311f7353283b82595788c72fd57d8db9f5b44635.mp3"
+    },
+    {
+      "key": "17fd2cb6b1439c143ecf37a8c31e8a0a44b08679c8753eb5d0cd181818c615a1",
+      "speaker": "diego",
+      "text": "Raise.",
+      "audioUrl": "/audio/voices/17fd2cb6b1439c143ecf37a8c31e8a0a44b08679c8753eb5d0cd181818c615a1.mp3"
+    },
+    {
+      "key": "0720a087e6fef1d39cb9c0f65b96035d8086e799bcd4aa6b86b615a9f60d2328",
+      "speaker": "diego",
+      "text": "I’ll raise.",
+      "audioUrl": "/audio/voices/0720a087e6fef1d39cb9c0f65b96035d8086e799bcd4aa6b86b615a9f60d2328.mp3"
+    },
+    {
+      "key": "e5fe764e43921724b364bbe19b9639e4256dc8127ac85ff4a15caa221b19c274",
+      "speaker": "diego",
+      "text": "Fold.",
+      "audioUrl": "/audio/voices/e5fe764e43921724b364bbe19b9639e4256dc8127ac85ff4a15caa221b19c274.mp3"
+    },
+    {
+      "key": "ce05eb0898e0f0657b6277b6c2a26d36008862d227e0767aea1be87069353bf8",
+      "speaker": "diego",
+      "text": "I’m out.",
+      "audioUrl": "/audio/voices/ce05eb0898e0f0657b6277b6c2a26d36008862d227e0767aea1be87069353bf8.mp3"
+    },
+    {
+      "key": "270a880514009cad6a8e337806465b3fe581a78f7c2678423dbec14db8eaad06",
+      "speaker": "diego",
+      "text": "All in.",
+      "audioUrl": "/audio/voices/270a880514009cad6a8e337806465b3fe581a78f7c2678423dbec14db8eaad06.mp3"
+    },
+    {
+      "key": "1f0b8ef9d5c99d074543c57a9c347b2b6e96d17ce4323c7f65b940476c9c54f8",
+      "speaker": "diego",
+      "text": "I’m all in.",
+      "audioUrl": "/audio/voices/1f0b8ef9d5c99d074543c57a9c347b2b6e96d17ce4323c7f65b940476c9c54f8.mp3"
+    },
+    {
+      "key": "25374b70219b878adb53362322ae67d912482a1656b3f6c5957a427673667f7b",
+      "speaker": "diego",
+      "text": "[confident] I definitely know what I’m doing.",
+      "audioUrl": "/audio/voices/25374b70219b878adb53362322ae67d912482a1656b3f6c5957a427673667f7b.mp3"
+    },
+    {
+      "key": "6df450d689a82d7da2862b9ccfcb1cf5b72e2c0340e73f1fdc63516feaff373d",
+      "speaker": "diego",
+      "text": "[confident] This is what confidence looks like.",
+      "audioUrl": "/audio/voices/6df450d689a82d7da2862b9ccfcb1cf5b72e2c0340e73f1fdc63516feaff373d.mp3"
+    },
+    {
+      "key": "1c043aef8ce879fb44a9115065052606e23f557096304baa195cf1e5db57ba0a",
+      "speaker": "diego",
+      "text": "[confident] I can smell your fear. Or the crisps.",
+      "audioUrl": "/audio/voices/1c043aef8ce879fb44a9115065052606e23f557096304baa195cf1e5db57ba0a.mp3"
+    },
+    {
+      "key": "810acbd985c0477f70b41246858f79010710aae3d0b2ae88f8121db0ed5a541f",
+      "speaker": "diego",
+      "text": "[confident] I definitely know what I’m doing. This is what confidence looks like.",
+      "audioUrl": "/audio/voices/810acbd985c0477f70b41246858f79010710aae3d0b2ae88f8121db0ed5a541f.mp3"
+    },
+    {
+      "key": "8f4b7fd2c32c93c1de68110227f16237c016df437432deac610e943213e12736",
+      "speaker": "diego",
+      "text": "[chuckles] That’s one way to donate chips.",
+      "audioUrl": "/audio/voices/8f4b7fd2c32c93c1de68110227f16237c016df437432deac610e943213e12736.mp3"
+    },
+    {
+      "key": "7590897c160e274c40af438a3d3e62f701a24a929f772dd85d71f8f6123c1469",
+      "speaker": "diego",
+      "text": "[chuckles] Absolutely calculated. Probably.",
+      "audioUrl": "/audio/voices/7590897c160e274c40af438a3d3e62f701a24a929f772dd85d71f8f6123c1469.mp3"
+    },
+    {
+      "key": "dcfa4e7076057fa4ed815d3628ca1de2ea08c16541afbc27208954bb1c58fbc8",
+      "speaker": "diego",
+      "text": "[chuckles] Oh, this is going in the group chat.",
+      "audioUrl": "/audio/voices/dcfa4e7076057fa4ed815d3628ca1de2ea08c16541afbc27208954bb1c58fbc8.mp3"
+    },
+    {
+      "key": "632633fdd7604444715c03069698316308e0dcce7f7fe8587ca105e8251f5e70",
+      "speaker": "diego",
+      "text": "[chuckles] Oh, this is going in the group chat. Absolutely calculated. Probably.",
+      "audioUrl": "/audio/voices/632633fdd7604444715c03069698316308e0dcce7f7fe8587ca105e8251f5e70.mp3"
+    },
+    {
+      "key": "d49b5944e226c42ea81f09c7af3f025db2b9e0c51c826e2e3a11c502d4974cf1",
+      "speaker": "diego",
+      "text": "[sighs] I’m just stretching. Nothing to see here.",
+      "audioUrl": "/audio/voices/d49b5944e226c42ea81f09c7af3f025db2b9e0c51c826e2e3a11c502d4974cf1.mp3"
+    },
+    {
+      "key": "e2b18d85873bd9c719737774285ac06b5fef380fd3a750d51a26c42e625dee6a",
+      "speaker": "diego",
+      "text": "[sighs] Right. Who wants a drink?",
+      "audioUrl": "/audio/voices/e2b18d85873bd9c719737774285ac06b5fef380fd3a750d51a26c42e625dee6a.mp3"
+    },
+    {
+      "key": "1708e2e63c86627bdc6d0f40c4aa0cfd9c2207d7a2d24fcd255a6f72ec8e8728",
+      "speaker": "diego",
+      "text": "[sighs] Suddenly I have somewhere to be.",
+      "audioUrl": "/audio/voices/1708e2e63c86627bdc6d0f40c4aa0cfd9c2207d7a2d24fcd255a6f72ec8e8728.mp3"
+    },
+    {
+      "key": "476b0fe9987b8e89f9db96040963ebc4ee66a56fac601226b4059b57c950897e",
+      "speaker": "diego",
+      "text": "[sighs] Right. I’m off. Unless the river helps. Who wants a drink?",
+      "audioUrl": "/audio/voices/476b0fe9987b8e89f9db96040963ebc4ee66a56fac601226b4059b57c950897e.mp3"
+    },
+    {
+      "key": "e0d81844da646112c5471dd24e1f2d82cf7b74b3e8f7359f4a734c75404261b8",
+      "speaker": "diego",
+      "text": "[dramatic] My beautiful, imaginary fortune.",
+      "audioUrl": "/audio/voices/e0d81844da646112c5471dd24e1f2d82cf7b74b3e8f7359f4a734c75404261b8.mp3"
+    },
+    {
+      "key": "9ac1d27621379e5a1d75aea2f0b3a569a491f3bca87ed4159e368325f3a9a7eb",
+      "speaker": "diego",
+      "text": "[dramatic] Tell my chips I loved them.",
+      "audioUrl": "/audio/voices/9ac1d27621379e5a1d75aea2f0b3a569a491f3bca87ed4159e368325f3a9a7eb.mp3"
+    },
+    {
+      "key": "835c027ccd3eb74a42e8ee40ff858408e9d78f26a2adf80cefb14f239a29a7cd",
+      "speaker": "diego",
+      "text": "[dramatic] That river was a personal attack.",
+      "audioUrl": "/audio/voices/835c027ccd3eb74a42e8ee40ff858408e9d78f26a2adf80cefb14f239a29a7cd.mp3"
+    },
+    {
+      "key": "2e3d4a53e1b28ddd532941e7cb05fa2b2b19d60f496c312f03058c1c0b581c00",
+      "speaker": "diego",
+      "text": "[dramatic] My beautiful, imaginary fortune. Tell my chips I loved them.",
+      "audioUrl": "/audio/voices/2e3d4a53e1b28ddd532941e7cb05fa2b2b19d60f496c312f03058c1c0b581c00.mp3"
+    },
+    {
+      "key": "9013309898535f9a60c8258de843a9692aabaf7a7dd556836f788728afdd16b4",
+      "speaker": "diego",
+      "text": "[excited] Big money. Big players.",
+      "audioUrl": "/audio/voices/9013309898535f9a60c8258de843a9692aabaf7a7dd556836f788728afdd16b4.mp3"
+    },
+    {
+      "key": "93c8a24012929105a04d775e76f4226101eebee9bd0a06cdfe97f21311fb1668",
+      "speaker": "diego",
+      "text": "[excited] To questionable decisions!",
+      "audioUrl": "/audio/voices/93c8a24012929105a04d775e76f4226101eebee9bd0a06cdfe97f21311fb1668.mp3"
+    },
+    {
+      "key": "0c3d9f9a34edf57c0a7256fdfa07f77cd4e2a4c04a6b54ef8f25a81a22434fa9",
+      "speaker": "diego",
+      "text": "[excited] Cheers, you magnificent bluffers.",
+      "audioUrl": "/audio/voices/0c3d9f9a34edf57c0a7256fdfa07f77cd4e2a4c04a6b54ef8f25a81a22434fa9.mp3"
+    },
+    {
+      "key": "a42e73643821c91a1dcfc4678ad522a551ed604167be19df4ef293475389d363",
+      "speaker": "diego",
+      "text": "[excited] Big money. Big players. To questionable decisions!",
+      "audioUrl": "/audio/voices/a42e73643821c91a1dcfc4678ad522a551ed604167be19df4ef293475389d363.mp3"
+    },
+    {
+      "key": "27787b254354d47e9885541ff85371a2696873ac5ea4695c698f4264eb3fc4b8",
+      "speaker": "diego",
+      "text": "[playful] Purely decorative confidence.",
+      "audioUrl": "/audio/voices/27787b254354d47e9885541ff85371a2696873ac5ea4695c698f4264eb3fc4b8.mp3"
+    },
+    {
+      "key": "aefc4ed0a78d2f314255ac3ac41bd46d2adf53fa831e66b1ea94248e89fc34b2",
+      "speaker": "diego",
+      "text": "[playful] A little chip choreography.",
+      "audioUrl": "/audio/voices/aefc4ed0a78d2f314255ac3ac41bd46d2adf53fa831e66b1ea94248e89fc34b2.mp3"
+    },
+    {
+      "key": "097563eac804b38443d5c390fae5e6b42a1e45c1297e9d64f640cce00b9416f4",
+      "speaker": "diego",
+      "text": "[playful] Practising the only skill I have.",
+      "audioUrl": "/audio/voices/097563eac804b38443d5c390fae5e6b42a1e45c1297e9d64f640cce00b9416f4.mp3"
+    },
+    {
+      "key": "88e941ccd585a69e7c9681ef62d7786465c6192e2a29af80fdfb6d64614b7d45",
+      "speaker": "diego",
+      "text": "[playful] Watch the fingers.",
+      "audioUrl": "/audio/voices/88e941ccd585a69e7c9681ef62d7786465c6192e2a29af80fdfb6d64614b7d45.mp3"
+    },
+    {
+      "key": "2ad7b0e5b0979f5680bfd54493d377260baa196defb30b9380dd789db38ecbc4",
+      "speaker": "diego",
+      "text": "[playful] Steady hands. Shaky strategy.",
+      "audioUrl": "/audio/voices/2ad7b0e5b0979f5680bfd54493d377260baa196defb30b9380dd789db38ecbc4.mp3"
+    },
+    {
+      "key": "81136317895a293479adcd7e64aeec12577980351d559d797b6863702d3871d3",
+      "speaker": "diego",
+      "text": "[playful] The chips are on a roll.",
+      "audioUrl": "/audio/voices/81136317895a293479adcd7e64aeec12577980351d559d797b6863702d3871d3.mp3"
+    },
+    {
+      "key": "fd5e28607e8dd1565b14653bb2a8654c7832a7238f37af1b7b7e637caa4f745a",
+      "speaker": "diego",
+      "text": "[playful] And the crowd goes mild.",
+      "audioUrl": "/audio/voices/fd5e28607e8dd1565b14653bb2a8654c7832a7238f37af1b7b7e637caa4f745a.mp3"
+    },
+    {
+      "key": "6fa79c88cfdfad489c74edff815d0436322202a2cbf80cdba1d41421c3db19dc",
+      "speaker": "diego",
+      "text": "[playful] Nothing up my sleeve.",
+      "audioUrl": "/audio/voices/6fa79c88cfdfad489c74edff815d0436322202a2cbf80cdba1d41421c3db19dc.mp3"
+    },
+    {
+      "key": "d93351aeab593f0510e18d47b5aebafe71dc1400d5878f9932cea6797945e00f",
+      "speaker": "diego",
+      "text": "[playful] A little air time.",
+      "audioUrl": "/audio/voices/d93351aeab593f0510e18d47b5aebafe71dc1400d5878f9932cea6797945e00f.mp3"
+    },
+    {
+      "key": "544f4c788bc52163466f054f806682692507b47b022585c3b444b9a57a2212a5",
+      "speaker": "diego",
+      "text": "[whispers] Quiet please. I’m doing important maths.",
+      "audioUrl": "/audio/voices/544f4c788bc52163466f054f806682692507b47b022585c3b444b9a57a2212a5.mp3"
+    },
+    {
+      "key": "91a45fc710f3ea126beb7894ab8a0c4301639c18eff69ea36badd5ef0ceca369",
+      "speaker": "diego",
+      "text": "[whispers] Let the chips do the talking.",
+      "audioUrl": "/audio/voices/91a45fc710f3ea126beb7894ab8a0c4301639c18eff69ea36badd5ef0ceca369.mp3"
+    },
+    {
+      "key": "94d0b27239d4514c69e5de63fa06d72d946346ec97c28a3ff24a2117570e148a",
+      "speaker": "diego",
+      "text": "[whispers] I’m trying to look mysterious.",
+      "audioUrl": "/audio/voices/94d0b27239d4514c69e5de63fa06d72d946346ec97c28a3ff24a2117570e148a.mp3"
+    },
+    {
+      "key": "e379944471b0045e55df0d160b3c4eaf9ceb2c3a59b24527dcd921078cc537b3",
+      "speaker": "diego",
+      "text": "[whispers] Quiet please. I’m doing important maths. Let the chips do the talking.",
+      "audioUrl": "/audio/voices/e379944471b0045e55df0d160b3c4eaf9ceb2c3a59b24527dcd921078cc537b3.mp3"
+    }
+  ]
+}

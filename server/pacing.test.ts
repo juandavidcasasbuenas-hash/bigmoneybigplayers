@@ -82,6 +82,7 @@ describe("live table pacing", () => {
       "street",
       "street",
       "street",
+      "showdown",
       "award",
     ]);
     for (let i = 1; i < motions.length; i++)
@@ -89,11 +90,13 @@ describe("live table pacing", () => {
         motions[i - 1].startAt + motions[i - 1].duration,
       );
     const award = motions.at(-1)!;
-    expect(room.nextHandAt).toBe(award.startAt + award.duration + 3000);
+    expect(room.nextHandAt).toBe(award.startAt + award.duration + 8000);
     expect(() => room.startHand()).toThrow("chips settle");
     advance(award.startAt + award.duration - time());
     const busted = room.players.find((p) => room.canRebuy(p.id));
     if (busted) room.rebuy(busted.id);
+    expect(() => room.startHand()).toThrow("show or muck");
+    advance(8000);
     expect(() => room.startHand()).not.toThrow();
     expect(room.handNumber).toBe(2);
     expect(

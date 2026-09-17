@@ -1,4 +1,5 @@
-import { synthesizeVoice, VOICE_CAST, PREVIEW_LINES } from "../server/voice.js";
+import { synthesizeVoice } from "./lib/voice-provider.js";
+import { VOICE_CAST, PREVIEW_LINES } from "../shared/voiceLines.js";
 import { DEALER_LINES } from "../server/dealerDialogue.js";
 import {
   PLAYER_ACTION_LINES,

@@ -14,24 +14,26 @@ Monty uses Daniel; each character has their own stock [ElevenLabs Eleven v3 voic
 | Humfrey | Eric |
 | Diego | Callum |
 
-Players say short checks, calls, bets, raises, folds and all-ins during their own gestures. Two versions of each action across eight voices give **96 cached action clips**. Voluntary banter buttons also use the actor's voice; all three manual chip tricks have spoken quips too. Spectator reactions respect the separate rail. Joining, leaving, pausing and other log updates stay quiet. Monty no longer repeats a player's all-in declaration.
+Players say short checks, calls, bets, raises, folds and all-ins during their own gestures. Two versions of each action across eight voices give **96 recorded action clips**. Voluntary banter buttons also use the actor's voice; all three manual chip tricks have spoken quips too. Spectator reactions respect the separate rail. Joining, leaving, pausing and other log updates stay quiet. Monty no longer repeats a player's all-in declaration.
 
 Monty announces new hands, public streets, hand endings, results and champions. `server/dealerDialogue.ts` holds 116 authored lines in shuffle bags; the all-in category is retained for authoring but no longer automatically spoken. Essential dealer cues remain plain when banter is disabled. Quips accompany every third result. The dealer starts at **78% volume**, players at **88%**. **Audio settings** controls both independently and saves this browser's preference. Voices, cards/chips and music can each be muted.
 
 ## Preparation and playback
 
-- `npm run voices:warm`: cache the dealer bank. Cache hits make no provider call.
-- `npx tsx scripts/warm-voices.ts --players`: cache all 96 short action clips.
-- `npx tsx scripts/warm-voices.ts --banter`: cache all 216 voluntary spoken reactions plus eight character previews (224 clips, prepared locally).
-- `npx tsx scripts/warm-voices.ts --cards`: cache 52 card names and 24 street introductions (76 clips, prepared locally).
+The complete finite bank has **543 clips** in `public/audio/voices/`, including all dealer lines, hand categories, 52 card names, player actions, reactions and previews. `server/voiceCatalog.ts` defines every allowed script; `manifest.json` records its speaker, text and file. Unknown scripts are rejected, with no provider fallback. Card announcements combine existing clips. Names and chip amounts appear in the log; they are not synthesized.
 
-These are explicit generation commands; missing clips use the configured fal account. Card calls are composed from the prepared introduction and individual card clips; dynamic winner names and amounts are generated on demand and cached. The client prefetches new cues, plays one voice at a time and drops stale speech. Pending generation does not block ready speech. Manual reactions have priority at clip boundaries; a started card sequence is allowed to finish. Future all-in streets are prepared immediately and played on the public presentation clock. A new hand, pause, mute, disconnection or leaving cancels old playback; unmuting does not replay history. A deliberate **Test audio** or **Hear [character]** preview works while automatic speech is muted. Mouth movement follows the actual audio envelope, without phoneme-level lip sync.
+- `npm run voices:build -- --dry-run`: report missing recordings and character count.
+- `npm run voices:build`: reuse existing files/cache, then generate only missing clips with the private authoring credential. Commit the output with any dialogue change.
+
+`npm run build` validates the manifest and every recording before building the website. This check reads local files only; deployments never generate missing clips or contact a voice provider.
+
+Fal is only imported by authoring tools in `scripts/`. The runtime voice route authorizes a table event and returns local recording URLs. The client prefetches new cues, plays one voice at a time and drops stale speech. Pending clip requests do not block ready speech. Manual reactions have priority at clip boundaries; a started card sequence is allowed to finish. Future all-in streets are prepared immediately and played on the public presentation clock. A new hand, pause, mute, disconnection or leaving cancels old playback; unmuting does not replay history. A deliberate **Test audio** or **Hear [character]** preview works while automatic speech is muted. Mouth movement follows the actual audio envelope, without phoneme-level lip sync.
 
 ## Pace and foley
 
 Live server rooms give bets **1.9 seconds**, all-ins **2.4 seconds**, and checks/folds **1.7 seconds** for anticipation, reach, release and recovery. Follow turn keeps the camera on that actor throughout. The next turn opens afterwards with its full configured decision time. Bots then take their own thinking time. `presentAt` timestamps keep gestures, voices and foley on the same public schedule; pauses shift that schedule and the timers together. Headless `PokerRoom` simulations can omit the `paced` option; the live Socket.IO server always enables it.
 
-The initial deal takes at least 2.8 seconds, flop 1.7 seconds, turn/river 1.4 seconds each and pot collection 2.2 seconds. Heads-up all-ins add a 2.2-second exposed-hand beat. All-in runouts hold the flop for 8 seconds and turn/river for 4.6 seconds each, retaining complete card calls and time to read the odds. The configured result display starts after the runout and collection. A host cannot start another hand before the chips settle.
+The initial deal takes at least 2.8 seconds, flop 1.7 seconds, turn/river 1.4 seconds each and pot collection 2.2 seconds. All-ins with two or more players add a 4.2-second exposed-hand beat. All-in runouts hold the flop for 8 seconds and turn/river for 4.6 seconds each, retaining complete card calls and time to read the odds. A 3.6-second showdown reveal precedes collection. The show/muck and celebration window lasts at least eight seconds after collection (longer if configured). A host cannot skip this window. Contested winners must show; exposed all-in cards remain public. Other hands default to muck and never enter other players’ payloads unless their owner chooses Show.
 
 Paper card sounds and the table tap remain. The chip foley was replaced with four [ElevenLabs Sound Effects v2](https://fal.ai/models/fal-ai/elevenlabs/sound-effects/v2/api) generations: two small bets, a pot gather and a finger riffle. Prompts specify dull clay-composite impacts on padded felt. A low-pass filter and upper-mid cut reduce bright ringing, with restrained normalization. Bets alternate randomly between two clips; idle tricks are quieter and rotate between seats. Generated samples, prompts and receipts live in `public/audio/table/` and `docs/assets/foley/`.
 
@@ -45,8 +47,8 @@ Three original instrumentals were generated through [fal Lyria 2](https://fal.ai
 
 ## Configuration and boundaries
 
-Set `FAL_KEY` in the server's private `.env` or host environment, never a `VITE_` variable. Credentials and runtime cache are excluded from Git and Docker. Use persistent storage for `VOICE_CACHE_DIR` (default `voice-cache`) on deployment. `VOICE_DAILY_CHAR_LIMIT` defaults to 50,000 newly generated characters per process/day; it is a process guard, not an account billing cap.
+No voice-related environment variables or writable cache are needed in production. The optional `FAL_KEY`, `VOICE_CACHE_DIR` and `VOICE_DAILY_CHAR_LIMIT` settings apply only to offline authoring. The 50,000-character default is a per-process authoring guard, not an account billing cap.
 
-Authenticated requests identify an existing dealer message, accepted action or visible recent emote. Clients cannot provide arbitrary scripts or voice overrides. Forced blinds and silent logs cannot be voiced. Private cards and hidden rail reactions never reach the voice script. Identical requests from viewers share one generation; the queue is bounded to five active and 48 waiting jobs, with sanitized errors. Tests inject a synthesizer and never use paid credits.
+Authenticated requests identify an existing dealer message, accepted action or visible recent emote. Clients cannot provide arbitrary scripts or voice overrides. Forced blinds and silent logs cannot be voiced. Private cards and hidden rail reactions never enter a script. Identical requests reuse the same recorded clip. Tests validate the entire catalog and run with provider access disabled.
 
 Browser autoplay requires a click or key press. The table log remains available if audio is unavailable; there is no automatic browser-speech fallback. Actions that arrive too late to accompany their gesture are skipped rather than narrating an old decision.

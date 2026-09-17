@@ -1,7 +1,7 @@
 import { describe, it, expect } from "vitest";
 import { PokerRoom } from "./engine";
 
-describe("heads-up all-in public disclosure", () => {
+describe("all-in public disclosure", () => {
   it("reveals both contenders only once no call or fold decision remains", () => {
     const room = new PokerRoom("ODDS42", { autoNextHand: false });
     const a = room.addPlayer("A", "juan"),
@@ -29,7 +29,7 @@ describe("heads-up all-in public disclosure", () => {
     expect(event.board).toEqual([]);
     expect(room.tableEvents.filter((e) => e.type === "all-in")).toHaveLength(1);
   });
-  it("does not expose a folded hand or create a two-player odds event for a three-way pot", () => {
+  it("exposes every live all-in contender, while folded hands stay private", () => {
     const room = new PokerRoom("ODDS43", { autoNextHand: false });
     const p = [
       room.addPlayer("A", "juan"),
@@ -40,7 +40,8 @@ describe("heads-up all-in public disclosure", () => {
     room.act(p[0].id, { type: "all-in" });
     room.act(room.turnPlayerId!, { type: "call" });
     room.act(room.turnPlayerId!, { type: "call" });
-    expect(room.tableEvents.some((e) => e.type === "all-in")).toBe(false);
+    const multiway = room.tableEvents.find(e => e.type === 'all-in');
+    expect(multiway?.type === 'all-in' && multiway.players.map(v => v.playerId)).toEqual(p.map(v => v.id));
     const other = new PokerRoom("ODDS44", { autoNextHand: false });
     const q = [
       other.addPlayer("A", "juan"),

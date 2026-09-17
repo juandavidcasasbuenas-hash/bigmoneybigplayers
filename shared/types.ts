@@ -48,6 +48,7 @@ export interface PublicPlayer {
   totalBet: number;
   holeCards: Card[];
   cardCount: number;
+  disclosure?: 'hidden' | 'shown' | 'mucked';
   lastAction: string;
   rebuyCount: number;
   emote: { type: Emote; at: number; text: string } | null;
@@ -102,6 +103,7 @@ export type TableEventData =
   | { type: "check" | "fold"; playerId: string }
   | { type: "street"; stage: "flop" | "turn" | "river"; board: Card[]; runout?: boolean }
   | { type: "all-in"; players: {playerId:string; cards:Card[]}[]; board:Card[] }
+  | { type: "showdown"; playerIds: string[] }
   | { type: "award"; winners: Winner[]; pot: number };
 export type TableEvent = TableEventData & {
   id: string;
@@ -146,6 +148,9 @@ export interface RoomState {
   pausedAt?: number | null;
   breakEndsAt: number | null;
   nextHandAt: number | null;
+  handReview?: { startsAt: number; endsAt: number; playerIds: string[]; contested: boolean } | null;
+  canShowCards?: boolean;
+  canMuckCards?: boolean;
   tableEvents?: TableEvent[];
   winners: Winner[];
   dealerMessages: DealerMessage[];

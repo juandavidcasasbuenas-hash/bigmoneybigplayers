@@ -4,7 +4,9 @@ import { dealDuration, STREET } from "./dealTiming";
 export type TableMotion = TableEvent & { startAt: number; duration: number };
 export const motionDuration = (e: TableEvent) =>
   e.type === "all-in"
-    ? 2200
+    ? 4200
+    : e.type === "showdown"
+      ? 3600
     : e.type === "hand-start"
       ? dealDuration(e.playerIds.length)
       : e.type === "street"
@@ -84,4 +86,13 @@ export function publicBoardAt(
     }
   }
   return board.slice(0, count);
+}
+
+/** Resume an in-flight runout even if a long hand has evicted its deal from history. */
+export function initialBoardCount(boardLength: number, events: TableEvent[]) {
+  return Math.min(boardLength, ...events.flatMap(event =>
+    event.type === 'hand-start' ? [0] : event.type === 'street'
+      ? [event.stage === 'flop' ? 0 : event.stage === 'turn' ? 3 : 4]
+      : [],
+  ));
 }

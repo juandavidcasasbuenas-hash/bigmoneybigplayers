@@ -6,6 +6,7 @@ import { isCurrentDealerCue } from "./dealerPolicy";
 import {
   motionDuration,
   planTableMotions,
+  initialBoardCount,
   publicBoardAt,
   settlementDelay,
 } from "./tableTimeline";
@@ -77,6 +78,16 @@ describe("dealer restraint and variety", () => {
   });
 });
 describe("public, ordered table choreography", () => {
+  it('resumes a runout without flashing unreleased cards, even with truncated hand history', () => {
+    const turn: TableEvent = {type:'street',stage:'turn',board:['2c','3d','7h','8s'],id:'turn',sequence:120,at:1000,presentAt:9000,handNumber:1};
+    const river: TableEvent = {...turn,id:'river',sequence:121,stage:'river',board:[...turn.board,'9c'],presentAt:13600};
+    const motions = planTableMotions([turn,river],10000);
+    const base = initialBoardCount(5,[turn,river]);
+    expect(base).toBe(3);
+    expect(publicBoardAt(river.board,base,motions,8500)).toEqual(['2c','3d','7h']);
+    expect(publicBoardAt(river.board,base,motions,12000)).toEqual(turn.board);
+    expect(initialBoardCount(5,[])).toBe(5);
+  });
   it("deals to 12 seats clockwise in two rounds, with no private cards in the event stream", () => {
     const { room, players } = setup(12),
       events = room.viewFor(players[0].id).tableEvents!;

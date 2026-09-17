@@ -3,8 +3,8 @@ import { useFrame } from "@react-three/fiber";
 import { Group, MathUtils, Vector3 } from "three";
 import type { ScenePlayer } from "../components/PokerScene";
 import type { TableMotion } from "../../shared/tableTimeline";
+import { potStacks, POT_ORIGIN, POT_CHIP_SCALE } from "../../shared/potDisplay";
 import { Card, ChipStack } from "./TablePieces";
-import { seatPosition } from "./seating";
 import {
   DEAL,
   STREET,
@@ -153,26 +153,27 @@ function Bet({
   effectNow?: number;
 }) {
   const rig = useRef<Group>(null);
-  const seat = seatPosition(player.seat ?? 0, 12),
+  const seat = seatTransform(player.seat ?? 0),
     depth = workZ(player.seat ?? 0);
   useFrame(() => {
     if (!rig.current) return;
     const p = ((effectNow ?? Date.now()) - motion.startAt) / motion.duration;
     rig.current.visible = p >= 0 && p < 1;
-    rig.current.position.copy(
-      betChips(p, depth, motion.type === "bet" && motion.forced),
+    const contact = composePose(seat, pose(betChips(p, depth, motion.type === "bet" && motion.forced).toArray() as [number, number, number]));
+    // Preserve the hand's contact phase, then slide the released chips into the pot.
+    rig.current.position.copy(contact.position).lerp(
+      new Vector3(...POT_ORIGIN), MathUtils.smoothstep(p, 0.74, 1),
     );
+    rig.current.quaternion.copy(contact.quaternion);
     rig.current.userData.progress = p;
   });
   return (
-    <group position={seat.position} rotation={seat.rotation}>
       <group ref={rig} name={`bet-chips-${player.id}`}>
         <ChipStack
           count={betChipCount(motion.type === "bet" ? motion.amount : 0)}
           scale={0.44}
         />
       </group>
-    </group>
   );
 }
 
@@ -187,11 +188,25 @@ function Collect({
 }) {
   const rig = useRef<Group>(null),
     winners = motion.type === "award" ? motion.winners : [];
+  const total = motion.type === 'award' ? motion.pot : 0;
+  // Lift the actual pot in small cuts; tall centre stacks must not pass through a collecting hand.
+  const piles = potStacks(total).flatMap(pile => Array.from({length: Math.ceil(pile.count / 4)}, (_, cut) => ({
+    ...pile,
+    count: Math.min(4, pile.count - cut * 4),
+    position: [pile.position[0], pile.position[1] + cut * 4 * 0.05 * POT_CHIP_SCALE, pile.position[2]] as [number, number, number],
+  })));
+  const deliveries = piles.map((_, i) => {
+    let cutoff = 0;
+    return winners.find(w => {
+      cutoff += w.amount;
+      return (i + 0.5) / piles.length * total <= cutoff;
+    }) || winners.at(-1);
+  });
   useFrame(() => {
     if (!rig.current) return;
     const time = (effectNow ?? Date.now()) - motion.startAt;
     rig.current.children.forEach((pile, i) => {
-      const winner = winners[Math.floor(i / 4)],
+      const winner = deliveries[i],
         player = players.find((p) => p.id === winner?.playerId);
       if (!player) {
         pile.visible = false;
@@ -208,7 +223,7 @@ function Collect({
         seatTransform(seatIndex),
         pose([0.34 + ((i % 4) - 1.5) * 0.13, FELT_Y + 0.002, depth + 0.04]),
       );
-      const origin = new Vector3(((i % 4) - 1.5) * 0.23, FELT_Y + 0.002, 1.28);
+      const origin = new Vector3(...piles[i].position);
       pile.visible = time >= 0 && p < 0.96;
       pile.position.copy(
         p < 0.45
@@ -224,17 +239,15 @@ function Collect({
   });
   return (
     <group ref={rig} name="collecting-pot">
-      {winners.flatMap((winner, i) =>
-        [0, 1, 2, 3].map((j) => (
-          <group key={`${winner.playerId}-${j}`}>
+      {piles.map((pile, i) => (
+          <group key={i}>
             <ChipStack
-              count={3 + (j % 3)}
-              scale={0.44}
-              color={["#b64e48", "#d4b56e", "#afbaa0", "#738ba1"][(i + j) % 4]}
+              count={pile.count}
+              scale={POT_CHIP_SCALE}
+              color={pile.color}
             />
           </group>
-        )),
-      )}
+        ))}
     </group>
   );
 }
