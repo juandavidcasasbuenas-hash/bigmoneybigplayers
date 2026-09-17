@@ -3,11 +3,13 @@ import { randomInt, randomUUID, randomBytes } from 'node:crypto';
 import solver from 'pokersolver';
 import { burstDuration, motionDuration } from '../shared/tableTimeline.js';
 import { actionSpeech, PLAYER_EMOTES as emotes, type SpokenAction } from '../shared/playerDialogue.js';
+import { cardPeekProgress, type CardPeekRequest } from '../shared/cardPeek.js';
+import { holePickupAt } from '../shared/dealTiming.js';
 import { DealerDialogue } from './dealerDialogue.js';
 import { PLAIN_HAND_START, PLAIN_HAND_END, SIDE_POT_END, RESULT_LINES } from './voiceCatalog.js';
 import type { Hand as SolvedHand } from 'pokersolver';
 import { DEFAULT_SETTINGS } from '../shared/types.js';
-import type { AvailableActions, BlindLevel, Card, ChatMessage, DealerMessage, Emote, GameSettings, PokerAction, Pot, PublicPlayer, RoomState, Stage, Winner, TableEvent, TableEventData } from '../shared/types.js';
+import type { AvailableActions, BlindLevel, Card, ChatMessage, DealerMessage, Emote, GameSettings, PokerAction, PreAction, PreActionRequest, Pot, PublicPlayer, RoomState, Stage, Winner, TableEvent, TableEventData } from '../shared/types.js';
 
 export interface Player extends PublicPlayer { token: string }
 const playingStages: Stage[] = ['preflop', 'flop', 'turn', 'river'];
@@ -90,6 +92,7 @@ export class PokerRoom {
   turnStartsAt: number | null = null;
   private presentationReadyAt = 0;
   private turnPending = false;
+  private preActions = new Map<string, PreAction>();
   private readonly paced: boolean;
   currentBet = 0;
   lastFullRaise = 50;
@@ -186,12 +189,14 @@ export class PokerRoom {
   reconnect(token: unknown): Player | null {
     if (typeof token !== 'string' || token.length !== 64) return null;
     const p = this.players.find(p => p.token === token && !p.isBot);
-    if (p) { p.connected = true; this.lastActivity = this.clock(); }
+    if (p) { p.connected = true; this.endPeek(p); this.preActions.delete(p.id); this.lastActivity = this.clock(); }
     return p ?? null;
   }
-  disconnect(id: string) { this.player(id).connected = false; }
+  disconnect(id: string) { const p = this.player(id); p.connected = false; this.endPeek(p); this.preActions.delete(id); }
   leave(id: string) {
     const p = this.player(id);
+    this.endPeek(p);
+    this.preActions.delete(id);
     if (this.isPlaying && p.seat >= 0) {
       p.connected = false;
       // Keep the seat and token valid. The hand cannot be escaped to reclaim a stack.
@@ -280,6 +285,7 @@ export class PokerRoom {
     }
     this.stage = 'preflop';
     this.handNumber++;
+    this.preActions.clear();
     this.allInAnnounced = false;
     this.board = [];
     this.deck = this.makeDeck();
@@ -297,7 +303,7 @@ export class PokerRoom {
     this.lastFullRaise = this.handBigBlind;
     this.acted.clear();
     for (const p of this.players) {
-      p.holeCards = []; p.cardCount = 0; p.bet = 0; p.totalBet = 0; p.lastAction = ''; p.emote = null;
+      p.holeCards = []; p.cardCount = 0; p.bet = 0; p.totalBet = 0; p.lastAction = ''; p.emote = null; p.peek = null;
       if (playing.includes(p)) p.status = 'active';
       else if (p.seat >= 0 && p.chips === 0) p.status = 'out';
     }
@@ -340,6 +346,44 @@ export class PokerRoom {
       callAmount, minRaiseTo, maxRaiseTo,
     };
   }
+  canPreAct(id: string) {
+    const p = this.player(id);
+    return this.isPlaying && !this.paused && p.connected && !p.isBot &&
+      p.status === 'active' && p.chips > 0 && this.pending.has(id) && !this.availableActions(id);
+  }
+  setPreAction(id: string, request: PreActionRequest) {
+    this.player(id);
+    if (!request || typeof request !== 'object' || Array.isArray(request)) throw new Error('Choose a valid action for your next turn.');
+    if (request.type === null) { this.preActions.delete(id); return; }
+    if (!['fold', 'check', 'call'].includes(request.type)) throw new Error('Only fold, check or a fixed call can be preselected.');
+    if (!this.canPreAct(id)) throw new Error('Preselect an action while you are waiting for your turn.');
+    if (request.handNumber !== this.handNumber || request.stage !== this.stage || request.currentBet !== this.currentBet)
+      throw new Error('The bet or hand has changed. Choose again.');
+    const p = this.player(id);
+    const callAmount = Math.max(0, Math.min(p.chips, this.currentBet - p.bet));
+    if (request.type === 'check' && callAmount > 0) throw new Error('There is a bet to call.');
+    if (request.type === 'call' && callAmount === 0) throw new Error('There is no bet to call.');
+    this.preActions.set(id, { type: request.type, handNumber: this.handNumber, stage: this.stage, currentBet: this.currentBet, callAmount });
+  }
+  private endPeek(p: Player) {
+    if (p.peek && p.peek.releasedAt === null) p.peek = { ...p.peek, releasedAt: this.clock() };
+  }
+  peekCards(id: string, request: CardPeekRequest) {
+    const p = this.player(id);
+    if (!request || typeof request.holding !== 'boolean' || request.handNumber !== this.handNumber)
+      throw new Error('That hand has moved on.');
+    if (!request.holding) { this.endPeek(p); return; }
+    if (!this.isPlaying || this.paused || !p.connected || p.seat < 0 || !['active', 'all-in'].includes(p.status) || p.holeCards.length !== 2)
+      throw new Error('You can only peek at your own live hand.');
+    const deal = this.tableEvents.find(e => e.handNumber === this.handNumber && e.type === 'hand-start');
+    if (this.paced && deal?.type === 'hand-start' && this.clock() < (deal.presentAt ?? deal.at) + holePickupAt(deal.playerIds.length, deal.playerIds.indexOf(id)))
+      throw new Error('Wait for your cards to arrive.');
+    if (p.peek?.releasedAt === null) return;
+    const now = this.clock();
+    p.peek = { handNumber: this.handNumber, startedAt: now, releasedAt: null, from: cardPeekProgress(p.peek, now) };
+    // A deliberate peek takes precedence over a cosmetic reaction.
+    p.emote = null;
+  }
   act(id: string, action: PokerAction) {
     if (!action || typeof action !== 'object') throw new Error('Invalid action.');
     const choices = this.availableActions(id);
@@ -367,9 +411,13 @@ export class PokerRoom {
       if (fullRaise) this.lastFullRaise = to - previousBet;
       this.post(p, to - p.bet, true, false, previousBet === 0 ? 'bet' : 'raise');
       this.currentBet = to;
+      // Even a short all-in invalidates every fixed-price selection.
+      this.preActions.clear();
       p.lastAction = p.status === 'all-in' ? `All in · ${to}` : `${previousBet === 0 ? 'Bet' : 'Raise to'} · ${to}`;
       for (const other of this.actors) if (other.id !== id && other.bet < to) this.pending.add(other.id);
     } else throw new Error('Unknown poker action.');
+    this.endPeek(p);
+    this.preActions.delete(id);
     this.acted.set(id, { bet: this.currentBet, raiseSize: this.lastFullRaise });
     this.pending.delete(id);
     this.lastActivity = this.clock();
@@ -416,6 +464,7 @@ export class PokerRoom {
     }
   }
   private advanceStreet() {
+    this.preActions.clear();
     this.deck.pop(); // Burn one before every community-card street.
     if (this.stage === 'preflop') {
       this.stage = 'flop'; this.board.push(this.deck.pop()!,this.deck.pop()!,this.deck.pop()!);
@@ -449,6 +498,8 @@ export class PokerRoom {
     return pots;
   }
   private settleHand(showdown: boolean) {
+    this.preActions.clear();
+    this.players.forEach(p => this.endPeek(p));
     this.setTurn(undefined);
     this.refundUncalled();
     const contenders = this.contenders;
@@ -540,7 +591,7 @@ export class PokerRoom {
     if (typeof value !== 'boolean') throw new Error('Invalid pause state.');
     if (value === this.paused) return;
     const now = this.clock();
-    if (value) { this.pauseStartedAt = now; this.paused = true; this.say('Table paused. Hands off the crisps.'); }
+    if (value) { this.preActions.clear(); this.players.forEach(p => this.endPeek(p)); this.pauseStartedAt = now; this.paused = true; this.say('Table paused. Hands off the crisps.'); }
     else {
       const delay = now-(this.pauseStartedAt ?? now);
       if (this.turnEndsAt) this.turnEndsAt += delay;
@@ -561,6 +612,7 @@ export class PokerRoom {
     if (!Object.prototype.hasOwnProperty.call(emotes,type)) throw new Error('Unknown reaction.');
     const p = this.player(id);
     if (p.emote && this.clock()-p.emote.at < 2000) throw new Error('Give your audience a moment.');
+    this.endPeek(p);
     p.emote = {type,at:this.clock(),text:emotes[type][randomInt(emotes[type].length)]};
   }
   sendChat(id: string, value: unknown) {
@@ -587,6 +639,18 @@ export class PokerRoom {
       const id = this.turnPlayerId;
       if (this.turnPending && now>=this.turnStartsAt!) { this.turnPending=false; return true; }
       if (this.turnStartsAt && now<this.turnStartsAt) return false;
+      const preAction = this.preActions.get(id);
+      // Keep the normal presentation hold, then give the camera time to reach this seat.
+      if (preAction && now >= (this.turnStartsAt ?? now) + 900) {
+        this.preActions.delete(id);
+        const choices = this.availableActions(id);
+        const valid = this.player(id).connected && preAction.handNumber === this.handNumber &&
+          preAction.stage === this.stage && preAction.currentBet === this.currentBet && choices &&
+          (preAction.type === 'fold' || preAction.type === 'check' && choices.canCheck ||
+            preAction.type === 'call' && choices.canCall && choices.callAmount === preAction.callAmount);
+        if (valid) this.act(id, { type: preAction.type });
+        return true;
+      }
       if (this.botActAt && now >= this.botActAt) { this.act(id,this.botAction(id)); return true; }
       if (this.turnEndsAt && now >= this.turnEndsAt) {
         this.act(id,{type:this.availableActions(id)?.canCheck ? 'check' : 'fold'});
@@ -624,6 +688,7 @@ export class PokerRoom {
       holeCards:p.id === id || this.reveal.has(p.id) ? [...p.holeCards] : [],cardCount:p.cardCount,
       disclosure:this.reveal.has(p.id)?'shown':this.mucked.has(p.id)?'mucked':'hidden',
       lastAction:p.lastAction,rebuyCount:p.rebuyCount,
+      peek:p.peek ? {...p.peek} : null,
       // Rail gestures cannot communicate live-hand information to seated opponents.
       emote:!isRail && this.settings.spectatorChat === 'separate' && (p.status === 'out' && !(reviewOpen && p.holeCards.length===2) || p.status === 'spectator' || p.status === 'waiting') ? null : p.emote ? {...p.emote} : null,
     }));
@@ -638,7 +703,7 @@ export class PokerRoom {
       tableEvents:structuredClone(this.tableEvents),
       winners:this.winners.map(w => ({...w})),dealerMessages:this.dealerMessages.map(m => ({...m})),
       chat:this.chat.filter(m => m.channel === 'table' || isRail).map(m => ({...m})),
-      actions:this.availableActions(id),canRebuy:this.canRebuy(id),startedAt:this.startedAt,
+      actions:this.availableActions(id),preAction:this.preActions.has(id)?{...this.preActions.get(id)!}:null,canPreAct:this.canPreAct(id),canRebuy:this.canRebuy(id),startedAt:this.startedAt,
     };
   }
 }

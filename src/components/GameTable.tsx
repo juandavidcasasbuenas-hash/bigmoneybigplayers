@@ -31,7 +31,10 @@ import type { TurnFeedback } from "../hooks/useTableFeedback";
 import { useTableLog } from "../hooks/useTableLog";
 import type { TablePresentation } from "../hooks/useTablePresentation";
 import { PlayingCard } from "./PlayingCard";
+import { canHoldPrivateCards, privateCardsReadyAt } from "../three/firstPersonHandState";
+import { useCardPeek } from '../hooks/useCardPeek';
 import { HandPositions } from "./HandPositions";
+import { PreActionControls } from "./PreActionControls";
 import { ShowdownPanel } from "./ShowdownPanel";
 import PokerScene, { type ScenePlayer } from "./PokerScene";
 const n = (v: number) => v.toLocaleString("en-GB");
@@ -100,6 +103,13 @@ export function GameTable(p: Props) {
   const displayActor = players.find(
     (v) => v.id === (flow.focusActorId || room?.turnPlayerId),
   );
+  const firstPerson = p.camera === 'first-person' || p.camera === 'firstPerson';
+  const cardsOnFelt = firstPerson && ['preflop', 'flop', 'turn', 'river'].includes(room?.stage || '') && canHoldPrivateCards(me?.holeCards || [], me?.status);
+  const canPeek = !!room && p.connected && !room.paused && ['preflop', 'flop', 'turn', 'river'].includes(room.stage)
+    && canHoldPrivateCards(me?.holeCards || [], me?.status)
+    && now >= privateCardsReadyAt(flow.motions, room.you)
+    && !flow.motions.some(m => 'playerId' in m && m.playerId === room.you && !('forced' in m && m.forced) && now >= m.startAt && now < m.startAt + m.duration);
+  const peek = useCardPeek(canPeek, `${room?.code}:${room?.handNumber}:${p.camera}`, room?.handNumber || 0, p.send);
   const seconds = room?.nextHandAt
     ? Math.max(0, Math.ceil((room.nextHandAt - now) / 1000))
     : null;
@@ -142,9 +152,12 @@ export function GameTable(p: Props) {
   };
   return (
     <section className="poker-game" aria-label="Poker table">
-      <div className={`game-stage ${odds || flow.settled || (room?.handReview && now >= room.handReview.startsAt) ? 'showdown-active' : ''}`}>
+      <div className={`game-stage ${firstPerson ? 'first-person' : ''} ${odds || flow.settled || (room?.handReview && now >= room.handReview.startsAt) ? 'showdown-active' : ''}`}>
         <PokerScene
           players={players}
+          heroCards={me?.holeCards || []}
+          peeking={peek.peeking}
+          onPeekStart={peek.start}
           board={room?.board || []}
           pot={flow.pot}
           currentPlayerId={
@@ -165,6 +178,7 @@ export function GameTable(p: Props) {
           effectNow={room?.paused ? now : undefined}
           soundEffects={p.sounds && p.connected && !room?.paused}
           settled={flow.settled}
+          focusTable={flow.focusTable}
           onSeatClick={() => setPanel("seats")}
           onRenderStats={
             import.meta.env.DEV &&
@@ -265,7 +279,7 @@ export function GameTable(p: Props) {
             </span>
             {!flow.settled && (
               <strong>
-                Pot <em>{n(room.pot)}</em>
+                Pot <em>{n(flow.pot)}</em>
               </strong>
             )}
           </div>
@@ -350,7 +364,7 @@ export function GameTable(p: Props) {
             >
               {me?.holeCards.length ? (
                 <>
-                  <div className="card-pair">
+                  <div className={`card-pair ${cardsOnFelt ? 'in-hand-summary' : ''}`}>
                     {me.holeCards.map((c) => (
                       <PlayingCard key={c} card={c} />
                     ))}
@@ -362,6 +376,26 @@ export function GameTable(p: Props) {
                       {n(me.chips)} chips
                     </span>
                   </div>
+                  {canPeek && <button
+                    className={`peek-cards ${peek.peeking ? 'peeking' : ''}`}
+                    aria-label="Hold to peek at your cards"
+                    aria-pressed={peek.peeking}
+                    title="Hold to peek at your cards (P)"
+                    onPointerDown={event => {
+                      if (event.button !== 0) return;
+                      event.currentTarget.setPointerCapture(event.pointerId);
+                      peek.start();
+                    }}
+                    onPointerUp={peek.stop}
+                    onPointerCancel={peek.stop}
+                    onLostPointerCapture={peek.stop}
+                    onBlur={peek.stop}
+                    onContextMenu={event => event.preventDefault()}
+                    onKeyDown={event => {
+                      if (['Space', 'Enter'].includes(event.code)) { event.preventDefault(); if (!event.repeat) peek.start(); }
+                    }}
+                    onKeyUp={event => { if (['Space', 'Enter'].includes(event.code)) { event.preventDefault(); peek.stop(); } }}
+                  ><Eye size={17}/><span>{peek.peeking ? 'Peeking' : 'Hold to peek'}</span><kbd>P</kbd></button>}
                 </>
               ) : (
                 <div className="hand-value">
@@ -636,7 +670,9 @@ export function GameTable(p: Props) {
         <div
           className={`decision-controls ${feedback.myTurn ? "your-action" : ""}`}
         >
-          {actions ? (
+          {room && (room.preAction || !actions && room.canPreAct) ? (
+            <PreActionControls room={room} busy={p.busy} connected={p.connected} send={p.send} />
+          ) : actions ? (
             <>
               {actions.canRaise && actions.maxRaiseTo >= actions.minRaiseTo && (
                 <div className="wager-range">

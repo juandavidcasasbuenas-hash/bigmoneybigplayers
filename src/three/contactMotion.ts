@@ -10,6 +10,7 @@ export type XYZ = [number, number, number];
 export type ContactPose = { position: Vector3; quaternion: Quaternion };
 export const FELT_Y = 1.37;
 export const CARD_SCALE = 0.62;
+export const HOLE_CARD_SCALE = 0.38 / 0.48;
 export const CHAIR = { seatY: 0.65, seatTop: 0.735, front: 0.395, back: -0.52 };
 export const BODY = {
   hipY: 0.895,
@@ -142,11 +143,12 @@ export function solveArm(
 ) {
   let best: ReturnType<typeof solveTwoBone> | undefined,
     bestGap = -Infinity;
+  const inLap = target.z < 0.65;
   for (let lift = -0.4; lift <= 0.61; lift += 0.1) {
     const result = solveTwoBone(
       root,
       target,
-      root.clone().add(new Vector3(side * 0.55, lift, 0.25)),
+      root.clone().add(new Vector3(side * (inLap ? 0.3 : 0.55), lift, inLap ? -0.25 : 0.25)),
       BODY.upperArm,
       BODY.forearm,
     );
@@ -189,8 +191,25 @@ export const restingHand = (side: number) =>
     [side < 0 ? -0.28 : 0.39, side < 0 ? 1.595 : 1.63, side < 0 ? 1.0 : 0.8],
     side < 0 ? [-0.12, -0.04, 0.08] : [Math.PI / 2, 0, -0.08],
   );
+/** Withdraw above the rail before lowering to the lap; feet and hips stay planted. */
+export function relaxContact(contact: ReturnType<typeof actorContact>, amount: number) {
+  const retract = smooth(amount, 0, 0.65), drop = smooth(amount, 0.35, 1);
+  for (const [side, hand] of [[-1, contact.left], [1, contact.right]] as const) {
+    const rest = pose([side * 0.33, 1.13, 0.12], [Math.PI / 2, 0, side * 0.12]);
+    hand.position.x = MathUtils.lerp(hand.position.x, rest.position.x, retract);
+    hand.position.z = MathUtils.lerp(hand.position.z, rest.position.z, retract);
+    hand.position.y = MathUtils.lerp(hand.position.y, rest.position.y, drop) + Math.sin(smooth(amount, 0, 0.7) * Math.PI) * 0.18;
+    hand.quaternion.slerp(rest.quaternion, amount);
+  }
+  contact.lean = MathUtils.lerp(contact.lean, -0.14, amount);
+}
 export const holeRestHand = (z: number) =>
   pose([-0.28, FELT_Y + 0.051, z + 0.05], [Math.PI / 2, 0, 0]);
+/** Face-down cards have a stable home on the felt in every camera view. */
+export function holeCardRest(z: number, index: number) {
+  return pose([index === 0 ? 0.175 : -0.175, FELT_Y + 0.015 + index * 0.004,
+    z + 0.32 - index * 0.016], [0, index === 0 ? 0.10 : -0.10, 0]);
+}
 export function wristJoint(hand: ContactPose) {
   return new Vector3(0, -0.105, -0.025)
     .applyQuaternion(hand.quaternion)
@@ -319,7 +338,7 @@ export function dealtCard(
   const releaseAt = dealReleaseAt(index);
   const end = composePose(
     seatTransform(seat),
-    cardInHand(holeRestHand(z), Math.floor(index / count)),
+    holeCardRest(z, Math.floor(index / count)),
   );
   if (elapsed < releaseAt)
     return composePose(

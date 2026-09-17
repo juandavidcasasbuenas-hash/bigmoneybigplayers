@@ -26,6 +26,7 @@ import {
   Mesh,
   MeshStandardMaterial,
   PerspectiveCamera,
+  Quaternion,
   TubeGeometry,
   Vector3,
 } from "three";
@@ -43,9 +44,13 @@ import { CHARACTERS, getCharacter } from "../data/characters";
 import {
   CAMERA_MAX_SPEED,
   CAMERA_SMOOTH_TIME,
+  FirstPersonMotion,
+  firstPersonShot,
   moveToShot,
 } from "../three/cameraMotion";
 import { seatPosition } from "../three/seating";
+import type { CardPeek } from '../../shared/cardPeek';
+import { privateCardLookTarget } from '../three/cardPeek';
 import { CommunityCard, TableEffects } from "../three/TableEffects";
 import { Card, ChipStack } from "../three/TablePieces";
 import {
@@ -75,9 +80,14 @@ export interface ScenePlayer {
   spokenLine?: string;
   smallBlind?: boolean;
   bigBlind?: boolean;
+  cardCount?: number;
+  peek?: CardPeek | null;
 }
 export interface PokerSceneProps {
   players: ScenePlayer[];
+  heroCards?: string[];
+  peeking?: boolean;
+  onPeekStart?: () => void;
   board?: string[];
   pot?: number;
   currentPlayerId?: string;
@@ -104,6 +114,7 @@ export interface PokerSceneProps {
   effectNow?: number;
   soundEffects?: boolean;
   settled?: boolean;
+  focusTable?: boolean;
   /** Optional developer telemetry; never displayed in the game UI. */
   onRenderStats?: (stats: SceneRenderStats) => void;
 }
@@ -122,6 +133,7 @@ export interface SceneRenderStats {
   }[];
   focusActor?: string;
   camera?: number[];
+  cameraMotion?: { peakStep: number; peakSpeed: number; peakAcceleration: number };
   poses?: {
     id: string;
     blink: number;
@@ -144,6 +156,8 @@ export interface SceneRenderStats {
       knees: number[][];
       ankles: number[][];
       airborne: boolean;
+      peek?: number;
+      cardCurl?: number;
     };
   }[];
 }
@@ -215,8 +229,20 @@ export function RenderStats({
   onStats: (stats: SceneRenderStats) => void;
 }) {
   const counter = useRef({ frames: 0, elapsed: 0 });
+  const cameraMotion = useRef({ previous: new Quaternion(), ready: false, speed: 0, peakStep: 0, peakSpeed: 0, peakAcceleration: 0 });
   const extrema = useRef(new Map<string, { blink: number; mouth: number }>());
   useFrame(({ gl, scene, camera }, delta) => {
+    const motion = cameraMotion.current;
+    if (motion.ready && delta > 0) {
+      const step = MathUtils.radToDeg(motion.previous.angleTo(camera.quaternion));
+      const speed = step / delta;
+      motion.peakStep = Math.max(motion.peakStep, step);
+      motion.peakSpeed = Math.max(motion.peakSpeed, speed);
+      motion.peakAcceleration = Math.max(motion.peakAcceleration, Math.abs(speed - motion.speed) / delta);
+      motion.speed = speed;
+    }
+    motion.previous.copy(camera.quaternion);
+    motion.ready = true;
     counter.current.frames++;
     counter.current.elapsed += delta;
     scene.traverse((object) => {
@@ -273,6 +299,7 @@ export function RenderStats({
         motions,
         focusActor: camera.userData.focusActor,
         camera: camera.position.toArray(),
+        cameraMotion: { peakStep: motion.peakStep, peakSpeed: motion.peakSpeed, peakAcceleration: motion.peakAcceleration },
         poses,
         drawCalls: gl.info.render.calls,
         triangles: gl.info.render.triangles,
@@ -283,6 +310,7 @@ export function RenderStats({
           10,
       });
       counter.current = { frames: 0, elapsed: 0 };
+      motion.peakStep = motion.peakSpeed = motion.peakAcceleration = 0;
       extrema.current.clear();
     }
   });
@@ -805,8 +833,8 @@ export function PokerTable({
         <torusGeometry args={[1.56, 0.012, 6, 96]} />
         <meshStandardMaterial color="#86a683" roughness={0.95} />
       </mesh>
-      <mesh position={[0, 1.377, -0.3]} rotation={[-Math.PI / 2, 0, 0]}>
-        <planeGeometry args={[3.05, 1.76]} />
+      <mesh position={[0, 1.377, -1.42]} rotation={[-Math.PI / 2, 0, 0]}>
+        <planeGeometry args={[1.5, 0.76]} />
         <meshStandardMaterial
           map={logo}
           transparent
@@ -824,16 +852,6 @@ export function PokerTable({
           effectNow={effectNow}
         />
       ))}
-      {board.length === 0 && (
-        <PrintedPlane
-          lines={["GOOD COMPANY. QUESTIONABLE DECISIONS."]}
-          width={2.35}
-          height={0.27}
-          position={[0, 1.39, 0.74]}
-          rotation={[-Math.PI / 2, 0, 0]}
-          color="#91aa89"
-        />
-      )}
       {pot > 0 && !settled && (
         <group name="central-pot" userData={{ amount: pot }}>
           {potStacks(pot).map((pile, i) => <ChipStack key={i} {...pile} scale={POT_CHIP_SCALE} />)}
@@ -868,6 +886,8 @@ function PlayerSeat({
   hero,
   theme,
   hideAvatar = false,
+  privateCards,
+  onPeekStart,
   onClick,
   remaining = 0,
   progress = 0,
@@ -892,12 +912,15 @@ function PlayerSeat({
   hero: boolean;
   theme: string;
   hideAvatar?: boolean;
+  privateCards?: string[];
+  onPeekStart?: () => void;
   onClick?: (id: string) => void;
 }) {
   const { position, rotation } = seatPosition(player.seat ?? index, count);
   const folded = ["folded", "out", "eliminated", "spectator"].includes(
     player.status || "",
   );
+  const outOfHand = folded || player.status === 'waiting';
   const c = getCharacter(player.avatar);
   const depth = workZ(player.seat ?? index);
   return (
@@ -910,7 +933,6 @@ function PlayerSeat({
       />
       {active && <TurnHalo paused={paused} />}
       <group
-        visible={!hideAvatar}
         onClick={(event) => {
           event.stopPropagation();
           onClick?.(player.id);
@@ -918,14 +940,19 @@ function PlayerSeat({
       >
         <CartoonAvatar
           character={c}
+          firstPerson={hideAvatar}
+          privateCards={privateCards}
+          onPeekStart={onPeekStart}
+          peek={player.peek}
           emote={player.emote}
           seed={index}
           actorKey={player.id}
           active={active && !paused}
+          outOfHand={outOfHand}
           seatIndex={player.seat ?? index}
           workDepth={depth}
           hasCards={
-            !folded ||
+            (!outOfHand && player.cardCount !== 0) ||
             motions.some(
               (m) =>
                 m.type === "fold" &&
@@ -1874,11 +1901,13 @@ function CameraRig({
   players,
   heroId,
   currentPlayerId,
+  peeking = false,
 }: {
   mode: string;
   players: ScenePlayer[];
   heroId?: string;
   currentPlayerId?: string;
+  peeking?: boolean;
 }) {
   const { camera, size } = useThree();
   const initialized = useRef(false);
@@ -1887,11 +1916,13 @@ function CameraRig({
   const goalPosition = useMemo(() => new Vector3(), []),
     goalTarget = useMemo(() => new Vector3(), []);
   const controls = useRef<CameraControlsImpl>(null);
+  const firstPerson = useMemo(() => new FirstPersonMotion(), []);
   const inward = useMemo(() => new Vector3(), []);
   useFrame(({ clock }, delta) => {
-    camera.userData.focusActor =
-      mode === "follow" ? currentPlayerId : undefined;
+    const fromSeat = mode === 'first-person' || mode === 'firstPerson';
+    camera.userData.focusActor = mode === "follow" || fromSeat ? currentPlayerId : undefined;
     if (!controls.current) return;
+    if (!fromSeat) firstPerson.reset();
     if (mode === "free") {
       lastShot.current = "free";
       return;
@@ -1912,18 +1943,17 @@ function CameraRig({
     } else if (mode === "overhead") {
       goalPosition.set(0, 15 * zoom, 0.2);
       goalTarget.set(0, 0, 0);
-    } else if (mode === "first-person" || mode === "firstPerson") {
+    } else if (fromSeat) {
       const heroIndex = Math.max(
         0,
         players.findIndex((p) => p.id === heroId),
       );
-      const seat = seatPosition(
-        players[heroIndex]?.seat ?? heroIndex,
-        players.length,
-      ).position;
-      goalPosition.set(seat[0] * 0.9, 2.63, seat[2] * 0.9);
-      goalTarget.set(0, 2.08, -0.35);
-      fov = 65;
+      const shot = firstPersonShot(players[heroIndex]?.seat ?? heroIndex,
+        activeIndex >= 0 ? players[activeIndex].seat ?? activeIndex : undefined);
+      goalPosition.copy(shot.position);
+      goalTarget.copy(shot.target);
+      if (peeking) goalTarget.copy(privateCardLookTarget(players[heroIndex]?.seat ?? heroIndex));
+      fov = peeking ? (size.width < 620 ? 70 : 48) : 72;
     } else if (mode === "cinematic") {
       const t = clock.elapsedTime * 0.045;
       goalPosition.set(
@@ -1937,7 +1967,11 @@ function CameraRig({
       goalTarget.set(0, 1.6, -0.1);
     }
     const shot = `${mode}:${mode === "follow" ? currentPlayerId : mode.startsWith("first") ? heroId : ""}:${size.width}:${size.height}`;
-    if (shot !== lastShot.current) {
+    if (fromSeat) {
+      firstPerson.update(controls.current, camera, goalPosition, goalTarget, delta, !initialized.current);
+      lastShot.current = shot;
+      initialized.current = true;
+    } else if (shot !== lastShot.current) {
       // One critically damped controller owns both scripted shots and manual orbit.
       // Only the very first frame is immediate; even automatic mode changes ease.
       cinematicReady.current = !initialized.current;
@@ -2063,7 +2097,10 @@ function HouseDealer({
 }
 function SceneContents({
   players,
+  heroCards = [],
+  peeking = false,
   board = [],
+  onPeekStart,
   pot = 0,
   currentPlayerId,
   followPlayerId,
@@ -2082,6 +2119,7 @@ function SceneContents({
   effectNow,
   soundEffects = false,
   settled = false,
+  focusTable = false,
 }: PokerSceneProps) {
   const pointOfViewId = players.some((p) => p.id === heroId)
     ? heroId
@@ -2089,6 +2127,7 @@ function SceneContents({
   const occupiedSeats = new Set(
     players.map((player, index) => player.seat ?? index),
   );
+  const hero = players.find(player => player.id === heroId);
   return (
     <>
       <Room theme={roomTheme} />
@@ -2133,6 +2172,8 @@ function SceneContents({
             (cameraMode === "first-person" || cameraMode === "firstPerson") &&
             player.id === pointOfViewId
           }
+          privateCards={player.id === heroId && (cameraMode === 'first-person' || cameraMode === 'firstPerson') ? heroCards : undefined}
+          onPeekStart={player.id === heroId ? onPeekStart : undefined}
           onClick={onSeatClick}
           remaining={turnRemaining}
           progress={turnProgress}
@@ -2149,7 +2190,8 @@ function SceneContents({
         mode={cameraMode}
         players={players}
         heroId={heroId}
-        currentPlayerId={followPlayerId ?? currentPlayerId}
+        currentPlayerId={focusTable ? undefined : followPlayerId ?? currentPlayerId}
+        peeking={peeking && !!hero}
       />
     </>
   );

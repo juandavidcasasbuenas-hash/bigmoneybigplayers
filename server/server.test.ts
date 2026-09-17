@@ -64,6 +64,35 @@ describe('real Socket.IO sessions and private room snapshots',() => {
       expect(json).not.toContain(created.token); expect(json).not.toContain(joined.token);
     }
   });
+  it('broadcasts live peeks and releases to opponents and the rail without showing private faces',async () => {
+    const {host,guest,rail,created,joined} = await joinTable();
+    await emit(host,'start-game');
+    const ready=await state(host,s=>!!s.actions);
+    const request={holding:true,handNumber:ready.handNumber,playerId:created.playerId};
+    // The forged playerId is ignored: each connection can move only its own hands.
+    expect(await emit(guest,'peek-cards',request)).toMatchObject({ok:true});
+    const views=await Promise.all([host,guest,rail].map(s=>state(s,r=>r.players.find(p=>p.id===joined.playerId)?.peek?.releasedAt===null)));
+    const gesture=views[0].players.find(p=>p.id===joined.playerId)!.peek;
+    for(const [i,view] of views.entries()) {
+      expect(view.players.find(p=>p.id===joined.playerId)!.peek).toEqual(gesture);
+      expect(view.players.find(p=>p.id===joined.playerId)!.holeCards).toHaveLength(i===1?2:0);
+      expect(view.players.find(p=>p.id===created.playerId)!.peek).toBeNull();
+    }
+    expect(await emit(rail,'peek-cards',request)).toMatchObject({ok:false});
+    expect(await emit(guest,'peek-cards',{...request,holding:false})).toMatchObject({ok:true});
+    await Promise.all([host,guest,rail].map(s=>state(s,r=>typeof r.players.find(p=>p.id===joined.playerId)?.peek?.releasedAt==='number')));
+    // A quick tap does not wait for the press acknowledgement to send release.
+    const acks=await Promise.all([
+      emit(guest,'peek-cards',request),
+      emit(guest,'peek-cards',{...request,holding:false}),
+    ]);
+    expect(acks.every(a=>a.ok)).toBe(true);
+    await emit(guest,'peek-cards',request);
+    await state(rail,r=>r.players.find(p=>p.id===joined.playerId)?.peek?.releasedAt===null);
+    guest.disconnect();
+    const stopped=await state(rail,r=>!r.players.find(p=>p.id===joined.playerId)?.connected);
+    expect(stopped.players.find(p=>p.id===joined.playerId)?.peek?.releasedAt).not.toBeNull();
+  });
   it('enforces host authority and derives action identity from the connection',async () => {
     const {host,guest,rail,created} = await joinTable();
     expect(await emit(guest,'start-game')).toMatchObject({ok:false,error:expect.stringContaining('Only the host')});
@@ -99,6 +128,22 @@ describe('real Socket.IO sessions and private room snapshots',() => {
     expect(await emit(fake,'join-room',{roomCode:created.roomCode,name:'Host',avatarId:'juan'})).toMatchObject({ok:true,playerId:expect.not.stringMatching(created.playerId!)});
     expect((await state(fake)).players.find(p => p.id === created.playerId)?.holeCards).toEqual([]);
   });
+  it('keeps queued actions private, authenticates the owner and invalidates them on a raise', async () => {
+    const {host,guest,rail,created} = await joinTable();
+    await emit(host,'start-game');
+    const waiting = await state(guest,s=>s.stage==='preflop');
+    const request = {type:'check',handNumber:waiting.handNumber,stage:waiting.stage,currentBet:waiting.currentBet};
+    expect(await emit(rail,'pre-action',{...request,playerId:created.playerId})).toMatchObject({ok:false});
+    expect(await emit(guest,'pre-action',request)).toMatchObject({ok:true});
+    expect((await state(guest,s=>!!s.preAction)).preAction?.type).toBe('check');
+    await emit(host,'request-state');
+    expect((await state(host)).preAction).toBeNull();
+    expect((await state(rail)).preAction).toBeNull();
+    const turn = await state(host,s=>!!s.actions);
+    expect(await emit(host,'action',{type:'raise',amount:100,turnId:turn.turnId})).toMatchObject({ok:true});
+    expect((await state(guest,s=>s.currentBet===100)).preAction).toBeNull();
+    expect(await emit(guest,'pre-action',request)).toMatchObject({ok:false,error:expect.stringContaining('changed')});
+  },12000);
   it('rejects a duplicate wager after that player becomes the actor on a new street',async () => {
     const {host,guest} = await joinTable();
     await emit(host,'start-game');

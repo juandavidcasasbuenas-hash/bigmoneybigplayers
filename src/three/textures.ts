@@ -93,6 +93,7 @@ export function tableLogoTexture() {
 
 export function cardTexture(card?: string) {
   const texture = canvasTexture(500,700,ctx=>{ctx.fillStyle='#fffef9';ctx.fillRect(0,0,500,700)});
+  texture.anisotropy = 8;
   const image = new Image();
   image.onload = () => { const ctx=(texture.image as HTMLCanvasElement).getContext('2d'); if(ctx){ctx.clearRect(0,0,500,700);ctx.drawImage(image,0,0,500,700);texture.needsUpdate=true;} };
   image.src=cardImageSource(card);

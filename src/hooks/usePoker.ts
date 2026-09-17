@@ -83,7 +83,7 @@ export function usePoker() {
       setBusy(false);
       // Remove stale betting controls immediately while retaining the scene and stacks.
       if (snapshot.current) {
-        snapshot.current = { ...snapshot.current, actions: null, turnId: null };
+        snapshot.current = { ...snapshot.current, actions: null, turnId: null, preAction: null, canPreAct: false };
         setRoom(snapshot.current);
       }
       // This tab can still host another table, without stealing the old seat back.
@@ -122,6 +122,13 @@ export function usePoker() {
       const message = 'The table server is reconnecting. Give it a moment.';
       setError(message);
       return { ok: false, error: message };
+    }
+    // Press/release packets must both arrive even if an action or the press ack is
+    // still pending. Socket.IO preserves their order; these never lock betting.
+    if (event === 'peek-cards') {
+      const ack = await emitAck(s, event, data);
+      if (!ack.ok && (data as {holding?: boolean}).holding) setError(ack.error || 'Could not check your cards.');
+      return ack;
     }
     // State updates are asynchronous; a ref closes the double-click window immediately.
     if (pending.current) return { ok: false, error: 'Wait for the current table request to finish.' };

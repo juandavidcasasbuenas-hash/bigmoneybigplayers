@@ -375,8 +375,8 @@
   gap: 5px;
 }
 .poker-game .playing-card {
-  width: 58px;
-  height: 82px;
+  width: 72px;
+  height: 101px;
   flex-shrink: 0;
   border-radius: 6px;
   box-shadow: 0 4px 9px #02140866;
@@ -419,13 +419,13 @@
   box-shadow: 0 3px 14px #06180e44;
 }
 .poker-game .community-hud .playing-card {
-  width: 52px;
-  height: 73px;
+  width: 64px;
+  height: 90px;
 }
 .card-slot {
   display: block;
-  width: 52px;
-  height: 73px;
+  width: 64px;
+  height: 90px;
   border: 1px solid #dfd8a833;
   border-radius: 5px;
   background: #132c2066;
@@ -846,8 +846,8 @@
     gap: 3px;
   }
   .poker-game .playing-card {
-    width: 43px;
-    height: 61px;
+    width: 58px;
+    height: 81px;
     border-radius: 4px;
   }
   .hand-value {
@@ -944,14 +944,21 @@
   .cards-hud {
     bottom: 10px;
   }
+  .private-cards {
+    flex-direction: row;
+    align-items: center;
+  }
+  .hand-value {
+    max-width: 120px;
+  }
   .poker-game .playing-card {
-    width: 42px;
-    height: 59px;
+    width: 56px;
+    height: 78px;
   }
   .poker-game .community-hud .playing-card,
   .card-slot {
-    width: 39px;
-    height: 55px;
+    width: 52px;
+    height: 73px;
   }
 }
 @media (max-width: 480px) {
@@ -1052,7 +1059,7 @@
 .showdown-name small { color: #adbaa9; font-size: 10px; }
 .showdown-hand { display: flex; align-items: center; justify-content: space-between; gap: 9px; }
 .showdown-cards { display: flex; gap: 4px; }
-.poker-game .showdown-cards .playing-card { width: 42px; height: 59px; border-radius: 4px; }
+.poker-game .showdown-cards .playing-card { width: 54px; height: 76px; border-radius: 4px; }
 .showdown-chance, .showdown-award { display: flex; flex-direction: column; align-items: flex-end; gap: 2px; min-width: 70px; }
 .showdown-chance strong, .showdown-award strong { font-size: 25px; font-weight: 650; color: #efd296; font-variant-numeric: tabular-nums; letter-spacing: -1px; }
 .showdown-chance small, .showdown-award small { font-size: 10px; color: #c8d2bd; }
@@ -1078,12 +1085,12 @@
   .showdown-panel > header { padding: 7px 10px; }
   .showdown-panel > header > strong { font-size: 15px; }
   .showdown-players { gap: 6px; padding: 7px; }
-  .showdown-player { flex-basis: 156px; padding: 7px; }
+  .showdown-player { flex-basis: 194px; padding: 7px; }
   .showdown-name { gap: 5px; margin-bottom: 7px; }
   .showdown-name strong { max-width: 100px; font-size: 12px; }
   .showdown-name img { width: 21px; height: 21px; }
   .showdown-name small { display: none; }
-  .poker-game .showdown-cards .playing-card { width: 31px; height: 44px; }
+  .poker-game .showdown-cards .playing-card { width: 48px; height: 67px; }
   .showdown-chance, .showdown-award { min-width: 56px; }
   .showdown-chance strong, .showdown-award strong { font-size: 20px; }
   .showdown-player p { font-size: 10px; }
@@ -1095,7 +1102,7 @@
   .showdown-panel { top: 78px; }
   .showdown-player { padding: 7px; }
   .showdown-name { margin-bottom: 5px; }
-  .poker-game .showdown-cards .playing-card { width: 31px; height: 44px; }
+  .poker-game .showdown-cards .playing-card { width: 48px; height: 67px; }
 }
 @media (max-width: 760px) {
   .table-mode .site-header nav {
@@ -1103,8 +1110,8 @@
   }
   .poker-game .community-hud .playing-card,
   .card-slot {
-    width: 38px;
-    height: 54px;
+    width: 48px;
+    height: 67px;
   }
   .reaction-controls button {
     min-width: 38px;
@@ -1113,8 +1120,8 @@
 @media (max-width: 350px) {
   .poker-game .community-hud .playing-card,
   .card-slot {
-    width: 32px;
-    height: 45px;
+    width: 44px;
+    height: 62px;
   }
   .reaction-controls button {
     min-width: 33px;
@@ -1135,4 +1142,57 @@
 }
 .table-mode .brand > span {
   font-size: 16px;
+}
+
+.pre-action-controls { display: flex; flex-direction: column; align-items: flex-end; gap: 7px; }
+.pre-action-heading { display: flex; align-items: baseline; gap: 16px; font-size: 12px; color: #d5dfcc; }
+.pre-action-heading small { font-size: 10px; color: #a3b19a; }
+.pre-action-buttons { display: flex; align-items: center; gap: 8px; }
+.poker-game .pre-action-buttons button { min-width: 102px; justify-content: flex-start; background: #1c3026; }
+.poker-game .pre-action-buttons button.queued { border-color: #d8bb7c; background: #3a4930; color: #ffdf9f; }
+.pre-action-check { display: grid; place-items: center; width: 17px; height: 17px; border: 1px solid #91a48b; border-radius: 4px; }
+.queued .pre-action-check { border-color: #ddc38a; background: #ddc38a; color: #17291f; }
+.poker-game .pre-action-buttons .cancel-pre-action { min-width: 36px; padding: 8px; justify-content: center; }
+@media (max-width: 760px) {
+  .cards-hud { display: grid; grid-template-columns: 1fr; justify-items: start; gap: 9px; }
+  .private-cards { position: static; grid-row: 2; flex-direction: row; align-items: center; gap: 12px; }
+  .hand-value { max-width: 190px; }
+  .community-hud { grid-row: 1; justify-self: end; margin: 0; gap: 4px; padding: 6px; background: #112a20ed; }
+  .pre-action-controls { align-items: stretch; gap: 5px; }
+  .pre-action-heading { justify-content: space-between; font-size: 11px; }
+  .pre-action-buttons button { flex: 1; min-height: 38px; }
+  .pre-action-buttons .cancel-pre-action { flex: 0 0 36px; }
+}
+
+/* First-person cards stay on the felt. Keep the peek control and public board clear. */
+.first-person .cards-hud { top: 0; bottom: 0; }
+.first-person .private-cards { position: absolute; left: 0; bottom: 18px; }
+.first-person .community-hud { position: absolute; top: 122px; right: 0; margin: 0; }
+.first-person .in-hand-summary {
+  position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+  overflow: hidden; clip-path: inset(50%); white-space: nowrap;
+}
+.first-person .hand-value { padding: 8px 11px; background: #112a20ed; border-radius: 9px; }
+@media (max-width: 760px) {
+  .first-person .community-hud { top: 139px; }
+  .first-person .private-cards { bottom: 10px; }
+}
+@media (max-height: 600px) and (min-width: 761px) {
+  .first-person .community-hud { top: 117px; }
+  .first-person .private-cards { bottom: 10px; }
+}
+
+.poker-game .peek-cards {
+  pointer-events: auto; touch-action: none; user-select: none; -webkit-user-select: none;
+  gap: 8px; min-height: 42px; padding: 9px 13px; background: #183b2ff2;
+  border: 1px solid #ba9e67; color: #f5e7c8; box-shadow: 0 3px 12px #0003;
+}
+.poker-game .peek-cards.peeking,
+.poker-game .peek-cards.peeking:hover:not(:disabled) { background: #d3b67b; color: #142b22; }
+.peek-cards kbd { font: inherit; font-size: 10px; opacity: .65; border: 1px solid currentColor; border-radius: 3px; padding: 1px 4px; }
+.first-person .private-cards { gap: 8px; }
+@media (max-width: 760px) {
+  .first-person .private-cards { flex-direction: column; align-items: flex-start; }
+  .peek-cards kbd { display: none; }
+  .poker-game .peek-cards { min-height: 44px; }
 }

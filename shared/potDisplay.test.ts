@@ -1,6 +1,18 @@
 import { expect, it } from 'vitest';
 import { potStacks, visiblePot } from './potDisplay';
 import { planTableMotions } from './tableTimeline';
+import { BOARD_CARD_SCALE, BOARD_Z } from '../src/three/tableLayout';
+import { POT_ORIGIN, POT_CHIP_SCALE } from './potDisplay';
+
+it('keeps the growing pot central and clear of the enlarged community cards', () => {
+  for(const amount of [25,500,5000,120000,1e12]) for(const pile of potStacks(amount)) {
+    const radius=.145*POT_CHIP_SCALE;
+    expect(Math.abs(pile.position[0])+radius).toBeLessThan(.55);
+    expect(Math.abs(pile.position[2])).toBeLessThan(.75);
+    expect(pile.position[2]-radius).toBeGreaterThan(BOARD_Z+.67*BOARD_CARD_SCALE/2+.08);
+  }
+  expect(potStacks(25)[0].position[0]).toBe(POT_ORIGIN[0]);
+});
 
 it('grows visible chip counts monotonically while bounding geometry for huge pots', () => {
   const amounts = [0, 25, 75, 150, 1000, 5000, 10000, 120000, 1e12];

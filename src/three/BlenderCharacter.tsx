@@ -15,6 +15,7 @@ import type { CharacterDefinition } from "../data/characters";
 import { createBlenderPoseDriver, type BlenderPose } from "./blenderRig";
 export type { BlenderPose } from "./blenderRig";
 import { voiceLevel } from "../audio/tableAudio";
+import { cardPeekProgress, type CardPeek } from '../../shared/cardPeek';
 
 type EyeSurface = {
   center: [number, number, number];
@@ -114,6 +115,8 @@ export function BlenderHead({
   emote,
   attention = 0,
   active = false,
+  peek,
+  effectNow,
 }: {
   character: CharacterDefinition;
   actorKey?: string;
@@ -121,6 +124,8 @@ export function BlenderHead({
   emote?: string;
   attention?: number;
   active?: boolean;
+  peek?: CardPeek | null;
+  effectNow?: number;
 }) {
   const { scene } = useGLTF(c.model?.head || `/models/club/${c.id}.glb`);
   const root = useRef<Group>(null);
@@ -211,7 +216,7 @@ export function BlenderHead({
     );
     instance.gaze.y = MathUtils.damp(
       instance.gaze.y,
-      active && glance % 3 === 0 ? -0.013 : -0.003,
+      cardPeekProgress(peek, effectNow ?? Date.now()) > 0.1 ? -0.024 : active && glance % 3 === 0 ? -0.013 : -0.003,
       9,
       dt,
     );
@@ -253,6 +258,7 @@ export function BlenderHead({
         root.current.rotation.x,
         -(root.current.parent?.parent?.rotation.x || 0) * 0.65 +
           (active ? 0.03 : 0) +
+          cardPeekProgress(peek, effectNow ?? Date.now()) * 0.24 +
           Math.sin(t * 0.47) * 0.022 +
           Math.sin(t * 5) * talk * 0.04 -
           (laugh ? 0.065 : 0),

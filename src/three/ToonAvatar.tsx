@@ -3,6 +3,7 @@ import type { CharacterDefinition } from "../data/characters";
 import type { TableMotion } from "../../shared/tableTimeline";
 import { ContactRig } from "./ContactRig";
 import { BlenderHead } from "./BlenderCharacter";
+import type { CardPeek } from '../../shared/cardPeek';
 
 export { DEALER_CHARACTER } from "../data/characters";
 
@@ -10,6 +11,7 @@ export { DEALER_CHARACTER } from "../data/characters";
 export const ToonAvatar = memo(function ToonAvatar({
   character,
   attention,
+  firstPerson = false,
   dealSequence: _dealSequence,
   ...props
 }: {
@@ -19,6 +21,11 @@ export const ToonAvatar = memo(function ToonAvatar({
   actorKey?: string;
   active?: boolean;
   hasCards?: boolean;
+  peek?: CardPeek | null;
+  privateCards?: string[];
+  onPeekStart?: () => void;
+  firstPerson?: boolean;
+  outOfHand?: boolean;
   dealer?: boolean;
   dealSequence?: number;
   attention?: number;
@@ -34,14 +41,16 @@ export const ToonAvatar = memo(function ToonAvatar({
 }) {
   return (
     <ContactRig character={character} {...props}>
-      <BlenderHead
+      {!firstPerson && <BlenderHead
         character={character}
         actorKey={props.actorKey}
         emote={props.emote}
         seed={props.seed}
         attention={attention}
         active={props.active}
-      />
+        peek={props.peek}
+        effectNow={props.effectNow}
+      />}
     </ContactRig>
   );
 });

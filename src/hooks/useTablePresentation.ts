@@ -6,6 +6,7 @@ import {
   planTableMotions,
   initialBoardCount,
   publicBoardAt,
+  presentationFocus,
   type TableMotion,
 } from "../../shared/tableTimeline";
 import { playTableSound, setTableSoundsEnabled } from "../audio/tableAudio";
@@ -219,6 +220,7 @@ export function useTablePresentation(
         : [],
     [room?.board, view.baseBoard, stateMatches, motions, now],
   );
+  const focus = presentationFocus(motions, now);
   return {
     motions,
     board,
@@ -226,11 +228,8 @@ export function useTablePresentation(
     award,
     pendingAward,
     latestAction,
-    focusActorId:
-      latestAction && "playerId" in latestAction
-        ? latestAction.playerId
-        : undefined,
-    focusTable: !!active || (!!room?.handReview && now >= room.handReview.startsAt),
+    focusActorId: focus.actorId,
+    focusTable: focus.table || (!!room?.handReview && now >= room.handReview.startsAt),
     potVisible: room ? !room.winners.length || pendingAward : false,
     pot: room ? visiblePot(room.pot, motions, now) : 0,
     settled: !!room?.winners.length && !pendingAward,

@@ -12,17 +12,19 @@ import type { TableMotion } from "../../shared/tableTimeline";
 import { DEAL, STREET } from "../../shared/dealTiming";
 import { playTableSound } from "../audio/tableAudio";
 import { Card, ChipStack } from "./TablePieces";
+import { cardPeekProgress, type CardPeek } from '../../shared/cardPeek';
+import { PeekCard } from './PeekCard';
+import { foldTableCard, foldTableHand, restingCardHand, tablePeekHand } from './cardPeek';
 import {
   actorContact,
+  blendPose,
   BODY,
   CARD_SCALE,
-  cardInHand,
   dealerHandAt,
   dealerLeftHand,
   FELT_Y,
-  foldedCard,
-  pose,
-  restingHand,
+  holeCardRest,
+  relaxContact,
   seatedStance,
   smooth,
   solveArm,
@@ -83,8 +85,8 @@ function Round({
     </mesh>
   );
 }
-type HandControl = { mode: HandMode; phase: number; curl?: number };
-function Hand({
+export type HandControl = { mode: HandMode; phase: number; curl?: number };
+export function Hand({
   side,
   skin,
   control,
@@ -226,6 +228,10 @@ export interface ContactRigProps {
   seed?: number;
   active?: boolean;
   hasCards?: boolean;
+  peek?: CardPeek | null;
+  privateCards?: string[];
+  onPeekStart?: () => void;
+  outOfHand?: boolean;
   cardsReadyAt?: number;
   activity?: TableMotion;
   dealer?: boolean;
@@ -245,6 +251,10 @@ export function ContactRig({
   seed = 0,
   active,
   hasCards = true,
+  peek: peekGesture,
+  privateCards,
+  onPeekStart,
+  outOfHand = false,
   cardsReadyAt = 0,
   activity,
   dealer,
@@ -275,7 +285,10 @@ export function ContactRig({
   const standing = useStanding(emote, emoteAt, effectNow);
   const emoteClock = useRef({ emote, at: emoteAt || Date.now() });
   const soundsPlayed = useRef(new Set<string>());
-  useFrame(({ clock }) => {
+  const recline = useRef(0);
+  const cardCurl = useRef(0);
+  const peekSoundAt = useRef(0);
+  useFrame(({ clock }, delta) => {
     const now = effectNow ?? Date.now();
     if (
       emoteClock.current.emote !== emote ||
@@ -285,22 +298,43 @@ export function ContactRig({
     const p = activity ? (now - activity.startAt) / activity.duration : -1;
     const actionLive = p >= 0 && p < 1;
     const phase = clock.elapsedTime + seed * 2.71;
-    const peek =
-      hasCards && !dealer && !actionLive
-        ? Math.sin(smooth(phase % 12, 7.7, 9.8) * Math.PI)
-        : 0;
+    const folding = actionLive && activity?.type === 'fold';
+    // Close the corners during the reach phase, before the chips are pushed or
+    // cards released. Beginning a decision while holding P must not snap them flat.
+    const peek = hasCards && !dealer && (!outOfHand || folding) && standing.current < 0.02
+      ? cardPeekProgress(peekGesture, now) * (actionLive ? 1 - smooth(p, 0, 0.18) : 1) : 0;
+    cardCurl.current = smooth(peek, 0.25, 1);
+    if (peekGesture && peek > 0.25 && peekGesture.releasedAt === null && peekSoundAt.current !== peekGesture.startedAt) {
+      peekSoundAt.current = peekGesture.startedAt;
+      if (soundEffects && now - peekGesture.startedAt < 1400) playTableSound('reveal', {volume: 0.12});
+    }
     const stance = seatedStance(standing.current);
     const contact = actorContact({
       p,
       activity: actionLive ? activity : undefined,
       z: workDepth,
       now,
-      cardsReadyAt,
+      cardsReadyAt: dealer ? cardsReadyAt : 0,
       hasCards,
       standing: standing.current,
       emote,
-      peek,
+      peek: 0,
     });
+    if (hasCards && !dealer && standing.current < 0.02) {
+      contact.left = restingCardHand(seatIndex, -1);
+      contact.leftMode = 'rest';
+      if (actionLive && activity?.type === 'fold') {
+        contact.left = foldTableHand(p, seatIndex, -1);
+        contact.right = foldTableHand(p, seatIndex, 1);
+        contact.leftMode = contact.rightMode = p < 0.43 ? 'cards' : 'open';
+      }
+      if (peek > 0) {
+        contact.left = blendPose(contact.left, tablePeekHand(seatIndex, 1, cardCurl.current), smooth(peek, 0, 0.25));
+        contact.right = blendPose(contact.right, tablePeekHand(seatIndex, 0, cardCurl.current), smooth(peek, 0, 0.25));
+        contact.leftMode = contact.rightMode = 'cards';
+        contact.lean += peek * 0.08;
+      }
+    }
     const manualAge = now - emoteClock.current.at;
     const manual =
       ["chips", "chip-roll", "chip-toss"].includes(emote || "") &&
@@ -319,9 +353,10 @@ export function ContactRig({
     const doingTrick =
       !dealer &&
       !actionLive &&
+      peek === 0 &&
       standing.current < 0.02 &&
       !(cardsReadyAt && now < cardsReadyAt + DEAL.pickup) &&
-      (manual || (!emote && cycle % Math.max(1, playerCount) === seed)) &&
+      (manual || (!outOfHand && !emote && cycle % Math.max(1, playerCount) === seed)) &&
       trickAge >= 0 &&
       trickAge < TRICK_MS;
     const trick = doingTrick
@@ -376,6 +411,9 @@ export function ContactRig({
       contact.rightMode = "push";
       contact.lean = dealing ? 0.1 : 0.035;
     }
+    const sittingBack = outOfHand && !dealer && !actionLive && !trick && !emote && standing.current < 0.01;
+    recline.current = MathUtils.damp(recline.current, sittingBack ? 1 : 0, 3.2, Math.min(delta, 0.05));
+    if (!dealer && recline.current > 0.001) relaxContact(contact, recline.current);
     const breath = Math.sin(phase * 1.5) * 0.008;
     const bodyRotation = new Quaternion().setFromAxisAngle(
       new Vector3(1, 0, 0),
@@ -427,8 +465,8 @@ export function ContactRig({
       applyPose(
         card,
         folding
-          ? foldedCard(p, workDepth, seatIndex, i)
-          : cardInHand(contact.left, i),
+          ? foldTableCard(p, seatIndex, i)
+          : holeCardRest(workDepth, i),
       );
     });
     if (deck.current) applyPose(deck.current, contact.left);
@@ -447,15 +485,18 @@ export function ContactRig({
         ? activity?.type
         : trick
           ? ["chip-riffle", "chip-roll", "chip-toss"][variant]
-          : standing.current > 0.05
+          : peek > 0.01 ? 'peek-cards' : standing.current > 0.05
             ? "stand"
-            : "idle";
+            : recline.current > 0.5 ? "sitting-back" : "idle";
       root.current.userData.contact = {
         physics: contactPhysicsReady() ? "rapier" : "loading",
         solver: "three-ccdik",
         armError: Math.max(...errors),
         railClearance: Math.min(...clearances),
         standing: standing.current,
+        recline: recline.current,
+        peek: peek,
+        cardCurl: cardCurl.current,
         hip: stance.hip.toArray(),
         leftHand: contact.left.position.toArray(),
         rightHand: contact.right.position.toArray(),
@@ -513,9 +554,11 @@ export function ContactRig({
             ref={(n) => {
               cards.current[i] = n;
             }}
-            name={`held-card-${i}`}
+            name={`hole-card-${i}`}
+            onPointerDown={onPeekStart ? event => { event.stopPropagation(); if (event.button === 0) onPeekStart(); } : undefined}
+            onClick={onPeekStart ? event => event.stopPropagation() : undefined}
           >
-            <Card position={[0, 0, 0]} scale={CARD_SCALE} />
+            <PeekCard card={privateCards?.[i]} amount={cardCurl} />
           </group>
         ))}
       {!dealer &&

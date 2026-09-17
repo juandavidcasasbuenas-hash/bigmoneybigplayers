@@ -8,7 +8,8 @@ import { existsSync } from 'node:fs';
 import { Server, type Socket } from 'socket.io';
 import { PokerRoom } from './engine.js';
 import { registerVoiceRoutes } from './voice.js';
-import type { Ack, CreateRoomRequest, Emote, GameSettings, JoinRoomRequest, PokerAction } from '../shared/types.js';
+import type { Ack, CreateRoomRequest, Emote, GameSettings, JoinRoomRequest, PokerAction, PreActionRequest } from '../shared/types.js';
+import type { CardPeekRequest } from '../shared/cardPeek.js';
 
 interface Identity { roomCode: string; playerId: string }
 type Reply = (response: Ack) => void;
@@ -142,6 +143,14 @@ export function createPokerServer(options: { tickMs?: number; serveStatic?: bool
       const {room,playerId} = identify(socket);
       if (!payload?.turnId || payload.turnId !== room.turnId) throw new Error('That turn has already moved on. Refresh the table state before acting.');
       room.act(playerId,payload);
+    });
+    handle('pre-action',(payload: PreActionRequest) => {
+      const {room,playerId} = identify(socket);
+      room.setPreAction(playerId,payload);
+    });
+    handle('peek-cards',(payload: CardPeekRequest) => {
+      const {room,playerId} = identify(socket);
+      room.peekCards(playerId,payload);
     });
     handle('update-settings',(payload: Partial<GameSettings>) => { const {room,playerId} = identify(socket); room.updateSettings(playerId,payload); });
     handle('start-game',() => { const {room,playerId} = identify(socket); room.start(playerId); });

@@ -5,6 +5,8 @@ import {
   CAMERA_MAX_SPEED,
   CAMERA_SMOOTH_TIME,
   moveToShot,
+  firstPersonShot,
+  FirstPersonMotion,
 } from "./cameraMotion";
 CameraControls.install({ THREE });
 // The controller stores a DOM rectangle even without a connected canvas.
@@ -28,6 +30,71 @@ function setup() {
   return { camera, control };
 }
 describe("smooth table cameras", () => {
+  it('keeps the first-person eye fixed while smoothly tracking all other seats', () => {
+    for(let hero=0; hero<12; hero++) {
+      const {camera,control}=setup(), motion=new FirstPersonMotion();
+      const origin=firstPersonShot(hero);
+      moveToShot(control,origin.position,origin.target,true); control.update(1/60);
+      for(let actor=0; actor<12; actor++) {
+        const shot=firstPersonShot(hero,actor);
+        let maxRotation=0;
+        for(let frame=0;frame<240;frame++) {
+          const before=camera.quaternion.clone();
+          motion.update(control,camera,shot.position,shot.target,1/60); control.update(1/60);
+          maxRotation=Math.max(maxRotation,before.angleTo(camera.quaternion));
+          expect(camera.position.distanceTo(origin.position)).toBeLessThan(0.00001);
+        }
+        expect(maxRotation).toBeLessThan(0.03);
+        const direction=new THREE.Vector3().subVectors(shot.target,camera.position).normalize();
+        expect(camera.getWorldDirection(new THREE.Vector3()).angleTo(direction)).toBeLessThan(0.002);
+      }
+    }
+  });
+  it('enters first-person without teleporting and has matching 30/60 fps timing', () => {
+    const run=(fps:number) => {
+      const {camera,control}=setup(), motion=new FirstPersonMotion(), shot=firstPersonShot(5,0);
+      moveToShot(control,new THREE.Vector3(1,6,12),new THREE.Vector3(0,1.5,0),true); control.update(1/fps);
+      for(let i=0;i<fps;i++) {
+        const before=camera.position.clone();
+        motion.update(control,camera,shot.position,shot.target,1/fps); control.update(1/fps);
+        expect(before.distanceTo(camera.position)).toBeLessThan(1.2);
+      }
+      return camera;
+    };
+    const a=run(30), b=run(60);
+    expect(a.position.distanceTo(b.position)).toBeLessThan(0.02);
+    expect(a.quaternion.angleTo(b.quaternion)).toBeLessThan(0.02);
+  });
+  it.each([24, 30, 60, 120])('eases into a large head turn at %i fps, with a capped speed and level horizon', fps => {
+    const {camera, control} = setup(), motion = new FirstPersonMotion();
+    const origin = firstPersonShot(5, 4), goal = firstPersonShot(5, 6);
+    motion.update(control, camera, origin.position, origin.target, 1 / fps, true); control.update(1 / fps);
+    let previousSpeed = 0;
+    for (let frame = 0; frame < fps * 4; frame++) {
+      const before = camera.quaternion.clone();
+      motion.update(control, camera, goal.position, goal.target, 1 / fps); control.update(1 / fps);
+      const step = before.angleTo(camera.quaternion), speed = step * fps;
+      if (frame === 0) expect(step).toBeLessThan(0.012);
+      expect(speed).toBeLessThan(1.75);
+      expect(Math.abs(speed - previousSpeed) * fps).toBeLessThan(12);
+      expect(Math.abs(new THREE.Vector3(1, 0, 0).applyQuaternion(camera.quaternion).y)).toBeLessThan(0.00001);
+      previousSpeed = speed;
+    }
+  });
+  it('does not snap when retargeted mid-pan or after a slow frame', () => {
+    const {camera, control} = setup(), motion = new FirstPersonMotion();
+    const origin = firstPersonShot(5, 4);
+    motion.update(control, camera, origin.position, origin.target, 1/30, true); control.update(1/30);
+    for (const seat of [6, 2, 10, 0]) {
+      const goal = firstPersonShot(5, seat);
+      for (const dt of [1/30, 1/30, 1/30, 0.25, 1/30]) {
+        const before = camera.quaternion.clone();
+        motion.update(control, camera, goal.position, goal.target, dt); control.update(dt);
+        expect(before.angleTo(camera.quaternion)).toBeLessThan(0.088);
+        expect(camera.position.distanceTo(origin.position)).toBeLessThan(0.00001);
+      }
+    }
+  });
   it("moves between shots without cutting or overshooting", () => {
     const { camera, control } = setup(),
       target = new THREE.Vector3(0, 1.5, 0);

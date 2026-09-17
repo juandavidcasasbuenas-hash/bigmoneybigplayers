@@ -2,6 +2,16 @@ import type { RoomState, TableEvent } from "./types";
 import { dealDuration, STREET } from "./dealTiming";
 
 export type TableMotion = TableEvent & { startAt: number; duration: number };
+
+/** A snapshot can arrive before the UI clock reaches its presentation timestamp.
+ * Keep watching that gesture rather than briefly looking at the next player. */
+export function presentationFocus(motions: TableMotion[], now: number) {
+  const motion = motions.find(m => now < m.startAt + m.duration && !(m.type === 'bet' && m.forced));
+  return {
+    actorId: motion && ['bet', 'check', 'fold'].includes(motion.type) && 'playerId' in motion ? motion.playerId : undefined,
+    table: !!motion && ['hand-start', 'street', 'all-in', 'showdown', 'award'].includes(motion.type),
+  };
+}
 export const motionDuration = (e: TableEvent) =>
   e.type === "all-in"
     ? 4200

@@ -212,6 +212,8 @@ export default function App() {
               avatar: p.avatarId,
               stack: p.chips,
               status: p.status,
+              cardCount: p.cardCount,
+              peek: p.peek,
               bet: p.bet,
               seat: p.seat,
               smallBlind: p.id === room.smallBlindId,

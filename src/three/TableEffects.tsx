@@ -5,6 +5,7 @@ import type { ScenePlayer } from "../components/PokerScene";
 import type { TableMotion } from "../../shared/tableTimeline";
 import { potStacks, POT_ORIGIN, POT_CHIP_SCALE } from "../../shared/potDisplay";
 import { Card, ChipStack } from "./TablePieces";
+import { BOARD_CARD_SCALE, BOARD_CARD_SPACING, BOARD_Z } from "./tableLayout";
 import {
   DEAL,
   STREET,
@@ -16,6 +17,7 @@ import {
   betChips,
   blendPose,
   CARD_SCALE,
+  HOLE_CARD_SCALE,
   cardInHand,
   composePose,
   dealtCard,
@@ -55,7 +57,10 @@ export function CommunityCard({
     if (!rig.current) return;
     const t = effectNow ?? Date.now(),
       elapsed = t - start;
-    const destination = pose([(index - 2) * 0.39, FELT_Y + 0.012, 0.4]);
+    const destination = pose([(index - 2) * BOARD_CARD_SPACING, FELT_Y + 0.012, BOARD_Z]);
+    // Keep the dealer's exact card grip, then ease up to the readable public size.
+    rig.current.scale.setScalar(MathUtils.lerp(1, BOARD_CARD_SCALE / CARD_SCALE,
+      !start ? 1 : MathUtils.smoothstep(elapsed, STREET.release, STREET.release + STREET.flight)));
     rig.current.visible = !start || elapsed >= STREET.release - 180;
     if (!start || elapsed >= STREET.release + STREET.flight) {
       rig.current.position.copy(destination.position);
@@ -131,6 +136,8 @@ function Deal({
         elapsed < holePickupAt(order.length, i % order.length);
       card.position.copy(transform.position);
       card.quaternion.copy(transform.quaternion);
+      card.scale.setScalar(MathUtils.lerp(1, HOLE_CARD_SCALE / CARD_SCALE,
+        MathUtils.smoothstep(elapsed - dealReleaseAt(i), 0, DEAL.flight)));
     });
   });
   return (

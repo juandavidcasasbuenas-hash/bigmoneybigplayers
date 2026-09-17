@@ -21,12 +21,14 @@ import {
   foldHand,
   FOLD_RELEASE,
   holeRestHand,
+  holeCardRest,
   seatTransform,
   seatedStance,
   solveArm,
   solveTwoBone,
   workZ,
   wristJoint,
+  relaxContact,
 } from "./contactMotion";
 import { chipTrick, TRICK_CHIP_SCALE } from "./contactTricks";
 
@@ -35,6 +37,21 @@ beforeAll(() => loadContactPhysics());
 const distanceToBox = (point: Vector3, box: Box3) =>
   box.clampPoint(point, new Vector3()).distanceTo(point);
 describe("contact rig", () => {
+  it('withdraws folded hands from the rail into a reachable lap pose without moving the legs', () => {
+    let worstError=0, worstGap=Infinity;
+    for(let seat=0;seat<12;seat++) for(let i=0;i<=30;i++) {
+      const contact=actorContact({p:-1,z:workZ(seat),now:20000,cardsReadyAt:0,hasCards:false,standing:0});
+      relaxContact(contact,i/30);
+      const rotation=new Quaternion().setFromAxisAngle(new Vector3(1,0,0),contact.lean);
+      for(const [side,hand] of [[-1,contact.left],[1,contact.right]] as const) {
+        const shoulder=new Vector3(side*.44,1.7-BODY.hipY,.125).applyQuaternion(rotation).add(seatedStance(0).hip);
+        const arm=solveArm(shoulder,wristJoint(hand),side,seat);
+        worstError=Math.max(worstError,arm.error); worstGap=Math.min(worstGap,arm.clearance);
+      }
+      if(i===30) { expect(contact.lean).toBeLessThan(0); expect(contact.left.position.y).toBeLessThan(FELT_Y); }
+    }
+    expect(worstError).toBeLessThan(.002); expect(worstGap).toBeGreaterThanOrEqual(-.008);
+  });
   it("keeps limb lengths fixed even for unreachable and singular targets", () => {
     for (const target of [
       new Vector3(),
@@ -136,7 +153,7 @@ describe("contact rig", () => {
     expect(worstError).toBeLessThan(0.002);
     expect(worstGap, context).toBeGreaterThanOrEqual(-0.008);
   }, 20000);
-  it("hands cards over continuously from dealer to felt, then into the same player grip", () => {
+  it("hands cards over continuously from dealer to their stable resting place on the felt", () => {
     for (let count = 2; count <= 12; count++)
       for (let i = 0; i < count * 2; i++) {
         const seat = i % count,
@@ -155,7 +172,7 @@ describe("contact rig", () => {
         const landed = dealtCard(release + DEAL.flight, i, seat, count, z);
         const pickup = composePose(
           seatTransform(seat),
-          cardInHand(holeRestHand(z), Math.floor(i / count)),
+          holeCardRest(z, Math.floor(i / count)),
         );
         expect(landed.position.distanceTo(pickup.position)).toBeLessThan(1e-7);
         expect(landed.quaternion.angleTo(pickup.quaternion)).toBeLessThan(1e-7);

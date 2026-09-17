@@ -4,6 +4,7 @@ import "../styles.css";
 import { createRoot } from "react-dom/client";
 import { planTableMotions } from "../../shared/tableTimeline";
 import type { TableEventData } from "../../shared/types";
+import type { CardPeek } from '../../shared/cardPeek';
 import { unlockTableAudio } from "../audio/tableAudio";
 import { CHARACTERS } from "../data/characters";
 import { RigQa } from "./RigQa";
@@ -16,6 +17,7 @@ import {
 function SceneQa() {
   const params = new URLSearchParams(location.search);
   const [acting, setActing] = useState(0);
+  const [peek, setPeek] = useState<CardPeek | null>(() => params.has('peek') ? {handNumber: 1, startedAt: Date.now() - 1000, releasedAt: null, from: 0} : null);
   const [started, setStarted] = useState(() => Date.now() + 1500);
   const [effectTime, setEffectTime] = useState<number | undefined>(() =>
     params.has("frame") ? started + Number(params.get("frame")) : undefined,
@@ -85,6 +87,7 @@ function SceneQa() {
     status: i === 3 ? "folded" : "active",
     bet: i % 2 ? 200 : 0,
     emote: i === 0 ? params.get("emote") || undefined : undefined,
+    peek: i === 0 ? peek : null,
   }));
   return (
     <div
@@ -112,6 +115,8 @@ function SceneQa() {
           board={["As", "Kd", "7h", "5c", "2d"]}
           pot={4600}
           heroId="qa-0"
+          heroCards={['6h', '6c']}
+          peeking={peek?.releasedAt === null}
           dealerIndex={7}
           currentPlayerId={`qa-${acting}`}
           handNumber={1}
@@ -122,6 +127,10 @@ function SceneQa() {
           onRenderStats={capture}
         />
       )}
+      {!portrait && <button style={{position: 'fixed', top: 12, right: 12, zIndex: 50}}
+        onPointerDown={e => { e.currentTarget.setPointerCapture(e.pointerId); setPeek({handNumber: 1, startedAt: Date.now(), releasedAt: null, from: 0}); }}
+        onPointerUp={() => setPeek(p => p ? {...p, releasedAt: Date.now()} : p)}
+      >Hold to peek</button>}
       {choreography && (
         <nav
           style={{

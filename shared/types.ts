@@ -1,4 +1,5 @@
 import type { SpokenAction } from "./playerDialogue";
+import type { CardPeek } from './cardPeek';
 export type Card = string; // e.g. 'As', 'Td'; hidden cards are never serialized.
 export type Stage =
   "lobby" | "preflop" | "flop" | "turn" | "river" | "showdown" | "finished";
@@ -52,6 +53,7 @@ export interface PublicPlayer {
   lastAction: string;
   rebuyCount: number;
   emote: { type: Emote; at: number; text: string } | null;
+  peek?: CardPeek | null;
 }
 export interface Pot {
   amount: number;
@@ -122,6 +124,14 @@ export interface AvailableActions {
   minRaiseTo: number;
   maxRaiseTo: number;
 }
+export interface PreAction {
+  type: 'fold' | 'check' | 'call';
+  handNumber: number;
+  stage: Stage;
+  currentBet: number;
+  callAmount: number;
+}
+export type PreActionRequest = Omit<PreAction, 'callAmount' | 'type'> & { type: PreAction['type'] | null };
 export interface RoomState {
   code: string;
   settings: GameSettings;
@@ -156,6 +166,9 @@ export interface RoomState {
   dealerMessages: DealerMessage[];
   chat: ChatMessage[];
   actions: AvailableActions | null;
+  /** Private, one-use choice. Never included in another player's snapshot. */
+  preAction?: PreAction | null;
+  canPreAct?: boolean;
   canRebuy: boolean;
   startedAt: number | null;
 }

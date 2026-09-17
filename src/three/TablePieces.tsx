@@ -93,7 +93,7 @@ export function Card({
       </RoundedBox>
       <mesh rotation={[-Math.PI / 2, 0, 0]} position={[0, 0.008, 0]}>
         <planeGeometry args={[0.465, 0.654]} />
-        <meshStandardMaterial map={texture} roughness={0.73} />
+        <meshBasicMaterial map={texture} toneMapped={false} />
       </mesh>
       <mesh rotation={[Math.PI / 2, 0, 0]} position={[0, -0.008, 0]}>
         <planeGeometry args={[0.465, 0.654]} />
