@@ -1,0 +1,74 @@
+{
+  "schemaVersion": 1,
+  "character": "clive",
+  "version": null,
+  "model": "tripo3d/h3.1/image-to-3d",
+  "createdAt": "2026-09-17T10:06:26.895Z",
+  "updatedAt": "2026-09-17T10:10:31.458Z",
+  "input": {
+    "sourcePath": "/Users/juandavidcasasbuenas/Documents/ChatGPT/PokerWithFriends/assets/tripo/references/clive.png",
+    "referencePath": "assets/tripo/references/clive.png",
+    "sha256": "80b63aeab4f5d9a382e7d713748fc54243bf5246ef9d632c4d244c4a78b14d08",
+    "bytes": 838274,
+    "mimeType": "image/png"
+  },
+  "parameters": {
+    "face_limit": 60000,
+    "texture": true,
+    "pbr": true,
+    "texture_quality": "detailed",
+    "geometry_quality": "detailed",
+    "texture_alignment": "original_image",
+    "orientation": "default",
+    "auto_size": false,
+    "quad": false,
+    "model_seed": 1856075100,
+    "texture_seed": 1070835996
+  },
+  "fingerprint": "a2c1f612340a90732898d63d983b5e0abf1f58b4b76b7d40c64f30612fb80363",
+  "state": "downloaded",
+  "request": {
+    "requestId": "01a0aed5-0b14-7222-afd6-464405e4bf04",
+    "statusUrl": "https://queue.fal.run/tripo3d/h3.1/requests/01a0aed5-0b14-7222-afd6-464405e4bf04/status",
+    "responseUrl": "https://queue.fal.run/tripo3d/h3.1/requests/01a0aed5-0b14-7222-afd6-464405e4bf04",
+    "cancelUrl": "https://queue.fal.run/tripo3d/h3.1/requests/01a0aed5-0b14-7222-afd6-464405e4bf04/cancel"
+  },
+  "lastStatus": "COMPLETED",
+  "result": {
+    "model_mesh": {
+      "url": "https://v3b.fal.media/files/b/0aaac60d/RoCd_a2JWZrBO_zUtfewi_model.glb",
+      "content_type": "model/gltf-binary",
+      "file_name": "model.glb",
+      "file_size": 4042552
+    },
+    "model_urls": {
+      "glb": {
+        "url": "https://v3b.fal.media/files/b/0aaac60d/RoCd_a2JWZrBO_zUtfewi_model.glb",
+        "content_type": "model/gltf-binary",
+        "file_name": "model.glb",
+        "file_size": 4042552
+      },
+      "fbx": null,
+      "base_model": null,
+      "pbr_model": {
+        "url": "https://v3b.fal.media/files/b/0aaac60d/RoCd_a2JWZrBO_zUtfewi_model.glb",
+        "content_type": "model/gltf-binary",
+        "file_name": "model.glb",
+        "file_size": 4042552
+      }
+    },
+    "rendered_image": {
+      "url": "https://v3b.fal.media/files/b/0aaac60e/kyLn6cvnufPtWRH_LWLaA_preview.png",
+      "content_type": "image/png",
+      "file_name": "preview.png",
+      "file_size": 152128
+    }
+  },
+  "output": {
+    "path": "assets/tripo/source/clive-original.glb",
+    "sha256": "a4319fdaa9e9954ff06ce6e71af41c1ffcc1f165319630588de5f5337acf158d",
+    "bytes": 4042552,
+    "downloadedAt": "2026-09-17T10:10:31.458Z",
+    "format": "GLB 2.0"
+  }
+}

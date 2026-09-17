@@ -1,0 +1,74 @@
+{
+  "schemaVersion": 1,
+  "character": "nat",
+  "version": null,
+  "model": "tripo3d/h3.1/image-to-3d",
+  "createdAt": "2026-09-17T10:06:26.980Z",
+  "updatedAt": "2026-09-17T10:10:25.475Z",
+  "input": {
+    "sourcePath": "/Users/juandavidcasasbuenas/Documents/ChatGPT/PokerWithFriends/assets/tripo/references/nat.png",
+    "referencePath": "assets/tripo/references/nat.png",
+    "sha256": "c90f69331d98b94d044f016c63f29403be8c33d140f9609ba23caa181c685278",
+    "bytes": 1887116,
+    "mimeType": "image/png"
+  },
+  "parameters": {
+    "face_limit": 60000,
+    "texture": true,
+    "pbr": true,
+    "texture_quality": "detailed",
+    "geometry_quality": "detailed",
+    "texture_alignment": "original_image",
+    "orientation": "default",
+    "auto_size": false,
+    "quad": false,
+    "model_seed": 812609077,
+    "texture_seed": 1863947532
+  },
+  "fingerprint": "a2218b379635249a6a1e8b8148392c533d44c8bf75262e4e1a03c5892136d83c",
+  "state": "downloaded",
+  "request": {
+    "requestId": "01a0aed5-0eb3-7c33-bd2f-e41a82d4408d",
+    "statusUrl": "https://queue.fal.run/tripo3d/h3.1/requests/01a0aed5-0eb3-7c33-bd2f-e41a82d4408d/status",
+    "responseUrl": "https://queue.fal.run/tripo3d/h3.1/requests/01a0aed5-0eb3-7c33-bd2f-e41a82d4408d",
+    "cancelUrl": "https://queue.fal.run/tripo3d/h3.1/requests/01a0aed5-0eb3-7c33-bd2f-e41a82d4408d/cancel"
+  },
+  "lastStatus": "COMPLETED",
+  "result": {
+    "model_mesh": {
+      "url": "https://v3b.fal.media/files/b/0aaac60d/1FrGTMN47wn_ThdNPEyuc_model.glb",
+      "content_type": "model/gltf-binary",
+      "file_name": "model.glb",
+      "file_size": 3711148
+    },
+    "model_urls": {
+      "glb": {
+        "url": "https://v3b.fal.media/files/b/0aaac60d/1FrGTMN47wn_ThdNPEyuc_model.glb",
+        "content_type": "model/gltf-binary",
+        "file_name": "model.glb",
+        "file_size": 3711148
+      },
+      "fbx": null,
+      "base_model": null,
+      "pbr_model": {
+        "url": "https://v3b.fal.media/files/b/0aaac60d/1FrGTMN47wn_ThdNPEyuc_model.glb",
+        "content_type": "model/gltf-binary",
+        "file_name": "model.glb",
+        "file_size": 3711148
+      }
+    },
+    "rendered_image": {
+      "url": "https://v3b.fal.media/files/b/0aaac60e/EAKCyvAPIkvSUAsAENqkU_preview.png",
+      "content_type": "image/png",
+      "file_name": "preview.png",
+      "file_size": 149878
+    }
+  },
+  "output": {
+    "path": "assets/tripo/source/nat-original.glb",
+    "sha256": "89695b0dd9efce7f9ccc27529c313f591bce8ddb2332345c32fe06ed7cfe9de5",
+    "bytes": 3711148,
+    "downloadedAt": "2026-09-17T10:10:25.475Z",
+    "format": "GLB 2.0"
+  }
+}

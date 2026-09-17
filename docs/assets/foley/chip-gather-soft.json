@@ -1,0 +1,20 @@
+{
+  "model": "fal-ai/elevenlabs/sound-effects/v2",
+  "input": {
+    "text": "Slow close dry foley of a hand gathering thick clay-composite poker chips on padded felt. A soft brushing scrape under a rolling series of low hollow tok tok clacks, then two dull stack taps. Warm and weighty plastic chips, muffled short impacts, not a jangling rattle. NO metal, keys, coins, glass, ceramic, chimes, voices or music.",
+    "duration_seconds": 2.2,
+    "prompt_influence": 0.8,
+    "output_format": "mp3_44100_128",
+    "loop": false
+  },
+  "receipt": {
+    "status": "IN_QUEUE",
+    "request_id": "01a0960a-32c2-72d1-8f51-caeb7f07d367",
+    "response_url": "https://queue.fal.run/fal-ai/elevenlabs/requests/01a0960a-32c2-72d1-8f51-caeb7f07d367",
+    "status_url": "https://queue.fal.run/fal-ai/elevenlabs/requests/01a0960a-32c2-72d1-8f51-caeb7f07d367/status",
+    "cancel_url": "https://queue.fal.run/fal-ai/elevenlabs/requests/01a0960a-32c2-72d1-8f51-caeb7f07d367/cancel",
+    "logs": null,
+    "metrics": {},
+    "queue_position": 0
+  }
+}

@@ -1,0 +1,74 @@
+{
+  "schemaVersion": 1,
+  "character": "tian",
+  "version": null,
+  "model": "tripo3d/h3.1/image-to-3d",
+  "createdAt": "2026-09-17T10:06:26.949Z",
+  "updatedAt": "2026-09-17T10:10:10.834Z",
+  "input": {
+    "sourcePath": "/Users/juandavidcasasbuenas/Documents/ChatGPT/PokerWithFriends/assets/tripo/references/tian.png",
+    "referencePath": "assets/tripo/references/tian.png",
+    "sha256": "a68c23eccc31122f228c167ef9f217235c037a0cd6f608009e6f9eede1611ea3",
+    "bytes": 1909339,
+    "mimeType": "image/png"
+  },
+  "parameters": {
+    "face_limit": 60000,
+    "texture": true,
+    "pbr": true,
+    "texture_quality": "detailed",
+    "geometry_quality": "detailed",
+    "texture_alignment": "original_image",
+    "orientation": "default",
+    "auto_size": false,
+    "quad": false,
+    "model_seed": 1448848986,
+    "texture_seed": 775822326
+  },
+  "fingerprint": "5f3942208b20f620eb21c60cd0822b1314e8dd86e42ec9143f272008451b705b",
+  "state": "downloaded",
+  "request": {
+    "requestId": "01a0aed4-fc15-7af3-8e5b-b600a1e5135e",
+    "statusUrl": "https://queue.fal.run/tripo3d/h3.1/requests/01a0aed4-fc15-7af3-8e5b-b600a1e5135e/status",
+    "responseUrl": "https://queue.fal.run/tripo3d/h3.1/requests/01a0aed4-fc15-7af3-8e5b-b600a1e5135e",
+    "cancelUrl": "https://queue.fal.run/tripo3d/h3.1/requests/01a0aed4-fc15-7af3-8e5b-b600a1e5135e/cancel"
+  },
+  "lastStatus": "COMPLETED",
+  "result": {
+    "model_mesh": {
+      "url": "https://v3b.fal.media/files/b/0aaac60c/QAXIacxGfQDx8AUhKHZry_model.glb",
+      "content_type": "model/gltf-binary",
+      "file_name": "model.glb",
+      "file_size": 3588024
+    },
+    "model_urls": {
+      "glb": {
+        "url": "https://v3b.fal.media/files/b/0aaac60c/QAXIacxGfQDx8AUhKHZry_model.glb",
+        "content_type": "model/gltf-binary",
+        "file_name": "model.glb",
+        "file_size": 3588024
+      },
+      "fbx": null,
+      "base_model": null,
+      "pbr_model": {
+        "url": "https://v3b.fal.media/files/b/0aaac60c/QAXIacxGfQDx8AUhKHZry_model.glb",
+        "content_type": "model/gltf-binary",
+        "file_name": "model.glb",
+        "file_size": 3588024
+      }
+    },
+    "rendered_image": {
+      "url": "https://v3b.fal.media/files/b/0aaac60c/g3fK2fIQDrEiMBUTJORu__preview.png",
+      "content_type": "image/png",
+      "file_name": "preview.png",
+      "file_size": 151220
+    }
+  },
+  "output": {
+    "path": "assets/tripo/source/tian-original.glb",
+    "sha256": "cff1de651b20c7bd41449735f2951defe0cfb5e77887d7d08349e99ccecd264a",
+    "bytes": 3588024,
+    "downloadedAt": "2026-09-17T10:10:10.834Z",
+    "format": "GLB 2.0"
+  }
+}

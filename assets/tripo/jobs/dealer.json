@@ -1,0 +1,74 @@
+{
+  "schemaVersion": 1,
+  "character": "dealer",
+  "version": null,
+  "model": "tripo3d/h3.1/image-to-3d",
+  "createdAt": "2026-09-17T10:06:26.819Z",
+  "updatedAt": "2026-09-17T10:10:11.835Z",
+  "input": {
+    "sourcePath": "/Users/juandavidcasasbuenas/Documents/ChatGPT/PokerWithFriends/assets/tripo/references/dealer.png",
+    "referencePath": "assets/tripo/references/dealer.png",
+    "sha256": "5981e1918df56c7b7dc6c457ba0f7d424ff4872da3b75650d23e623ca35cf0e4",
+    "bytes": 948101,
+    "mimeType": "image/png"
+  },
+  "parameters": {
+    "face_limit": 60000,
+    "texture": true,
+    "pbr": true,
+    "texture_quality": "detailed",
+    "geometry_quality": "detailed",
+    "texture_alignment": "original_image",
+    "orientation": "default",
+    "auto_size": false,
+    "quad": false,
+    "model_seed": 1300763956,
+    "texture_seed": 1133418456
+  },
+  "fingerprint": "bbb5b744a9457d6c9daa8db712f3e0a6ecfa055bf753d2a12a3acebee0be1c15",
+  "state": "downloaded",
+  "request": {
+    "requestId": "01a0aed4-fe71-70f0-af9d-f44f438f3763",
+    "statusUrl": "https://queue.fal.run/tripo3d/h3.1/requests/01a0aed4-fe71-70f0-af9d-f44f438f3763/status",
+    "responseUrl": "https://queue.fal.run/tripo3d/h3.1/requests/01a0aed4-fe71-70f0-af9d-f44f438f3763",
+    "cancelUrl": "https://queue.fal.run/tripo3d/h3.1/requests/01a0aed4-fe71-70f0-af9d-f44f438f3763/cancel"
+  },
+  "lastStatus": "COMPLETED",
+  "result": {
+    "model_mesh": {
+      "url": "https://v3b.fal.media/files/b/0aaac60c/GXGZTZNnaKAs__RbYBL8a_model.glb",
+      "content_type": "model/gltf-binary",
+      "file_name": "model.glb",
+      "file_size": 4272440
+    },
+    "model_urls": {
+      "glb": {
+        "url": "https://v3b.fal.media/files/b/0aaac60c/GXGZTZNnaKAs__RbYBL8a_model.glb",
+        "content_type": "model/gltf-binary",
+        "file_name": "model.glb",
+        "file_size": 4272440
+      },
+      "fbx": null,
+      "base_model": null,
+      "pbr_model": {
+        "url": "https://v3b.fal.media/files/b/0aaac60c/GXGZTZNnaKAs__RbYBL8a_model.glb",
+        "content_type": "model/gltf-binary",
+        "file_name": "model.glb",
+        "file_size": 4272440
+      }
+    },
+    "rendered_image": {
+      "url": "https://v3b.fal.media/files/b/0aaac60c/m1bj9Bavms5MlpfV-xeRW_preview.png",
+      "content_type": "image/png",
+      "file_name": "preview.png",
+      "file_size": 165248
+    }
+  },
+  "output": {
+    "path": "assets/tripo/source/dealer-original.glb",
+    "sha256": "024e1d0887f20a4eb99179ac537ede17ad22a8c7b76809639b405d72e617965f",
+    "bytes": 4272440,
+    "downloadedAt": "2026-09-17T10:10:11.835Z",
+    "format": "GLB 2.0"
+  }
+}

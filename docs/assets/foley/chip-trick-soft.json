@@ -1,0 +1,20 @@
+{
+  "model": "fal-ai/elevenlabs/sound-effects/v2",
+  "input": {
+    "text": "An expert slowly interleaves two stacks of six heavy clay-composite casino poker chips with their fingers. A short soft rippling prrrt of dry low plastic clacks followed by one dull tap as the stack is squared. Intimate damped tabletop recording, restrained pace. NO metal, keys, coins, ceramic, glass, ring, voices or music.",
+    "duration_seconds": 1.8,
+    "prompt_influence": 0.8,
+    "output_format": "mp3_44100_128",
+    "loop": false
+  },
+  "receipt": {
+    "status": "IN_QUEUE",
+    "request_id": "01a0960a-47df-74c1-823c-eb49672fc597",
+    "response_url": "https://queue.fal.run/fal-ai/elevenlabs/requests/01a0960a-47df-74c1-823c-eb49672fc597",
+    "status_url": "https://queue.fal.run/fal-ai/elevenlabs/requests/01a0960a-47df-74c1-823c-eb49672fc597/status",
+    "cancel_url": "https://queue.fal.run/fal-ai/elevenlabs/requests/01a0960a-47df-74c1-823c-eb49672fc597/cancel",
+    "logs": null,
+    "metrics": {},
+    "queue_position": 0
+  }
+}

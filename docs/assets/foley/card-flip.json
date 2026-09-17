@@ -1,0 +1,20 @@
+{
+  "model": "fal-ai/elevenlabs/sound-effects/v2",
+  "input": {
+    "text": "One stiff playing card turned face up on green felt. A crisp papery flick and a soft flat tap. Close isolated foley, immediate onset. No speech, music, chimes or background.",
+    "duration_seconds": 0.6,
+    "prompt_influence": 0.8,
+    "output_format": "mp3_44100_128",
+    "loop": false
+  },
+  "receipt": {
+    "status": "IN_QUEUE",
+    "request_id": "01a095bc-ca97-7913-803d-5448cd75e9ab",
+    "response_url": "https://queue.fal.run/fal-ai/elevenlabs/requests/01a095bc-ca97-7913-803d-5448cd75e9ab",
+    "status_url": "https://queue.fal.run/fal-ai/elevenlabs/requests/01a095bc-ca97-7913-803d-5448cd75e9ab/status",
+    "cancel_url": "https://queue.fal.run/fal-ai/elevenlabs/requests/01a095bc-ca97-7913-803d-5448cd75e9ab/cancel",
+    "logs": null,
+    "metrics": {},
+    "queue_position": 0
+  }
+}

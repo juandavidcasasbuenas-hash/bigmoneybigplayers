@@ -1,0 +1,37 @@
+{
+  "model": "tripo3d/h3.1/image-to-3d",
+  "faceTarget": 18000,
+  "materials": "PBR",
+  "input": "public/characters/jack-reference.png",
+  "bytes": 2974444,
+  "result": {
+    "model_mesh": {
+      "url": "https://v3b.fal.media/files/b/0aaa031e/2wPz6r5OQoPC0P5-E87lq_model.glb",
+      "content_type": "model/gltf-binary",
+      "file_name": "model.glb",
+      "file_size": 2974444
+    },
+    "model_urls": {
+      "glb": {
+        "url": "https://v3b.fal.media/files/b/0aaa031e/2wPz6r5OQoPC0P5-E87lq_model.glb",
+        "content_type": "model/gltf-binary",
+        "file_name": "model.glb",
+        "file_size": 2974444
+      },
+      "fbx": null,
+      "base_model": null,
+      "pbr_model": {
+        "url": "https://v3b.fal.media/files/b/0aaa031e/2wPz6r5OQoPC0P5-E87lq_model.glb",
+        "content_type": "model/gltf-binary",
+        "file_name": "model.glb",
+        "file_size": 2974444
+      }
+    },
+    "rendered_image": {
+      "url": "https://v3b.fal.media/files/b/0aaa0305/ffV0KjLsBQi81arC6JbVP_preview.png",
+      "content_type": "image/png",
+      "file_name": "preview.png",
+      "file_size": 217873
+    }
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "model": "fal-ai/lyria2",
+  "input": {
+    "prompt": "Instrumental late-night pub lounge music, soft hollow-body jazz guitar with a few warm electric piano chords, round upright bass and whisper quiet brushed drums. D minor, relaxed 82 BPM, gently mischievous and comfortable, understated repeating musical phrases. Background for a social poker game, never foreground, consistent mellow dynamics. Continuous section, no intro or finale, no vocals.",
+    "negative_prompt": "singing, speech, vocals, lyrics, loud drums, horns, brass stabs, dramatic crescendos, suspense, casino sound effects, silence, abrupt endings",
+    "seed": 8218
+  },
+  "receipt": {
+    "status": "IN_QUEUE",
+    "request_id": "01a096c4-9903-7473-aaee-13a4b071bd99",
+    "response_url": "https://queue.fal.run/fal-ai/lyria2/requests/01a096c4-9903-7473-aaee-13a4b071bd99",
+    "status_url": "https://queue.fal.run/fal-ai/lyria2/requests/01a096c4-9903-7473-aaee-13a4b071bd99/status",
+    "cancel_url": "https://queue.fal.run/fal-ai/lyria2/requests/01a096c4-9903-7473-aaee-13a4b071bd99/cancel",
+    "logs": null,
+    "metrics": {},
+    "queue_position": 0
+  }
+}

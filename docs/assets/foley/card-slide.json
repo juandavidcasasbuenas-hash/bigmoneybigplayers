@@ -1,0 +1,20 @@
+{
+  "model": "fal-ai/elevenlabs/sound-effects/v2",
+  "input": {
+    "text": "A single playing card dealt briskly across a soft poker felt table. Close dry papery swish, then a light crisp slap. One isolated action starting immediately. No voices, music or ambience.",
+    "duration_seconds": 0.6,
+    "prompt_influence": 0.8,
+    "output_format": "mp3_44100_128",
+    "loop": false
+  },
+  "receipt": {
+    "status": "IN_QUEUE",
+    "request_id": "01a095bc-b37d-7632-86f0-da31b679912f",
+    "response_url": "https://queue.fal.run/fal-ai/elevenlabs/requests/01a095bc-b37d-7632-86f0-da31b679912f",
+    "status_url": "https://queue.fal.run/fal-ai/elevenlabs/requests/01a095bc-b37d-7632-86f0-da31b679912f/status",
+    "cancel_url": "https://queue.fal.run/fal-ai/elevenlabs/requests/01a095bc-b37d-7632-86f0-da31b679912f/cancel",
+    "logs": null,
+    "metrics": {},
+    "queue_position": 0
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "model": "fal-ai/elevenlabs/sound-effects/v2",
+  "input": {
+    "text": "One small stack of thick clay-composite poker chips is placed on green felt by a player. Two low dry flat clacks and a tiny fabric slide, soft padded tabletop underneath. The dull rounded sound of heavy plastic casino chips, isolated close foley. No metallic sounds, keys, coins, ringing, glass, speech, or music.",
+    "duration_seconds": 1.1,
+    "prompt_influence": 0.8,
+    "output_format": "mp3_44100_128",
+    "loop": false
+  },
+  "receipt": {
+    "status": "IN_QUEUE",
+    "request_id": "01a0960a-1df4-7491-8a37-ed8d9f1371d6",
+    "response_url": "https://queue.fal.run/fal-ai/elevenlabs/requests/01a0960a-1df4-7491-8a37-ed8d9f1371d6",
+    "status_url": "https://queue.fal.run/fal-ai/elevenlabs/requests/01a0960a-1df4-7491-8a37-ed8d9f1371d6/status",
+    "cancel_url": "https://queue.fal.run/fal-ai/elevenlabs/requests/01a0960a-1df4-7491-8a37-ed8d9f1371d6/cancel",
+    "logs": null,
+    "metrics": {},
+    "queue_position": 0
+  }
+}

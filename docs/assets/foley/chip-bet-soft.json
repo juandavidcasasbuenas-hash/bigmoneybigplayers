@@ -1,0 +1,20 @@
+{
+  "model": "fal-ai/elevenlabs/sound-effects/v2",
+  "input": {
+    "text": "Close microphone recording: a hand slides four thick compression moulded CLAY POKER CHIPS onto a padded felt poker table. A low dry rounded tok tok, then a soft felt scrape. Warm dull plastic-clay impacts with weight, very short decay. NOT coins, NOT keys, NO metal, glass, ceramic, bright ringing, rattle, music, speech or ambience. One small controlled bet.",
+    "duration_seconds": 1.1,
+    "prompt_influence": 0.8,
+    "output_format": "mp3_44100_128",
+    "loop": false
+  },
+  "receipt": {
+    "status": "IN_QUEUE",
+    "request_id": "01a0960a-070c-74a1-8004-8b1255e8b064",
+    "response_url": "https://queue.fal.run/fal-ai/elevenlabs/requests/01a0960a-070c-74a1-8004-8b1255e8b064",
+    "status_url": "https://queue.fal.run/fal-ai/elevenlabs/requests/01a0960a-070c-74a1-8004-8b1255e8b064/status",
+    "cancel_url": "https://queue.fal.run/fal-ai/elevenlabs/requests/01a0960a-070c-74a1-8004-8b1255e8b064/cancel",
+    "logs": null,
+    "metrics": {},
+    "queue_position": 0
+  }
+}

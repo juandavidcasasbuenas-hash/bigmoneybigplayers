@@ -1,0 +1,17 @@
+services:
+  - type: web
+    name: big-money-poker-club
+    runtime: node
+    plan: free
+    buildCommand: npm ci --include=dev && npm run build
+    startCommand: npm start
+    healthCheckPath: /api/health
+    envVars:
+      - key: NODE_VERSION
+        value: "24"
+      - key: NODE_ENV
+        value: production
+      - key: FAL_KEY
+        sync: false
+      - key: VOICE_DAILY_CHAR_LIMIT
+        value: "50000"

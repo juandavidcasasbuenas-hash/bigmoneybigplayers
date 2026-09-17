@@ -1,0 +1,18 @@
+{
+  "model": "fal-ai/lyria2",
+  "input": {
+    "prompt": "A warm intimate instrumental jazz lounge loop for a cozy English pub poker table at night. Muted upright piano plays sparse playful chord voicings in D minor, soft plucked double bass, barely audible brushed snare and warm vinyl texture. Relaxed 82 BPM, restrained dynamics, plenty of space for conversation. A continuous middle section, no dramatic intro or ending. Original small ensemble, no singing or speech.",
+    "negative_prompt": "singing, speech, vocals, lyrics, loud drums, horns, brass stabs, dramatic crescendos, suspense, casino sound effects, silence, abrupt endings",
+    "seed": 8217
+  },
+  "receipt": {
+    "status": "IN_QUEUE",
+    "request_id": "01a096c3-f6b3-7c91-b4b3-f1683a05101e",
+    "response_url": "https://queue.fal.run/fal-ai/lyria2/requests/01a096c3-f6b3-7c91-b4b3-f1683a05101e",
+    "status_url": "https://queue.fal.run/fal-ai/lyria2/requests/01a096c3-f6b3-7c91-b4b3-f1683a05101e/status",
+    "cancel_url": "https://queue.fal.run/fal-ai/lyria2/requests/01a096c3-f6b3-7c91-b4b3-f1683a05101e/cancel",
+    "logs": null,
+    "metrics": {},
+    "queue_position": 0
+  }
+}

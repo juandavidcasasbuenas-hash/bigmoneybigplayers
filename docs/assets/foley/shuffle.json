@@ -1,0 +1,20 @@
+{
+  "model": "fal-ai/elevenlabs/sound-effects/v2",
+  "input": {
+    "text": "A dealer riffles a deck of playing cards once, bridges the deck and squares it with two crisp taps on poker felt. Dry close detailed paper flutter. No voices or music.",
+    "duration_seconds": 2,
+    "prompt_influence": 0.8,
+    "output_format": "mp3_44100_128",
+    "loop": false
+  },
+  "receipt": {
+    "status": "IN_QUEUE",
+    "request_id": "01a095bc-d675-7133-ad80-5ebcd8a9d2f9",
+    "response_url": "https://queue.fal.run/fal-ai/elevenlabs/requests/01a095bc-d675-7133-ad80-5ebcd8a9d2f9",
+    "status_url": "https://queue.fal.run/fal-ai/elevenlabs/requests/01a095bc-d675-7133-ad80-5ebcd8a9d2f9/status",
+    "cancel_url": "https://queue.fal.run/fal-ai/elevenlabs/requests/01a095bc-d675-7133-ad80-5ebcd8a9d2f9/cancel",
+    "logs": null,
+    "metrics": {},
+    "queue_position": 0
+  }
+}

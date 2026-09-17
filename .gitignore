@@ -1,0 +1,38 @@
+node_modules/
+dist/
+.DS_Store
+.env
+.env.*
+!.env.example
+artifacts/
+*.log
+
+# Local credentials supplied for voice generation
+openai.txt
+voice-cache/
+
+[Oo][Pp][Ee][Nn][Aa][Ii].[Tt][Xx][Tt]
+OpenAI.txt
+
+# Downloaded modeling sources and Blender backup files
+assets/blender/vendor/
+assets/blender/base-inspection.blend
+*.blend1
+
+__pycache__/
+
+# Original generated high-resolution inputs; optimized runtime assets are in public.
+assets/tripo/source/
+assets/tripo/juan-source.blend
+assets/tripo/*-decimated.blend
+
+# Local reference duplicates and superseded experiments (not used by the game).
+/Avatars/
+/Inspiration/
+/andy.jpeg
+/doug.jpg
+/assets/previous-characters/
+
+# Uncompressed sound masters; browser-ready audio and provenance are retained.
+/docs/assets/music/*.wav
+/docs/assets/foley/*-raw.mp3

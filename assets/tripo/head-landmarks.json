@@ -1,0 +1,349 @@
+{
+  "_coordinates": "Normalized full-body height 1; feet Z=0; front -Y; Blender axes. Eyes store XYZ centers and X/Z radii. Forehead skin_color is sampled sRGB.",
+  "diego": {
+    "rotation_z_degrees": -90,
+    "head_height": 1.04,
+    "eyes": [
+      {
+        "center": [
+          -0.05196484840475023,
+          -0.14103733690455555,
+          0.7906936110556125
+        ],
+        "radii": [
+          0.03755001433668659,
+          0.04251784191578623
+        ]
+      },
+      {
+        "center": [
+          0.05348204981070011,
+          -0.14309043142944575,
+          0.7915557198226453
+        ],
+        "radii": [
+          0.03991772537096403,
+          0.04492770446985959
+        ]
+      }
+    ],
+    "mouth": [
+      0.0007586007029749403,
+      0.7071769409089088
+    ],
+    "brow_z": 0.8470898151259422,
+    "skin_color": "#db9358",
+    "head_cut_z": 0.625,
+    "fringe_cleanup": {
+      "method": "surface-projection-v1",
+      "core_vertices": 359,
+      "selected_vertices": 1073,
+      "painted_triangles": 2333,
+      "max_displacement": 0.030835263678572124,
+      "mean_displacement": 0.009171574237923719,
+      "topology_preserved": true,
+      "uv_preserved": true,
+      "materials_added": 0
+    }
+  },
+  "nat": {
+    "rotation_z_degrees": -90,
+    "eyes": [
+      {
+        "center": [
+          -0.05575522002764046,
+          -0.11070151356980204,
+          0.7810101509094238
+        ],
+        "radii": [
+          0.035426425016019496,
+          0.04378155052661896
+        ]
+      },
+      {
+        "center": [
+          0.052397410972043874,
+          -0.11241181761026382,
+          0.7808552569150925
+        ],
+        "radii": [
+          0.0384315272978507,
+          0.04222260604500774
+        ]
+      }
+    ],
+    "head_cut_z": 0.6175248064261675,
+    "head_height": 1.04,
+    "mouth": [
+      -0.001678904527798293,
+      0.6983687136034966
+    ],
+    "brow_z": 0.8359753641180994,
+    "skin_color": "#c68554",
+    "fringe_cleanup": {
+      "method": "surface-projection-v1",
+      "selected_vertices": 0,
+      "painted_triangles": 0
+    }
+  },
+  "humfrey": {
+    "rotation_z_degrees": -90,
+    "eyes": [
+      {
+        "center": [
+          -0.06218682937324047,
+          -0.12883689679205418,
+          0.8046513986587525
+        ],
+        "radii": [
+          0.039499215667694806,
+          0.04400836184024813
+        ]
+      },
+      {
+        "center": [
+          0.05626699529588223,
+          -0.13240519687533378,
+          0.8046678650379181
+        ],
+        "radii": [
+          0.0415013466320932,
+          0.04245368212461472
+        ]
+      }
+    ],
+    "head_cut_z": 0.6403817483150958,
+    "head_height": 1.04,
+    "mouth": [
+      -0.002959917038679122,
+      0.7216560696420669
+    ],
+    "brow_z": 0.8599953399858474,
+    "skin_color": "#f09d57",
+    "fringe_cleanup": {
+      "method": "surface-projection-v1",
+      "selected_vertices": 0,
+      "painted_triangles": 0
+    }
+  },
+  "tian": {
+    "rotation_z_degrees": -90,
+    "eyes": [
+      {
+        "center": [
+          -0.0507176492549479,
+          -0.11558845393359662,
+          0.7822695596516132
+        ],
+        "radii": [
+          0.03613193880189211,
+          0.040105519802868354
+        ]
+      },
+      {
+        "center": [
+          0.04728801865130663,
+          -0.11706116400659083,
+          0.7824883303046226
+        ],
+        "radii": [
+          0.038578686507418754,
+          0.04110096844732759
+        ]
+      }
+    ],
+    "head_cut_z": 0.6280866173027456,
+    "head_height": 1.04,
+    "mouth": [
+      -0.001714815301820636,
+      0.7044207162579298
+    ],
+    "brow_z": 0.8343510974582433,
+    "skin_color": "#e8a364",
+    "fringe_cleanup": {
+      "method": "surface-projection-v1",
+      "selected_vertices": 0,
+      "painted_triangles": 0
+    }
+  },
+  "doug": {
+    "rotation_z_degrees": -90,
+    "head_height": 1.04,
+    "eyes": [
+      {
+        "center": [
+          -0.05621501080691813,
+          -0.13993225572630763,
+          0.7475471958518027
+        ],
+        "radii": [
+          0.04006492273211481,
+          0.042938323637843126
+        ]
+      },
+      {
+        "center": [
+          0.0553388081677258,
+          -0.1394906325265765,
+          0.748136476278305
+        ],
+        "radii": [
+          0.04036107561606914,
+          0.04273289132118228
+        ]
+      }
+    ],
+    "head_cut_z": 0.5850665276429056,
+    "mouth": [
+      -0.00043810131959616527,
+      0.6655974697043895
+    ],
+    "brow_z": 0.8026714136388301,
+    "skin_color": "#da935f",
+    "lid_padding": 1.12,
+    "fringe_cleanup": {
+      "method": "surface-projection-v1",
+      "selected_vertices": 0,
+      "painted_triangles": 0
+    }
+  },
+  "clive": {
+    "rotation_z_degrees": -90,
+    "eyes": [
+      {
+        "center": [
+          -0.05739390876609832,
+          -0.17188110046088695,
+          0.7252997881174088
+        ],
+        "radii": [
+          0.044872824980178846,
+          0.04255985228419304
+        ]
+      },
+      {
+        "center": [
+          0.05890276846475899,
+          -0.17197070725262165,
+          0.7250697150826454
+        ],
+        "radii": [
+          0.045091832897532734,
+          0.04193703063130378
+        ]
+      }
+    ],
+    "head_cut_z": 0.5646406740605832,
+    "head_height": 1.04,
+    "mouth": [
+      0.0007544298493303361,
+      0.6440677440011502
+    ],
+    "brow_z": 0.7792627566659451,
+    "skin_color": "#df9e68",
+    "fringe_cleanup": {
+      "method": "surface-projection-v1",
+      "core_vertices": 916,
+      "selected_vertices": 2130,
+      "painted_triangles": 3606,
+      "max_displacement": 0.020038077821136587,
+      "mean_displacement": 0.005314572972177961,
+      "topology_preserved": true,
+      "uv_preserved": true,
+      "materials_added": 0
+    },
+    "lid_padding": 1.12
+  },
+  "jack": {
+    "rotation_z_degrees": -90,
+    "eyes": [
+      {
+        "center": [
+          -0.06953172236680985,
+          -0.1639683675765991,
+          0.7796701937913895
+        ],
+        "radii": [
+          0.05076379563361407,
+          0.05755257681012154
+        ]
+      },
+      {
+        "center": [
+          0.061703630189877,
+          -0.1656429549306631,
+          0.7819989065825939
+        ],
+        "radii": [
+          0.054345156991644765,
+          0.059942063100636045
+        ]
+      }
+    ],
+    "head_cut_z": 0.5575947343565523,
+    "head_height": 1.04,
+    "mouth": [
+      -0.003914046088466426,
+      0.6680396958726644
+    ],
+    "brow_z": 0.8560311197298766,
+    "skin_color": "#d89e6e",
+    "fringe_cleanup": {
+      "method": "surface-projection-v1",
+      "core_vertices": 2533,
+      "selected_vertices": 5418,
+      "painted_triangles": 7644,
+      "max_displacement": 0.07947545954153086,
+      "mean_displacement": 0.021895457318447595,
+      "topology_preserved": true,
+      "uv_preserved": true,
+      "materials_added": 0
+    }
+  },
+  "dealer": {
+    "rotation_z_degrees": -90,
+    "head_height": 1.04,
+    "eyes": [
+      {
+        "center": [
+          -0.05075034737819806,
+          -0.15583851076662542,
+          0.7601618200540543
+        ],
+        "radii": [
+          0.0423015555535676,
+          0.04393005998432638
+        ]
+      },
+      {
+        "center": [
+          0.052327820518985386,
+          -0.15696104280650616,
+          0.7651295721530914
+        ],
+        "radii": [
+          0.045146081667859106,
+          0.0442181453406811
+        ]
+      }
+    ],
+    "head_cut_z": 0.5951641059860586,
+    "mouth": [
+      0.0007887365703936645,
+      0.6780234189915656
+    ],
+    "brow_z": 0.8190605475115775,
+    "skin_color": "#dd9658",
+    "fringe_cleanup": {
+      "method": "surface-projection-v1",
+      "core_vertices": 388,
+      "selected_vertices": 670,
+      "painted_triangles": 1267,
+      "max_displacement": 0.02361263513696976,
+      "mean_displacement": 0.0083320678053311,
+      "topology_preserved": true,
+      "uv_preserved": true,
+      "materials_added": 0
+    }
+  }
+}

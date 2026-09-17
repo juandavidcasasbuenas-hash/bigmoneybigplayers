@@ -1,0 +1,20 @@
+{
+  "model": "fal-ai/elevenlabs/sound-effects/v2",
+  "input": {
+    "text": "A player rakes a large loose pot of clay poker chips across felt towards them, then stacks them. A satisfying rolling cascade of ceramic clacks and soft felt scrape. Isolated, immediate onset, no speech or music.",
+    "duration_seconds": 1.8,
+    "prompt_influence": 0.8,
+    "output_format": "mp3_44100_128",
+    "loop": false
+  },
+  "receipt": {
+    "status": "IN_QUEUE",
+    "request_id": "01a095bd-0174-73f1-b37a-f319609df215",
+    "response_url": "https://queue.fal.run/fal-ai/elevenlabs/requests/01a095bd-0174-73f1-b37a-f319609df215",
+    "status_url": "https://queue.fal.run/fal-ai/elevenlabs/requests/01a095bd-0174-73f1-b37a-f319609df215/status",
+    "cancel_url": "https://queue.fal.run/fal-ai/elevenlabs/requests/01a095bd-0174-73f1-b37a-f319609df215/cancel",
+    "logs": null,
+    "metrics": {},
+    "queue_position": 0
+  }
+}

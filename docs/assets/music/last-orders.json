@@ -1,0 +1,18 @@
+{
+  "model": "fal-ai/lyria2",
+  "input": {
+    "prompt": "Quiet cozy pub instrumental, mellow felt piano and lightly plucked jazz guitar trading small phrases over a soft acoustic bass pulse. D minor, 82 BPM, candlelit warmth and gentle dry wit. Minimal brushed percussion, soft warm recording, small ensemble. A relaxed continuous background groove, no big melody, no build-up, no ending, no voices.",
+    "negative_prompt": "singing, speech, vocals, lyrics, loud drums, horns, brass stabs, dramatic crescendos, suspense, casino sound effects, silence, abrupt endings",
+    "seed": 8219
+  },
+  "receipt": {
+    "status": "IN_QUEUE",
+    "request_id": "01a096c5-2139-7d13-ae7c-37606a6be6cc",
+    "response_url": "https://queue.fal.run/fal-ai/lyria2/requests/01a096c5-2139-7d13-ae7c-37606a6be6cc",
+    "status_url": "https://queue.fal.run/fal-ai/lyria2/requests/01a096c5-2139-7d13-ae7c-37606a6be6cc/status",
+    "cancel_url": "https://queue.fal.run/fal-ai/lyria2/requests/01a096c5-2139-7d13-ae7c-37606a6be6cc/cancel",
+    "logs": null,
+    "metrics": {},
+    "queue_position": 0
+  }
+}

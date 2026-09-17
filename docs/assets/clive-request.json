@@ -1,0 +1,10 @@
+{
+  "status": "IN_QUEUE",
+  "request_id": "01a09113-5e50-72e0-b11f-75efceb8d5cc",
+  "response_url": "https://queue.fal.run/tripo3d/h3.1/requests/01a09113-5e50-72e0-b11f-75efceb8d5cc",
+  "status_url": "https://queue.fal.run/tripo3d/h3.1/requests/01a09113-5e50-72e0-b11f-75efceb8d5cc/status",
+  "cancel_url": "https://queue.fal.run/tripo3d/h3.1/requests/01a09113-5e50-72e0-b11f-75efceb8d5cc/cancel",
+  "logs": null,
+  "metrics": {},
+  "queue_position": 0
+}

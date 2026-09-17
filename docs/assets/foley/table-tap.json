@@ -1,0 +1,20 @@
+{
+  "model": "fal-ai/elevenlabs/sound-effects/v2",
+  "input": {
+    "text": "Two short knuckle taps on a padded poker table, a quiet soft wooden double knock through felt. Immediate onset, isolated close foley. No speech, music or reverberation.",
+    "duration_seconds": 0.5,
+    "prompt_influence": 0.8,
+    "output_format": "mp3_44100_128",
+    "loop": false
+  },
+  "receipt": {
+    "status": "IN_QUEUE",
+    "request_id": "01a095bd-2fc6-7812-855f-46b730d91a6c",
+    "response_url": "https://queue.fal.run/fal-ai/elevenlabs/requests/01a095bd-2fc6-7812-855f-46b730d91a6c",
+    "status_url": "https://queue.fal.run/fal-ai/elevenlabs/requests/01a095bd-2fc6-7812-855f-46b730d91a6c/status",
+    "cancel_url": "https://queue.fal.run/fal-ai/elevenlabs/requests/01a095bd-2fc6-7812-855f-46b730d91a6c/cancel",
+    "logs": null,
+    "metrics": {},
+    "queue_position": 0
+  }
+}

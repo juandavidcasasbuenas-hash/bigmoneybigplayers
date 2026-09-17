@@ -1,0 +1,276 @@
+/**
+ * Cartoon cast manifest. Generated heads and tailored Blender bodies share the
+ * table contact rig. See docs/CHARACTER_PIPELINE.md to add a reference and model.
+ * Feature colours also drive the articulated hands and procedural fallback.
+ */
+export interface CharacterDefinition {
+  id: string;
+  name: string;
+  photo: string;
+  portrait?: string;
+  /** Blender-prepared generated assets; omit to use the shared cartoon rig. */
+  model?: { head: string; body?: string };
+  tagline: string;
+  color: string;
+  skin: string;
+  hair: string;
+  shirt: string;
+  undershirt: string;
+  eyes: string;
+  hairStyle:
+    | "quiff"
+    | "curly"
+    | "bald"
+    | "spiky"
+    | "swept"
+    | "cap"
+    | "helmet"
+    | "cropped"
+    | "side-part";
+  beard: "none" | "stubble" | "full" | "goatee";
+  glasses?: boolean;
+  faceWidth: number;
+  faceLength: number;
+  eyebrow: number;
+  accessory?: string;
+  hairAccent?: string;
+  noseWidth?: number;
+  noseLength?: number;
+  eyeScale?: number;
+  earScale?: number;
+  mouthWidth?: number;
+  tailoring?: "open-jacket" | "lapel-pin" | "grey-suit";
+}
+
+export const CHARACTERS: CharacterDefinition[] = [
+  {
+    id: "juan",
+    model: {
+      head: "/models/tripo/juan-head.glb",
+      body: "/models/tripo/juan-body.glb",
+    },
+    portrait: "/portraits/juan.png",
+    name: "Juan",
+    photo: "/avatars/Juan.jpg",
+    tagline: "Big speech. Bigger bluff.",
+    color: "#e79575",
+    skin: "#ca915f",
+    hair: "#30271f",
+    shirt: "#283d53",
+    undershirt: "#283d53",
+    eyes: "#3b2e22",
+    hairStyle: "curly",
+    beard: "full",
+    hairAccent: "#888177",
+    faceWidth: 1.0,
+    faceLength: 1.02,
+    eyebrow: 1.05,
+    eyeScale: 0.92,
+    noseWidth: 0.88,
+    noseLength: 1.2,
+    mouthWidth: 0.95,
+    tailoring: "open-jacket",
+  },
+  {
+    id: "jack",
+    model: {
+      head: "/models/tripo/jack-head.glb",
+      body: "/models/tripo/jack-body.glb",
+    },
+    portrait: "/portraits/jack.png",
+    name: "Jack",
+    photo: "/avatars/Jack.jpg",
+    tagline: "A very polished poker face.",
+    color: "#b1caba",
+    skin: "#d89e6e",
+    hair: "#493e2b",
+    shirt: "#1e3138",
+    undershirt: "#939d99",
+    eyes: "#819c9c",
+    hairStyle: "bald",
+    beard: "full",
+    faceWidth: 1.02,
+    faceLength: 1.08,
+    eyebrow: 0.7,
+  },
+  {
+    id: "clive",
+    model: {
+      head: "/models/tripo/clive-head.glb",
+      body: "/models/tripo/clive-body.glb",
+    },
+    portrait: "/portraits/clive.png",
+    name: "Clive",
+    photo: "/avatars/Clive.jpg",
+    tagline: "The odds? Already calculated.",
+    color: "#dec692",
+    skin: "#df9e68",
+    hair: "#63513d",
+    shirt: "#e4dfd1",
+    undershirt: "#dad5c9",
+    eyes: "#657581",
+    hairStyle: "spiky",
+    beard: "none",
+    glasses: true,
+    faceWidth: 0.96,
+    faceLength: 1.07,
+    eyebrow: 0.8,
+  },
+  {
+    id: "doug",
+    model: {
+      head: "/models/tripo/doug-head.glb",
+      body: "/models/tripo/doug-body.glb",
+    },
+    portrait: "/portraits/doug.png",
+    name: "Doug",
+    photo: "/avatars/doug.jpg",
+    tagline: "All-in. Aerodynamically.",
+    color: "#abbcc4",
+    skin: "#da935f",
+    hair: "#94806b",
+    shirt: "#899798",
+    undershirt: "#4aabc4",
+    eyes: "#5e7d8c",
+    hairStyle: "helmet",
+    beard: "full",
+    glasses: true,
+    faceWidth: 0.97,
+    faceLength: 1.04,
+    eyebrow: 0.7,
+    accessory: "1000",
+  },
+  {
+    id: "nat",
+    model: {
+      head: "/models/tripo/nat-head.glb",
+      body: "/models/tripo/nat-body.glb",
+    },
+    portrait: "/portraits/nat.png",
+    name: "Nat",
+    photo: "/avatars/Nat.jpg",
+    tagline: "Dressed to collect your chips.",
+    color: "#c3aa84",
+    skin: "#c68554",
+    hair: "#272c28",
+    shirt: "#3b4a62",
+    undershirt: "#e8e2cb",
+    eyes: "#342e22",
+    hairStyle: "swept",
+    beard: "stubble",
+    faceWidth: 0.92,
+    faceLength: 1.12,
+    eyebrow: 1.32,
+    hairAccent: "#b9b9ad",
+    eyeScale: 0.9,
+    noseLength: 1.18,
+    noseWidth: 1.12,
+    mouthWidth: 1.03,
+    tailoring: "lapel-pin",
+  },
+  {
+    id: "tian",
+    model: {
+      head: "/models/tripo/tian-head.glb",
+      body: "/models/tripo/tian-body.glb",
+    },
+    portrait: "/portraits/tian.png",
+    name: "Tian",
+    photo: "/avatars/Tian.png",
+    tagline: "Just here for the river.",
+    color: "#9fb2bd",
+    skin: "#e8a364",
+    hair: "#8b7861",
+    shirt: "#586c75",
+    undershirt: "#586c75",
+    eyes: "#647c81",
+    hairStyle: "cap",
+    beard: "goatee",
+    faceWidth: 0.97,
+    faceLength: 1.09,
+    eyebrow: 0.86,
+  },
+  {
+    id: "humfrey",
+    model: {
+      head: "/models/tripo/humfrey-head.glb",
+      body: "/models/tripo/humfrey-body.glb",
+    },
+    portrait: "/portraits/humfrey.png",
+    name: "Humfrey",
+    photo: "/avatars/Humfrey.png",
+    tagline: "Suspiciously unbothered.",
+    color: "#bdd3d5",
+    skin: "#f09d57",
+    hair: "#494439",
+    shirt: "#93b7c6",
+    undershirt: "#deece6",
+    eyes: "#8ca998",
+    hairStyle: "cropped",
+    beard: "stubble",
+    faceWidth: 1.07,
+    faceLength: 1.01,
+    eyebrow: 1.2,
+  },
+  {
+    id: "diego",
+    model: {
+      head: "/models/tripo/diego-head.glb",
+      body: "/models/tripo/diego-body.glb",
+    },
+    portrait: "/portraits/diego.png",
+    name: "Diego",
+    photo: "/avatars/diego.jpg",
+    tagline: "That smile is a tell. Or is it?",
+    color: "#c9ae97",
+    skin: "#db9358",
+    hair: "#20221e",
+    shirt: "#6a7e8b",
+    undershirt: "#ece7da",
+    eyes: "#372e27",
+    hairStyle: "side-part",
+    beard: "goatee",
+    faceWidth: 1.12,
+    faceLength: 0.97,
+    eyebrow: 1.4,
+    eyeScale: 0.95,
+    noseWidth: 1.28,
+    noseLength: 1.05,
+    earScale: 1.15,
+    mouthWidth: 1.28,
+    tailoring: "grey-suit",
+  },
+];
+
+export const characterById = Object.fromEntries(
+  CHARACTERS.map((character) => [character.id, character]),
+) as Record<string, CharacterDefinition>;
+export const characters = CHARACTERS;
+export function getCharacter(id = "juan"): CharacterDefinition {
+  return (
+    characterById[id.toLowerCase().replace(/\.(jpg|jpeg|png)$/i, "")] ??
+    CHARACTERS[0]
+  );
+}
+
+export const DEALER_CHARACTER: CharacterDefinition = {
+  id: "dealer",
+  model: {
+    head: "/models/tripo/dealer-head.glb",
+    body: "/models/tripo/dealer-body.glb",
+  },
+  name: "Monty",
+  photo: "",
+  tagline: "Your dealer. Professionally unimpressed.",
+  color: "#713d42",
+  skin: "#dd9658",
+  hair: "#bbb6a0",
+  shirt: "#693d42",
+  undershirt: "#f3e9cf",
+  eyes: "#202c29",
+  hairStyle: "swept",
+  beard: "goatee",
+  faceWidth: 1.02,
+  faceLength: 1,
+  eyebrow: 1,
+};

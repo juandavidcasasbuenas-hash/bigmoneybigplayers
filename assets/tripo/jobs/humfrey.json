@@ -1,0 +1,74 @@
+{
+  "schemaVersion": 1,
+  "character": "humfrey",
+  "version": null,
+  "model": "tripo3d/h3.1/image-to-3d",
+  "createdAt": "2026-09-17T10:06:26.813Z",
+  "updatedAt": "2026-09-17T10:10:32.300Z",
+  "input": {
+    "sourcePath": "/Users/juandavidcasasbuenas/Documents/ChatGPT/PokerWithFriends/assets/tripo/references/humfrey.png",
+    "referencePath": "assets/tripo/references/humfrey.png",
+    "sha256": "f38b0560f58772c3663aae69dd999de090eb43d9e26b2876d09fc871e9d85880",
+    "bytes": 1843115,
+    "mimeType": "image/png"
+  },
+  "parameters": {
+    "face_limit": 60000,
+    "texture": true,
+    "pbr": true,
+    "texture_quality": "detailed",
+    "geometry_quality": "detailed",
+    "texture_alignment": "original_image",
+    "orientation": "default",
+    "auto_size": false,
+    "quad": false,
+    "model_seed": 1140951806,
+    "texture_seed": 2079160966
+  },
+  "fingerprint": "3e9358178bb27df9290127bc882efd1f4648b323e37bd45b66f73066b151ac90",
+  "state": "downloaded",
+  "request": {
+    "requestId": "01a0aed5-139a-75f0-97fc-1258c37af86a",
+    "statusUrl": "https://queue.fal.run/tripo3d/h3.1/requests/01a0aed5-139a-75f0-97fc-1258c37af86a/status",
+    "responseUrl": "https://queue.fal.run/tripo3d/h3.1/requests/01a0aed5-139a-75f0-97fc-1258c37af86a",
+    "cancelUrl": "https://queue.fal.run/tripo3d/h3.1/requests/01a0aed5-139a-75f0-97fc-1258c37af86a/cancel"
+  },
+  "lastStatus": "COMPLETED",
+  "result": {
+    "model_mesh": {
+      "url": "https://v3b.fal.media/files/b/0aaac60d/b4hD6_zUYOueBL0LZ7_W__model.glb",
+      "content_type": "model/gltf-binary",
+      "file_name": "model.glb",
+      "file_size": 4249860
+    },
+    "model_urls": {
+      "glb": {
+        "url": "https://v3b.fal.media/files/b/0aaac60d/b4hD6_zUYOueBL0LZ7_W__model.glb",
+        "content_type": "model/gltf-binary",
+        "file_name": "model.glb",
+        "file_size": 4249860
+      },
+      "fbx": null,
+      "base_model": null,
+      "pbr_model": {
+        "url": "https://v3b.fal.media/files/b/0aaac60d/b4hD6_zUYOueBL0LZ7_W__model.glb",
+        "content_type": "model/gltf-binary",
+        "file_name": "model.glb",
+        "file_size": 4249860
+      }
+    },
+    "rendered_image": {
+      "url": "https://v3b.fal.media/files/b/0aaac60e/ToXby_I1plUiD8EwNHvJe_preview.png",
+      "content_type": "image/png",
+      "file_name": "preview.png",
+      "file_size": 164231
+    }
+  },
+  "output": {
+    "path": "assets/tripo/source/humfrey-original.glb",
+    "sha256": "adc5e582e4c39713df8b26d5f4635791b42c73c31a73aaa938155227f9ebd2df",
+    "bytes": 4249860,
+    "downloadedAt": "2026-09-17T10:10:32.300Z",
+    "format": "GLB 2.0"
+  }
+}

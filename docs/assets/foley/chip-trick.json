@@ -1,0 +1,20 @@
+{
+  "model": "fal-ai/elevenlabs/sound-effects/v2",
+  "input": {
+    "text": "Two little stacks of clay poker chips are expertly shuffled together between fingers, lifted and clicked into one stack. Close dry rapid ceramic clicks. One isolated chip trick, no voices, music or metallic ringing.",
+    "duration_seconds": 1.7,
+    "prompt_influence": 0.8,
+    "output_format": "mp3_44100_128",
+    "loop": false
+  },
+  "receipt": {
+    "status": "IN_QUEUE",
+    "request_id": "01a095bd-1aaa-7c21-ba9a-e099abecff13",
+    "response_url": "https://queue.fal.run/fal-ai/elevenlabs/requests/01a095bd-1aaa-7c21-ba9a-e099abecff13",
+    "status_url": "https://queue.fal.run/fal-ai/elevenlabs/requests/01a095bd-1aaa-7c21-ba9a-e099abecff13/status",
+    "cancel_url": "https://queue.fal.run/fal-ai/elevenlabs/requests/01a095bd-1aaa-7c21-ba9a-e099abecff13/cancel",
+    "logs": null,
+    "metrics": {},
+    "queue_position": 0
+  }
+}

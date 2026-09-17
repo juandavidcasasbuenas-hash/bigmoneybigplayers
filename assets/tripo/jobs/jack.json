@@ -1,0 +1,74 @@
+{
+  "schemaVersion": 1,
+  "character": "jack",
+  "version": null,
+  "model": "tripo3d/h3.1/image-to-3d",
+  "createdAt": "2026-09-17T10:06:26.822Z",
+  "updatedAt": "2026-09-17T10:10:53.221Z",
+  "input": {
+    "sourcePath": "/Users/juandavidcasasbuenas/Documents/ChatGPT/PokerWithFriends/assets/tripo/references/jack.png",
+    "referencePath": "assets/tripo/references/jack.png",
+    "sha256": "76c69e66eb7fe0ba831b24f562e028478534cff8dcb88edf40eedcca150ed4ca",
+    "bytes": 1023947,
+    "mimeType": "image/png"
+  },
+  "parameters": {
+    "face_limit": 60000,
+    "texture": true,
+    "pbr": true,
+    "texture_quality": "detailed",
+    "geometry_quality": "detailed",
+    "texture_alignment": "original_image",
+    "orientation": "default",
+    "auto_size": false,
+    "quad": false,
+    "model_seed": 1759250477,
+    "texture_seed": 1549128743
+  },
+  "fingerprint": "47e35db77ca62b27196c8774bff5c0be8d984ed37ffb3c7c795e5781872f5550",
+  "state": "downloaded",
+  "request": {
+    "requestId": "01a0aed5-0cd5-79f1-80c5-85b11f8f0847",
+    "statusUrl": "https://queue.fal.run/tripo3d/h3.1/requests/01a0aed5-0cd5-79f1-80c5-85b11f8f0847/status",
+    "responseUrl": "https://queue.fal.run/tripo3d/h3.1/requests/01a0aed5-0cd5-79f1-80c5-85b11f8f0847",
+    "cancelUrl": "https://queue.fal.run/tripo3d/h3.1/requests/01a0aed5-0cd5-79f1-80c5-85b11f8f0847/cancel"
+  },
+  "lastStatus": "COMPLETED",
+  "result": {
+    "model_mesh": {
+      "url": "https://v3b.fal.media/files/b/0aaac610/HpHSxNJ-cSdUAr5SRiAfH_model.glb",
+      "content_type": "model/gltf-binary",
+      "file_name": "model.glb",
+      "file_size": 4017684
+    },
+    "model_urls": {
+      "glb": {
+        "url": "https://v3b.fal.media/files/b/0aaac610/HpHSxNJ-cSdUAr5SRiAfH_model.glb",
+        "content_type": "model/gltf-binary",
+        "file_name": "model.glb",
+        "file_size": 4017684
+      },
+      "fbx": null,
+      "base_model": null,
+      "pbr_model": {
+        "url": "https://v3b.fal.media/files/b/0aaac610/HpHSxNJ-cSdUAr5SRiAfH_model.glb",
+        "content_type": "model/gltf-binary",
+        "file_name": "model.glb",
+        "file_size": 4017684
+      }
+    },
+    "rendered_image": {
+      "url": "https://v3b.fal.media/files/b/0aaac610/h7UnJUJD6myGY0nxPWX4S_preview.png",
+      "content_type": "image/png",
+      "file_name": "preview.png",
+      "file_size": 173477
+    }
+  },
+  "output": {
+    "path": "assets/tripo/source/jack-original.glb",
+    "sha256": "01928c399bd17b5505dbd55ba30bacd4b99596a6cecb54a0d1d040210cd846a6",
+    "bytes": 4017684,
+    "downloadedAt": "2026-09-17T10:10:53.221Z",
+    "format": "GLB 2.0"
+  }
+}
