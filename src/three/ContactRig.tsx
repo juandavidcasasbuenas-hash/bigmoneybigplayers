@@ -228,6 +228,7 @@ export interface ContactRigProps {
   seed?: number;
   active?: boolean;
   hasCards?: boolean;
+  cardsTabled?: boolean;
   peek?: CardPeek | null;
   privateCards?: string[];
   onPeekStart?: () => void;
@@ -251,6 +252,7 @@ export function ContactRig({
   seed = 0,
   active,
   hasCards = true,
+  cardsTabled = false,
   peek: peekGesture,
   privateCards,
   onPeekStart,
@@ -352,6 +354,7 @@ export function ContactRig({
     const trickAge = manual ? manualAge : age;
     const doingTrick =
       !dealer &&
+      (!cardsTabled || manual) &&
       !actionLive &&
       peek === 0 &&
       standing.current < 0.02 &&
@@ -478,7 +481,7 @@ export function ContactRig({
       if (!chip) return;
       applyPose(chip, trick?.chips[i] || chipRest(i, workDepth));
       chip.visible =
-        !dealer && !(i < 4 && actionLive && activity?.type === "bet");
+        !dealer && (!cardsTabled || manual) && !(i < 4 && actionLive && activity?.type === "bet");
     });
     if (root.current) {
       root.current.userData.action = actionLive

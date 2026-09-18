@@ -5,7 +5,7 @@ import type { ScenePlayer } from "../components/PokerScene";
 import type { TableMotion } from "../../shared/tableTimeline";
 import { potStacks, POT_ORIGIN, POT_CHIP_SCALE } from "../../shared/potDisplay";
 import { Card, ChipStack } from "./TablePieces";
-import { BOARD_CARD_SCALE, BOARD_CARD_SPACING, BOARD_Z } from "./tableLayout";
+import { BOARD_CARD_SCALE, BOARD_CARD_SPACING, BOARD_Z, tablePotPosition } from "./tableLayout";
 import {
   DEAL,
   STREET,
@@ -34,13 +34,16 @@ export function CommunityCard({
   index,
   motions,
   effectNow,
+  layoutRotation = 0,
 }: {
   card: string;
   index: number;
   motions: TableMotion[];
   effectNow?: number;
+  layoutRotation?: number;
 }) {
   const rig = useRef<Group>(null);
+  const layoutAngle = useRef(layoutRotation);
   const event = motions.find(
     (e) =>
       e.type === "street" &&
@@ -53,11 +56,13 @@ export function CommunityCard({
   const start = event
     ? event.startAt + (index < 3 ? index : 0) * STREET.interval
     : 0;
-  useFrame(() => {
+  useFrame((_, delta) => {
     if (!rig.current) return;
     const t = effectNow ?? Date.now(),
       elapsed = t - start;
-    const destination = pose([(index - 2) * BOARD_CARD_SPACING, FELT_Y + 0.012, BOARD_Z]);
+    layoutAngle.current = MathUtils.damp(layoutAngle.current, layoutRotation, 4, Math.min(delta, 0.05));
+    const angle = layoutAngle.current, x = (index - 2) * BOARD_CARD_SPACING;
+    const destination = pose([x * Math.cos(angle), FELT_Y + 0.012, BOARD_Z * Math.cos(angle) - x * Math.sin(angle)], [0, angle, 0]);
     // Keep the dealer's exact card grip, then ease up to the readable public size.
     rig.current.scale.setScalar(MathUtils.lerp(1, BOARD_CARD_SCALE / CARD_SCALE,
       !start ? 1 : MathUtils.smoothstep(elapsed, STREET.release, STREET.release + STREET.flight)));
@@ -184,17 +189,34 @@ function Bet({
   );
 }
 
+export function CentralPot({ amount, layoutRotation = 0 }: { amount: number; layoutRotation?: number }) {
+  const rig = useRef<Group>(null);
+  const angle = useRef(layoutRotation);
+  useFrame((_, delta) => {
+    if (!rig.current) return;
+    angle.current = MathUtils.damp(angle.current, layoutRotation, 4, Math.min(delta, 0.05));
+    rig.current.rotation.y = angle.current;
+    rig.current.position.x = -BOARD_Z * Math.sin(angle.current);
+  });
+  return <group ref={rig} name="central-pot" userData={{ amount }}>
+    {potStacks(amount).map((pile, i) => <ChipStack key={i} {...pile} scale={POT_CHIP_SCALE} />)}
+  </group>;
+}
+
 function Collect({
   motion,
   players,
   effectNow,
+  layoutRotation = 0,
 }: {
   motion: TableMotion;
   players: ScenePlayer[];
   effectNow?: number;
+  layoutRotation?: number;
 }) {
   const rig = useRef<Group>(null),
     winners = motion.type === "award" ? motion.winners : [];
+  const angle = useRef(layoutRotation);
   const total = motion.type === 'award' ? motion.pot : 0;
   // Lift the actual pot in small cuts; tall centre stacks must not pass through a collecting hand.
   const piles = potStacks(total).flatMap(pile => Array.from({length: Math.ceil(pile.count / 4)}, (_, cut) => ({
@@ -209,8 +231,9 @@ function Collect({
       return (i + 0.5) / piles.length * total <= cutoff;
     }) || winners.at(-1);
   });
-  useFrame(() => {
+  useFrame((_, delta) => {
     if (!rig.current) return;
+    angle.current = MathUtils.damp(angle.current, layoutRotation, 4, Math.min(delta, 0.05));
     const time = (effectNow ?? Date.now()) - motion.startAt;
     rig.current.children.forEach((pile, i) => {
       const winner = deliveries[i],
@@ -230,7 +253,7 @@ function Collect({
         seatTransform(seatIndex),
         pose([0.34 + ((i % 4) - 1.5) * 0.13, FELT_Y + 0.002, depth + 0.04]),
       );
-      const origin = new Vector3(...piles[i].position);
+      const origin = new Vector3(...tablePotPosition(piles[i].position, angle.current));
       pile.visible = time >= 0 && p < 0.96;
       pile.position.copy(
         p < 0.45
@@ -262,10 +285,12 @@ export function TableEffects({
   motions,
   players,
   effectNow,
+  layoutRotation = 0,
 }: {
   motions: TableMotion[];
   players: ScenePlayer[];
   effectNow?: number;
+  layoutRotation?: number;
 }) {
   const now = effectNow ?? Date.now();
   return (
@@ -291,6 +316,7 @@ export function TableEffects({
                 motion={m}
                 players={players}
                 effectNow={effectNow}
+                layoutRotation={layoutRotation}
               />
             );
           const player =

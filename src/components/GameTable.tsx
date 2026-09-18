@@ -35,7 +35,7 @@ import { canHoldPrivateCards, privateCardsReadyAt } from "../three/firstPersonHa
 import { useCardPeek } from '../hooks/useCardPeek';
 import { HandPositions } from "./HandPositions";
 import { PreActionControls } from "./PreActionControls";
-import { ShowdownPanel } from "./ShowdownPanel";
+import { showdownPresentation } from '../three/showdownPresentation';
 import PokerScene, { type ScenePlayer } from "./PokerScene";
 const n = (v: number) => v.toLocaleString("en-GB");
 const reactions: { id: Emote; label: string; icon: typeof Coins }[] = [
@@ -93,6 +93,13 @@ export function GameTable(p: Props) {
     room?.players.filter((v) => v.seat >= 0 && v.status !== "spectator") || [];
   const log = useTableLog(room, now, p.voiceApi.error);
   const odds = useHeadsUpOdds(flow.motions, flow.board, now);
+  const showdown = showdownPresentation(room, odds, flow.board, flow.settled, now);
+  // Server settlement precedes the animated river. Awarded stacks must not
+  // identify the winner while the public cards are still running out.
+  const tablePlayers = flow.pendingAward ? players.map(player => ({...player, stack: Math.max(0, player.stack - (room?.winners.find(w => w.playerId === player.id)?.amount || 0))})) : players;
+  const [dismissedReveal, setDismissedReveal] = useState<string | null>(null);
+  const revealCamera = !!showdown && dismissedReveal !== showdown.key;
+  const camera = revealCamera ? 'showdown' : p.camera;
   const ownHand = useMemo(
     () =>
       me?.holeCards.length
@@ -103,7 +110,7 @@ export function GameTable(p: Props) {
   const displayActor = players.find(
     (v) => v.id === (flow.focusActorId || room?.turnPlayerId),
   );
-  const firstPerson = p.camera === 'first-person' || p.camera === 'firstPerson';
+  const firstPerson = camera === 'first-person' || camera === 'firstPerson';
   const cardsOnFelt = firstPerson && ['preflop', 'flop', 'turn', 'river'].includes(room?.stage || '') && canHoldPrivateCards(me?.holeCards || [], me?.status);
   const canPeek = !!room && p.connected && !room.paused && ['preflop', 'flop', 'turn', 'river'].includes(room.stage)
     && canHoldPrivateCards(me?.holeCards || [], me?.status)
@@ -152,9 +159,9 @@ export function GameTable(p: Props) {
   };
   return (
     <section className="poker-game" aria-label="Poker table">
-      <div className={`game-stage ${firstPerson ? 'first-person' : ''} ${odds || flow.settled || (room?.handReview && now >= room.handReview.startsAt) ? 'showdown-active' : ''}`}>
+      <div className={`game-stage ${firstPerson ? 'first-person' : ''} ${showdown ? 'showdown-active' : ''}`}>
         <PokerScene
-          players={players}
+          players={tablePlayers}
           heroCards={me?.holeCards || []}
           peeking={peek.peeking}
           onPeekStart={peek.start}
@@ -167,8 +174,9 @@ export function GameTable(p: Props) {
           dealerIndex={players.findIndex((v) => v.id === room?.dealerId)}
           roomTheme={p.theme}
           cameraMode={
-            p.camera === "follow" && flow.focusTable ? "table" : p.camera
+            camera === "follow" && flow.focusTable ? "table" : camera
           }
+          showdown={showdown}
           heroId={room?.you || "juan"}
           handNumber={room?.handNumber || 0}
           turnRemaining={feedback.seconds}
@@ -221,9 +229,13 @@ export function GameTable(p: Props) {
               <Eye size={15} />
               <select
                 aria-label="Camera"
-                value={p.camera}
-                onChange={(e) => p.setCamera(e.target.value)}
+                value={camera}
+                onChange={(e) => {
+                  if (e.target.value === 'showdown') setDismissedReveal(null);
+                  else { setDismissedReveal(showdown?.key || null); p.setCamera(e.target.value); }
+                }}
               >
+                {showdown && <option value="showdown">Showdown</option>}
                 <option value="follow">Follow turn</option>
                 <option value="table">Table</option>
                 <option value="first-person">My seat</option>
@@ -266,7 +278,7 @@ export function GameTable(p: Props) {
             </button>
           </div>
         </div>
-        {room && room.stage !== "lobby" && (
+        {room && room.stage !== "lobby" && !showdown && (
           <HandPositions room={room} />
         )}
         {room && room.stage !== "lobby" && (
@@ -284,7 +296,7 @@ export function GameTable(p: Props) {
             )}
           </div>
         )}
-        {room && !flow.focusTable && !flow.settled && displayActor && (
+        {room && !showdown && !flow.focusTable && !flow.settled && displayActor && (
           <div
             className={`actor-status ${feedback.myTurn ? "your-action" : ""}`}
           >
@@ -355,10 +367,14 @@ export function GameTable(p: Props) {
             )}
           </div>
         )}
-        {room && <ShowdownPanel room={room} odds={odds} board={flow.board} settled={flow.settled} now={now} />}
+        {showdown && <div className="showdown-footnote" role="status">
+          {showdown.sidePots && <span>Main + side pots</span>}
+          {showdown.allIn && showdown.split !== null && showdown.split > 0 && <span>Split {showdown.estimated ? '≈' : ''}{showdown.split.toFixed(1)}%</span>}
+          <span className="sr-only">{showdown.settled ? 'Hand complete.' : showdown.allIn ? 'All in. Cards on the table.' : 'Showdown.'} {showdown.seats.filter(s => s.award).map(s => `${s.name} wins ${n(s.award)} chips.`).join(' ')}</span>
+        </div>}
         {room && room.stage !== "lobby" && (
           <div className="cards-hud">
-            <div
+            {!(showdown?.seats.some(seat => seat.id === room.you && seat.cards.length === 2) && revealCamera) && <div
               className={`private-cards ${feedback.myTurn ? "your-action" : ""}`}
               aria-label="Your private hand"
             >
@@ -404,8 +420,8 @@ export function GameTable(p: Props) {
                   </strong>
                 </div>
               )}
-            </div>
-            {!!flow.board.length && (
+            </div>}
+            {!!flow.board.length && !revealCamera && (
               <div className="community-hud" aria-label="Community cards">
                 {Array.from({ length: 5 }, (_, i) =>
                   flow.board[i] ? (

@@ -32,7 +32,6 @@ import {
 } from "three";
 import { mergeGeometries } from "three/examples/jsm/utils/BufferGeometryUtils.js";
 import type { TableMotion } from "../../shared/tableTimeline";
-import { potStacks, POT_CHIP_SCALE } from "../../shared/potDisplay";
 import { holePickupAt } from "../../shared/dealTiming";
 import {
   FELT_Y,
@@ -51,8 +50,10 @@ import {
 import { seatPosition } from "../three/seating";
 import type { CardPeek } from '../../shared/cardPeek';
 import { privateCardLookTarget } from '../three/cardPeek';
-import { CommunityCard, TableEffects } from "../three/TableEffects";
+import { CentralPot, CommunityCard, TableEffects } from "../three/TableEffects";
 import { Card, ChipStack } from "../three/TablePieces";
+import { ShowdownReveal } from '../three/ShowdownReveal';
+import type { ShowdownPresentation } from '../three/showdownPresentation';
 import {
   feltTexture,
   labelTexture,
@@ -66,7 +67,7 @@ import {
 } from "../three/ToonAvatar";
 export { ToonAvatar as CartoonAvatar } from "../three/ToonAvatar";
 
-/** The canvas never receives opponents' hole cards. Keep that boundary in the server. */
+/** Private cards stay out of opponent models; tabled cards use the separate public reveal. */
 export interface ScenePlayer {
   id: string;
   name: string;
@@ -115,6 +116,7 @@ export interface PokerSceneProps {
   soundEffects?: boolean;
   settled?: boolean;
   focusTable?: boolean;
+  showdown?: ShowdownPresentation | null;
   /** Optional developer telemetry; never displayed in the game UI. */
   onRenderStats?: (stats: SceneRenderStats) => void;
 }
@@ -734,12 +736,14 @@ export function PokerTable({
   motions = [],
   effectNow,
   settled = false,
+  boardRotation = 0,
 }: {
   board: string[];
   pot: number;
   motions?: TableMotion[];
   effectNow?: number;
   settled?: boolean;
+  boardRotation?: number;
 }) {
   const animatedBoard = [...board];
   for (const motion of motions)
@@ -842,7 +846,7 @@ export function PokerTable({
           depthWrite={false}
         />
       </mesh>
-      {/* Public community cards are the only face-up cards in this scene. */}
+      {/* Private hands are rendered separately, only once publicly tabled. */}
       {animatedBoard.slice(0, 5).map((card, i) => (
         <CommunityCard
           key={`${i}-${card}`}
@@ -850,12 +854,11 @@ export function PokerTable({
           index={i}
           motions={motions}
           effectNow={effectNow}
+          layoutRotation={boardRotation}
         />
       ))}
       {pot > 0 && !settled && (
-        <group name="central-pot" userData={{ amount: pot }}>
-          {potStacks(pot).map((pile, i) => <ChipStack key={i} {...pile} scale={POT_CHIP_SCALE} />)}
-        </group>
+        <CentralPot amount={pot} layoutRotation={boardRotation} />
       )}
       {[-1, 1].map((x) =>
         [-1, 1].map((z) => (
@@ -886,6 +889,7 @@ function PlayerSeat({
   hero,
   theme,
   hideAvatar = false,
+  cardsTabled = false,
   privateCards,
   onPeekStart,
   onClick,
@@ -912,6 +916,7 @@ function PlayerSeat({
   hero: boolean;
   theme: string;
   hideAvatar?: boolean;
+  cardsTabled?: boolean;
   privateCards?: string[];
   onPeekStart?: () => void;
   onClick?: (id: string) => void;
@@ -944,6 +949,7 @@ function PlayerSeat({
           privateCards={privateCards}
           onPeekStart={onPeekStart}
           peek={player.peek}
+          cardsTabled={cardsTabled}
           emote={player.emote}
           seed={index}
           actorKey={player.id}
@@ -952,14 +958,14 @@ function PlayerSeat({
           seatIndex={player.seat ?? index}
           workDepth={depth}
           hasCards={
-            (!outOfHand && player.cardCount !== 0) ||
+            !cardsTabled && ((!outOfHand && player.cardCount !== 0) ||
             motions.some(
               (m) =>
                 m.type === "fold" &&
                 m.playerId === player.id &&
                 (effectNow ?? Date.now()) < m.startAt + m.duration &&
                 (effectNow ?? Date.now()) >= m.startAt,
-            )
+            ))
           }
           activity={[...motions]
             .reverse()
@@ -1001,9 +1007,9 @@ function PlayerSeat({
         />
         <ChipStack position={[0.15, 0, 0.52]} count={4} color="#d0ad69" />
         </>}
-        {dealer && <PositionButton position={[-0.48, 0.025, 0.68]} />}
-        {player.smallBlind && <PositionButton position={[dealer ? -0.02 : -0.48, 0.025, 0.68]} label="SB" />}
-        {player.bigBlind && <PositionButton position={[-0.48, 0.025, 0.68]} label="BB" />}
+        {!cardsTabled && dealer && <PositionButton position={[-0.48, 0.025, 0.68]} />}
+        {!cardsTabled && player.smallBlind && <PositionButton position={[dealer ? -0.02 : -0.48, 0.025, 0.68]} label="SB" />}
+        {!cardsTabled && player.bigBlind && <PositionButton position={[-0.48, 0.025, 0.68]} label="BB" />}
       </group>
       {index % 2 === 0 && (
         <group position={[-0.69, FELT_Y, depth + 0.28]}>
@@ -1399,8 +1405,9 @@ function CutawayWall({
 
 function Ceiling({ children }: { children: ReactNode }) {
   const group = useRef<Group>(null);
+  const direction = useRef(new Vector3());
   useFrame(({ camera }) => {
-    if (group.current) group.current.visible = camera.position.y < 11;
+    if (group.current) group.current.visible = camera.position.y < 11 && (camera.position.y < 5.6 || camera.getWorldDirection(direction.current).y > -0.8);
   });
   return <group ref={group}>{children}</group>;
 }
@@ -1940,6 +1947,15 @@ function CameraRig({
       goalPosition.set(seat[0] + inward.x * 4.2, 2.9, seat[2] + inward.z * 4.2);
       goalTarget.set(seat[0], 2.05, seat[2]);
       fov = 51;
+    } else if (mode === 'showdown') {
+      // Frame the whole table with room for seat labels. Portrait screens look
+      // along the long axis so twelve hands don't collapse into a tiny oval.
+      const portrait = size.height > size.width;
+      const width = portrait ? 7.6 : 10.8, height = portrait ? 11.5 : size.height < 420 ? 5.4 : 8.1;
+      fov = 39;
+      const distance = Math.max(height, width / aspect) / (2 * Math.tan(fov * Math.PI / 360));
+      goalPosition.set(portrait ? 0.18 : 0, FELT_Y + distance, portrait ? 0 : 0.18);
+      goalTarget.set(0, FELT_Y, 0);
     } else if (mode === "overhead") {
       goalPosition.set(0, 15 * zoom, 0.2);
       goalTarget.set(0, 0, 0);
@@ -2120,7 +2136,10 @@ function SceneContents({
   soundEffects = false,
   settled = false,
   focusTable = false,
+  showdown = null,
 }: PokerSceneProps) {
+  const { size } = useThree();
+  const boardRotation = cameraMode === 'showdown' && size.height > size.width ? Math.PI / 2 : 0;
   const pointOfViewId = players.some((p) => p.id === heroId)
     ? heroId
     : players[0]?.id;
@@ -2137,9 +2156,10 @@ function SceneContents({
         motions={motions}
         effectNow={effectNow}
         settled={settled}
+        boardRotation={boardRotation}
       />
       <HouseDealer motions={motions} effectNow={effectNow} theme={roomTheme} />
-      <TableEffects players={players} motions={motions} effectNow={effectNow} />
+      <TableEffects players={players} motions={motions} effectNow={effectNow} layoutRotation={boardRotation} />
       {[0, 1, 2, 3, 4, 5]
         .filter((seat) => !occupiedSeats.has(seat))
         .map((seat) => {
@@ -2173,6 +2193,7 @@ function SceneContents({
             player.id === pointOfViewId
           }
           privateCards={player.id === heroId && (cameraMode === 'first-person' || cameraMode === 'firstPerson') ? heroCards : undefined}
+          cardsTabled={!!showdown?.seats.some(seat => seat.id === player.id)}
           onPeekStart={player.id === heroId ? onPeekStart : undefined}
           onClick={onSeatClick}
           remaining={turnRemaining}
@@ -2186,6 +2207,7 @@ function SceneContents({
           }
         />
       ))}
+      {showdown && <ShowdownReveal presentation={showdown} portrait={boardRotation !== 0} />}
       <CameraRig
         mode={cameraMode}
         players={players}

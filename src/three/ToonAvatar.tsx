@@ -21,6 +21,7 @@ export const ToonAvatar = memo(function ToonAvatar({
   actorKey?: string;
   active?: boolean;
   hasCards?: boolean;
+  cardsTabled?: boolean;
   peek?: CardPeek | null;
   privateCards?: string[];
   onPeekStart?: () => void;

@@ -157,6 +157,8 @@ export function useTablePresentation(
             0.55,
           );
         }
+      } else if (motion.type === 'all-in' || motion.type === 'showdown') {
+        schedule(`${motion.id}:table-cards`, motion.startAt + 450, 'reveal', 0.45);
       } else if (motion.type === "bet")
         schedule(
           motion.id,
