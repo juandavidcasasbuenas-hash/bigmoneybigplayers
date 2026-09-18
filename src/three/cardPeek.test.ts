@@ -15,12 +15,12 @@ describe('table-side card checking', () => {
     expect(peekCardSurface(0,1,0).normal.y).toBe(-1);
     expect(peekCardSurface(0,1,1).normal.z).toBeLessThan(-0.6);
   });
-  it('pins both thumbs to their card corners through the whole curl at every seat', () => {
+  it('pins both thumbs to the outer edges below the rank indices through the whole curl at every seat', () => {
     for(let seat=0;seat<12;seat++) for(let index=0;index<2;index++) for(let frame=0;frame<=20;frame++) {
       const amount=frame/20;
       const hand=peekHandPose(index,amount), card=privateCardTransform(index);
       const fingertip=hand.thumbTip.clone().applyQuaternion(hand.rotation).add(hand.position);
-      const corner=peekCardSurface((index===0?1:-1)*PEEK_CARD_WIDTH*.47,1,amount).position.applyQuaternion(card.rotation).add(card.position);
+      const corner=peekCardSurface((index===0?1:-1)*PEEK_CARD_WIDTH*(.47+.03*amount),1-.27*amount,amount).position.applyQuaternion(card.rotation).add(card.position);
       expect(fingertip.distanceTo(corner)).toBeLessThan(1e-8);
       const rest=holeCardRest(workZ(seat),index);
       expect(rest.position.distanceTo(card.position.clone().add(privateCardOrigin(seat)))).toBeLessThan(1e-8);

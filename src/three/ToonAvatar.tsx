@@ -22,6 +22,7 @@ export const ToonAvatar = memo(function ToonAvatar({
   active?: boolean;
   hasCards?: boolean;
   cardsTabled?: boolean;
+  celebrationAt?: number;
   peek?: CardPeek | null;
   privateCards?: string[];
   onPeekStart?: () => void;
@@ -45,7 +46,7 @@ export const ToonAvatar = memo(function ToonAvatar({
       {!firstPerson && <BlenderHead
         character={character}
         actorKey={props.actorKey}
-        emote={props.emote}
+        emote={props.celebrationAt ? 'cheers' : props.emote}
         seed={props.seed}
         attention={attention}
         active={props.active}

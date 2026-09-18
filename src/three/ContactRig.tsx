@@ -229,6 +229,7 @@ export interface ContactRigProps {
   active?: boolean;
   hasCards?: boolean;
   cardsTabled?: boolean;
+  celebrationAt?: number;
   peek?: CardPeek | null;
   privateCards?: string[];
   onPeekStart?: () => void;
@@ -253,6 +254,7 @@ export function ContactRig({
   active,
   hasCards = true,
   cardsTabled = false,
+  celebrationAt,
   peek: peekGesture,
   privateCards,
   onPeekStart,
@@ -284,7 +286,7 @@ export function ContactRig({
     useRef<HandControl>({ mode: "rest", phase: 0 }),
   ];
   const bodyPose = useRef<BlenderPose | null>(null);
-  const standing = useStanding(emote, emoteAt, effectNow);
+  const standing = useStanding(celebrationAt ? 'stand' : emote, celebrationAt || emoteAt, effectNow);
   const emoteClock = useRef({ emote, at: emoteAt || Date.now() });
   const soundsPlayed = useRef(new Set<string>());
   const recline = useRef(0);
@@ -413,6 +415,13 @@ export function ContactRig({
         );
       contact.rightMode = "push";
       contact.lean = dealing ? 0.1 : 0.035;
+    }
+    if (celebrationAt && !dealer && !actionLive) {
+      const lift = smooth(standing.current, 0.2, 0.9);
+      for (const [hand, side] of [[contact.left, -1], [contact.right, 1]] as const) {
+        hand.position.lerp(new Vector3(side * 0.58, 2.95 + Math.sin((now-celebrationAt)*0.006)*0.07, 0.15), lift);
+      }
+      contact.leftMode = contact.rightMode = 'open';
     }
     const sittingBack = outOfHand && !dealer && !actionLive && !trick && !emote && standing.current < 0.01;
     recline.current = MathUtils.damp(recline.current, sittingBack ? 1 : 0, 3.2, Math.min(delta, 0.05));

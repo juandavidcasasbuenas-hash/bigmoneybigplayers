@@ -31,7 +31,7 @@ export function privateCardTransform(index: number) {
 export function peekHandPose(index: number, amount: number) {
   const side = index === 0 ? 1 : -1;
   const card = privateCardTransform(index);
-  const edge = peekCardSurface(side * PEEK_CARD_WIDTH * 0.47, 1, amount);
+  const edge = peekCardSurface(side * PEEK_CARD_WIDTH * (0.47 + 0.03 * amount), 1 - 0.27 * amount, amount);
   // The fingers pinch the curling corner; the wrist stays comfortably above the
   // rail instead of rotating through the entire bend and stretching the arm.
   const rotation = card.rotation.clone().multiply(new Quaternion().setFromAxisAngle(new Vector3(1, 0, 0), 2.48 - amount * 0.81));

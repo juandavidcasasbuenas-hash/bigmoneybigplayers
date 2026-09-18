@@ -143,6 +143,32 @@ export function GameTable(p: Props) {
     if (stick.current && logPane.current)
       logPane.current.scrollTop = logPane.current.scrollHeight;
   }, [log.at(-1)?.id, panel]);
+  const decisionKey = `${room?.code}:${room?.handNumber}:${room?.stage}:${room?.turnId}:${room?.currentBet}:${me?.chips}:${room?.paused}:${p.connected}`;
+  const [confirmation, setConfirmation] = useState<{key:string; event:string; data:unknown; allIn:boolean} | null>(null);
+  const confirmDialog = useRef<HTMLDialogElement>(null);
+  useEffect(() => { setConfirmation(null); }, [decisionKey]);
+  useEffect(() => {
+    const dialog = confirmDialog.current;
+    if (confirmation && dialog && !dialog.open) dialog.showModal();
+    if (!confirmation && dialog?.open) dialog.close();
+  }, [confirmation]);
+  const decision = async (event: string, data?: unknown): Promise<Ack> => {
+    const action = data as {type?:string; amount?:number} | undefined;
+    const queued = event === 'pre-action';
+    if ((event === 'action' || queued) && action?.type && me) {
+      const call = queued ? Math.min(me.chips, Math.max(0, (room?.currentBet || 0) - me.bet)) : actions?.callAmount || 0;
+      const allIn = action.type === 'all-in' || action.type === 'call' && call >= me.chips && me.chips > 0 || action.type === 'raise' && (action.amount || 0) >= me.chips + me.bet;
+      const freeFold = action.type === 'fold' && (queued ? call === 0 : actions?.canCheck);
+      if (allIn || freeFold) { setConfirmation({key:decisionKey,event,data,allIn}); return {ok:false}; }
+    }
+    return p.send(event, data);
+  };
+  const lastAction = [...log].reverse().find(item => item.kind === 'event' && item.name && now - item.at < 6000);
+  const levelClock = room?.paused ? room.pausedAt ?? now : now;
+  const blindSeconds = room?.levelEndsAt ? Math.max(0, Math.ceil((room.levelEndsAt - levelClock) / 1000)) : null;
+  const nextLevel = room?.settings.levels[(room?.levelIndex || 0) + 1];
+  const celebrateAt = flow.award ? flow.award.startAt + flow.award.duration : 0;
+  const celebrating = !!room && flow.settled && now >= celebrateAt && now < celebrateAt + 4200;
   const toggle = (next: typeof panel) =>
     setPanel((value) => (value === next ? null : next));
   const voiceNotice =
@@ -170,13 +196,14 @@ export function GameTable(p: Props) {
           currentPlayerId={
             feedback.live ? room?.turnPlayerId || undefined : undefined
           }
-          followPlayerId={flow.focusActorId || room?.turnPlayerId || undefined}
+          followPlayerId={celebrating && revealCamera ? room?.winners[0]?.playerId : flow.focusActorId || room?.turnPlayerId || undefined}
           dealerIndex={players.findIndex((v) => v.id === room?.dealerId)}
           roomTheme={p.theme}
           cameraMode={
-            camera === "follow" && flow.focusTable ? "table" : camera
+            celebrating && revealCamera ? 'winner' : camera === "follow" && flow.focusTable ? "table" : camera
           }
           showdown={showdown}
+          celebration={celebrating ? {ids: room!.winners.map(w => w.playerId), at: celebrateAt} : null}
           heroId={room?.you || "juan"}
           handNumber={room?.handNumber || 0}
           turnRemaining={feedback.seconds}
@@ -283,6 +310,9 @@ export function GameTable(p: Props) {
         )}
         {room && room.stage !== "lobby" && (
           <div className="round-status">
+            <div className="blind-clock">Blinds {n(room.currentLevel.small)}/{n(room.currentLevel.big)} · Level {room.levelIndex + 1}
+              <span>{room.breakEndsAt ? `Break · ${Math.max(0, Math.ceil((room.breakEndsAt-levelClock)/1000))}s` : nextLevel ? blindSeconds === null ? 'Clock starts with the first hand' : blindSeconds === 0 ? `Next hand: ${n(nextLevel.small)}/${n(nextLevel.big)}` : `↑ ${n(nextLevel.small)}/${n(nextLevel.big)} in ${Math.floor((blindSeconds || 0)/60)}:${String((blindSeconds || 0)%60).padStart(2,'0')}` : 'Final blind level'}{room.paused ? ' · paused' : ''}</span>
+            </div>
             <span>
               #{room.handNumber} <b>{stage}</b>
               {flow.settled && seconds !== null && (
@@ -296,6 +326,7 @@ export function GameTable(p: Props) {
             )}
           </div>
         )}
+        {lastAction && <div key={lastAction.id} className="action-cue" role="status"><strong>{lastAction.name}</strong> {lastAction.text}</div>}
         {room && !showdown && !flow.focusTable && !flow.settled && displayActor && (
           <div
             className={`actor-status ${feedback.myTurn ? "your-action" : ""}`}
@@ -664,6 +695,12 @@ export function GameTable(p: Props) {
           </aside>
         )}
       </div>
+      {room && <div className="stack-strip" aria-label="Player chip counts">{tablePlayers.map(player => <div key={player.id} className={player.id === room.turnPlayerId ? 'acting' : ''}><span>{player.name}{player.id === room.you ? ' · you' : ''}</span><strong>{n(player.stack)}</strong></div>)}</div>}
+      <dialog ref={confirmDialog} className="decision-confirm" onCancel={() => setConfirmation(null)} aria-labelledby="decision-confirm-title">
+        <h2 id="decision-confirm-title">{confirmation?.allIn ? 'Commit all your chips?' : 'You can check for free'}</h2>
+        <p>{confirmation?.allIn ? `This puts your remaining ${n(me?.chips || 0)} chips at risk.` : 'Folding gives up your hand even though checking costs nothing.'}</p>
+        <div><button autoFocus onClick={() => setConfirmation(null)}>Go back</button><button className="game-primary" onClick={() => { const pending=confirmation; setConfirmation(null); if(pending?.key===decisionKey && p.connected && !room?.paused) void p.send(pending.event,pending.data); }}>{confirmation?.allIn ? 'Confirm all in' : 'Fold anyway'}</button></div>
+      </dialog>
       <div className="game-dock">
         <div className="reaction-controls" aria-label="Character reactions">
           {reactions.map((r) => (
@@ -687,7 +724,7 @@ export function GameTable(p: Props) {
           className={`decision-controls ${feedback.myTurn ? "your-action" : ""}`}
         >
           {room && (room.preAction || !actions && room.canPreAct) ? (
-            <PreActionControls room={room} busy={p.busy} connected={p.connected} send={p.send} />
+            <PreActionControls room={room} busy={p.busy} connected={p.connected} send={decision} />
           ) : actions ? (
             <>
               {actions.canRaise && actions.maxRaiseTo >= actions.minRaiseTo && (
@@ -715,14 +752,14 @@ export function GameTable(p: Props) {
                 <button
                   className="fold-action"
                   disabled={p.busy}
-                  onClick={() => void p.send("action", { type: "fold" })}
+                  onClick={() => void decision("action", { type: "fold" })}
                 >
                   Fold
                 </button>
                 <button
                   disabled={p.busy}
                   onClick={() =>
-                    void p.send("action", {
+                    void decision("action", {
                       type: actions.canCheck ? "check" : "call",
                     })
                   }
@@ -739,7 +776,7 @@ export function GameTable(p: Props) {
                         raise > actions.maxRaiseTo
                       }
                       onClick={() =>
-                        void p.send("action", { type: "raise", amount: raise })
+                        void decision("action", { type: "raise", amount: raise })
                       }
                     >
                       Raise {n(raise)}
@@ -751,7 +788,7 @@ export function GameTable(p: Props) {
                   <button
                     className="allin-action"
                     disabled={p.busy}
-                    onClick={() => void p.send("action", { type: "all-in" })}
+                    onClick={() => void decision("action", { type: "all-in" })}
                   >
                     All in
                   </button>

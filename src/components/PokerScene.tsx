@@ -52,6 +52,7 @@ import type { CardPeek } from '../../shared/cardPeek';
 import { privateCardLookTarget } from '../three/cardPeek';
 import { CentralPot, CommunityCard, TableEffects } from "../three/TableEffects";
 import { Card, ChipStack } from "../three/TablePieces";
+import { WinnerCelebration } from '../three/WinnerCelebration';
 import { ShowdownReveal } from '../three/ShowdownReveal';
 import type { ShowdownPresentation } from '../three/showdownPresentation';
 import {
@@ -117,6 +118,7 @@ export interface PokerSceneProps {
   settled?: boolean;
   focusTable?: boolean;
   showdown?: ShowdownPresentation | null;
+  celebration?: {ids:string[]; at:number} | null;
   /** Optional developer telemetry; never displayed in the game UI. */
   onRenderStats?: (stats: SceneRenderStats) => void;
 }
@@ -890,6 +892,7 @@ function PlayerSeat({
   theme,
   hideAvatar = false,
   cardsTabled = false,
+  celebrationAt,
   privateCards,
   onPeekStart,
   onClick,
@@ -917,6 +920,7 @@ function PlayerSeat({
   theme: string;
   hideAvatar?: boolean;
   cardsTabled?: boolean;
+  celebrationAt?: number;
   privateCards?: string[];
   onPeekStart?: () => void;
   onClick?: (id: string) => void;
@@ -932,8 +936,8 @@ function PlayerSeat({
     <group position={position} rotation={rotation}>
       <Chair
         theme={theme}
-        emote={player.emote}
-        emoteAt={player.emoteAt}
+        emote={celebrationAt ? 'stand' : player.emote}
+        emoteAt={celebrationAt ?? player.emoteAt}
         effectNow={effectNow}
       />
       {active && <TurnHalo paused={paused} />}
@@ -950,6 +954,7 @@ function PlayerSeat({
           onPeekStart={onPeekStart}
           peek={player.peek}
           cardsTabled={cardsTabled}
+          celebrationAt={celebrationAt}
           emote={player.emote}
           seed={index}
           actorKey={player.id}
@@ -1938,14 +1943,15 @@ function CameraRig({
       zoom = Math.max(1, (size.width < 620 ? 0.9 : 1.18) / aspect);
     const activeIndex = players.findIndex((p) => p.id === currentPlayerId);
     let fov = size.width < 620 ? 48 : 39;
-    if (mode === "follow" && activeIndex >= 0) {
+    if ((mode === "follow" || mode === 'winner') && activeIndex >= 0) {
       const seat = seatPosition(
         players[activeIndex].seat ?? activeIndex,
         players.length,
       ).position;
       inward.set(-seat[0], 0, -seat[2]).normalize();
       goalPosition.set(seat[0] + inward.x * 4.2, 2.9, seat[2] + inward.z * 4.2);
-      goalTarget.set(seat[0], 2.05, seat[2]);
+      goalTarget.set(seat[0], mode === 'winner' ? 2.5 : 2.05, seat[2]);
+      if (mode === 'winner') goalPosition.y = 3.5;
       fov = 51;
     } else if (mode === 'showdown') {
       // Frame the whole table with room for seat labels. Portrait screens look
@@ -2137,6 +2143,7 @@ function SceneContents({
   settled = false,
   focusTable = false,
   showdown = null,
+  celebration = null,
 }: PokerSceneProps) {
   const { size } = useThree();
   const boardRotation = cameraMode === 'showdown' && size.height > size.width ? Math.PI / 2 : 0;
@@ -2194,6 +2201,7 @@ function SceneContents({
           }
           privateCards={player.id === heroId && (cameraMode === 'first-person' || cameraMode === 'firstPerson') ? heroCards : undefined}
           cardsTabled={!!showdown?.seats.some(seat => seat.id === player.id)}
+          celebrationAt={celebration?.ids.includes(player.id) ? celebration.at : undefined}
           onPeekStart={player.id === heroId ? onPeekStart : undefined}
           onClick={onSeatClick}
           remaining={turnRemaining}
@@ -2208,11 +2216,12 @@ function SceneContents({
         />
       ))}
       {showdown && <ShowdownReveal presentation={showdown} portrait={boardRotation !== 0} />}
+      {celebration && <WinnerCelebration key={celebration.at} players={players.filter(p => celebration.ids.includes(p.id))} at={celebration.at} now={effectNow} />}
       <CameraRig
         mode={cameraMode}
         players={players}
         heroId={heroId}
-        currentPlayerId={focusTable ? undefined : followPlayerId ?? currentPlayerId}
+        currentPlayerId={cameraMode === 'winner' ? celebration?.ids[0] : focusTable ? undefined : followPlayerId ?? currentPlayerId}
         peeking={peeking && !!hero}
       />
     </>

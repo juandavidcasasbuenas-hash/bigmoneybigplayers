@@ -16,11 +16,12 @@ function TabledHand({ seat, presentation, index, portrait }: { seat: RevealedSea
   const position = useMemo(() => {
     const p = seatPosition(seat.seat, 12).position;
     // Slide into the open felt, clear of the player's stack, drink and button.
-    return [p[0] * (portrait ? 0.69 : 0.61), FELT_Y + 0.035, p[2] * (portrait ? 0.61 : 0.50)] as [number, number, number];
+    return [p[0] * (portrait ? 0.69 : 0.56), FELT_Y + 0.035, (portrait ? p[2] * 0.61 : p[2] < -0.6 ? Math.min(-1.5, p[2] * 0.52) : p[2] * 0.43)] as [number, number, number];
   }, [seat.seat, portrait]);
   const compact = size.height < 420;
   const neighbours = presentation.seats.some(other => other.id !== seat.id && [1, 11].includes(Math.abs(other.seat - seat.seat)));
   const dense = presentation.seats.length > 6 || neighbours || compact;
+  const sideLabel = dense && !portrait && Math.abs(position[0]) > 2 && Math.abs(position[2]) < 1.2;
   const scale = portrait ? dense ? 0.9 : 1.02 : dense ? 0.76 : 1.02;
   useFrame(() => {
     if (!rig.current) return;
@@ -37,7 +38,7 @@ function TabledHand({ seat, presentation, index, portrait }: { seat: RevealedSea
     {seat.disclosure !== 'mucked' && <group ref={rig}>
       {[0, 1].map(i => <Card key={i} card={seat.cards[i]} position={[(i - 0.5) * 0.51 * scale, i * 0.003, 0]} rotation={[0, (i ? -1 : 1) * 0.035, 0]} scale={scale}/>)}
     </group>}
-    <Html center position={[0, 0.04, 0.47 * scale]} zIndexRange={[4, 1]} style={{pointerEvents:'none'}}>
+    <Html center position={[sideLabel ? Math.sign(position[0]) * 1.1 * scale : 0, 0.04, sideLabel ? 0 : (!portrait && position[2] < -0.6 ? (dense ? -0.78 : -0.56) : dense && !portrait ? 0.65 : 0.47) * scale]} zIndexRange={[4, 1]} style={{pointerEvents:'none'}}>
       <article className={`table-reveal-seat ${dense ? 'dense' : ''} ${compact ? 'compact' : ''} ${seat.award ? 'winner' : ''}`} style={portrait ? { transform: `translateX(${-Math.sign(position[2]) * (dense ? 24 : 34)}px)` } : undefined} aria-label={`${seat.name}: ${seat.cards.join(', ')} ${seat.hand}${seat.chance !== null ? `, ${chance} to win` : ''}${seat.award ? `, wins ${seat.award} chips` : ''}`}>
         <div className="table-reveal-name"><strong title={seat.name}>{compact ? seat.name.replace(' · you', '') : seat.name}</strong>{presentation.allIn && <b title={presentation.sidePots ? 'Chance to win the main pot outright' : 'Chance to win outright'}>{chance}</b>}{seat.award > 0 && <b>+{seat.award.toLocaleString('en-GB')}</b>}</div>
         <small>{seat.award && seat.hand === 'Not shown' ? 'Wins without showing' : seat.hand}{presentation.allIn && presentation.sidePots ? ' · main pot win' : ''}</small>
