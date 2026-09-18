@@ -16,7 +16,7 @@ export function cardLabel(card?: string) {
   const rank = card.slice(0, -1).toUpperCase();
   return `${({ A: "Ace", K: "King", Q: "Queen", J: "Jack", T: "10" } as Record<string, string>)[rank] || rank} of ${suitNames[card.slice(-1).toLowerCase()]}`;
 }
-/** Standard pip arrangements leave both mirrored indices clear. */
+/** Normalized positions for the central pips, excluding the two corner indices. */
 export function cardPips(rank: string): [number, number][] {
   const pair = (y: number): [number, number][] => [
     [-1, y],
@@ -83,18 +83,18 @@ export function cardSvg(card?: string) {
   if (!shapes[suit] || !/^[2-9TJQKA]$/.test(rank))
     return `<svg xmlns="http://www.w3.org/2000/svg" width="500" height="700" viewBox="0 0 250 350">${base}<defs><pattern id="weave" width="14" height="14" patternUnits="userSpaceOnUse"><path d="M7 0L14 7L7 14L0 7Z" fill="none" stroke="#f6d3bb" stroke-width="1"/></pattern></defs><rect x="13" y="13" width="224" height="324" rx="7" fill="#90393c"/><rect x="22" y="22" width="206" height="306" rx="3" fill="url(#weave)" stroke="#f6d3bb" stroke-width="2"/><ellipse cx="125" cy="175" rx="55" ry="79" fill="#90393c" stroke="#f6d3bb" stroke-width="3"/><g fill="#f8e2c3">${pip("s", 125, 156, 64)}<text x="125" y="201" text-anchor="middle" font-family="Georgia,serif" font-size="12" font-weight="bold">BIG MONEY</text><text x="125" y="219" text-anchor="middle" font-family="Georgia,serif" font-size="12" font-weight="bold">BIG PLAYERS</text></g></svg>`;
   const ink = suit === "h" || suit === "d" ? "#bd1730" : "#101820";
-  // Jumbo indices remain readable on the felt and on a phone, with real mirrored
-  // ranks, suit shapes and traditional pip counts (colour is never the only cue).
-  const corner = `<g fill="${ink}"><text x="36" y="66" text-anchor="middle" font-family="Arial,sans-serif" font-size="${rank === 'T' ? 53 : 62}" font-weight="800" letter-spacing="-3">${rank === "T" ? "10" : rank}</text>${pip(suit, 35, 98, 40)}</g>`;
+  // Keep the small index suit close to its rank, outside the central pip field.
+  // Full-sized corner suits at the pip-row height made a four look like a six.
+  const corner = `<g class="card-index" fill="${ink}"><text x="29" y="50" text-anchor="middle" font-family="Arial,sans-serif" font-size="${rank === "T" ? 37 : 48}" font-weight="800" letter-spacing="-2">${rank === "T" ? "10" : rank}</text>${pip(suit, 28, 71, 22)}</g>`;
   const field = "JQK".includes(rank)
-    ? `<g transform="translate(30 42) scale(.76)">${court(rank, suit, ink)}</g>`
-    : `<g fill="${ink}">${cardPips(rank)
+    ? `<g class="card-court">${court(rank, suit, ink)}</g>`
+    : `<g class="card-pips" fill="${ink}">${cardPips(rank)
         .map(([x, y]) =>
           pip(
             suit,
-            125 + x * 39,
-            175 + y * 78,
-            rank === "A" ? 110 : rank === "T" || rank === "9" ? 32 : 38,
+            125 + x * 45,
+            175 + y * 85,
+            rank === "A" ? 110 : rank === "T" || rank === "9" ? 40 : 46,
             y > 0,
           ),
         )
