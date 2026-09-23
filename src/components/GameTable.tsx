@@ -8,6 +8,7 @@ import {
   Fullscreen,
   Hand,
   MessageSquare,
+  Minus,
   Music2,
   Pause,
   Play,
@@ -33,7 +34,7 @@ import type { TablePresentation } from "../hooks/useTablePresentation";
 import { PlayingCard } from "./PlayingCard";
 import { canHoldPrivateCards, privateCardsReadyAt } from "../three/firstPersonHandState";
 import { useCardPeek } from '../hooks/useCardPeek';
-import { HandPositions } from "./HandPositions";
+import { seatHudAt } from "../../shared/seatHud";
 import { PreActionControls } from "./PreActionControls";
 import { showdownPresentation } from '../three/showdownPresentation';
 import PokerScene, { type ScenePlayer } from "./PokerScene";
@@ -81,7 +82,7 @@ type Props = {
 };
 export function GameTable(p: Props) {
   const { room, players, flow, feedback, now } = p;
-  const [panel, setPanel] = useState<"log" | "seats" | "audio" | null>(null),
+  const [panel, setPanel] = useState<"log" | "seats" | "audio" | "react" | null>(null),
     [raise, setRaise] = useState(0),
     [chat, setChat] = useState("");
   const logPane = useRef<HTMLDivElement>(null),
@@ -130,7 +131,7 @@ export function GameTable(p: Props) {
         ? "Dealing"
         : odds
           ? "All in"
-          : room?.stage || "Lobby";
+          : room ? ({ lobby: "Lobby", preflop: "Pre-flop", flop: "Flop", turn: "Turn", river: "River", showdown: "Showdown", finished: "Finished" } as const)[room.stage] : "Lobby";
   const readyToDeal = flow.award
     ? now >= Math.max(flow.award.startAt + flow.award.duration, room?.handReview?.endsAt || 0)
     : true;
@@ -163,6 +164,63 @@ export function GameTable(p: Props) {
     }
     return p.send(event, data);
   };
+  const seatHud = useMemo(
+    () => room ? seatHudAt(room, flow.motions, now, flow.settled) : undefined,
+    [room, flow.motions, now, flow.settled],
+  );
+  const canBet = !!actions && actions.canRaise && actions.maxRaiseTo >= actions.minRaiseTo;
+  const callIsAllIn = !!actions && !!me && !actions.canCheck && actions.callAmount >= me.chips;
+  const clampRaise = (value: number) => actions ? Math.round(Math.min(actions.maxRaiseTo, Math.max(actions.minRaiseTo, value || 0))) : 0;
+  const big = room?.currentLevel.big || 1;
+  const step = big;
+  const presets = useMemo(() => {
+    if (!actions || !room || !canBet) return [];
+    const toCall = actions.canCheck ? 0 : actions.callAmount;
+    const potAfterCall = room.pot + toCall;
+    const potRaise = (f: number) => room.currentBet + Math.round(f * potAfterCall);
+    const options = room.stage === 'preflop'
+      ? [{ label: 'Min', to: actions.minRaiseTo }, { label: '2.5 BB', to: Math.round(2.5 * big) }, { label: '3 BB', to: 3 * big }, { label: 'Pot', to: potRaise(1) }]
+      : [{ label: 'Min', to: actions.minRaiseTo }, { label: '½ Pot', to: potRaise(0.5) }, { label: '¾ Pot', to: potRaise(0.75) }, { label: 'Pot', to: potRaise(1) }];
+    const seen = new Set<number>();
+    return [...options.map(o => ({ ...o, to: clampRaise(o.to) })), { label: 'All in', to: actions.maxRaiseTo }]
+      .filter(o => (o.label === 'Min' || o.label === 'All in' || (o.to > actions.minRaiseTo && o.to < actions.maxRaiseTo)) && !seen.has(o.to) && !!seen.add(o.to));
+  }, [actions, room?.pot, room?.currentBet, room?.stage, big, canBet]);
+  const [seenChat, setSeenChat] = useState(0);
+  const chatCount = room?.chat.length || 0;
+  useEffect(() => { if (panel === 'log') setSeenChat(chatCount); }, [panel, chatCount]);
+  useEffect(() => { setSeenChat(0); }, [room?.code]);
+  const unread = panel === 'log' ? 0 : Math.max(0, chatCount - seenChat);
+  const winners = flow.settled ? room?.winners || [] : [];
+  const winnerLine = winners.length
+    ? `${winners.map(w => w.playerId === room?.you ? 'You' : room?.players.find(pl => pl.id === w.playerId)?.name || 'Player').join(' & ')} ${winners.length === 1 && winners[0].playerId !== room?.you ? 'wins' : 'win'} ${n(winners.reduce((sum, w) => sum + w.amount, 0))}${winners[0].hand && winners[0].hand !== 'Not shown' ? ` · ${winners[0].hand}` : ''}`
+    : '';
+  // Keyboard play: F fold, C check/call, R bet/raise. Ignored while typing.
+  const keyActions = useRef<Record<string, () => void>>({});
+  keyActions.current = feedback.myTurn && actions && !p.busy && !confirmation ? {
+    KeyF: () => void decision('action', { type: 'fold' }),
+    KeyC: () => void decision('action', { type: actions.canCheck ? 'check' : 'call' }),
+    ...(canBet ? { KeyR: () => void decision('action', raise >= actions.maxRaiseTo ? { type: 'all-in' } : { type: 'raise', amount: clampRaise(raise) }) } : {}),
+  } : {};
+  useEffect(() => {
+    const onKey = (event: KeyboardEvent) => {
+      const target = event.target as HTMLElement | null;
+      if (event.repeat || event.metaKey || event.ctrlKey || event.altKey) return;
+      if (target && (target.closest('input:not([type=range]), textarea, select, dialog, [contenteditable]'))) return;
+      const run = keyActions.current[event.code];
+      if (run) { event.preventDefault(); run(); }
+      if (event.code === 'Escape') setPanel(null);
+    };
+    window.addEventListener('keydown', onKey);
+    return () => window.removeEventListener('keydown', onKey);
+  }, []);
+  useEffect(() => {
+    if (panel !== 'react') return;
+    const close = (event: PointerEvent) => {
+      if (!(event.target as HTMLElement | null)?.closest('.react-anchor')) setPanel(null);
+    };
+    document.addEventListener('pointerdown', close);
+    return () => document.removeEventListener('pointerdown', close);
+  }, [panel]);
   const lastAction = [...log].reverse().find(item => item.kind === 'event' && item.name && now - item.at < 6000);
   const levelClock = room?.paused ? room.pausedAt ?? now : now;
   const blindSeconds = room?.levelEndsAt ? Math.max(0, Math.ceil((room.levelEndsAt - levelClock) / 1000)) : null;
@@ -185,7 +243,7 @@ export function GameTable(p: Props) {
   };
   return (
     <section className="poker-game" aria-label="Poker table">
-      <div className={`game-stage ${firstPerson ? 'first-person' : ''} ${showdown ? 'showdown-active' : ''}`}>
+      <div className={`game-stage ${firstPerson ? 'first-person' : ''} ${showdown ? 'showdown-active' : ''} ${feedback.myTurn ? 'my-turn' : ''}`}>
         <PokerScene
           players={tablePlayers}
           heroCards={me?.holeCards || []}
@@ -193,6 +251,8 @@ export function GameTable(p: Props) {
           onPeekStart={peek.start}
           board={room?.board || []}
           pot={flow.pot}
+          potLabel={room && room.stage !== 'lobby' && !flow.settled && flow.pot > 0 ? n(flow.pot) : undefined}
+          seatHud={seatHud}
           currentPlayerId={
             feedback.live ? room?.turnPlayerId || undefined : undefined
           }
@@ -237,22 +297,37 @@ export function GameTable(p: Props) {
               : undefined
           }
         />
-        <div className="game-topbar">
-          <div className="table-identity">
-            <span className={`live-dot ${p.connected ? "online" : ""}`} />
-            <strong>{room?.settings.name || "The Turf"}</strong>
-            {room && (
-              <button
-                onClick={p.onInvite}
-                title="Copy or share the table link"
-                className="table-code"
-              >
-                {room.code}
-              </button>
+        <header className="hud-top">
+          <div className="hud-table">
+            <div className="table-identity">
+              <span className={`live-dot ${p.connected ? "online" : ""}`} title={p.connected ? 'Connected' : 'Reconnecting…'} />
+              <strong>{room?.settings.name || "The Turf"}</strong>
+              {room && (
+                <button
+                  onClick={p.onInvite}
+                  title="Invite friends to this table"
+                  className="table-code"
+                >
+                  {room.code}
+                </button>
+              )}
+            </div>
+            {room && room.stage !== "lobby" && (
+              <div className="hand-meta">
+                <span className="hand-stage"><small>Hand {room.handNumber}</small><b>{stage}</b></span>
+                <span className="blind-clock">
+                  <small>Blinds{room.currentLevel.ante ? ` · ante ${n(room.currentLevel.ante)}` : ''}</small>
+                  <b>{n(room.currentLevel.small)}/{n(room.currentLevel.big)}</b>
+                </span>
+                <span className="level-clock">
+                  <small>Level {room.levelIndex + 1}</small>
+                  <b>{room.breakEndsAt ? `Break ${Math.max(0, Math.ceil((room.breakEndsAt-levelClock)/1000))}s` : nextLevel ? blindSeconds === null ? '—' : blindSeconds === 0 ? `Next: ${n(nextLevel.small)}/${n(nextLevel.big)}` : `${Math.floor((blindSeconds || 0)/60)}:${String((blindSeconds || 0)%60).padStart(2,'0')}` : 'Final'}</b>
+                </span>
+              </div>
             )}
           </div>
           <div className="table-tools">
-            <label className="camera-select">
+            <label className="camera-select" title="Camera">
               <Eye size={15} />
               <select
                 aria-label="Camera"
@@ -263,125 +338,118 @@ export function GameTable(p: Props) {
                 }}
               >
                 {showdown && <option value="showdown">Showdown</option>}
-                <option value="follow">Follow turn</option>
-                <option value="table">Table</option>
-                <option value="first-person">My seat</option>
+                <option value="table">My view</option>
+                <option value="follow">Follow action</option>
+                <option value="first-person">In my seat</option>
                 <option value="overhead">Overhead</option>
                 <option value="cinematic">Cinema</option>
                 <option value="free">Free orbit</option>
               </select>
               <ChevronDown size={13} />
             </label>
+            <div className="react-anchor">
+              <button
+                className={panel === "react" ? "selected" : ""}
+                aria-label="Reactions"
+                title="Reactions"
+                aria-expanded={panel === "react"}
+                disabled={!!room && !room.settings.banter}
+                onClick={() => toggle("react")}
+              >
+                <Smile size={18} />
+              </button>
+              {panel === "react" && (
+                <div className="react-popover" role="menu" aria-label="Character reactions">
+                  {reactions.map((r) => (
+                    <button
+                      key={r.id}
+                      role="menuitem"
+                      disabled={p.busy || (!!me?.emote && now - me.emote.at < 2000)}
+                      onClick={() => { p.onEmote(r.id); setPanel(null); }}
+                    >
+                      <r.icon size={18} />
+                      <span>{r.label}</span>
+                    </button>
+                  ))}
+                </div>
+              )}
+            </div>
             <button
               className={panel === "seats" ? "selected" : ""}
-              aria-label="Players"
+              aria-label="Players and table"
+              title="Players and table"
               aria-expanded={panel === "seats"}
               onClick={() => toggle("seats")}
             >
               <Users size={18} />
-              {room && <small>{seated.length}</small>}
+              {room && <small className="tool-count">{seated.length}</small>}
             </button>
             <button
               className={panel === "log" ? "selected" : ""}
-              aria-label="Chat and event log"
+              aria-label="Chat and hand history"
+              title="Chat and hand history"
               aria-expanded={panel === "log"}
               onClick={() => toggle("log")}
             >
               <MessageSquare size={18} />
+              {unread > 0 && <small className="tool-badge">{unread > 9 ? '9+' : unread}</small>}
             </button>
             <button
               className={`${panel === "audio" ? "selected" : ""} ${voiceNotice ? "needs-attention" : ""}`}
-              aria-label="Audio settings"
+              aria-label="Sound settings"
+              title="Sound"
               aria-expanded={panel === "audio"}
               onClick={() => toggle("audio")}
             >
-              <AudioLines size={18} />
+              {p.voice || p.sounds || p.music ? <AudioLines size={18} /> : <VolumeX size={18} />}
             </button>
             <button
               aria-label="Toggle fullscreen table"
+              title="Fullscreen"
               onClick={() => void fullscreen()}
             >
               <Fullscreen size={18} />
             </button>
           </div>
-        </div>
-        {room && room.stage !== "lobby" && !showdown && (
-          <HandPositions room={room} />
-        )}
-        {room && room.stage !== "lobby" && (
-          <div className="round-status">
-            <div className="blind-clock">Blinds {n(room.currentLevel.small)}/{n(room.currentLevel.big)} · Level {room.levelIndex + 1}
-              <span>{room.breakEndsAt ? `Break · ${Math.max(0, Math.ceil((room.breakEndsAt-levelClock)/1000))}s` : nextLevel ? blindSeconds === null ? 'Clock starts with the first hand' : blindSeconds === 0 ? `Next hand: ${n(nextLevel.small)}/${n(nextLevel.big)}` : `↑ ${n(nextLevel.small)}/${n(nextLevel.big)} in ${Math.floor((blindSeconds || 0)/60)}:${String((blindSeconds || 0)%60).padStart(2,'0')}` : 'Final blind level'}{room.paused ? ' · paused' : ''}</span>
-            </div>
-            <span>
-              #{room.handNumber} <b>{stage}</b>
-              {flow.settled && seconds !== null && (
-                <small>Next {seconds}s</small>
-              )}
-            </span>
-            {!flow.settled && (
-              <strong>
-                Pot <em>{n(flow.pot)}</em>
-              </strong>
-            )}
-          </div>
-        )}
-        {lastAction && <div key={lastAction.id} className="action-cue" role="status"><strong>{lastAction.name}</strong> {lastAction.text}</div>}
-        {room && !showdown && !flow.focusTable && !flow.settled && displayActor && (
-          <div
-            className={`actor-status ${feedback.myTurn ? "your-action" : ""}`}
-          >
-            <img src={getCharacter(displayActor.avatar).portrait} alt="" />
-            <span>
-              {displayActor.id === room.you ? "You" : displayActor.name}
-            </span>
-            {feedback.live ? (
-              <b
-                style={
-                  {
-                    "--turn-progress": `${feedback.progress * 100}%`,
-                  } as React.CSSProperties
-                }
-              >
-                {feedback.seconds}s
-              </b>
-            ) : (
-              <small>
-                {flow.latestAction?.type === "bet"
-                  ? flow.latestAction.action || "Bet"
-                  : flow.latestAction?.type}
-              </small>
-            )}
-          </div>
-        )}
+        </header>
+        <div className="sr-only" role="status" aria-live="polite">{lastAction ? `${lastAction.name} ${lastAction.text}` : ''}</div>
+        {room?.paused && <div className="table-banner paused"><Pause size={16}/> Game paused{host ? '' : ' by the host'}</div>}
+        {!room?.paused && feedback.myTurn && <div className={`table-banner your-turn ${feedback.urgent ? 'urgent' : ''}`}>Your turn <b>{feedback.seconds}s</b></div>}
+        {!room?.paused && celebrating && winnerLine && <div className="table-banner winner">{winnerLine}</div>}
         {!room && (
           <div className="table-entry">
+            <span className="entry-eyebrow">No-limit Texas Hold’em · 2–12 players</span>
             <h1>Take a seat.</h1>
+            <p>Host a private table for friends, join with an invite code, or warm up against bots.</p>
             <button
               className="game-primary"
               disabled={!p.connected || p.busy}
               onClick={() => p.onHost(false)}
             >
-              Host table
+              <Users size={16}/> Host a table
             </button>
-            <button onClick={p.onJoin}>Join table</button>
-            <button
-              className="entry-practice"
-              disabled={!p.connected || p.busy}
-              onClick={() => p.onHost(true)}
-            >
-              <Play size={14} /> Practice
-            </button>
+            <div className="entry-row">
+              <button onClick={p.onJoin}>Join with code</button>
+              <button
+                disabled={!p.connected || p.busy}
+                onClick={() => p.onHost(true)}
+              >
+                <Play size={14} /> Practice vs bots
+              </button>
+            </div>
+            {!p.connected && <small className="entry-note">Connecting to the table server…</small>}
           </div>
         )}
         {room?.stage === "lobby" && (
           <div className="table-entry lobby-entry">
-            <h1>{seated.length} at the table</h1>
-            <button className="game-primary" onClick={p.onInvite}>
-              Invite friends
+            <span className="entry-eyebrow">Table {room.code} · waiting to start</span>
+            <h1>{seated.length} of {room.settings.maxPlayers} seated</h1>
+            <p>{host ? seated.length < 2 ? 'Invite friends or add a bot — you need at least two players to deal.' : 'Everyone in? Deal the first hand when you’re ready.' : 'Waiting for the host to deal the first hand.'}</p>
+            <button className={host && seated.length >= 2 ? '' : 'game-primary'} onClick={p.onInvite}>
+              <Plus size={15} /> Invite friends
             </button>
             {host && (
-              <>
+              <div className="entry-row">
                 <button
                   disabled={p.busy || seated.length >= room.settings.maxPlayers}
                   onClick={() => void p.send("add-bot")}
@@ -389,12 +457,13 @@ export function GameTable(p: Props) {
                   <Plus size={15} /> Add bot
                 </button>
                 <button
+                  className={seated.length >= 2 ? 'game-primary' : ''}
                   disabled={p.busy || seated.length < 2}
                   onClick={() => void p.send("start-game")}
                 >
                   <Play size={15} /> Deal
                 </button>
-              </>
+              </div>
             )}
           </div>
         )}
@@ -403,69 +472,7 @@ export function GameTable(p: Props) {
           {showdown.allIn && showdown.split !== null && showdown.split > 0 && <span>Split {showdown.estimated ? '≈' : ''}{showdown.split.toFixed(1)}%</span>}
           <span className="sr-only">{showdown.settled ? 'Hand complete.' : showdown.allIn ? 'All in. Cards on the table.' : 'Showdown.'} {showdown.seats.filter(s => s.award).map(s => `${s.name} wins ${n(s.award)} chips.`).join(' ')}</span>
         </div>}
-        {room && room.stage !== "lobby" && (
-          <div className="cards-hud">
-            {!(showdown?.seats.some(seat => seat.id === room.you && seat.cards.length === 2) && revealCamera) && <div
-              className={`private-cards ${feedback.myTurn ? "your-action" : ""}`}
-              aria-label="Your private hand"
-            >
-              {me?.holeCards.length ? (
-                <>
-                  <div className={`card-pair ${cardsOnFelt ? 'in-hand-summary' : ''}`}>
-                    {me.holeCards.map((c) => (
-                      <PlayingCard key={c} card={c} />
-                    ))}
-                  </div>
-                  <div className="hand-value">
-                    <strong>{ownHand}</strong>
-                    <span>
-                      {me.status === "folded" ? "Folded · " : ""}
-                      {n(me.chips)} chips
-                    </span>
-                  </div>
-                  {canPeek && <button
-                    className={`peek-cards ${peek.peeking ? 'peeking' : ''}`}
-                    aria-label="Hold to peek at your cards"
-                    aria-pressed={peek.peeking}
-                    title="Hold to peek at your cards (P)"
-                    onPointerDown={event => {
-                      if (event.button !== 0) return;
-                      event.currentTarget.setPointerCapture(event.pointerId);
-                      peek.start();
-                    }}
-                    onPointerUp={peek.stop}
-                    onPointerCancel={peek.stop}
-                    onLostPointerCapture={peek.stop}
-                    onBlur={peek.stop}
-                    onContextMenu={event => event.preventDefault()}
-                    onKeyDown={event => {
-                      if (['Space', 'Enter'].includes(event.code)) { event.preventDefault(); if (!event.repeat) peek.start(); }
-                    }}
-                    onKeyUp={event => { if (['Space', 'Enter'].includes(event.code)) { event.preventDefault(); peek.stop(); } }}
-                  ><Eye size={17}/><span>{peek.peeking ? 'Peeking' : 'Hold to peek'}</span><kbd>P</kbd></button>}
-                </>
-              ) : (
-                <div className="hand-value">
-                  <strong>
-                    {me?.status === "waiting" ? "Next hand" : "Spectating"}
-                  </strong>
-                </div>
-              )}
-            </div>}
-            {!!flow.board.length && !revealCamera && (
-              <div className="community-hud" aria-label="Community cards">
-                {Array.from({ length: 5 }, (_, i) =>
-                  flow.board[i] ? (
-                    <PlayingCard key={i} card={flow.board[i]} />
-                  ) : (
-                    <span className="card-slot" key={i} />
-                  ),
-                )}
-              </div>
-            )}
-          </div>
-        )}
-        {panel && (
+        {panel && panel !== "react" && (
           <aside
             className={`game-drawer ${panel}`}
             aria-label={
@@ -695,57 +702,118 @@ export function GameTable(p: Props) {
           </aside>
         )}
       </div>
-      {room && <div className="stack-strip" aria-label="Player chip counts">{tablePlayers.map(player => <div key={player.id} className={player.id === room.turnPlayerId ? 'acting' : ''}><span>{player.name}{player.id === room.you ? ' · you' : ''}</span><strong>{n(player.stack)}</strong></div>)}</div>}
       <dialog ref={confirmDialog} className="decision-confirm" onCancel={() => setConfirmation(null)} aria-labelledby="decision-confirm-title">
         <h2 id="decision-confirm-title">{confirmation?.allIn ? 'Commit all your chips?' : 'You can check for free'}</h2>
         <p>{confirmation?.allIn ? `This puts your remaining ${n(me?.chips || 0)} chips at risk.` : 'Folding gives up your hand even though checking costs nothing.'}</p>
         <div><button autoFocus onClick={() => setConfirmation(null)}>Go back</button><button className="game-primary" onClick={() => { const pending=confirmation; setConfirmation(null); if(pending?.key===decisionKey && p.connected && !room?.paused) void p.send(pending.event,pending.data); }}>{confirmation?.allIn ? 'Confirm all in' : 'Fold anyway'}</button></div>
       </dialog>
-      <div className="game-dock">
-        <div className="reaction-controls" aria-label="Character reactions">
-          {reactions.map((r) => (
-            <button
-              key={r.id}
-              disabled={
-                p.busy ||
-                (!!room && !room.settings.banter) ||
-                (!!me?.emote && now - me.emote.at < 2000)
-              }
-              onClick={() => p.onEmote(r.id)}
-              title={r.label}
-              aria-label={r.label}
-            >
-              <r.icon size={18} />
-              <span>{r.label}</span>
-            </button>
-          ))}
+      {room && <footer className={`game-dock ${feedback.myTurn ? "your-action" : ""} ${feedback.urgent ? "urgent" : ""}`}>
+        {feedback.myTurn && <span className="dock-timer" style={{ transform: `scaleX(${feedback.progress})` }} aria-hidden="true" />}
+        <div className="dock-hand" aria-label="Your hand">
+          {me?.holeCards.length ? (
+            <>
+              <div className={`card-pair ${me.status === 'folded' ? 'folded' : ''}`}>
+                {me.holeCards.map((c) => (
+                  <PlayingCard key={c} card={c} />
+                ))}
+              </div>
+              <div className="hand-value">
+                <small>{me.status === "folded" ? "Folded" : "Your hand"}</small>
+                <strong>{ownHand}</strong>
+                <span>{n(me.chips)} chips</span>
+              </div>
+              {canPeek && <button
+                className={`peek-cards ${peek.peeking ? 'peeking' : ''}`}
+                aria-label="Hold to peek at your cards"
+                aria-pressed={peek.peeking}
+                title="Hold to lift your cards at the table (P)"
+                onPointerDown={event => {
+                  if (event.button !== 0) return;
+                  event.currentTarget.setPointerCapture(event.pointerId);
+                  peek.start();
+                }}
+                onPointerUp={peek.stop}
+                onPointerCancel={peek.stop}
+                onLostPointerCapture={peek.stop}
+                onBlur={peek.stop}
+                onContextMenu={event => event.preventDefault()}
+                onKeyDown={event => {
+                  if (['Space', 'Enter'].includes(event.code)) { event.preventDefault(); if (!event.repeat) peek.start(); }
+                }}
+                onKeyUp={event => { if (['Space', 'Enter'].includes(event.code)) { event.preventDefault(); peek.stop(); } }}
+              ><Eye size={16}/><span>{peek.peeking ? 'Peeking' : 'Peek'}</span><kbd>P</kbd></button>}
+            </>
+          ) : (
+            <div className="hand-value empty">
+              <small>{room ? room.stage === 'lobby' ? 'Lobby' : me?.status === "waiting" ? "Seated" : me?.status === 'out' ? 'Eliminated' : me ? "Spectating" : "" : "Big Money Poker Club"}</small>
+              <strong>
+                {room ? room.stage === 'lobby' ? 'Waiting to deal' : me?.status === "waiting" ? "In next hand" : me?.status === 'out' ? 'On the rail' : "Watching" : "No-limit Hold’em"}
+              </strong>
+              {me && room && <span>{n(me.chips)} chips</span>}
+            </div>
+          )}
         </div>
+        {room && room.stage !== 'lobby' && (
+          <div className="dock-board" aria-label="Community cards">
+            <div className="board-cards">
+              {Array.from({ length: 5 }, (_, i) =>
+                flow.board[i] ? (
+                  <PlayingCard key={i} card={flow.board[i]} />
+                ) : (
+                  <span className="card-slot" key={i} />
+                ),
+              )}
+            </div>
+            <span className="board-pot">{flow.settled ? winnerLine || 'Hand complete' : <>Pot <b>{n(flow.pot)}</b></>}</span>
+          </div>
+        )}
         <div
           className={`decision-controls ${feedback.myTurn ? "your-action" : ""}`}
         >
           {room && (room.preAction || !actions && room.canPreAct) ? (
-            <PreActionControls room={room} busy={p.busy} connected={p.connected} send={decision} />
+            <div className="waiting-with-pre">
+              <span className="decision-status">{feedback.live && displayActor ? <>Waiting for <b>{displayActor.name}</b> · {feedback.seconds}s</> : stage}</span>
+              <PreActionControls room={room} busy={p.busy} connected={p.connected} send={decision} />
+            </div>
           ) : actions ? (
-            <>
-              {actions.canRaise && actions.maxRaiseTo >= actions.minRaiseTo && (
-                <div className="wager-range">
-                  <input
-                    aria-label="Raise total"
-                    type="range"
-                    min={actions.minRaiseTo}
-                    max={actions.maxRaiseTo}
-                    value={raise}
-                    step="1"
-                    onChange={(e) => setRaise(+e.target.value)}
-                  />
-                  <input
-                    type="number"
-                    aria-label="Raise to amount"
-                    min={actions.minRaiseTo}
-                    max={actions.maxRaiseTo}
-                    value={raise}
-                    onChange={(e) => setRaise(+e.target.value)}
-                  />
+            <div className="turn-actions">
+              {canBet && (
+                <div className="bet-sizer">
+                  <div className="bet-presets" role="group" aria-label="Bet size presets">
+                    {presets.map((preset) => (
+                      <button
+                        key={preset.label}
+                        className={raise === preset.to ? 'selected' : ''}
+                        disabled={p.busy}
+                        onClick={() => setRaise(preset.to)}
+                      >
+                        {preset.label}
+                      </button>
+                    ))}
+                  </div>
+                  <div className="bet-slider">
+                    <button aria-label="Decrease bet" disabled={p.busy || raise <= actions.minRaiseTo} onClick={() => setRaise(clampRaise(raise - step))}><Minus size={15}/></button>
+                    <input
+                      aria-label="Raise total"
+                      type="range"
+                      min={actions.minRaiseTo}
+                      max={actions.maxRaiseTo}
+                      value={raise}
+                      step={1}
+                      style={{ '--fill': `${((raise - actions.minRaiseTo) / Math.max(1, actions.maxRaiseTo - actions.minRaiseTo)) * 100}%` } as React.CSSProperties}
+                      onChange={(e) => setRaise(+e.target.value)}
+                    />
+                    <button aria-label="Increase bet" disabled={p.busy || raise >= actions.maxRaiseTo} onClick={() => setRaise(clampRaise(raise + step))}><Plus size={15}/></button>
+                    <input
+                      type="number"
+                      aria-label={room!.currentBet ? 'Raise to amount' : 'Bet amount'}
+                      min={actions.minRaiseTo}
+                      max={actions.maxRaiseTo}
+                      value={raise}
+                      onChange={(e) => setRaise(+e.target.value)}
+                      onBlur={() => setRaise(clampRaise(raise))}
+                    />
+                  </div>
                 </div>
               )}
               <div className="decision-buttons">
@@ -754,9 +822,10 @@ export function GameTable(p: Props) {
                   disabled={p.busy}
                   onClick={() => void decision("action", { type: "fold" })}
                 >
-                  Fold
+                  <span>Fold</span><kbd>F</kbd>
                 </button>
                 <button
+                  className="call-action"
                   disabled={p.busy}
                   onClick={() =>
                     void decision("action", {
@@ -764,58 +833,52 @@ export function GameTable(p: Props) {
                     })
                   }
                 >
-                  {actions.canCheck ? "Check" : `Call ${n(actions.callAmount)}`}
+                  <span>{actions.canCheck ? "Check" : callIsAllIn ? 'Call all in' : "Call"}{!actions.canCheck && <b>{n(actions.callAmount)}</b>}</span><kbd>C</kbd>
                 </button>
-                {actions.canRaise &&
-                  actions.maxRaiseTo >= actions.minRaiseTo && (
-                    <button
-                      className="game-primary"
-                      disabled={
-                        p.busy ||
-                        raise < actions.minRaiseTo ||
-                        raise > actions.maxRaiseTo
-                      }
-                      onClick={() =>
-                        void decision("action", { type: "raise", amount: raise })
-                      }
-                    >
-                      Raise {n(raise)}
-                    </button>
-                  )}
-                {(actions.canRaise ||
-                  (actions.canCall &&
-                    actions.maxRaiseTo <= room!.currentBet)) && (
+                {canBet ? (
                   <button
-                    className="allin-action"
-                    disabled={p.busy}
-                    onClick={() => void decision("action", { type: "all-in" })}
+                    className="raise-action"
+                    disabled={
+                      p.busy ||
+                      raise < actions.minRaiseTo ||
+                      raise > actions.maxRaiseTo
+                    }
+                    onClick={() =>
+                      void decision("action", raise >= actions.maxRaiseTo ? { type: "all-in" } : { type: "raise", amount: raise })
+                    }
                   >
-                    All in
+                    <span>{raise >= actions.maxRaiseTo ? 'All in' : room!.currentBet ? 'Raise to' : 'Bet'}<b>{n(raise)}</b></span><kbd>R</kbd>
                   </button>
-                )}
+                ) : actions.canCall && !callIsAllIn && actions.maxRaiseTo <= room!.currentBet ? (
+                  <button className="raise-action" disabled={p.busy} onClick={() => void decision("action", { type: "all-in" })}>
+                    <span>All in<b>{n((me?.chips || 0) + (me?.bet || 0))}</b></span>
+                  </button>
+                ) : null}
               </div>
-            </>
+            </div>
           ) : choosingCards && room ? (
             <div className="show-muck-controls" aria-label="Show or muck your cards">
-              <span>Show the table?<small>{reviewSeconds}s · otherwise muck</small></span>
-              <button className="game-primary" disabled={p.busy || !p.connected || room.paused || !room.canShowCards} onClick={() => void p.send('show-cards', { choice: 'show', handNumber: room.handNumber })}><Eye size={16} /> Show cards</button>
+              <span>Show your hand?<small>{reviewSeconds}s · otherwise mucked</small></span>
+              <button className="game-primary" disabled={p.busy || !p.connected || room.paused || !room.canShowCards} onClick={() => void p.send('show-cards', { choice: 'show', handNumber: room.handNumber })}><Eye size={16} /> Show</button>
               <button disabled={p.busy || !p.connected || room.paused || !room.canMuckCards} onClick={() => void p.send('show-cards', { choice: 'muck', handNumber: room.handNumber })}>Muck</button>
             </div>
           ) : (
             <div className="decision-wait">
+              <span className="decision-status">
               {room
                 ? room.paused
-                  ? "Paused"
+                  ? "Game paused"
                   : flow.settled
                     ? seconds !== null
-                      ? `Next hand in ${seconds}s`
-                      : room.stage === 'finished' ? 'Tournament complete' : reviewSeconds > 0 ? `Next deal available in ${reviewSeconds}s` : "Hand complete"
+                      ? <>Next hand in <b>{seconds}s</b></>
+                      : room.stage === 'finished' ? 'Tournament complete' : reviewSeconds > 0 ? <>Next deal in <b>{reviewSeconds}s</b></> : "Hand complete"
                     : room.stage === "lobby"
-                      ? "Lobby"
-                      : feedback.live
-                        ? `${displayActor?.name || "Player"} · ${feedback.seconds}s`
+                      ? host ? 'Deal when everyone’s seated' : 'Waiting for the host'
+                      : feedback.live && displayActor
+                        ? <>Waiting for <b>{displayActor.id === room.you ? 'you' : displayActor.name}</b> · {feedback.seconds}s</>
                         : stage
-                : "No-limit Texas Hold’em"}
+                : "Pick a table to start playing"}
+              </span>
               {room?.canRebuy && flow.settled && (
                 <button
                   className="game-primary"
@@ -838,7 +901,7 @@ export function GameTable(p: Props) {
             </div>
           )}
         </div>
-      </div>
+      </footer>}
     </section>
   );
 }

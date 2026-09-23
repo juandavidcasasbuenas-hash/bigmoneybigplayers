@@ -98,7 +98,7 @@ export default function App() {
   const { room: serverRoom, send, connected, busy, error, setError } = poker;
   const [tab, setTab] = useState("table");
   const [theme, setTheme] = useState<RoomTheme>("turf");
-  const [camera, setCamera] = useState("follow");
+  const [camera, setCamera] = useState("table");
   const [voice, setVoice] = useState(
     () => readStored("bigmoney:voice") !== "off",
   );

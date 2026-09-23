@@ -4,6 +4,7 @@ import {
   CameraControls,
   CameraControlsImpl,
   RoundedBox,
+  Html,
 } from "@react-three/drei";
 import { Canvas, useFrame, useThree } from "@react-three/fiber";
 import {
@@ -48,6 +49,9 @@ import {
   moveToShot,
 } from "../three/cameraMotion";
 import { seatPosition } from "../three/seating";
+import { SeatPlate } from "../three/SeatPlate";
+import { POT_ORIGIN } from "../../shared/potDisplay";
+import type { SeatHud } from "../../shared/seatHud";
 import type { CardPeek } from '../../shared/cardPeek';
 import { privateCardLookTarget } from '../three/cardPeek';
 import { CentralPot, CommunityCard, TableEffects } from "../three/TableEffects";
@@ -119,6 +123,10 @@ export interface PokerSceneProps {
   focusTable?: boolean;
   showdown?: ShowdownPresentation | null;
   celebration?: {ids:string[]; at:number} | null;
+  /** Per-seat nameplate state; omitted on preview tables. */
+  seatHud?: Record<string, SeatHud>;
+  /** Formatted pot amount shown on the felt. */
+  potLabel?: string;
   /** Optional developer telemetry; never displayed in the game UI. */
   onRenderStats?: (stats: SceneRenderStats) => void;
 }
@@ -903,7 +911,9 @@ function PlayerSeat({
   motions = [],
   effectNow,
   soundEffects = false,
+  hud,
 }: {
+  hud?: SeatHud;
   motions?: TableMotion[];
   effectNow?: number;
   soundEffects?: boolean;
@@ -1016,6 +1026,19 @@ function PlayerSeat({
         {!cardsTabled && player.smallBlind && <PositionButton position={[dealer ? -0.02 : -0.48, 0.025, 0.68]} label="SB" />}
         {!cardsTabled && player.bigBlind && <PositionButton position={[-0.48, 0.025, 0.68]} label="BB" />}
       </group>
+      {hud && showLabel && !hideAvatar && (
+        <SeatPlate
+          name={player.name}
+          avatar={player.avatar}
+          hud={hud}
+          hero={hero}
+          acting={active}
+          progress={progress}
+          seconds={remaining}
+          paused={paused}
+          onClick={() => onClick?.(player.id)}
+        />
+      )}
       {index % 2 === 0 && (
         <group position={[-0.69, FELT_Y, depth + 0.28]}>
           <Pint scale={0.85} />
@@ -1985,10 +2008,19 @@ function CameraRig({
       );
       goalTarget.set(0, 1.55, 0);
     } else {
-      goalPosition.set(1.1 * zoom, 5.9 * zoom, 11.7 * zoom);
-      goalTarget.set(0, 1.6, -0.1);
+      // Sit the camera behind the viewer's own chair, as a card room client
+      // does, so "me" is always at the bottom of the screen.
+      const heroSeat = players.find((p) => p.id === heroId)?.seat;
+      const azimuth = heroSeat === undefined ? 0.094
+        : Math.atan2(seatPosition(heroSeat, 12).position[0] / 3.62, seatPosition(heroSeat, 12).position[2] / 2.215);
+      // Portrait screens look down more steeply so the oval fills the height.
+      const portrait = aspect < 0.8;
+      const radius = (portrait ? 5.6 : 8.9) * zoom, height = (portrait ? 9.4 : 7.6) * zoom;
+      goalPosition.set(Math.sin(azimuth) * radius, height, Math.cos(azimuth) * radius);
+      goalTarget.set(-Math.sin(azimuth) * 0.55, 1.1, -Math.cos(azimuth) * 0.55);
     }
-    const shot = `${mode}:${mode === "follow" ? currentPlayerId : mode.startsWith("first") ? heroId : ""}:${size.width}:${size.height}`;
+    const heroSeatKey = players.find((p) => p.id === heroId)?.seat ?? "";
+    const shot = `${mode}:${mode === "follow" ? currentPlayerId : mode.startsWith("first") || mode === "table" ? `${heroId}:${heroSeatKey}` : ""}:${size.width}:${size.height}`;
     if (fromSeat) {
       firstPerson.update(controls.current, camera, goalPosition, goalTarget, delta, !initialized.current);
       lastShot.current = shot;
@@ -2144,6 +2176,8 @@ function SceneContents({
   focusTable = false,
   showdown = null,
   celebration = null,
+  seatHud,
+  potLabel,
 }: PokerSceneProps) {
   const { size } = useThree();
   const boardRotation = cameraMode === 'showdown' && size.height > size.width ? Math.PI / 2 : 0;
@@ -2210,11 +2244,15 @@ function SceneContents({
           motions={motions}
           effectNow={effectNow}
           soundEffects={soundEffects && !paused}
-          showLabel={
-            !(cameraMode === "follow" && (followPlayerId || currentPlayerId))
-          }
+          showLabel={!cardsTabledFor(showdown, player.id)}
+          hud={seatHud?.[player.id]}
         />
       ))}
+      {potLabel && !showdown && (
+        <Html center position={[POT_ORIGIN[0], FELT_Y + 0.04, POT_ORIGIN[2] + 0.42]} zIndexRange={[5, 1]} style={{ pointerEvents: "none" }}>
+          <div className="felt-pot"><small>Pot</small>{potLabel}</div>
+        </Html>
+      )}
       {showdown && <ShowdownReveal presentation={showdown} portrait={boardRotation !== 0} />}
       {celebration && <WinnerCelebration key={celebration.at} players={players.filter(p => celebration.ids.includes(p.id))} at={celebration.at} now={effectNow} />}
       <CameraRig
@@ -2226,6 +2264,10 @@ function SceneContents({
       />
     </>
   );
+}
+
+function cardsTabledFor(showdown: ShowdownPresentation | null, id: string) {
+  return !!showdown?.seats.some((seat) => seat.id === id);
 }
 
 class SceneBoundary extends Component<
