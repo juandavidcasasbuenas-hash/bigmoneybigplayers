@@ -1029,7 +1029,6 @@ function PlayerSeat({
       {hud && showLabel && !hideAvatar && (
         <SeatPlate
           name={player.name}
-          avatar={player.avatar}
           hud={hud}
           hero={hero}
           acting={active}

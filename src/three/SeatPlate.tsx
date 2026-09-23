@@ -1,7 +1,6 @@
 import { Html } from "@react-three/drei";
 import type { CSSProperties } from "react";
 import type { SeatHud } from "../../shared/seatHud";
-import { getCharacter } from "../data/characters";
 import { FELT_Y } from "./contactMotion";
 
 const n = (v: number) => v.toLocaleString("en-GB");
@@ -12,7 +11,6 @@ const n = (v: number) => v.toLocaleString("en-GB");
  */
 export function SeatPlate({
   name,
-  avatar,
   hud,
   hero,
   acting,
@@ -22,7 +20,6 @@ export function SeatPlate({
   onClick,
 }: {
   name: string;
-  avatar: string;
   hud: SeatHud;
   hero: boolean;
   acting: boolean;
@@ -48,7 +45,7 @@ export function SeatPlate({
   return (
     <>
     {hud.bet > 0 && (
-      <Html center position={[0, FELT_Y + 0.03, 1.72]} zIndexRange={[5, 1]} style={{ pointerEvents: "none" }}>
+      <Html center position={[0, FELT_Y + 0.03, 2.05]} zIndexRange={[5, 1]} style={{ pointerEvents: "none" }}>
         <span className="seat-bet" aria-hidden="true">
           <i />
           {n(hud.bet)}
@@ -57,25 +54,23 @@ export function SeatPlate({
     )}
     <Html
       center
-      position={[0, FELT_Y + 0.08, 0.78]}
+      position={[0, FELT_Y + 0.02, 1.2]}
       zIndexRange={[5, 1]}
       style={{ pointerEvents: "none" }}
     >
       <div
         className={classes}
-        style={{ "--turn": `${Math.round(progress * 360)}deg` } as CSSProperties}
+        style={{ "--turn": progress } as CSSProperties}
         onClick={onClick}
         aria-label={`${hero ? "You" : name}, ${n(stack)} chips${hud.bet ? `, bet ${n(hud.bet)}` : ""}${hud.tag ? `, ${hud.tag.text}` : ""}${acting ? ", to act" : ""}`}
       >
         <div className="seat-plate-body">
-          <span className="seat-avatar">
-            <img src={getCharacter(avatar).portrait} alt="" />
-            {acting && <b className="seat-clock">{seconds}</b>}
-          </span>
           <span className="seat-text">
             <strong>{hero ? "You" : name}</strong>
             <em>{stack > 0 ? n(stack) : hud.allIn ? "All in" : "0"}</em>
           </span>
+          {acting && <b className="seat-clock">{seconds}</b>}
+          {acting && <span className="seat-timer" aria-hidden="true" />}
           {(hud.dealer || hud.smallBlind || hud.bigBlind) && (
             <span className="seat-badges">
               {hud.dealer && <b className="seat-badge d" title="Dealer button">D</b>}
